@@ -203,6 +203,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
 
     @EventHandler
     private final Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
+        SPacketSpawnObject packet_but_predict;
         if (event.get_packet() instanceof SPacketSoundEffect) {
             final SPacketSoundEffect packet = (SPacketSoundEffect) event.get_packet();
 
@@ -217,7 +218,6 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
             }
           }
       if (event.get_packet() instanceof SPacketSpawnObject) {
-        SPacketSpawnObject packet_but_predict = event.get_packet();
         if (predict_mode.get_value(true)) {
           if (debug.get_value(true)) {
               WurstplusMessageUtil.send_client_message("predicting moment");
