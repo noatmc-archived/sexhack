@@ -216,7 +216,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
                 }
             }
           }
-      if (event.get_packet() instance of SPacketSpawnObject) {
+      if (event.get_packet() instanceof SPacketSpawnObject) {
         SPacketSpawnObject packet;
         if (predict_mode.get_value(true)) {
           if (debug.get_value(true)) {
