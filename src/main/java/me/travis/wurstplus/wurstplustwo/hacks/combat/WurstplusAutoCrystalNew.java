@@ -217,12 +217,13 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
             }
           }
       if (event.get_packet() instanceof SPacketSpawnObject) {
+        SPacketSpawnObject packet_but_predict = event.get_packet();
         if (predict_mode.get_value(true)) {
           if (debug.get_value(true)) {
               WurstplusMessageUtil.send_client_message("predicting moment");
           }
           CPacketUseEntity predictPacket = new CPacketUseEntity();
-          predictPacket.entityId = SPacketSpawnObject.getEntityID();
+          predictPacket.entityId = packet_but_predict.getEntityID();
           predictPacket.action = CPacketUseEntity.Action.ATTACK;
           mc.player.connection.sendPacket(predictPacket);
         }
