@@ -216,8 +216,8 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
                 }
             }
           }
-      if (event.get_packet() instanceof SPacketSpawnObject) {
-        if (predict_mode.get_value(true)) {
+      if (predict_mode.get_value(true)) {
+        if (event.get_packet() instanceof SPacketSpawnObject) {
           if (debug.get_value(true)) {
               WurstplusMessageUtil.send_client_message("predicting moment");
           }
