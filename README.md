@@ -1,2 +1,1 @@
-# sexhack
-cool block game mod
+block game supremacy
