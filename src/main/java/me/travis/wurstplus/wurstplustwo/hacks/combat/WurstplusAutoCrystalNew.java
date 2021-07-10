@@ -57,8 +57,6 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
     WurstplusSetting place_crystal = create("Place", "CaPlace", true);
     WurstplusSetting break_crystal = create("Break", "CaBreak", true);
     WurstplusSetting packet_break = create("Packet Break", "CaPacketBreak", true);
-    WurstplusSetting attacks = create("Attack", "CaAttack", false);
-    WurstplusSetting attackattempts = create("Attack Attempts", "CaAttackAttempts", 2, 1, 10);
     WurstplusSetting break_trys = create("Break Attempts", "CaBreakAttempts", 2, 1, 6);
     WurstplusSetting anti_weakness = create("Anti-Weakness", "CaAntiWeakness", true);
 
@@ -80,6 +78,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
     WurstplusSetting anti_suicide = create("Anti Suicide", "CaAntiSuicide", true);
 
     WurstplusSetting fast_mode = create("Fast Mode", "CaSpeed", true);
+    WurstplusSetting predict_mode = create("Predict", "CaPredict", false);
     WurstplusSetting client_side = create("Client Side", "CaClientSide", false);
     WurstplusSetting jumpy_mode = create("Jumpy Mode", "CaJumpyMode", false);
 
@@ -217,38 +216,19 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
                 }
             }
           }
-    });
-
-    @SubscribeEvent
-    public
-    void onPacketReceive ( WurstplusPacket.Receive event ) {
-        if ( event.getPacket ( ) instanceof SPacketSpawnObject ) {
-            this.checkID ( ( (SPacketSpawnObject) event.getPacket ( ) ).getEntityID ( ) );
-        } else if ( event.getPacket ( ) instanceof SPacketSpawnExperienceOrb ) {
-            this.checkID ( ( (SPacketSpawnExperienceOrb) event.getPacket ( ) ).getEntityID ( ) );
-        } else if ( event.getPacket ( ) instanceof SPacketSpawnPlayer ) {
-            this.checkID ( ( (SPacketSpawnPlayer) event.getPacket ( ) ).getEntityID ( ) );
-        } else if ( event.getPacket ( ) instanceof SPacketSpawnGlobalEntity ) {
-            this.checkID ( ( (SPacketSpawnGlobalEntity) event.getPacket ( ) ).getEntityId ( ) );
-        } else if ( event.getPacket ( ) instanceof SPacketSpawnPainting ) {
-            this.checkID ( ( (SPacketSpawnPainting) event.getPacket ( ) ).getEntityID ( ) );
-        } else if ( event.getPacket ( ) instanceof SPacketSpawnMob ) {
-            this.checkID ( ( (SPacketSpawnMob) event.getPacket ( ) ).getEntityID ( ) );
-        }
-    }
-
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public void onSendPacket(WurstplusPacket.Send event) {
-      if ( event.getStage ( ) == 0 && event.getPacket ( ) instanceof CPacketPlayerTryUseItemOnBlock ) {
-          CPacketPlayerTryUseItemOnBlock packet = event.getPacket ( );
-          CPacketUseEntity attack = new CPacketUseEntity ( );
-          attack.entityId = this.id;
-          attack.action = CPacketUseEntity.Action.ATTACK;
-          for (int i = 1; i < attackattempts.get_value ( 1 ); ++ i) {
-            mc.player.connection.sendPacket ( attack );
+      if (event.get_packet() instance of SPacketSpawnObject) {
+        SPacketSpawnObject packet;
+        if (predict_mode.get_value(true)) {
+          if (debug.get_value(true)) {
+              WurstplusMessageUtil.send_client_message("predicting moment");
           }
+          CPacketUseEntity predictPacket = new CPacketUseEntity();
+          predictPacket.entityId = packet.getEntityID();
+          predictPacket.action = CPacketUseEntity.Action.ATTACK;
+          mc.player.connection.sendPacket(predict);
         }
       }
+    });
 
     public void do_ca() {
         did_anything = false;
@@ -542,6 +522,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
         rotate_to_pos(target_block);
         chain_timer.reset();
         if (multiplace_armor.get_value(true)) {
+          // malfunction so hard
           WurstplusBlockUtil.placeCrystalOnBlock(target_block, offhand_check ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
           BlockPos another_block = get_best_block();
           WurstplusBlockUtil.placeCrystalOnBlock(another_block, offhand_check ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
