@@ -188,8 +188,8 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
             }
             SPacketSpawnObject attackMoment = (SPacketSpawnObject) event.get_packet();
             CPacketUseEntity attacks = new CPacketUseEntity();
-            predictPacket.entityId = attackMoment.getEntityID();
-            predictPacket.action = CPacketUseEntity.Action.ATTACK;
+            attacks.entityId = attackMoment.getEntityID();
+            attacks.action = CPacketUseEntity.Action.ATTACK;
             mc.player.connection.sendPacket(attacks);
           }
         }
