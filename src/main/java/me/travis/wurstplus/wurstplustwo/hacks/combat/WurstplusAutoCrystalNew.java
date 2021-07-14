@@ -491,7 +491,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
     }
 
     public void weDoALittleTrolling() {
-      crystal = this.get_best_block();
+      EntityEnderCrystal crystal = this.get_best_crystal();
       if (crystal != null) {
         return crystal;
       } else {
