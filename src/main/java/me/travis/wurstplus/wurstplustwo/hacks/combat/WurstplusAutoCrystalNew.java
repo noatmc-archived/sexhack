@@ -79,7 +79,6 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
 
     WurstplusSetting fast_mode = create("Fast Mode", "CaSpeed", true);
     WurstplusSetting predict_mode = create("Predict", "CaPredict", false);
-    WurstplusSetting god_mode = create("God", "CaGodMode", false);
     WurstplusSetting client_side = create("Client Side", "CaClientSide", false);
     WurstplusSetting jumpy_mode = create("Jumpy Mode", "CaJumpyMode", false);
 
@@ -180,18 +179,6 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
             p.facingY = render_block_init.getY();
             p.facingZ = render_block_init.getZ();
             is_rotating = false;
-        }
-        if (god_mode.get_value(true)) {
-          if (event.get_packet() instanceof SPacketSpawnObject) {
-            if (debug.get_value(true)) {
-                WurstplusMessageUtil.send_client_message("killing zeus");
-            }
-            SPacketSpawnObject attackMoment = (SPacketSpawnObject) event.get_packet();
-            CPacketUseEntity attacks = new CPacketUseEntity();
-            attacks.entityId = attackMoment.getEntityID();
-            attacks.action = CPacketUseEntity.Action.ATTACK;
-            mc.player.connection.sendPacket(attacks);
-          }
         }
     });
 
@@ -503,6 +490,14 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
         return new_list;
     }
 
+    public void weDoALittleTrolling() {
+      crystal = this.get_best_block();
+      if (crystal != null) {
+        return crystal;
+      } else {
+        return null;
+      }
+    }
     public void place_crystal() {
 
         BlockPos target_block = get_best_block();

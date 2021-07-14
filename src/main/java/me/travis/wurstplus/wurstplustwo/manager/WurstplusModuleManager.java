@@ -57,6 +57,7 @@ public class WurstplusModuleManager {
 		add_hack(new WurstplusAuto32k());
 		add_hack(new WurstplusWebfill());
 		add_hack(new WurstplusAutoWeb());
+		add_hack(new WurstplusGodModule());
 		add_hack(new WurstplusBedAura());
 		add_hack(new WurstplusOffhand());
 		add_hack(new WurstplusAutoGapple());
