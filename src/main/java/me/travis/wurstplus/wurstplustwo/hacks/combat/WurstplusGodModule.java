@@ -37,5 +37,5 @@ public class WurstplusGodModule extends WurstplusHack {
         attack.action = CPacketUseEntity.Action.ATTACK;
         mc.player.connection.sendPacket ( attack );
       }
-    }
+    });
 }
