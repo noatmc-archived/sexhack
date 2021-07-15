@@ -393,7 +393,16 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
         double maximum_damage_self = this.max_self_damage.get_value(1);
 
         BlockPos best_block = null;
-
+        boolean offhand_check = false;
+        if (mc.player.getHeldItemOffhand().getItem() != Items.END_CRYSTAL) {
+            if (mc.player.getHeldItemMainhand().getItem() != Items.END_CRYSTAL && auto_switch.get_value(true)) {
+                if (find_crystals_hotbar() == -1) return;
+                mc.player.inventory.currentItem = find_crystals_hotbar();
+                return;
+            }
+        } else {
+            offhand_check = true;
+        }
         List<BlockPos> blocks = WurstplusCrystalUtil.possiblePlacePositions((float) place_range.get_value(1), endcrystal.get_value(true), true);
 
         for (Entity player : mc.world.playerEntities) {
@@ -433,17 +442,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
 
                 if (self_damage > maximum_damage_self || (anti_suicide.get_value(true) && (mc.player.getHealth() + mc.player.getAbsorptionAmount()) - self_damage <= 0.5)) continue;
 
-                if (multiplace_mode.get_value(true)) {
-                  boolean offhand_check = false;
-                  if (mc.player.getHeldItemOffhand().getItem() != Items.END_CRYSTAL) {
-                      if (mc.player.getHeldItemMainhand().getItem() != Items.END_CRYSTAL && auto_switch.get_value(true)) {
-                          if (find_crystals_hotbar() == -1) return;
-                          mc.player.inventory.currentItem = find_crystals_hotbar();
-                          return;
-                      }
-                  } else {
-                      offhand_check = true;
-                  }
+                if (multiplace_mode.get_value()) {
                   WurstplusBlockUtil.placeCrystalOnBlock(best_block , offhand_check ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
                 } else {
                   continue;
