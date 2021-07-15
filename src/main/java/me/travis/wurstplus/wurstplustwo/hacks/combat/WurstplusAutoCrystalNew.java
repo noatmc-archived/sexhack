@@ -435,8 +435,8 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
 
                 if (self_damage > maximum_damage_self || (anti_suicide.get_value(true) && (mc.player.getHealth() + mc.player.getAbsorptionAmount()) - self_damage <= 0.5)) continue;
 
-                if (multiplace_mode.get_value()) {
-                  WurstplusBlockUtil.placeCrystalOnBlock(best_block , offhand_check ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
+                if (multiplace_mode.get_value(true)) {
+                  WurstplusBlockUtil.placeCrystalOnBlock(best_block , true ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
                 } else {
                   continue;
                 }
