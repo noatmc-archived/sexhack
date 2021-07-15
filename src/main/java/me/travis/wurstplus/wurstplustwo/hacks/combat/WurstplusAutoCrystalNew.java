@@ -212,8 +212,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
             WurstplusPosManager.restorePosition();
             WurstplusRotationUtil.restoreRotations();
           }
-        }
-    });
+        });
 
     @EventHandler
     private final Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
