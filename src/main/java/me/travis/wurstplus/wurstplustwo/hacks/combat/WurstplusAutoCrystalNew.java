@@ -79,6 +79,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
 
     WurstplusSetting fast_mode = create("Fast Mode", "CaSpeed", true);
     WurstplusSetting predict_mode = create("Predict", "CaPredict", false);
+    WurstplusSetting multiplace_mode = create("Multiplace", "CaMultiplace", false);
     WurstplusSetting client_side = create("Client Side", "CaClientSide", false);
     WurstplusSetting jumpy_mode = create("Jumpy Mode", "CaJumpyMode", false);
 
@@ -432,6 +433,12 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
 
                 if (self_damage > maximum_damage_self || (anti_suicide.get_value(true) && (mc.player.getHealth() + mc.player.getAbsorptionAmount()) - self_damage <= 0.5)) continue;
 
+                if (multiplace_mode.get_value() && !block.isEmpty()) {
+                  WurstplusBlockUtil.placeCrystalOnBlock(block , offhand_check ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
+                } else {
+                  continue;
+                }
+
                 /** if (attempt_chain.get_value(true) && chain_step > 0) {
                     damage_blocks.add(new WurstplusPair<>(best_damage, best_block));
                     autoez_target = target;
@@ -490,14 +497,6 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
         return new_list;
     }
 
-    public void weDoALittleTrolling() {
-      EntityEnderCrystal crystal = this.get_best_crystal();
-      if (crystal != null) {
-        return crystal;
-      } else {
-        return null;
-      }
-    }
     public void place_crystal() {
 
         BlockPos target_block = get_best_block();
