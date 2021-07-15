@@ -192,7 +192,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
             predictPacket.action = CPacketUseEntity.Action.ATTACK;
             mc.player.connection.sendPacket(predictPacket);
           }
-        }
+      }
     });
 
     @EventHandler
