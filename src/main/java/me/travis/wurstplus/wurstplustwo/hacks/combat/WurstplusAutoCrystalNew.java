@@ -79,7 +79,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
 
     WurstplusSetting fast_mode = create("Fast Mode", "CaSpeed", true);
     WurstplusSetting predict_mode = create("Predict", "CaPredict", false);
-    WurstplusSetting multiplace_mode = create("Multiplace", "CaMultiplace", false);
+    WurstplusSetting vroom_mode = create("Vroom Mode", "CaVroom", false);
     WurstplusSetting client_side = create("Client Side", "CaClientSide", false);
     WurstplusSetting jumpy_mode = create("Jumpy Mode", "CaJumpyMode", false);
 
@@ -181,6 +181,18 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
             p.facingZ = render_block_init.getZ();
             is_rotating = false;
         }
+        if (vroom_mode.get_value(true)) {
+          if (event.get_packet() instanceof CPacketPlayerTryUseItemOnBlock) {
+            if (debug.get_value(true)) {
+                WurstplusMessageUtil.send_client_message("vroom vroom");
+            }
+            SPacketSpawnObject packet_but_predict = (SPacketSpawnObject) event.get_packet();
+            CPacketUseEntity predictPacket = new CPacketUseEntity();
+            predictPacket.entityId = packet_but_predict.getEntityID();
+            predictPacket.action = CPacketUseEntity.Action.ATTACK;
+            mc.player.connection.sendPacket(predictPacket);
+          }
+        }
     });
 
     @EventHandler
@@ -199,6 +211,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
             }
             WurstplusPosManager.restorePosition();
             WurstplusRotationUtil.restoreRotations();
+          }
         }
     });
 
@@ -434,12 +447,6 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
                 final double self_damage = WurstplusCrystalUtil.calculateDamage((double) block.getX() + 0.5, (double) block.getY() + 1, (double) block.getZ() + 0.5, mc.player);
 
                 if (self_damage > maximum_damage_self || (anti_suicide.get_value(true) && (mc.player.getHealth() + mc.player.getAbsorptionAmount()) - self_damage <= 0.5)) continue;
-
-                if (multiplace_mode.get_value(true)) {
-                  WurstplusBlockUtil.placeCrystalOnBlock(best_block , true ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
-                } else {
-                  continue;
-                }
 
                 /** if (attempt_chain.get_value(true) && chain_step > 0) {
                     damage_blocks.add(new WurstplusPair<>(best_damage, best_block));
