@@ -31,7 +31,7 @@ public class WurstplusTargetHUD extends WurstplusPinnable {
   public void render() {
     this.getImage();
     if (image != null) {
-      this.drawRect(0, 0, this.get_width(), this.get_height(), 0, 0, 0, 50);
+      this.create_rect(0, 0, this.get_width(), this.get_height(), 0, 0, 0, 50);
     }
     this.set_width(370);
     this.set_height(140);
