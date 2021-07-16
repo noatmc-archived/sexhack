@@ -17,15 +17,20 @@ public class WurstplusTargetHUD extends WurstplusPinnable {
       super("Target HUD", "TargetHud", 1, 0, 0);
   }
   Image image = null;
-  try {
-      URL url = new URL("https://crafatar.com/avatars/" + WurstplusAutoCrystalNew.getTargetFromAutoCrystal() + "?overlay=true");
-      image = ImageIO.read(url);
-  } catch (IOException e) {
-    	e.printStackTrace();
+
+  @Override
+  public void getImage() {
+      try {
+        URL url = new URL("https://crafatar.com/avatars/" + WurstplusAutoCrystalNew.getTargetFromAutoCrystal() + "?overlay=true");
+        image = ImageIO.read(url);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
   }
 
   @Override
   public void render() {
+    getImage();
     if (image != null) {
       drawRect(0, 0, this.get_width(), this.get_height(), 0, 0, 0, 50);
     }
