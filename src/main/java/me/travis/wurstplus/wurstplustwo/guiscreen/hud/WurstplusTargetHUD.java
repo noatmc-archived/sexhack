@@ -21,7 +21,7 @@ public class WurstplusTargetHUD extends WurstplusPinnable {
   @Override
   public void getImage() {
       try {
-        URL url = new URL("https://crafatar.com/avatars/" + WurstplusAutoCrystalNew.getTargetFromAutoCrystal() + "?overlay=true");
+        URL url = new URL("https://crafatar.com/avatars/" + WurstplusAutoCrystalNew.target.getUUID() + "?overlay=true");
         image = ImageIO.read(url);
       } catch (IOException e) {
         e.printStackTrace();
@@ -30,7 +30,7 @@ public class WurstplusTargetHUD extends WurstplusPinnable {
 
   @Override
   public void render() {
-    getImage();
+    this.getImage();
     if (image != null) {
       drawRect(0, 0, this.get_width(), this.get_height(), 0, 0, 0, 50);
     }

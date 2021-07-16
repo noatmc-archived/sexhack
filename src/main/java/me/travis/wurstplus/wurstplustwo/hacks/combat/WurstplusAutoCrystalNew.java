@@ -804,14 +804,6 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
         }
     }
 
-    public void getTargetFromAutoCrystal() {
-      if (target != null) {
-        return target.getUUID();
-      } else {
-        return null;
-      }
-    }
-
     @Override
     public void enable() {
         place_timeout = this.place_delay.get_value(1);
