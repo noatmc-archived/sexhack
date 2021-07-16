@@ -9,7 +9,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import java.awt.Image;
 import java.io.IOException;
-package me.travis.wurstplus.wurstplustwo.util.*;
+import me.travis.wurstplus.wurstplustwo.util.*;
 import me.travis.wurstplus.wurstplustwo.hacks.combat.*;
 
 public class WurstplusTargetHUD extends WurstplusPinnable {
