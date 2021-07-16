@@ -120,7 +120,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
     private final WurstplusTimer remove_visual_timer = new WurstplusTimer();
     private final WurstplusTimer chain_timer = new WurstplusTimer();
 
-    private EntityPlayer autoez_target = null;
+    public EntityPlayer autoez_target = null;
 
     private String detail_name = null;
     private int detail_hp = 0;
