@@ -79,7 +79,6 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
 
     WurstplusSetting fast_mode = create("Fast Mode", "CaSpeed", true);
     WurstplusSetting predict_mode = create("Predict", "CaPredict", false);
-    WurstplusSetting vroom_mode = create("Vroom Mode", "CaVroom", false);
     WurstplusSetting client_side = create("Client Side", "CaClientSide", false);
     WurstplusSetting jumpy_mode = create("Jumpy Mode", "CaJumpyMode", false);
 
@@ -181,18 +180,6 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
             p.facingZ = render_block_init.getZ();
             is_rotating = false;
         }
-        if (vroom_mode.get_value(true)) {
-          if (event.get_packet() instanceof CPacketPlayerTryUseItemOnBlock) {
-            if (debug.get_value(true)) {
-                WurstplusMessageUtil.send_client_message("vroom vroom");
-            }
-            SPacketSpawnObject packet_but_predict = (SPacketSpawnObject) event.get_packet();
-            CPacketUseEntity predictPacket = new CPacketUseEntity();
-            predictPacket.entityId = packet_but_predict.getEntityID();
-            predictPacket.action = CPacketUseEntity.Action.ATTACK;
-            mc.player.connection.sendPacket(predictPacket);
-          }
-      }
     });
 
     @EventHandler
@@ -815,6 +802,14 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
             );
             RenderHelp.release();
         }
+    }
+
+    public void getTargetFromAutoCrystal() {
+      if (target != null) {
+        return target.getUUID();
+      } else {
+        return null;
+      }
     }
 
     @Override

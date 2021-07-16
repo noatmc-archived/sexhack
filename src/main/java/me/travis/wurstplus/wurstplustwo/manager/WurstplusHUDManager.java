@@ -24,6 +24,7 @@ public class WurstplusHUDManager {
 		add_component_pinnable(new WurstplusCrystalCount());
 		add_component_pinnable(new WurstplusEXPCount());
 		add_component_pinnable(new WurstplusGappleCount());
+		add_component_pinnable(new WurstplusTargetHUD());
 		add_component_pinnable(new WurstplusTime());
 		add_component_pinnable(new WurstplusLogo());
 		add_component_pinnable(new WurstplusFPS());
