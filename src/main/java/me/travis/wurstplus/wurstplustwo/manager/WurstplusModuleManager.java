@@ -71,6 +71,7 @@ public class WurstplusModuleManager {
 		add_hack(new WurstplusPortalGodMode());
 		add_hack(new WurstplusPacketMine());
 		add_hack(new WurstplusBurrow());
+		add_hack(new WurstplusGodModule());
 		add_hack(new WurstplusEntityMine());
 		add_hack(new WurstplusBuildHeight());
 		add_hack(new WurstplusCoordExploit());
