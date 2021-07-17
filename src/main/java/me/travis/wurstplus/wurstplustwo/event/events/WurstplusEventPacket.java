@@ -9,7 +9,8 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 public class WurstplusEventPacket extends WurstplusEventCancellable {
 	private final Packet packet;
-
+	private int stage;
+	
 	public WurstplusEventPacket(Packet packet) {
 		super();
 
