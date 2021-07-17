@@ -2,6 +2,7 @@ package me.travis.wurstplus.wurstplustwo.event.events;
 
 import me.travis.wurstplus.wurstplustwo.event.WurstplusEventCancellable;
 import net.minecraft.network.Packet;
+import net.minecraftforge.fml.common.eventhandler.Event;
 
 // External.
 
@@ -13,6 +14,7 @@ public class WurstplusEventPacket extends WurstplusEventCancellable {
 		super();
 
 		this.packet = packet;
+		this.stage = stage;
 	}
 
 	public Packet get_packet() {
@@ -23,6 +25,16 @@ public class WurstplusEventPacket extends WurstplusEventCancellable {
 		public ReceivePacket(Packet packet) {
 			super(packet);
 		}
+	}
+
+	public
+	int getStage ( ) {
+			return this.stage;
+	}
+
+	public
+	void setStage ( int stage ) {
+			this.stage = stage;
 	}
 
 	public static class SendPacket extends WurstplusEventPacket {
