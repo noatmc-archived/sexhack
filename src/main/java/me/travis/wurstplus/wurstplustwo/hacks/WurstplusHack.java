@@ -39,6 +39,10 @@ public class WurstplusHack implements Listenable {
 		this.category 		= category;
 	}
 
+	public static boolean fullNullCheck() {
+			return WurstplusHack.mc.player == null || WurstplusHack.mc.world == null;
+	}
+
 	public void set_bind(int key) {
 		this.bind = (key);
 	}
