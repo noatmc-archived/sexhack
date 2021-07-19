@@ -122,7 +122,7 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
 
     public EntityPlayer autoez_target = null;
 
-    private String detail_name = null;
+    public String detail_name = null;
     private int detail_hp = 0;
 
     private BlockPos render_block_init;
