@@ -6,20 +6,22 @@ import me.travis.wurstplus.Wurstplus;
 import me.travis.wurstplus.wurstplustwo.hacks.combat.WurstplusAutoCrystalNew;
 
 public class WurstplusAutoCrystalTarget extends WurstplusPinnable {
+
+  private String coolMessage = WurstplusAutoCrystalNew.detail_name;
   public WurstplusAutoCrystalTarget() {
 		super("Crystal Target", "ACTarget", 1, 0, 0);
 	}
 
   @Override
   public void render() {
-    if (WurstplusAutoCrystalNew.detail_name != null) {
-      String line = "we targettin' " + WurstplusAutoCrystalNew.detail_name;
+    if (coolMessage != null) {
+      String line = "we targettin' " + coolMessage;
     } else {
       String line = "we ain't targettin'";
     }
 
-    create_line(line, this.docking(1, line), 2, nl_r, nl_g, nl_b, nl_a);
-    
+    create_line(line, this.docking(1, line), 2, 255, 255, 255, 255);
+
     this.set_width(this.get(line, "width") + 2);
     this.set_height(this.get(line, "height") + 2);
   }
