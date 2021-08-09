@@ -37,7 +37,6 @@ public class WurstplusHUDManager {
 		add_component_pinnable(new WurstplusSpeedometer());
 		add_component_pinnable(new WurstplusEntityList());
 		add_component_pinnable(new WurstplusTPS());
-		add_component_pinnable(new WurstplusAutoCrystalTarget());
 		add_component_pinnable(new WurstplusPlayerList());
 		add_component_pinnable(new WurstplusDirection());
 
