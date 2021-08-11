@@ -500,7 +500,9 @@ public class WurstplusAutoCrystal extends WurstplusHack {
         did_anything = true;
         rotate_to_pos(target_block);
         chain_timer.reset();
-        WurstplusBlockUtil.placeCrystalOnBlock(target_block, offhand_check ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
+        for (int i = 0; i < break_trys.get_value(1); i++) {
+            WurstplusBlockUtil.placeCrystalOnBlock(target_block, offhand_check ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
+        }
 
     }
 

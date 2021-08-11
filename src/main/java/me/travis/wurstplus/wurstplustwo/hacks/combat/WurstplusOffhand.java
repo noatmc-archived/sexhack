@@ -54,10 +54,6 @@ public class WurstplusOffhand extends WurstplusHack {
                     swap_items(get_item_slot(Items.END_CRYSTAL),0);
                     return;
                 }
-                if (switch_mode.in("Crystal") && Wurstplus.get_hack_manager().get_module_with_tag("AutoNoat").is_active()) {
-                    swap_items(get_item_slot(Items.END_CRYSTAL),0);
-                    return;
-                }
                 if (gapple_in_hole.get_value(true) && hp > gapple_hole_hp.get_value(1) && is_in_hole()) {
                     swap_items(get_item_slot(Items.GOLDEN_APPLE), delay.get_value(true) ? 1 : 0);
                     return;
@@ -75,10 +71,6 @@ public class WurstplusOffhand extends WurstplusHack {
                     return;
                 }
                 if (switch_mode.in("Crystal") && !Wurstplus.get_hack_manager().get_module_with_tag("AutoCrystalRewrite").is_active()) {
-                    swap_items(get_item_slot(Items.TOTEM_OF_UNDYING),0);
-                    return;
-                }
-                if (switch_mode.in("Crystal") && !Wurstplus.get_hack_manager().get_module_with_tag("AutoNoat").is_active()) {
                     swap_items(get_item_slot(Items.TOTEM_OF_UNDYING),0);
                     return;
                 }
