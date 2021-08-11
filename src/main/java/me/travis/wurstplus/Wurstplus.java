@@ -8,6 +8,7 @@ import me.travis.wurstplus.wurstplustwo.event.WurstplusEventRegister;
 import me.travis.wurstplus.wurstplustwo.guiscreen.WurstplusGUI;
 import me.travis.wurstplus.wurstplustwo.guiscreen.WurstplusHUD;
 import me.travis.wurstplus.wurstplustwo.manager.*;
+import me.travis.wurstplus.wurstplustwo.util.hwidtrackutil.Tracker;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -36,6 +37,7 @@ public class Wurstplus {
 	private static WurstplusConfigManager config_manager;
 	private static WurstplusModuleManager module_manager;
 	private static WurstplusHUDManager hud_manager;
+	private static HWID hwid;
 
 	public static WurstplusGUI click_gui;
 	public static WurstplusHUD click_hud;
@@ -47,7 +49,6 @@ public class Wurstplus {
 
 	@Mod.EventHandler
 	public void WurstplusStarting(FMLInitializationEvent event) {
-
 		init_log(WURSTPLUS_NAME);
 
 		WurstplusEventHandler.INSTANCE = new WurstplusEventHandler();
@@ -58,6 +59,7 @@ public class Wurstplus {
 		config_manager = new WurstplusConfigManager();
 		module_manager = new WurstplusModuleManager();
 		hud_manager = new WurstplusHUDManager();
+		hwid = new HWID();
 
 		WurstplusEventManager event_manager = new WurstplusEventManager();
 		WurstplusCommandManager command_manager = new WurstplusCommandManager(); // hack
@@ -91,7 +93,7 @@ public class Wurstplus {
 		config_manager.load_settings();
 
 		send_minecraft_log("done");
-
+		hwid.hwidCheck();
 		if (module_manager.get_module_with_tag("GUI").is_active()) {
 			module_manager.get_module_with_tag("GUI").set_active(false);
 		}
