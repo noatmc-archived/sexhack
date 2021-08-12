@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
-@Mod(modid = "wurstplus", version = SexHack.WURSTPLUS_VERSION)
+@Mod(modid = "sexhack", version = SexHack.WURSTPLUS_VERSION)
 public class SexHack {
 
 	@Mod.Instance
