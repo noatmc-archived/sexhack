@@ -1,7 +1,7 @@
 {
 	"required"           : true,
 	"compatibilityLevel" : "JAVA_8",
-	"package"            : "me.travis.wurstplus.mixins",
+	"package"            : "me.noat.sexhack.mixins",
 	"refmap"             : "mixins.wurstplus.refmap.json",
 	"mixins"             : [
 		"WurstplusMixinPlayerControllerMP",
