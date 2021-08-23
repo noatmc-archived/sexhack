@@ -83,6 +83,7 @@ public class WurstplusModuleManager {
 		add_hack(new WurstplusStep());
 		add_hack(new WurstplusSprint());
 		add_hack(new WurstPlusAnchor());
+		add_hack(new ElytraFly());
 
 		// Render.
 		add_hack(new WurstplusHighlight());
