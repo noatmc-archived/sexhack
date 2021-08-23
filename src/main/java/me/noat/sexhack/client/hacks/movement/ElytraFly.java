@@ -23,7 +23,7 @@ public class ElytraFly extends WurstplusHack {
 
     @EventHandler
     private Listener<WurstplusEventPlayerTravel> onTravel = new Listener<>(event -> {
-        if (mc.player.getItemStackFromSlot(EntityEquipmentSlot.CHEST).getItem() == Items.ELYTRA) {
+        if (mc.player.getItemStackFromSlot(EntityEquipmentSlot.CHEST).getItem() == Items.ELYTRA || mc.player.isElytraFlying()) {
             HandleControlMode(event);
         }
     });
