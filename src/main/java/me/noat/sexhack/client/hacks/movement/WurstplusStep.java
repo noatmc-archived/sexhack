@@ -1,12 +1,12 @@
 package me.noat.sexhack.client.hacks.movement;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
 
-public class WurstplusStep extends WurstplusHack {
+public class WurstplusStep extends Module {
     
     public WurstplusStep() {
         super(WurstplusCategory.WURSTPLUS_MOVEMENT);
@@ -16,7 +16,7 @@ public class WurstplusStep extends WurstplusHack {
 		this.description = "Move up / down block big";
     }
 
-    WurstplusSetting mode = create("Mode", "StepMode", "Normal", combobox("Normal", "Reverse"));
+    Setting mode = create("Mode", "StepMode", "Normal", combobox("Normal", "Reverse"));
 
     @Override
     public void update() {

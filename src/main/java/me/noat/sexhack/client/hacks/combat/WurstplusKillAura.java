@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.combat;
 
 
 import me.noat.sexhack.SexHack;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,7 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import java.util.stream.Collectors;
 
 
-public class WurstplusKillAura extends WurstplusHack {
+public class WurstplusKillAura extends Module {
 
 	public WurstplusKillAura() {
 		super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -33,13 +33,13 @@ public class WurstplusKillAura extends WurstplusHack {
 		this.description = "To able hit enemies in a range.";
 	}
 
-	WurstplusSetting mode = create("Mode", "KillAuraMode", "A32k", combobox("A32k", "Normal"));
-	WurstplusSetting player    = create("Player",   "KillAuraPlayer",  true);
-	WurstplusSetting hostile   = create("Hostile",  "KillAuraHostile", false);
-	WurstplusSetting sword     = create("Sword",    "KillAuraSword",   true);
-	WurstplusSetting sync_tps  = create("Sync TPS", "KillAuraSyncTps", true);
-	WurstplusSetting range     = create("Range",    "KillAuraRange",   5.0, 0.5, 6.0);
-	WurstplusSetting delay = create("Delay", "KillAuraDelay", 2, 0, 10);
+	Setting mode = create("Mode", "KillAuraMode", "A32k", combobox("A32k", "Normal"));
+	Setting player    = create("Player",   "KillAuraPlayer",  true);
+	Setting hostile   = create("Hostile",  "KillAuraHostile", false);
+	Setting sword     = create("Sword",    "KillAuraSword",   true);
+	Setting sync_tps  = create("Sync TPS", "KillAuraSyncTps", true);
+	Setting range     = create("Range",    "KillAuraRange",   5.0, 0.5, 6.0);
+	Setting delay = create("Delay", "KillAuraDelay", 2, 0, 10);
 
 	boolean start_verify = true;
 

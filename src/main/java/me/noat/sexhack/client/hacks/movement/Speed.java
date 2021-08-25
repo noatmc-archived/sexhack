@@ -2,19 +2,17 @@ package me.noat.sexhack.client.hacks.movement;
 
 import me.noat.sexhack.client.event.events.WurstplusEventMove;
 import me.noat.sexhack.client.event.events.WurstplusEventPlayerJump;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.init.MobEffects;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.util.math.MathHelper;
 
-import static me.noat.sexhack.client.util.WurstplusBurrowUtil.mc;
 
-
-public class Speed extends WurstplusHack {
+public class Speed extends Module {
 
     public Speed() {
         super(WurstplusCategory.WURSTPLUS_MOVEMENT);
@@ -24,12 +22,12 @@ public class Speed extends WurstplusHack {
         this.description = "its like running, but faster";
     }
 
-    WurstplusSetting speed_mode = create("Mode", "StrafeMode", "Strafe", combobox("Strafe", "On Ground"));
-    WurstplusSetting auto_sprint = create("Auto Sprint", "StrafeSprint", true);
-    WurstplusSetting on_water = create("On Water", "StrafeOnWater", true);
-    WurstplusSetting auto_jump = create("Auto Jump", "StrafeAutoJump", true);
-    WurstplusSetting backward = create("Backwards", "StrafeBackwards", true);
-    WurstplusSetting bypass = create("Bypass", "StrafeBypass", false);
+    Setting speed_mode = create("Mode", "StrafeMode", "Strafe", combobox("Strafe", "On Ground"));
+    Setting auto_sprint = create("Auto Sprint", "StrafeSprint", true);
+    Setting on_water = create("On Water", "StrafeOnWater", true);
+    Setting auto_jump = create("Auto Jump", "StrafeAutoJump", true);
+    Setting backward = create("Backwards", "StrafeBackwards", true);
+    Setting bypass = create("Bypass", "StrafeBypass", false);
 
     @Override
     public void update() {

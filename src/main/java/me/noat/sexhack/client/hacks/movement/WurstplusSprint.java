@@ -1,10 +1,10 @@
 package me.noat.sexhack.client.hacks.movement;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 
-public class WurstplusSprint extends WurstplusHack {
+public class WurstplusSprint extends Module {
     
     public WurstplusSprint() {
         super(WurstplusCategory.WURSTPLUS_MOVEMENT);
@@ -14,7 +14,7 @@ public class WurstplusSprint extends WurstplusHack {
 		this.description = "ZOOOOOOOOM";
     }
 
-    WurstplusSetting rage = create("Rage", "SprintRage", true);
+    Setting rage = create("Rage", "SprintRage", true);
 
     @Override
 	public void update() {

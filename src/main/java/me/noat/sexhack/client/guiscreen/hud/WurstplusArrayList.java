@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusDrawnUtil;
 import net.minecraft.util.math.MathHelper;
 
@@ -34,7 +34,7 @@ public class WurstplusArrayList extends WurstplusPinnable {
 		int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
 		int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").get_value(1);
 
-		List<WurstplusHack> pretty_modules = SexHack.get_hack_manager().get_array_active_hacks().stream()
+		List<Module> pretty_modules = SexHack.get_hack_manager().get_array_active_hacks().stream()
 			.sorted(Comparator.comparing(modules -> get(modules.array_detail() == null ? modules.get_tag() : modules.get_tag() + SexHack.g + " [" + SexHack.r + modules.array_detail() + SexHack.g + "]" + SexHack.r, "width")))
 			.collect(Collectors.toList());
 
@@ -44,7 +44,7 @@ public class WurstplusArrayList extends WurstplusPinnable {
 			pretty_modules = Lists.reverse(pretty_modules);
 		}
 
-		for (WurstplusHack modules : pretty_modules) {
+		for (Module modules : pretty_modules) {
 
 			flag = true;
 

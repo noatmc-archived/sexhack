@@ -1,7 +1,7 @@
 package me.noat.sexhack.client.util;
 
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,7 +16,7 @@ public class WurstplusEntityUtil {
 
     public static final Minecraft mc = Minecraft.getMinecraft();
 
-    public static void attackEntity(final Entity entity, final boolean packet, final WurstplusSetting setting) {
+    public static void attackEntity(final Entity entity, final boolean packet, final Setting setting) {
         if (packet) {
             mc.player.connection.sendPacket(new CPacketUseEntity(entity));
         }

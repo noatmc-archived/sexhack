@@ -4,7 +4,7 @@ import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.event.WurstplusEventBus;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.event.events.WurstplusEventRenderEntityModel;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import me.zero.alpine.fork.listener.Listenable;
 import net.minecraft.client.Minecraft;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class WurstplusHack implements Listenable {
+public class Module implements Listenable {
 	public WurstplusCategory category;
 
 	public String name;
@@ -29,7 +29,7 @@ public class WurstplusHack implements Listenable {
 
 	public static final Minecraft mc = Minecraft.getMinecraft();
 
-	public WurstplusHack(WurstplusCategory category) {
+	public Module(WurstplusCategory category) {
 		this.name           = "";
 		this.tag            = "";
 		this.description    = "";
@@ -40,7 +40,7 @@ public class WurstplusHack implements Listenable {
 	}
 
 	public static boolean fullNullCheck() {
-			return WurstplusHack.mc.player == null || WurstplusHack.mc.world == null;
+			return Module.mc.player == null || Module.mc.world == null;
 	}
 
 	public void set_bind(int key) {
@@ -134,32 +134,32 @@ public class WurstplusHack implements Listenable {
 		set_active(!is_active());
 	}
 
-	protected WurstplusSetting create(String name, String tag, int value, int min, int max) {
-		SexHack.get_setting_manager().register(new WurstplusSetting(this, name, tag, value, min, max));
+	protected Setting create(String name, String tag, int value, int min, int max) {
+		SexHack.get_setting_manager().register(new Setting(this, name, tag, value, min, max));
 
 		return SexHack.get_setting_manager().get_setting_with_tag(this, tag);
 	}
 
-	protected WurstplusSetting create(String name, String tag, double value, double min, double max) {
-		SexHack.get_setting_manager().register(new WurstplusSetting(this, name, tag, value, min, max));
+	protected Setting create(String name, String tag, double value, double min, double max) {
+		SexHack.get_setting_manager().register(new Setting(this, name, tag, value, min, max));
 
 		return SexHack.get_setting_manager().get_setting_with_tag(this, tag);
 	}
 
-	protected WurstplusSetting create(String name, String tag, boolean value) {
-		SexHack.get_setting_manager().register(new WurstplusSetting(this, name, tag, value));
+	protected Setting create(String name, String tag, boolean value) {
+		SexHack.get_setting_manager().register(new Setting(this, name, tag, value));
 
 		return SexHack.get_setting_manager().get_setting_with_tag(this, tag);
 	}
 
-	protected WurstplusSetting create(String name, String tag, String value) {
-		SexHack.get_setting_manager().register(new WurstplusSetting(this, name, tag, value));
+	protected Setting create(String name, String tag, String value) {
+		SexHack.get_setting_manager().register(new Setting(this, name, tag, value));
 
 		return SexHack.get_setting_manager().get_setting_with_tag(this, tag);
 	}
 
-	protected WurstplusSetting create(String name, String tag, String value, List<String> values) {
-		SexHack.get_setting_manager().register(new WurstplusSetting(this, name, tag, values, value));
+	protected Setting create(String name, String tag, String value, List<String> values) {
+		SexHack.get_setting_manager().register(new Setting(this, name, tag, values, value));
 
 		return SexHack.get_setting_manager().get_setting_with_tag(this, tag);
 	}

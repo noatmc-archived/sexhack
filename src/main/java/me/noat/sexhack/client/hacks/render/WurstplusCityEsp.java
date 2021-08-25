@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.render;
 
 import me.noat.turok.draw.RenderHelp;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusEntityUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WurstplusCityEsp extends WurstplusHack {
+public class WurstplusCityEsp extends Module {
 
     public WurstplusCityEsp() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
@@ -23,14 +23,14 @@ public class WurstplusCityEsp extends WurstplusHack {
 
     }
 
-    WurstplusSetting endcrystal_mode = create("EndCrystal", "CityEndCrystal", false);
-    WurstplusSetting mode = create("Mode", "CityMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
-    WurstplusSetting off_set = create("Height", "CityOffSetSide", 0.2, 0.0, 1.0);
-    WurstplusSetting range = create("Range", "CityRange", 6, 1, 12);
-    WurstplusSetting r = create("R", "CityR", 0, 0, 255);
-    WurstplusSetting g = create("G", "CityG", 255, 0, 255);
-    WurstplusSetting b = create("B", "CityB", 0, 0, 255);
-    WurstplusSetting a = create("A", "CityA", 50, 0, 255);
+    Setting endcrystal_mode = create("EndCrystal", "CityEndCrystal", false);
+    Setting mode = create("Mode", "CityMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
+    Setting off_set = create("Height", "CityOffSetSide", 0.2, 0.0, 1.0);
+    Setting range = create("Range", "CityRange", 6, 1, 12);
+    Setting r = create("R", "CityR", 0, 0, 255);
+    Setting g = create("G", "CityG", 255, 0, 255);
+    Setting b = create("B", "CityB", 0, 0, 255);
+    Setting a = create("A", "CityA", 50, 0, 255);
 
     List<BlockPos> blocks = new ArrayList<>();
 

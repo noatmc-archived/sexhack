@@ -6,13 +6,13 @@ import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusAbstractWidget;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusFrame;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusModuleButton;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 
 
 public class WurstplusButton extends WurstplusAbstractWidget {
 	private WurstplusFrame        frame;
 	private WurstplusModuleButton master;
-	private WurstplusSetting      setting;
+	private Setting setting;
 
 	private String button_name;
 
@@ -48,7 +48,7 @@ public class WurstplusButton extends WurstplusAbstractWidget {
 		this.can = true;
 	}
 
-	public WurstplusSetting get_setting() {
+	public Setting get_setting() {
 		return this.setting;
 	}
 

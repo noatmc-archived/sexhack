@@ -1,9 +1,9 @@
 package me.noat.sexhack.client.hacks.render;
 
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 
-public class WurstplusShulkerPreview extends WurstplusHack {
+public class WurstplusShulkerPreview extends Module {
     
     public WurstplusShulkerPreview() {
         super(WurstplusCategory.WURSTPLUS_RENDER);

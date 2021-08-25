@@ -1,9 +1,9 @@
 package me.noat.sexhack.client.hacks.chat;
 
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class WurstplusAntiRacist extends WurstplusHack {
+public class WurstplusAntiRacist extends Module {
 
     /*
      *    Updated by NathanW because we need to end racism on anarchy servers
@@ -27,9 +27,9 @@ public class WurstplusAntiRacist extends WurstplusHack {
         this.description = "i love black squares (circles on the other hand...)";
     }
 
-    WurstplusSetting delay = create("Delay", "AntiRacistDelay", 10, 0, 100);
-    WurstplusSetting anti_nword = create("AntiNword", "AntiRacismAntiNword", true);
-    WurstplusSetting chanter = create("Chanter", "AntiRacismChanter", false);
+    Setting delay = create("Delay", "AntiRacistDelay", 10, 0, 100);
+    Setting anti_nword = create("AntiNword", "AntiRacismAntiNword", true);
+    Setting chanter = create("Chanter", "AntiRacismChanter", false);
 
     List<String> chants = new ArrayList<>();
 

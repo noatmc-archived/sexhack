@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -14,7 +14,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-public class WurstplusAutoWeb extends WurstplusHack {
+public class WurstplusAutoWeb extends Module {
 
     public WurstplusAutoWeb() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -24,9 +24,9 @@ public class WurstplusAutoWeb extends WurstplusHack {
         this.description = "places fuckin webs at ur feet";
     }
 
-    WurstplusSetting always_on = create("Always On", "AlwaysOn", true);
-    WurstplusSetting rotate = create("Rotate", "AutoWebRotate", true);
-    WurstplusSetting range = create("Enemy Range", "AutoWebRange", 4, 0, 8);
+    Setting always_on = create("Always On", "AlwaysOn", true);
+    Setting rotate = create("Rotate", "AutoWebRotate", true);
+    Setting range = create("Enemy Range", "AutoWebRange", 4, 0, 8);
 
     int new_slot = -1;
 

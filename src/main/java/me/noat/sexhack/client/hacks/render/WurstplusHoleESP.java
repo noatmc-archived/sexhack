@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.render;
 
 import me.noat.turok.draw.RenderHelp;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusPair;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -16,7 +16,7 @@ import java.util.List;
 // Travis.
 
 
-public class WurstplusHoleESP extends WurstplusHack {
+public class WurstplusHoleESP extends Module {
 
 	public WurstplusHoleESP() {
 		super(WurstplusCategory.WURSTPLUS_RENDER);
@@ -26,31 +26,31 @@ public class WurstplusHoleESP extends WurstplusHack {
 		this.description = "lets you know where holes are";
 	}
 
-	WurstplusSetting mode 				= create("Mode", "HoleESPMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
-	WurstplusSetting off_set 			= create("Height", "HoleESPOffSetSide", 0.2, 0.0, 1.0);
-	WurstplusSetting range   			= create("Range", "HoleESPRange", 6, 1, 12);
-	WurstplusSetting hide_own         	= create("Hide Own", "HoleESPHideOwn", true);
+	Setting mode 				= create("Mode", "HoleESPMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
+	Setting off_set 			= create("Height", "HoleESPOffSetSide", 0.2, 0.0, 1.0);
+	Setting range   			= create("Range", "HoleESPRange", 6, 1, 12);
+	Setting hide_own         	= create("Hide Own", "HoleESPHideOwn", true);
 
-	WurstplusSetting bedrock_view 		= create("info", "HoleESPbedrock", "Bedrock");
-	WurstplusSetting bedrock_enable 	= create("Bedrock Holes", "HoleESPBedrockHoles", true);
+	Setting bedrock_view 		= create("info", "HoleESPbedrock", "Bedrock");
+	Setting bedrock_enable 	= create("Bedrock Holes", "HoleESPBedrockHoles", true);
 	// WurstplusSetting rgb_b 				= create("RGB Effect", "HoleColorRGBEffect", true);
-	WurstplusSetting rb 				= create("R", "HoleESPRb", 0, 0, 255);
-	WurstplusSetting gb 				= create("G", "HoleESPGb", 255, 0, 255);
-	WurstplusSetting bb 				= create("B", "HoleESPBb", 0, 0, 255);
-	WurstplusSetting ab				    = create("A", "HoleESPAb", 50, 0, 255);
+	Setting rb 				= create("R", "HoleESPRb", 0, 0, 255);
+	Setting gb 				= create("G", "HoleESPGb", 255, 0, 255);
+	Setting bb 				= create("B", "HoleESPBb", 0, 0, 255);
+	Setting ab				    = create("A", "HoleESPAb", 50, 0, 255);
 
-	WurstplusSetting obsidian_view 		= create("info", "HoleESPObsidian", "Obsidian");
-	WurstplusSetting obsidian_enable	= create("Obsidian Holes", "HoleESPObsidianHoles", true);
+	Setting obsidian_view 		= create("info", "HoleESPObsidian", "Obsidian");
+	Setting obsidian_enable	= create("Obsidian Holes", "HoleESPObsidianHoles", true);
 	// WurstplusSetting rgb_o 				= create("RGB Effect", "HoleColorRGBEffect", true);
-	WurstplusSetting ro 				= create("R", "HoleESPRo", 255, 0, 255);
-	WurstplusSetting go				    = create("G", "HoleESPGo", 0, 0, 255);
-	WurstplusSetting bo 				= create("B", "HoleESPBo", 0, 0, 255);
-	WurstplusSetting ao 				= create("A", "HoleESPAo", 50, 0, 255);
+	Setting ro 				= create("R", "HoleESPRo", 255, 0, 255);
+	Setting go				    = create("G", "HoleESPGo", 0, 0, 255);
+	Setting bo 				= create("B", "HoleESPBo", 0, 0, 255);
+	Setting ao 				= create("A", "HoleESPAo", 50, 0, 255);
 
-	WurstplusSetting dual_view 		= create("info", "HoleESPDual", "Double");
-	WurstplusSetting dual_enable	= create("Dual Holes", "HoleESPTwoHoles", false);
+	Setting dual_view 		= create("info", "HoleESPDual", "Double");
+	Setting dual_enable	= create("Dual Holes", "HoleESPTwoHoles", false);
 
-	WurstplusSetting line_a = create("Outline A", "HoleESPLineOutlineA", 255, 0, 255);
+	Setting line_a = create("Outline A", "HoleESPLineOutlineA", 255, 0, 255);
 
 	ArrayList<WurstplusPair<BlockPos, Boolean>> holes = new ArrayList<>();
 

@@ -2,7 +2,7 @@ package me.noat.sexhack.client.hacks.misc;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import net.minecraft.entity.Entity;
@@ -10,7 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.RayTraceResult;
 import org.lwjgl.input.Mouse;
 
-public class WurstplusMiddleClickFriends extends WurstplusHack {
+public class WurstplusMiddleClickFriends extends Module {
     
     public WurstplusMiddleClickFriends() {
         super(WurstplusCategory.WURSTPLUS_MISC);

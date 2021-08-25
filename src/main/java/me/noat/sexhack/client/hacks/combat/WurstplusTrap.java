@@ -1,9 +1,9 @@
 package me.noat.sexhack.client.hacks.combat;
 
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
 import me.noat.sexhack.client.util.WurstplusEntityUtil;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class WurstplusTrap extends WurstplusHack {
+public class WurstplusTrap extends Module {
 
     public WurstplusTrap() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -35,12 +35,12 @@ public class WurstplusTrap extends WurstplusHack {
         this.description = "cover people in obsidian :o";
     }
 
-    WurstplusSetting place_mode = create("Place Mode", "TrapPlaceMode", "Extra", combobox("Extra", "Face", "Normal", "Feet"));
-    WurstplusSetting blocks_per_tick = create("Speed", "TrapSpeed", 4, 0, 8);
-    WurstplusSetting rotate = create("Rotation", "TrapRotation", true);
-    WurstplusSetting chad_mode = create("Chad Mode", "TrapChadMode", true);
-    WurstplusSetting range = create("Range", "TrapRange", 4, 1, 6);
-    WurstplusSetting swing = create("Swing", "TrapSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    Setting place_mode = create("Place Mode", "TrapPlaceMode", "Extra", combobox("Extra", "Face", "Normal", "Feet"));
+    Setting blocks_per_tick = create("Speed", "TrapSpeed", 4, 0, 8);
+    Setting rotate = create("Rotation", "TrapRotation", true);
+    Setting chad_mode = create("Chad Mode", "TrapChadMode", true);
+    Setting range = create("Range", "TrapRange", 4, 1, 6);
+    Setting swing = create("Swing", "TrapSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
 
     private final Vec3d[] offsets_default = new Vec3d[]{
         new Vec3d(0.0, 0.0, -1.0),

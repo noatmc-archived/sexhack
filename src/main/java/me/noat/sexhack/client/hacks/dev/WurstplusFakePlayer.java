@@ -2,12 +2,12 @@ package me.noat.sexhack.client.hacks.dev;
 
 import com.mojang.authlib.GameProfile;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 
 import java.util.UUID;
 
-public class WurstplusFakePlayer extends WurstplusHack {
+public class WurstplusFakePlayer extends Module {
     
     public WurstplusFakePlayer() {
         super(WurstplusCategory.WURSTPLUS_BETA);

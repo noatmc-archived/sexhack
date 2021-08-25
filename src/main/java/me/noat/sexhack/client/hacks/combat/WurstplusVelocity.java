@@ -5,14 +5,14 @@ import me.noat.sexhack.client.event.WurstplusEventCancellable;
 import me.noat.sexhack.client.event.events.WurstplusEventEntity;
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.network.play.server.SPacketExplosion;
 
 
-public class WurstplusVelocity extends WurstplusHack {
+public class WurstplusVelocity extends Module {
 	public WurstplusVelocity() {
 		super(WurstplusCategory.WURSTPLUS_COMBAT);
 

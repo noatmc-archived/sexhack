@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class WurstplusAutoArmour extends WurstplusHack {
+public class WurstplusAutoArmour extends Module {
 
     public WurstplusAutoArmour() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -27,13 +27,13 @@ public class WurstplusAutoArmour extends WurstplusHack {
         this.description = "WATCH UR BOOTS";
     }
 
-    WurstplusSetting delay = create("Delay", "AADelay", 2, 0, 5);
-    WurstplusSetting smart_mode = create("Smart Mode", "AASmartMode", true);
-    WurstplusSetting put_back = create("Equip Armour", "AAEquipArmour", true);
-    WurstplusSetting player_range = create("Player Range", "AAPlayerRange", 8, 0, 20);
-    WurstplusSetting crystal_range = create("Crystal Range", "AACrystalRange", 13, 0, 20);
-    WurstplusSetting boot_percent = create("Boot Percent", "AATBootPercent", 80, 0, 100);
-    WurstplusSetting chest_percent = create("Chest Percent", "AATChestPercent", 80, 0, 100);
+    Setting delay = create("Delay", "AADelay", 2, 0, 5);
+    Setting smart_mode = create("Smart Mode", "AASmartMode", true);
+    Setting put_back = create("Equip Armour", "AAEquipArmour", true);
+    Setting player_range = create("Player Range", "AAPlayerRange", 8, 0, 20);
+    Setting crystal_range = create("Crystal Range", "AACrystalRange", 13, 0, 20);
+    Setting boot_percent = create("Boot Percent", "AATBootPercent", 80, 0, 100);
+    Setting chest_percent = create("Chest Percent", "AATChestPercent", 80, 0, 100);
 
     private int delay_count;
 

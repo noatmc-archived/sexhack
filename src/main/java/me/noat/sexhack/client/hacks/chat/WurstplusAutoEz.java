@@ -1,9 +1,9 @@
 package me.noat.sexhack.client.hacks.chat;
 
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusEzMessageUtil;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
@@ -17,7 +17,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class WurstplusAutoEz extends WurstplusHack {
+public class WurstplusAutoEz extends Module {
     
     public WurstplusAutoEz() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
@@ -29,8 +29,8 @@ public class WurstplusAutoEz extends WurstplusHack {
 
     int delay_count = 0;
 
-    WurstplusSetting discord = create("Discord", "EzDiscord", false);
-    WurstplusSetting custom = create("Custom", "EzCustom", false);
+    Setting discord = create("Discord", "EzDiscord", false);
+    Setting custom = create("Custom", "EzCustom", false);
 
     private static final ConcurrentHashMap targeted_players = new ConcurrentHashMap();
 

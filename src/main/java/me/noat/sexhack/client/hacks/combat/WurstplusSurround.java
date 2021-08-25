@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEnderChest;
@@ -16,7 +16,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-public class WurstplusSurround extends WurstplusHack {
+public class WurstplusSurround extends Module {
 
 	public WurstplusSurround() {
 		super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -26,14 +26,14 @@ public class WurstplusSurround extends WurstplusHack {
 		this.description = "surround urself with obi and such";
 	}
 
-	WurstplusSetting rotate = create("Rotate", "SurroundSmoth", true);
-	WurstplusSetting hybrid = create("Hybrid", "SurroundHybrid", true);
-	WurstplusSetting triggerable = create("Toggle", "SurroundToggle", true);
-	WurstplusSetting center = create("Center", "SurroundCenter", false);
-	WurstplusSetting block_head = create("Block Face", "SurroundBlockFace", false);
-	WurstplusSetting tick_for_place = create("Blocks per tick","SurroundTickToPlace", 2, 1, 8);
-	WurstplusSetting tick_timeout = create("Ticks til timeout","SurroundTicks", 20, 10,50);
-	WurstplusSetting swing = create("Swing", "SurroundSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+	Setting rotate = create("Rotate", "SurroundSmoth", true);
+	Setting hybrid = create("Hybrid", "SurroundHybrid", true);
+	Setting triggerable = create("Toggle", "SurroundToggle", true);
+	Setting center = create("Center", "SurroundCenter", false);
+	Setting block_head = create("Block Face", "SurroundBlockFace", false);
+	Setting tick_for_place = create("Blocks per tick","SurroundTickToPlace", 2, 1, 8);
+	Setting tick_timeout = create("Ticks til timeout","SurroundTicks", 20, 10,50);
+	Setting swing = create("Swing", "SurroundSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
 
 
 	private int y_level = 0;

@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.render;
 
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.event.events.WurstplusEventRenderName;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.hacks.chat.WurstplusTotempop;
 import me.noat.sexhack.client.util.WurstplusDamageUtil;
 import me.noat.sexhack.client.util.WurstplusEnemyUtil;
@@ -28,7 +28,7 @@ import org.lwjgl.opengl.GL11;
 import java.awt.*;
 import java.util.Objects;
 
-public class WurstplusNameTags extends WurstplusHack {
+public class WurstplusNameTags extends Module {
 
     public WurstplusNameTags() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
@@ -38,23 +38,23 @@ public class WurstplusNameTags extends WurstplusHack {
         this.description = "MORE DETAILED NAMESSSSS";
     }
 
-    WurstplusSetting show_armor = create("Armor", "NametagArmor", true);
-    WurstplusSetting show_health = create("Health", "NametagHealth", true);
-    WurstplusSetting show_ping = create("Ping", "NametagPing", true);
-    WurstplusSetting show_totems = create("Totem Count", "NametagTotems", true);
-    WurstplusSetting show_invis = create("Invis", "NametagInvis", true);
-    WurstplusSetting reverse = create("Armour Reverse", "NametagReverse", true);
-    WurstplusSetting simplify = create("Simplify", "NametagSimp", false);
-    WurstplusSetting m_scale = create("Scale", "NametagScale", 4, 1, 15);
-    WurstplusSetting range = create("Range", "NametagRange", 75, 1, 250);
+    Setting show_armor = create("Armor", "NametagArmor", true);
+    Setting show_health = create("Health", "NametagHealth", true);
+    Setting show_ping = create("Ping", "NametagPing", true);
+    Setting show_totems = create("Totem Count", "NametagTotems", true);
+    Setting show_invis = create("Invis", "NametagInvis", true);
+    Setting reverse = create("Armour Reverse", "NametagReverse", true);
+    Setting simplify = create("Simplify", "NametagSimp", false);
+    Setting m_scale = create("Scale", "NametagScale", 4, 1, 15);
+    Setting range = create("Range", "NametagRange", 75, 1, 250);
 
-    WurstplusSetting r = create("R", "NametagR", 255, 0, 255);
-    WurstplusSetting g = create("G", "NametagG", 255, 0, 255);
-    WurstplusSetting b = create("B", "NametagB", 255, 0, 255);
-    WurstplusSetting a = create("A", "NametagA", 0.7f, 0f, 1f);
-    WurstplusSetting rainbow_mode = create("Rainbow", "NametagRainbow", false);
-    WurstplusSetting sat = create("Saturation", "NametagSatiation", 0.8, 0, 1);
-    WurstplusSetting brightness = create("Brightness", "NametagBrightness", 0.8, 0, 1);
+    Setting r = create("R", "NametagR", 255, 0, 255);
+    Setting g = create("G", "NametagG", 255, 0, 255);
+    Setting b = create("B", "NametagB", 255, 0, 255);
+    Setting a = create("A", "NametagA", 0.7f, 0f, 1f);
+    Setting rainbow_mode = create("Rainbow", "NametagRainbow", false);
+    Setting sat = create("Saturation", "NametagSatiation", 0.8, 0, 1);
+    Setting brightness = create("Brightness", "NametagBrightness", 0.8, 0, 1);
 
     @EventHandler
     private final Listener<WurstplusEventRenderName> on_render_name = new Listener<>(event -> {

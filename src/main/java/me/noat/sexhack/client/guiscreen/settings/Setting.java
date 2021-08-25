@@ -1,11 +1,11 @@
 package me.noat.sexhack.client.guiscreen.settings;
 
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 
 import java.util.List;
 
-public class WurstplusSetting {
-	private WurstplusHack master;
+public class Setting {
+	private Module master;
 
 	private String name;
 	private String tag;
@@ -23,7 +23,7 @@ public class WurstplusSetting {
 
 	private String type;
 
-	public WurstplusSetting(WurstplusHack master, String name, String tag, boolean value) {
+	public Setting(Module master, String name, String tag, boolean value) {
 		this.master = master;
 		this.name   = name;
 		this.tag    = tag;
@@ -31,7 +31,7 @@ public class WurstplusSetting {
 		this.type   = "button";
 	}
 
-	public WurstplusSetting(WurstplusHack master, String name, String tag, List<String> values, String value) {
+	public Setting(Module master, String name, String tag, List<String> values, String value) {
 		this.master   = master;
 		this.name     = name;
 		this.tag      = tag;
@@ -40,7 +40,7 @@ public class WurstplusSetting {
 		this.type     = "combobox";
 	}
 
-	public WurstplusSetting(WurstplusHack master, String name, String tag, String value) {
+	public Setting(Module master, String name, String tag, String value) {
 		this.master = master;
 		this.name   = name;
 		this.tag    = tag;
@@ -48,7 +48,7 @@ public class WurstplusSetting {
 		this.type   = "label";
 	}
 
-	public WurstplusSetting(WurstplusHack master, String name, String tag, double value, double min, double max) {
+	public Setting(Module master, String name, String tag, double value, double min, double max) {
 		this.master = master;
 		this.name   = name;
 		this.tag    = tag;
@@ -58,7 +58,7 @@ public class WurstplusSetting {
 		this.type   = "doubleslider";
 	}
 
-	public WurstplusSetting(WurstplusHack master, String name, String tag, int value, int min, int max) {
+	public Setting(Module master, String name, String tag, int value, int min, int max) {
 		this.master = master;
 		this.name   = name;
 		this.tag    = tag;
@@ -68,7 +68,7 @@ public class WurstplusSetting {
 		this.type   = "integerslider";
 	}
 
-	public WurstplusHack get_master() {
+	public Module get_master() {
 		return this.master;
 	}
 

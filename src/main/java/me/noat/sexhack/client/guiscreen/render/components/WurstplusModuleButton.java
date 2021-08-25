@@ -3,8 +3,8 @@ package me.noat.sexhack.client.guiscreen.render.components;
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.guiscreen.render.components.widgets.*;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
+import me.noat.sexhack.client.hacks.Module;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 
 public class WurstplusModuleButton {
-	private WurstplusHack module;
+	private Module module;
 	private WurstplusFrame  master;
 
 	private ArrayList<WurstplusAbstractWidget> widget;
@@ -42,7 +42,7 @@ public class WurstplusModuleButton {
 
 	private int count;
 
-	public WurstplusModuleButton(WurstplusHack module, WurstplusFrame master) {
+	public WurstplusModuleButton(Module module, WurstplusFrame master) {
 		/**
 		 * A value to save the y. When move the frame the save_y does the work.
 		 * @param save_y;
@@ -73,7 +73,7 @@ public class WurstplusModuleButton {
 
 		this.count = 0;
 
-		for (WurstplusSetting settings : SexHack.get_setting_manager().get_settings_with_hack(module)) {
+		for (Setting settings : SexHack.get_setting_manager().get_settings_with_hack(module)) {
 			if (settings.get_type().equals("button")) {
 				this.widget.add(new WurstplusButton(master, this, settings.get_tag(), this.settings_height));
 
@@ -116,7 +116,7 @@ public class WurstplusModuleButton {
 		}
 	}
 
-	public WurstplusHack get_module() {
+	public Module get_module() {
 		return this.module;
 	}
 

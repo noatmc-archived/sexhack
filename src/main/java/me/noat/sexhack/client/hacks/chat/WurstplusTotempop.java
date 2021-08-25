@@ -3,7 +3,7 @@ package me.noat.sexhack.client.hacks.chat;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import me.zero.alpine.fork.listener.EventHandler;
@@ -15,7 +15,7 @@ import net.minecraft.network.play.server.SPacketEntityStatus;
 import java.util.HashMap;
 
 
-public class WurstplusTotempop extends WurstplusHack {
+public class WurstplusTotempop extends Module {
 
     public WurstplusTotempop() {
 		super(WurstplusCategory.WURSTPLUS_CHAT);

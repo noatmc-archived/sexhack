@@ -3,7 +3,7 @@ package me.noat.sexhack.client.command.commands;
 
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.command.WurstplusCommand;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
 
@@ -45,7 +45,7 @@ public class WurstplusAlert extends WurstplusCommand {
 		module = module.toLowerCase();
 		state  = state.toLowerCase();
 
-		WurstplusHack module_requested = SexHack.get_hack_manager().get_module_with_tag(module);
+		Module module_requested = SexHack.get_hack_manager().get_module_with_tag(module);
 
 		if (module_requested == null) {
 			WurstplusMessageUtil.send_client_error_message("This module does not exist.");

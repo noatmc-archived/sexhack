@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper.ValidResult;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-public class WurstplusSelfTrap extends WurstplusHack {
+public class WurstplusSelfTrap extends Module {
     
     public WurstplusSelfTrap() {
 
@@ -28,9 +28,9 @@ public class WurstplusSelfTrap extends WurstplusHack {
 		this.description = "oh 'eck, ive trapped me sen again";
     }
 
-    WurstplusSetting toggle = create("Toggle", "SelfTrapToggle", false);
-    WurstplusSetting rotate = create("Rotate", "SelfTrapRotate", false);
-    WurstplusSetting swing = create("Swing", "SelfTrapSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    Setting toggle = create("Toggle", "SelfTrapToggle", false);
+    Setting rotate = create("Rotate", "SelfTrapRotate", false);
+    Setting swing = create("Swing", "SelfTrapSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
 
     private BlockPos trap_pos;
 

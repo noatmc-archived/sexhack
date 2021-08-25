@@ -1,10 +1,10 @@
 package me.noat.sexhack.client.hacks.render;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 
-public class WurstplusCapes extends WurstplusHack {
+public class WurstplusCapes extends Module {
 
     public WurstplusCapes() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
@@ -14,6 +14,6 @@ public class WurstplusCapes extends WurstplusHack {
         this.description = "see epic capes behind epic dudes";
     }
 
-    WurstplusSetting cape = create("Cape", "CapeCape", "New", combobox("New", "OG", "Clockwork", "Clockwork MC", "ifarticuhm", "Ping Players", "teejwrld", "cringesyringe"));
+    Setting cape = create("Cape", "CapeCape", "New", combobox("New", "OG", "Clockwork", "Clockwork MC", "ifarticuhm", "Ping Players", "teejwrld", "cringesyringe"));
 
 }

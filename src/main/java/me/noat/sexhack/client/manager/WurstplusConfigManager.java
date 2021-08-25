@@ -5,8 +5,8 @@ import com.google.gson.*;
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusFrame;
 import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusDrawnUtil;
 import me.noat.sexhack.client.util.WurstplusEnemyUtil;
 import me.noat.sexhack.client.util.WurstplusEzMessageUtil;
@@ -200,7 +200,7 @@ public class WurstplusConfigManager {
 
     private void save_hacks() throws IOException {
 
-        for (WurstplusHack hack : SexHack.get_hack_manager().get_array_hacks()) {
+        for (Module hack : SexHack.get_hack_manager().get_array_hacks()) {
 
             final String file_name = ACTIVE_CONFIG_FOLDER + hack.get_tag() + ".txt";
             final Path file_path = Paths.get(file_name);
@@ -210,7 +210,7 @@ public class WurstplusConfigManager {
             final File file = new File(file_name);
             final BufferedWriter br = new BufferedWriter(new FileWriter(file));
 
-            for (WurstplusSetting setting : SexHack.get_setting_manager().get_settings_with_hack(hack)) {
+            for (Setting setting : SexHack.get_setting_manager().get_settings_with_hack(hack)) {
                 switch (setting.get_type()) {
                     case "button":
                         br.write(setting.get_tag() + ":" + setting.get_value(true) + "\r\n");
@@ -237,7 +237,7 @@ public class WurstplusConfigManager {
 
     private void load_hacks() throws IOException {
 
-        for (WurstplusHack hack : SexHack.get_hack_manager().get_array_hacks()) {
+        for (Module hack : SexHack.get_hack_manager().get_array_hacks()) {
 
             final String file_name = ACTIVE_CONFIG_FOLDER + hack.get_tag() + ".txt";
             final File file = new File(file_name);
@@ -255,7 +255,7 @@ public class WurstplusConfigManager {
                     final String tag = colune.split(":")[0];
                     final String value = colune.split(":")[1];
 
-                    WurstplusSetting setting = SexHack.get_setting_manager().get_setting_with_tag(hack, tag);
+                    Setting setting = SexHack.get_setting_manager().get_setting_with_tag(hack, tag);
 
                     // send_minecraft_log("Attempting to assign value '" + value + "' to setting '" + tag + "'");
 
@@ -438,7 +438,7 @@ public class WurstplusConfigManager {
         this.verify_file(file_path);
         final File file = new File(file_name);
         final BufferedWriter br = new BufferedWriter(new FileWriter(file));
-        for (final WurstplusHack modules : SexHack.get_hack_manager().get_array_hacks()) {
+        for (final Module modules : SexHack.get_hack_manager().get_array_hacks()) {
             br.write(modules.get_tag() + ":" + modules.get_bind(1) + ":" + modules.is_active() + "\r\n");
         }
         br.close();
@@ -458,7 +458,7 @@ public class WurstplusConfigManager {
                 final String tag = colune.split(":")[0];
                 final String bind = colune.split(":")[1];
                 final String active = colune.split(":")[2];
-                final WurstplusHack module = SexHack.get_hack_manager().get_module_with_tag(tag);
+                final Module module = SexHack.get_hack_manager().get_module_with_tag(tag);
                 module.set_bind(Integer.parseInt(bind));
                 module.set_active(Boolean.parseBoolean(active));
             } catch (Exception ignored) {}

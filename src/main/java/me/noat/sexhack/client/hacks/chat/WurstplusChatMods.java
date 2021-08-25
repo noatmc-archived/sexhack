@@ -3,9 +3,9 @@ package me.noat.sexhack.client.hacks.chat;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
@@ -15,7 +15,7 @@ import net.minecraft.util.text.TextComponentString;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public final class WurstplusChatMods extends WurstplusHack {
+public final class WurstplusChatMods extends Module {
     
     public WurstplusChatMods() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
@@ -27,9 +27,9 @@ public final class WurstplusChatMods extends WurstplusHack {
 
     // GuiNewChat nc = new GuiNewChat(mc);
 
-    WurstplusSetting timestamps = create("Timestamps", "ChatModsTimeStamps", true);
-    WurstplusSetting dateformat = create("Date Format", "ChatModsDateFormat", "24HR", combobox("24HR", "12HR"));
-    WurstplusSetting name_highlight = create("Name Highlight", "ChatModsNameHighlight", true);
+    Setting timestamps = create("Timestamps", "ChatModsTimeStamps", true);
+    Setting dateformat = create("Date Format", "ChatModsDateFormat", "24HR", combobox("24HR", "12HR"));
+    Setting name_highlight = create("Name Highlight", "ChatModsNameHighlight", true);
 
     @EventHandler
     private Listener<WurstplusEventPacket.ReceivePacket> PacketEvent = new Listener<>(event -> {

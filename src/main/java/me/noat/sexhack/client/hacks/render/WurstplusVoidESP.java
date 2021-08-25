@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.render;
 
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.client.renderer.culling.Frustum;
@@ -18,7 +18,7 @@ import org.lwjgl.opengl.GL11;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WurstplusVoidESP extends WurstplusHack {
+public class WurstplusVoidESP extends Module {
 
     public WurstplusVoidESP() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
@@ -28,7 +28,7 @@ public class WurstplusVoidESP extends WurstplusHack {
         this.description = "OH FUCK A DEEP HOLE";
     }
 
-    WurstplusSetting void_radius = create("Range", "VoidESPRange", 6, 1, 10);
+    Setting void_radius = create("Range", "VoidESPRange", 6, 1, 10);
 
     public final List<BlockPos> void_blocks = new ArrayList<>();
 

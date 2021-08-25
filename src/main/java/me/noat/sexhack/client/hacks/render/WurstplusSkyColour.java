@@ -1,15 +1,15 @@
 package me.noat.sexhack.client.hacks.render;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.awt.*;
 
-public class WurstplusSkyColour extends WurstplusHack {
+public class WurstplusSkyColour extends Module {
 
     public WurstplusSkyColour() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
@@ -19,10 +19,10 @@ public class WurstplusSkyColour extends WurstplusHack {
         this.description = "Changes the sky's colour";
     }
 
-    WurstplusSetting r = create("R", "SkyColourR", 255, 0, 255);
-    WurstplusSetting g = create("G", "SkyColourG", 255, 0, 255);
-    WurstplusSetting b = create("B", "SkyColourB", 255, 0, 255);
-    WurstplusSetting rainbow_mode = create("Rainbow", "SkyColourRainbow", false);
+    Setting r = create("R", "SkyColourR", 255, 0, 255);
+    Setting g = create("G", "SkyColourG", 255, 0, 255);
+    Setting b = create("B", "SkyColourB", 255, 0, 255);
+    Setting rainbow_mode = create("Rainbow", "SkyColourRainbow", false);
 
     @SubscribeEvent
     public void fog_colour(final EntityViewRenderEvent.FogColors event) {

@@ -7,7 +7,7 @@ import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusAbstractWidget;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusFrame;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusModuleButton;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 
 // Travis.
 
@@ -15,7 +15,7 @@ import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
 public class WurstplusSlider extends WurstplusAbstractWidget {
 	private WurstplusFrame        frame;
 	private WurstplusModuleButton master;
-	private WurstplusSetting      setting;
+	private Setting setting;
 
 	private String slider_name;
 
@@ -65,7 +65,7 @@ public class WurstplusSlider extends WurstplusAbstractWidget {
 		}
 	}
 
-	public WurstplusSetting get_setting() {
+	public Setting get_setting() {
 		return this.setting;
 	}
 

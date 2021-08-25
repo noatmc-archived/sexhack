@@ -5,7 +5,7 @@ import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusAbstractWidget;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusFrame;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusModuleButton;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public class WurstplusCombobox extends WurstplusAbstractWidget {
 
 	private WurstplusFrame        frame;
 	private WurstplusModuleButton master;
-	private WurstplusSetting      setting;
+	private Setting setting;
 
 	private String combobox_name;
 
@@ -70,7 +70,7 @@ public class WurstplusCombobox extends WurstplusAbstractWidget {
 		}
 	}
 
-	public WurstplusSetting get_setting() {
+	public Setting get_setting() {
 		return this.setting;
 	}
 

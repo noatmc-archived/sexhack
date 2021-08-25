@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper.ValidResult;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
@@ -22,7 +22,7 @@ import net.minecraft.util.math.Vec3i;
 
 import java.util.ArrayList;
 
-public class WurstplusWebfill extends WurstplusHack {
+public class WurstplusWebfill extends Module {
 
     public WurstplusWebfill() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -32,9 +32,9 @@ public class WurstplusWebfill extends WurstplusHack {
         this.description = "its like hole fill, but more annoying";
     }
 
-    WurstplusSetting web_toggle = create("Toggle", "WebFillToggle", true);
-    WurstplusSetting web_rotate = create("Rotate", "WebFillRotate", true);
-    WurstplusSetting web_range = create("Range", "WebFillRange", 4, 1, 6);
+    Setting web_toggle = create("Toggle", "WebFillToggle", true);
+    Setting web_rotate = create("Rotate", "WebFillRotate", true);
+    Setting web_range = create("Range", "WebFillRange", 4, 1, 6);
 
     private final ArrayList<BlockPos> holes = new ArrayList<BlockPos>();
 

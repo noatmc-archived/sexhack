@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.chat;
 
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.init.Items;
@@ -25,7 +25,7 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class WurstplusAnnouncer extends WurstplusHack {
+public class WurstplusAnnouncer extends Module {
 
     public WurstplusAnnouncer() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
@@ -35,14 +35,14 @@ public class WurstplusAnnouncer extends WurstplusHack {
         this.description = "how to get muted 101";
     }
 
-    WurstplusSetting min_distance = create("Min Distance", "AnnouncerMinDist", 12, 1, 100);
-    WurstplusSetting max_distance = create("Max Distance", "AnnouncerMaxDist", 144, 12, 1200);
-    WurstplusSetting delay = create("Delay Seconds", "AnnouncerDelay", 4, 0, 20);
-    WurstplusSetting queue_size = create("Queue Size", "AnnouncerQueueSize", 5, 1, 20);
-    WurstplusSetting units = create("Units", "AnnouncerUnits", "Meters", combobox("Meters", "Feet", "Yards", "Inches"));
-    WurstplusSetting movement_string = create("Movement", "AnnouncerMovement", "Aha x", combobox("Aha x", "Leyta", "FUCK"));
-    WurstplusSetting suffix = create("Suffix", "AnnouncerSuffix", true);
-    WurstplusSetting smol = create("Small Text", "AnnouncerSmallText", false);
+    Setting min_distance = create("Min Distance", "AnnouncerMinDist", 12, 1, 100);
+    Setting max_distance = create("Max Distance", "AnnouncerMaxDist", 144, 12, 1200);
+    Setting delay = create("Delay Seconds", "AnnouncerDelay", 4, 0, 20);
+    Setting queue_size = create("Queue Size", "AnnouncerQueueSize", 5, 1, 20);
+    Setting units = create("Units", "AnnouncerUnits", "Meters", combobox("Meters", "Feet", "Yards", "Inches"));
+    Setting movement_string = create("Movement", "AnnouncerMovement", "Aha x", combobox("Aha x", "Leyta", "FUCK"));
+    Setting suffix = create("Suffix", "AnnouncerSuffix", true);
+    Setting smol = create("Small Text", "AnnouncerSmallText", false);
 
     private static DecimalFormat df = new DecimalFormat();
 

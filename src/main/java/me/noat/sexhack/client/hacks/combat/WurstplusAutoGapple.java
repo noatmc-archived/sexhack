@@ -1,14 +1,14 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.Item;
 
-public class WurstplusAutoGapple extends WurstplusHack {
+public class WurstplusAutoGapple extends Module {
 
     public WurstplusAutoGapple() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -18,7 +18,7 @@ public class WurstplusAutoGapple extends WurstplusHack {
         this.description = "put gapple in offhand";
     }
 
-    WurstplusSetting delay = create("Delay", "GappleDelay", false);
+    Setting delay = create("Delay", "GappleDelay", false);
 
     private boolean switching = false;
     private int last_slot;

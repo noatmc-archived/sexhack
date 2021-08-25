@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.render;
 
 import me.noat.turok.draw.RenderHelp;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 
@@ -13,7 +13,7 @@ import java.awt.*;
 // Travis.
 
 
-public class WurstplusHighlight extends WurstplusHack {
+public class WurstplusHighlight extends Module {
 
 	public WurstplusHighlight() {
 		super(WurstplusCategory.WURSTPLUS_RENDER);
@@ -23,16 +23,16 @@ public class WurstplusHighlight extends WurstplusHack {
 		this.description = "see what block ur targeting";
 	}
 
-	WurstplusSetting mode = create("Mode", "HighlightMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
+	Setting mode = create("Mode", "HighlightMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
 	
-	WurstplusSetting rgb = create("RGB Effect", "HighlightRGBEffect", true);
+	Setting rgb = create("RGB Effect", "HighlightRGBEffect", true);
 	
-	WurstplusSetting r = create("R", "HighlightR", 255, 0, 255);
-	WurstplusSetting g = create("G", "HighlightG", 255, 0, 255);
-	WurstplusSetting b = create("B", "HighlightB", 255, 0, 255);
-	WurstplusSetting a = create("A", "HighlightA", 100, 0, 255);
+	Setting r = create("R", "HighlightR", 255, 0, 255);
+	Setting g = create("G", "HighlightG", 255, 0, 255);
+	Setting b = create("B", "HighlightB", 255, 0, 255);
+	Setting a = create("A", "HighlightA", 100, 0, 255);
 	
-	WurstplusSetting l_a = create("Outline A", "HighlightLineA", 255, 0, 255);
+	Setting l_a = create("Outline A", "HighlightLineA", 255, 0, 255);
 
 	int color_r;
 	int color_g;

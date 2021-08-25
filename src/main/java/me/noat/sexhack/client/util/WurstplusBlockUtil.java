@@ -1,6 +1,6 @@
 package me.noat.sexhack.client.util;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -69,7 +69,7 @@ public class WurstplusBlockUtil {
         }
     }
 
-    public static void swingArm(WurstplusSetting setting) {
+    public static void swingArm(Setting setting) {
         if (setting.in("Mainhand") || setting.in("Both")) {
             mc.player.swingArm(EnumHand.MAIN_HAND);
         }
@@ -78,7 +78,7 @@ public class WurstplusBlockUtil {
         }
     }
 
-    public static boolean placeBlock(BlockPos pos, int slot, boolean rotate, boolean rotateBack, WurstplusSetting setting) {
+    public static boolean placeBlock(BlockPos pos, int slot, boolean rotate, boolean rotateBack, Setting setting) {
         if (isBlockEmpty(pos)) {
             int old_slot = -1;
             if (slot != mc.player.inventory.currentItem) {

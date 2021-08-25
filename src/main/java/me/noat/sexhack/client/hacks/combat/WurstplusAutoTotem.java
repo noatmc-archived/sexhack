@@ -1,14 +1,14 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.Item;
 
-public class WurstplusAutoTotem extends WurstplusHack {
+public class WurstplusAutoTotem extends Module {
 
     public WurstplusAutoTotem() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -18,7 +18,7 @@ public class WurstplusAutoTotem extends WurstplusHack {
         this.description = "put totem in offhand";
     }
 
-    WurstplusSetting delay = create("Delay", "TotemDelay", false);
+    Setting delay = create("Delay", "TotemDelay", false);
 
     private boolean switching = false;
     private int last_slot;

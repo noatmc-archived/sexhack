@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.misc;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusPair;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WurstplusAutoReplenish extends WurstplusHack {
+public class WurstplusAutoReplenish extends Module {
 
     public WurstplusAutoReplenish() {
         super(WurstplusCategory.WURSTPLUS_MISC);
@@ -24,9 +24,9 @@ public class WurstplusAutoReplenish extends WurstplusHack {
         this.description = "chad this doesnt desync you i swear";
     }
 
-    WurstplusSetting mode = create("Mode", "AutoReplenishMode", "All", combobox("All", "Crystals", "Xp", "Both"));
-    WurstplusSetting threshold = create("Threshold", "AutoReplenishThreshold", 32, 1, 63);
-    WurstplusSetting tickdelay = create("Delay", "AutoReplenishDelay", 2, 1, 10);
+    Setting mode = create("Mode", "AutoReplenishMode", "All", combobox("All", "Crystals", "Xp", "Both"));
+    Setting threshold = create("Threshold", "AutoReplenishThreshold", 32, 1, 63);
+    Setting tickdelay = create("Delay", "AutoReplenishDelay", 2, 1, 10);
 
     private int delay_step = 0;
 

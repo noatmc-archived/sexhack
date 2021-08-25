@@ -1,9 +1,9 @@
 package me.noat.sexhack.client.hacks.render;
 
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
-public class WurstplusTracers extends WurstplusHack {
+public class WurstplusTracers extends Module {
 
     public WurstplusTracers() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
@@ -23,10 +23,10 @@ public class WurstplusTracers extends WurstplusHack {
         this.description = "DRAWS LINES";
     }
 
-    WurstplusSetting friends = create("Friends", "TracerFriends", false);
-    WurstplusSetting range = create("Range", "TracerRange", 50, 0, 250);
-    WurstplusSetting width = create("Width", "TracerWidth", 1.0f, 0.0f, 5.0f);
-    WurstplusSetting offset = create("Offset", "TracerOffset", 0f, -4.0f, 4.0f);
+    Setting friends = create("Friends", "TracerFriends", false);
+    Setting range = create("Range", "TracerRange", 50, 0, 250);
+    Setting width = create("Width", "TracerWidth", 1.0f, 0.0f, 5.0f);
+    Setting offset = create("Offset", "TracerOffset", 0f, -4.0f, 4.0f);
 
     @Override
     public void render(WurstplusEventRender event) {

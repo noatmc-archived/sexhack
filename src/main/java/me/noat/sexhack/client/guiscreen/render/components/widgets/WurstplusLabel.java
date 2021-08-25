@@ -6,7 +6,7 @@ import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusAbstractWidget;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusFrame;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusModuleButton;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
 
@@ -16,7 +16,7 @@ import org.lwjgl.opengl.GL11;
 public class WurstplusLabel extends WurstplusAbstractWidget {
 	private WurstplusFrame        frame;
 	private WurstplusModuleButton master;
-	private WurstplusSetting      setting;
+	private Setting setting;
 
 	private String label_name;
 
@@ -57,7 +57,7 @@ public class WurstplusLabel extends WurstplusAbstractWidget {
 		this.can  = true;
 	}
 
-	public WurstplusSetting get_setting() {
+	public Setting get_setting() {
 		return this.setting;
 	}
 

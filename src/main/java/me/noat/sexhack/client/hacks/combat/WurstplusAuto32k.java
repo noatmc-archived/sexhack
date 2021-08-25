@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import net.minecraft.block.BlockShulkerBox;
@@ -22,7 +22,7 @@ import net.minecraft.util.math.RayTraceResult;
 
 import java.util.Objects;
 
-public class WurstplusAuto32k extends WurstplusHack {
+public class WurstplusAuto32k extends Module {
 
     public WurstplusAuto32k() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -44,11 +44,11 @@ public class WurstplusAuto32k extends WurstplusHack {
     private boolean place_redstone;
     private boolean dispenser_done;
   
-    WurstplusSetting place_mode = create("Place Mode", "AutotkPlaceMode", "Auto", combobox("Auto", "Looking", "Hopper"));
-    WurstplusSetting swing = create("Swing", "AutotkSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
-    WurstplusSetting delay = create("Delay", "AutotkDelay", 4, 0, 10);
-    WurstplusSetting rotate = create("Rotate", "Autotkrotate", false);
-    WurstplusSetting debug = create("Debug", "AutotkDebug", false);
+    Setting place_mode = create("Place Mode", "AutotkPlaceMode", "Auto", combobox("Auto", "Looking", "Hopper"));
+    Setting swing = create("Swing", "AutotkSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    Setting delay = create("Delay", "AutotkDelay", 4, 0, 10);
+    Setting rotate = create("Rotate", "Autotkrotate", false);
+    Setting debug = create("Debug", "AutotkDebug", false);
 
     @Override
     protected void enable() {

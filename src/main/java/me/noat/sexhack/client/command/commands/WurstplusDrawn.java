@@ -2,7 +2,7 @@ package me.noat.sexhack.client.command.commands;
 
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.command.WurstplusCommand;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusDrawnUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
@@ -40,9 +40,9 @@ public class WurstplusDrawn extends WurstplusCommand {
 
     public boolean is_module(String s) {
 
-        List<WurstplusHack> modules = SexHack.get_hack_manager().get_array_hacks();
+        List<Module> modules = SexHack.get_hack_manager().get_array_hacks();
 
-        for (WurstplusHack module : modules) {
+        for (Module module : modules) {
             if (module.get_tag().equalsIgnoreCase(s)) {
                 return true;
             }

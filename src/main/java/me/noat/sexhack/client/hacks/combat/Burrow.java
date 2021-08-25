@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.util.MappingUtil;
 import me.noat.sexhack.client.util.WurstplusBurrowUtil;
 import net.minecraft.block.Block;
@@ -20,7 +20,7 @@ import net.minecraft.util.math.Vec3d;
 
 import java.lang.reflect.Field;
 
-public class Burrow extends WurstplusHack {
+public class Burrow extends Module {
 
     public Burrow() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -30,13 +30,13 @@ public class Burrow extends WurstplusHack {
         this.description = "troll";
     }
 
-    WurstplusSetting rotate = create("Rotate", "BurrowRotate", false);
-    WurstplusSetting type = create("Type", "BurrowType", "Packet", combobox("Packet", "Normal"));
-    WurstplusSetting block = create("Block", "BurrowBlock", "Obsidian", combobox("Obsidian", "Echest"));
-    WurstplusSetting force = create("Force", "BurrowForce", 1.5, -5.0, 10.0);
-    WurstplusSetting instant = create("Instant", "BurrowInstant", true);
-    WurstplusSetting center = create("Center", "BurrowCenter", false);
-    WurstplusSetting bypass = create("Bypass", "BurrowBypass", false);
+    Setting rotate = create("Rotate", "BurrowRotate", false);
+    Setting type = create("Type", "BurrowType", "Packet", combobox("Packet", "Normal"));
+    Setting block = create("Block", "BurrowBlock", "Obsidian", combobox("Obsidian", "Echest"));
+    Setting force = create("Force", "BurrowForce", 1.5, -5.0, 10.0);
+    Setting instant = create("Instant", "BurrowInstant", true);
+    Setting center = create("Center", "BurrowCenter", false);
+    Setting bypass = create("Bypass", "BurrowBypass", false);
 
     int swapBlock = -1;
     Vec3d centerBlock = Vec3d.ZERO;

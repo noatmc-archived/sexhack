@@ -1,9 +1,9 @@
 package me.noat.sexhack.client.hacks.movement;
 
 import me.noat.sexhack.client.event.events.WurstplusEventMotionUpdate;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.init.Blocks;
@@ -12,7 +12,7 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.ArrayList;
 
-public class WurstPlusAnchor extends WurstplusHack {
+public class WurstPlusAnchor extends Module {
 
     // Written by NathanW, thanks to my friend Ian for some hole shit.
 
@@ -24,8 +24,8 @@ public class WurstPlusAnchor extends WurstplusHack {
         this.description = "Stops all movement if player is above a hole";
     }
 
-    WurstplusSetting Pitch = create("Pitch", "AnchorPitch", 60, 0, 90);
-    WurstplusSetting Pull = create("Pull", "AnchorPull", true);
+    Setting Pitch = create("Pitch", "AnchorPitch", 60, 0, 90);
+    Setting Pull = create("Pull", "AnchorPull", true);
 
     private final ArrayList<BlockPos> holes = new ArrayList<BlockPos>();
     int holeblocks;

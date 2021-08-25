@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.render;
 
 import me.noat.turok.draw.RenderHelp;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusCrystalUtil;
 import me.noat.sexhack.client.util.WurstplusEntityUtil;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
@@ -15,7 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import java.util.HashSet;
 import java.util.Set;
 
-public class WurstplusFuckedDetector extends WurstplusHack {
+public class WurstplusFuckedDetector extends Module {
 
     public WurstplusFuckedDetector() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
@@ -25,14 +25,14 @@ public class WurstplusFuckedDetector extends WurstplusHack {
         this.description = "see if people are hecked";
     }
 
-    WurstplusSetting draw_own = create("Draw Own", "FuckedDrawOwn", false);
-    WurstplusSetting draw_friends = create("Draw Friends", "FuckedDrawFriends", false);
+    Setting draw_own = create("Draw Own", "FuckedDrawOwn", false);
+    Setting draw_friends = create("Draw Friends", "FuckedDrawFriends", false);
 
-    WurstplusSetting render_mode = create("Render Mode", "FuckedRenderMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
-    WurstplusSetting r = create("R", "FuckedR", 255, 0, 255);
-	  WurstplusSetting g = create("G", "FuckedG", 255, 0, 255);
-	  WurstplusSetting b = create("B", "FuckedB", 255, 0, 255);
-    WurstplusSetting a = create("A", "FuckedA", 100, 0, 255);
+    Setting render_mode = create("Render Mode", "FuckedRenderMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
+    Setting r = create("R", "FuckedR", 255, 0, 255);
+	  Setting g = create("G", "FuckedG", 255, 0, 255);
+	  Setting b = create("B", "FuckedB", 255, 0, 255);
+    Setting a = create("A", "FuckedA", 100, 0, 255);
 
     private boolean solid;
     private boolean outline;

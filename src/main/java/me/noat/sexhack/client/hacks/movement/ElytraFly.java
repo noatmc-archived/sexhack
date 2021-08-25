@@ -1,18 +1,17 @@
 package me.noat.sexhack.client.hacks.movement;
 
-import me.noat.sexhack.client.event.events.WurstplusEventMove;
 import me.noat.sexhack.client.event.events.WurstplusEventPlayerTravel;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusMathUtil;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class ElytraFly extends WurstplusHack {
-    WurstplusSetting speed = create("Speed", "EflySpeed", 1.82f, 0.1f, 10.0f);
+public class ElytraFly extends Module {
+    Setting speed = create("Speed", "EflySpeed", 1.82f, 0.1f, 10.0f);
     public ElytraFly() {
         super(WurstplusCategory.WURSTPLUS_MOVEMENT);
 

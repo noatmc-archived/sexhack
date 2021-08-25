@@ -2,7 +2,7 @@ package me.noat.sexhack.client.hacks.chat;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import net.minecraft.entity.Entity;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class WurstplusVisualRange extends WurstplusHack {
+public class WurstplusVisualRange extends Module {
 
 	private List<String> people;
 

@@ -1,31 +1,31 @@
 package me.noat.sexhack.client.manager;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
+import me.noat.sexhack.client.hacks.Module;
 
 import java.util.ArrayList;
 
 
 public class WurstplusSettingManager {
 
-	public ArrayList<WurstplusSetting> array_setting;
+	public ArrayList<Setting> array_setting;
 
 	public WurstplusSettingManager() {
 		this.array_setting = new ArrayList<>();
 	}
 
-	public void register(WurstplusSetting setting) {
+	public void register(Setting setting) {
 		this.array_setting.add(setting);
 	}
 
-	public ArrayList<WurstplusSetting> get_array_settings() {
+	public ArrayList<Setting> get_array_settings() {
 		return this.array_setting;
 	}
 
-	public WurstplusSetting get_setting_with_tag(WurstplusHack module, String tag) {
-		WurstplusSetting setting_requested = null;
+	public Setting get_setting_with_tag(Module module, String tag) {
+		Setting setting_requested = null;
 
-		for (WurstplusSetting settings : get_array_settings()) {
+		for (Setting settings : get_array_settings()) {
 			if (settings.get_master().equals(module) && settings.get_tag().equalsIgnoreCase(tag)) {
 				setting_requested = settings;
 			}
@@ -34,10 +34,10 @@ public class WurstplusSettingManager {
 		return setting_requested;
 	}
 
-	public WurstplusSetting get_setting_with_tag(String tag, String tag_) {
-		WurstplusSetting setting_requested = null;
+	public Setting get_setting_with_tag(String tag, String tag_) {
+		Setting setting_requested = null;
 
-		for (WurstplusSetting settings : get_array_settings()) {
+		for (Setting settings : get_array_settings()) {
 			if (settings.get_master().get_tag().equalsIgnoreCase(tag) && settings.get_tag().equalsIgnoreCase(tag_)) {
 				setting_requested = settings;
 				break;
@@ -47,10 +47,10 @@ public class WurstplusSettingManager {
 		return setting_requested;
 	}
 
-	public ArrayList<WurstplusSetting> get_settings_with_hack(WurstplusHack module) {
-		ArrayList<WurstplusSetting> setting_requesteds = new ArrayList<>();
+	public ArrayList<Setting> get_settings_with_hack(Module module) {
+		ArrayList<Setting> setting_requesteds = new ArrayList<>();
 
-		for (WurstplusSetting settings : get_array_settings()) {
+		for (Setting settings : get_array_settings()) {
 			if (settings.get_master().equals(module)) {
 				setting_requesteds.add(settings);
 			}

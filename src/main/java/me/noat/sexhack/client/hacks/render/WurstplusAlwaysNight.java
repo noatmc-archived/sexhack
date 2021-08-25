@@ -2,11 +2,11 @@ package me.noat.sexhack.client.hacks.render;
 
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 
-public class WurstplusAlwaysNight extends WurstplusHack {
+public class WurstplusAlwaysNight extends Module {
 
     public WurstplusAlwaysNight() {
         super(WurstplusCategory.WURSTPLUS_RENDER);

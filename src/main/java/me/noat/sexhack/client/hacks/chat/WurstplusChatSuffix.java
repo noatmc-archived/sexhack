@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.chat;
 
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusChatSuffixUtil;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
@@ -15,7 +15,7 @@ import java.util.Random;
 // Zero alpine manager.
 
 
-public class WurstplusChatSuffix extends WurstplusHack {
+public class WurstplusChatSuffix extends Module {
 	public WurstplusChatSuffix() {
 		super(WurstplusCategory.WURSTPLUS_CHAT);
 
@@ -24,8 +24,8 @@ public class WurstplusChatSuffix extends WurstplusHack {
 		this.description = "show off how cool u are";
 	}
 
-	WurstplusSetting ignore = create("Ignore", "ChatSuffixIgnore", true);
-	WurstplusSetting type   = create("Type", "ChatSuffixType", "Default", combobox("Default", "Random", "Custom"));
+	Setting ignore = create("Ignore", "ChatSuffixIgnore", true);
+	Setting type   = create("Type", "ChatSuffixType", "Default", combobox("Default", "Random", "Custom"));
 
 	boolean accept_suffix;
 	boolean suffix_default;

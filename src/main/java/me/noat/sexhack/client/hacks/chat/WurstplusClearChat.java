@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.chat;
 
 
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 
-public class WurstplusClearChat extends WurstplusHack {
+public class WurstplusClearChat extends Module {
     public WurstplusClearChat() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
 

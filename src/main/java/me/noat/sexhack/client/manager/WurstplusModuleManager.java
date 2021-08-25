@@ -23,7 +23,7 @@ import java.util.Comparator;
 
 public class WurstplusModuleManager {
 
-	public static ArrayList<WurstplusHack> array_hacks = new ArrayList<>();
+	public static ArrayList<Module> array_hacks = new ArrayList<>();
 
 	public static Minecraft mc = Minecraft.getMinecraft();
 
@@ -113,21 +113,21 @@ public class WurstplusModuleManager {
 		add_hack(new WurstplusFakePlayer());
 		add_hack(new CrystalAura());
 
-		array_hacks.sort(Comparator.comparing(WurstplusHack::get_name));
+		array_hacks.sort(Comparator.comparing(Module::get_name));
 	}
 
-	public void add_hack(WurstplusHack module) {
+	public void add_hack(Module module) {
 		array_hacks.add(module);
 	}
 
-	public ArrayList<WurstplusHack> get_array_hacks() {
+	public ArrayList<Module> get_array_hacks() {
 		return array_hacks;
 	}
 
-	public ArrayList<WurstplusHack> get_array_active_hacks() {
-		ArrayList<WurstplusHack> actived_modules = new ArrayList<>();
+	public ArrayList<Module> get_array_active_hacks() {
+		ArrayList<Module> actived_modules = new ArrayList<>();
 
-		for (WurstplusHack modules : get_array_hacks()) {
+		for (Module modules : get_array_hacks()) {
 			if (modules.is_active()) {
 				actived_modules.add(modules);
 			}
@@ -168,7 +168,7 @@ public class WurstplusModuleManager {
 
 		mc.profiler.endSection();
 
-		for (WurstplusHack modules : get_array_hacks()) {
+		for (Module modules : get_array_hacks()) {
 			if (modules.is_active()) {
 				mc.profiler.startSection(modules.get_tag());
 
@@ -196,7 +196,7 @@ public class WurstplusModuleManager {
 	}
 
 	public void update() {
-		for (WurstplusHack modules : get_array_hacks()) {
+		for (Module modules : get_array_hacks()) {
 			if (modules.is_active()) {
 				modules.update();
 			}
@@ -204,7 +204,7 @@ public class WurstplusModuleManager {
 	}
 
 	public void render() {
-		for (WurstplusHack modules : get_array_hacks()) {
+		for (Module modules : get_array_hacks()) {
 			if (modules.is_active()) {
 				modules.render();
 			}
@@ -216,17 +216,17 @@ public class WurstplusModuleManager {
 			return;
 		}
 
-		for (WurstplusHack modules : get_array_hacks()) {
+		for (Module modules : get_array_hacks()) {
 			if (modules.get_bind(0) == event_key) {
 				modules.toggle();
 			}
 		}
 	}
 
-	public WurstplusHack get_module_with_tag(String tag) {
-		WurstplusHack module_requested = null;
+	public Module get_module_with_tag(String tag) {
+		Module module_requested = null;
 
-		for (WurstplusHack module : get_array_hacks()) {
+		for (Module module : get_array_hacks()) {
 			if (module.get_tag().equalsIgnoreCase(tag)) {
 				module_requested = module;
 			}
@@ -235,10 +235,10 @@ public class WurstplusModuleManager {
 		return module_requested;
 	}
 
-	public ArrayList<WurstplusHack> get_modules_with_category(WurstplusCategory category) {
-		ArrayList<WurstplusHack> module_requesteds = new ArrayList<>();
+	public ArrayList<Module> get_modules_with_category(WurstplusCategory category) {
+		ArrayList<Module> module_requesteds = new ArrayList<>();
 
-		for (WurstplusHack modules : get_array_hacks()) {
+		for (Module modules : get_array_hacks()) {
 			if (modules.get_category().equals(category)) {
 				module_requesteds.add(modules);
 			}

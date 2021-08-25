@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.turok.draw.RenderHelp;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
@@ -20,7 +20,7 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.stream.Collectors;
 
-public class WurstplusBedAura extends WurstplusHack {
+public class WurstplusBedAura extends Module {
 
     public WurstplusBedAura() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -30,10 +30,10 @@ public class WurstplusBedAura extends WurstplusHack {
         this.description = "fucking endcrystal.me";
     }
 
-    WurstplusSetting delay = create("Delay", "BedAuraDelay", 6, 0 , 20);
-    WurstplusSetting range = create("Range", "BedAuraRange", 5, 0, 6);
-    WurstplusSetting hard = create("Hard Rotate", "BedAuraRotate", false);
-    WurstplusSetting swing = create("Swing", "BedAuraSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    Setting delay = create("Delay", "BedAuraDelay", 6, 0 , 20);
+    Setting range = create("Range", "BedAuraRange", 5, 0, 6);
+    Setting hard = create("Hard Rotate", "BedAuraRotate", false);
+    Setting swing = create("Swing", "BedAuraSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
 
     private BlockPos render_pos;
     private int counter;

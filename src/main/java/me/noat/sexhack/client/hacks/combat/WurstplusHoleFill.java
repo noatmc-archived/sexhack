@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper.ValidResult;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
@@ -18,7 +18,7 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.ArrayList;
 
-public class WurstplusHoleFill extends WurstplusHack {
+public class WurstplusHoleFill extends Module {
     
     public WurstplusHoleFill() {
 		super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -28,10 +28,10 @@ public class WurstplusHoleFill extends WurstplusHack {
 		this.description = "Turn holes into floors";
     }
     
-    WurstplusSetting hole_toggle = create("Toggle", "HoleFillToggle", true);
-    WurstplusSetting hole_rotate = create("Rotate", "HoleFillRotate", true);
-    WurstplusSetting hole_range = create("Range", "HoleFillRange", 4, 1, 6);
-    WurstplusSetting swing = create("Swing", "HoleFillSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    Setting hole_toggle = create("Toggle", "HoleFillToggle", true);
+    Setting hole_rotate = create("Rotate", "HoleFillRotate", true);
+    Setting hole_range = create("Range", "HoleFillRange", 4, 1, 6);
+    Setting swing = create("Swing", "HoleFillSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
 
 
     private final ArrayList<BlockPos> holes = new ArrayList<>();

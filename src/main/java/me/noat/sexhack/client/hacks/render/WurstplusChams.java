@@ -2,9 +2,9 @@ package me.noat.sexhack.client.hacks.render;
 
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.event.events.WurstplusEventRenderEntityModel;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusEntityUtil;
 import me.noat.sexhack.client.util.WurstplusRenderUtil;
 import net.minecraft.client.renderer.GlStateManager;
@@ -22,7 +22,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
-public class WurstplusChams extends WurstplusHack {
+public class WurstplusChams extends Module {
 
     public WurstplusChams() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
@@ -32,25 +32,25 @@ public class WurstplusChams extends WurstplusHack {
         this.description = "see even less (now with epic colours)";
     }
 
-    WurstplusSetting mode = create("Mode", "ChamsMode", "Outline", combobox("Outline", "Wireframe"));
-    WurstplusSetting players = create("Players", "ChamsPlayers", true);
-    WurstplusSetting mobs = create("Mobs", "ChamsMobs", true);
-    WurstplusSetting self = create("Self", "ChamsSelf", true);
-    WurstplusSetting items = create("Items", "ChamsItems", true);
-    WurstplusSetting xporbs = create("Xp Orbs", "ChamsXPO", true);
-    WurstplusSetting xpbottles = create("Xp Bottles", "ChamsBottles", true);
-    WurstplusSetting pearl = create("Pearls", "ChamsPearls", true);
-    WurstplusSetting top = create("Top", "ChamsTop", true);
-    WurstplusSetting scale = create("Factor", "ChamsFactor", 0, -1f, 1f);
-    WurstplusSetting r = create("R", "ChamsR", 255, 0, 255);
-    WurstplusSetting g = create("G", "ChamsG", 255, 0, 255);
-    WurstplusSetting b = create("B", "ChamsB", 255, 0, 255);
-    WurstplusSetting a = create("A", "ChamsA", 100, 0, 255);
-    WurstplusSetting box_a = create("Box A", "ChamsABox", 100, 0, 255);
-    WurstplusSetting width = create("Width", "ChamsWdith", 2, 0.5, 5);
-    WurstplusSetting rainbow_mode = create("Rainbow", "ChamsRainbow", false);
-    WurstplusSetting sat = create("Satiation", "ChamsSatiation", 0.8, 0, 1);
-    WurstplusSetting brightness = create("Brightness", "ChamsBrightness", 0.8, 0, 1);
+    Setting mode = create("Mode", "ChamsMode", "Outline", combobox("Outline", "Wireframe"));
+    Setting players = create("Players", "ChamsPlayers", true);
+    Setting mobs = create("Mobs", "ChamsMobs", true);
+    Setting self = create("Self", "ChamsSelf", true);
+    Setting items = create("Items", "ChamsItems", true);
+    Setting xporbs = create("Xp Orbs", "ChamsXPO", true);
+    Setting xpbottles = create("Xp Bottles", "ChamsBottles", true);
+    Setting pearl = create("Pearls", "ChamsPearls", true);
+    Setting top = create("Top", "ChamsTop", true);
+    Setting scale = create("Factor", "ChamsFactor", 0, -1f, 1f);
+    Setting r = create("R", "ChamsR", 255, 0, 255);
+    Setting g = create("G", "ChamsG", 255, 0, 255);
+    Setting b = create("B", "ChamsB", 255, 0, 255);
+    Setting a = create("A", "ChamsA", 100, 0, 255);
+    Setting box_a = create("Box A", "ChamsABox", 100, 0, 255);
+    Setting width = create("Width", "ChamsWdith", 2, 0.5, 5);
+    Setting rainbow_mode = create("Rainbow", "ChamsRainbow", false);
+    Setting sat = create("Satiation", "ChamsSatiation", 0.8, 0, 1);
+    Setting brightness = create("Brightness", "ChamsBrightness", 0.8, 0, 1);
 
     @Override
     public void update() {

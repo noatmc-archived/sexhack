@@ -1,16 +1,16 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketUseEntity;
 
 
-public class WurstplusCriticals extends WurstplusHack {
+public class WurstplusCriticals extends Module {
 
 	public WurstplusCriticals() {
 		super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -20,7 +20,7 @@ public class WurstplusCriticals extends WurstplusHack {
 		this.description = "You can hit with criticals when attack.";
 	}
 
-	WurstplusSetting mode = create("Mode", "CriticalsMode", "Packet", combobox("Packet", "Jump"));
+	Setting mode = create("Mode", "CriticalsMode", "Packet", combobox("Packet", "Jump"));
 
 	@EventHandler
 	private Listener<WurstplusEventPacket.SendPacket> listener = new Listener<>(event -> {

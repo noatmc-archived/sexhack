@@ -1,9 +1,9 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.SexHack;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusPlayerUtil;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.init.Blocks;
@@ -12,7 +12,7 @@ import net.minecraft.inventory.ClickType;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 
-public class WurstplusOffhand extends WurstplusHack {
+public class WurstplusOffhand extends Module {
 
     public WurstplusOffhand() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -22,13 +22,13 @@ public class WurstplusOffhand extends WurstplusHack {
         this.description = "Switches shit to ur offhand";
     }
 
-    WurstplusSetting switch_mode = create("Offhand", "OffhandOffhand", "Totem", combobox("Totem", "Crystal", "Gapple"));
-    WurstplusSetting totem_switch = create("Totem HP", "OffhandTotemHP", 16, 0, 36);
+    Setting switch_mode = create("Offhand", "OffhandOffhand", "Totem", combobox("Totem", "Crystal", "Gapple"));
+    Setting totem_switch = create("Totem HP", "OffhandTotemHP", 16, 0, 36);
 
-    WurstplusSetting gapple_in_hole = create("Gapple In Hole", "OffhandGapple", false);
-    WurstplusSetting gapple_hole_hp = create("Gapple Hole HP", "OffhandGappleHP", 8, 0, 36);
+    Setting gapple_in_hole = create("Gapple In Hole", "OffhandGapple", false);
+    Setting gapple_hole_hp = create("Gapple Hole HP", "OffhandGappleHP", 8, 0, 36);
 
-    WurstplusSetting delay = create("Delay", "OffhandDelay", false);
+    Setting delay = create("Delay", "OffhandDelay", false);
 
     private boolean switching = false;
     private int last_slot;

@@ -1,7 +1,7 @@
 package me.noat.sexhack.client.util;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
@@ -23,7 +23,7 @@ public class WurstplusMessageUtil {
 
 	public static String opener = g + "SexHack" + ChatFormatting.GRAY + " > " + r;
 
-	public static void toggle_message(WurstplusHack module) {
+	public static void toggle_message(Module module) {
 		if (module.is_active()) {
 			if (module.get_tag().equals("AutoCrystal")) {
 				client_message_simple(opener + "we" + ChatFormatting.DARK_GREEN + " gaming ");

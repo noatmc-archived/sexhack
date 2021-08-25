@@ -1,14 +1,14 @@
 package me.noat.sexhack.client.hacks.misc;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemEndCrystal;
 import net.minecraft.item.ItemExpBottle;
 
 
-public class WurstplusFastUtil extends WurstplusHack {
+public class WurstplusFastUtil extends Module {
 
 	public WurstplusFastUtil() {
 		super(WurstplusCategory.WURSTPLUS_MISC);
@@ -18,10 +18,10 @@ public class WurstplusFastUtil extends WurstplusHack {
 		this.description = "use things faster";
 	}
 
-	WurstplusSetting fast_place = create("Place","WurstplusFastPlace", false);
-	WurstplusSetting fast_break = create("Break","WurstplusFastBreak",false);
-	WurstplusSetting crystal = create("Crystal", "WurstplusFastCrystal",false);
-	WurstplusSetting exp = create("EXP","WurstplusFastExp",true);
+	Setting fast_place = create("Place","WurstplusFastPlace", false);
+	Setting fast_break = create("Break","WurstplusFastBreak",false);
+	Setting crystal = create("Crystal", "WurstplusFastCrystal",false);
+	Setting exp = create("EXP","WurstplusFastExp",true);
 
 	@Override
 	public void update() {

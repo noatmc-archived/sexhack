@@ -1,15 +1,15 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusBreakUtil;
 import me.noat.sexhack.client.util.WurstplusEntityUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 
-public class WurstplusAutoMine extends WurstplusHack {
+public class WurstplusAutoMine extends Module {
 
     public WurstplusAutoMine() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -19,8 +19,8 @@ public class WurstplusAutoMine extends WurstplusHack {
         this.description = "jumpy is now never going to use the client again";
     }
 
-    WurstplusSetting end_crystal = create("End Crystal", "MineEndCrystal", false);
-    WurstplusSetting range = create("Range", "MineRange", 4, 0, 6);
+    Setting end_crystal = create("End Crystal", "MineEndCrystal", false);
+    Setting range = create("Range", "MineRange", 4, 0, 6);
 
     @Override
     protected void enable() {

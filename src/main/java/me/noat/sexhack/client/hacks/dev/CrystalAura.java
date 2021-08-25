@@ -1,7 +1,7 @@
 package me.noat.sexhack.client.hacks.dev;
 
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
 import me.noat.sexhack.client.util.WurstplusCrystalUtil;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
@@ -13,7 +13,7 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.List;
 
-public class CrystalAura extends WurstplusHack {
+public class CrystalAura extends Module {
     public CrystalAura() {
         super(WurstplusCategory.WURSTPLUS_BETA);
         this.name        = "CrystalAura";

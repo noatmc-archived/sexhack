@@ -2,7 +2,7 @@ package me.noat.sexhack.client.command.commands;
 
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.command.WurstplusCommand;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.manager.WurstplusCommandManager;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
@@ -30,7 +30,7 @@ public class WurstplusToggle extends WurstplusCommand {
 			return true;
 		}
 
-		WurstplusHack module_requested = SexHack.get_module_manager().get_module_with_tag(module);
+		Module module_requested = SexHack.get_module_manager().get_module_with_tag(module);
 
 		if (module_requested != null) {
 			module_requested.toggle();

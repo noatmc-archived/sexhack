@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper.ValidResult;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
@@ -16,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.ArrayList;
 
-public class WurstplusSocks extends WurstplusHack {
+public class WurstplusSocks extends Module {
 
     // if you use this ur actually bad
 
@@ -28,8 +28,8 @@ public class WurstplusSocks extends WurstplusHack {
 		this.description = "Protects your feet";
     }
 
-    WurstplusSetting rotate = create("Rotate", "SocksRotate", false);
-    WurstplusSetting swing = create("Swing", "SocksSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    Setting rotate = create("Rotate", "SocksRotate", false);
+    Setting swing = create("Swing", "SocksSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
 
     @Override
     protected void enable() {

@@ -3,7 +3,7 @@ package me.noat.sexhack.client.guiscreen.render.components;
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import net.minecraft.client.Minecraft;
 
 import java.awt.*;
@@ -62,7 +62,7 @@ public class WurstplusFrame {
 		int size  = SexHack.get_hack_manager().get_modules_with_category(category).size();
 		int count = 0;
 
-		for (WurstplusHack modules : SexHack.get_hack_manager().get_modules_with_category(category)) {
+		for (Module modules : SexHack.get_hack_manager().get_modules_with_category(category)) {
 			WurstplusModuleButton buttons = new WurstplusModuleButton(modules, this);
 
 			buttons.set_y(this.height);

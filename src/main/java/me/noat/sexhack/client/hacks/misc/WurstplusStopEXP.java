@@ -1,9 +1,9 @@
 package me.noat.sexhack.client.hacks.misc;
 
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.item.ItemExpBottle;
@@ -13,7 +13,7 @@ import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WurstplusStopEXP extends WurstplusHack {
+public class WurstplusStopEXP extends Module {
     
     public WurstplusStopEXP() {
         super(WurstplusCategory.WURSTPLUS_MISC);
@@ -23,8 +23,8 @@ public class WurstplusStopEXP extends WurstplusHack {
 		this.description = "jumpy has a good idea?? (nvm this is dumb)";
 	}
 	
-	WurstplusSetting helmet_boot_percent = create("Helment Boots %", "StopEXHelmet", 80, 0, 100);
-	WurstplusSetting chest_leggings_percent = create("Chest Leggins %", "StopEXChest", 100, 0, 100);
+	Setting helmet_boot_percent = create("Helment Boots %", "StopEXHelmet", 80, 0, 100);
+	Setting chest_leggings_percent = create("Chest Leggins %", "StopEXChest", 100, 0, 100);
 
 	private boolean should_cancel = false;
 

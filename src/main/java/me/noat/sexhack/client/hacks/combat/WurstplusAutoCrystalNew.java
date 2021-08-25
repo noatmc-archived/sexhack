@@ -6,9 +6,9 @@ import me.noat.sexhack.client.event.events.WurstplusEventEntityRemoved;
 import me.noat.sexhack.client.event.events.WurstplusEventMotionUpdate;
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
-import me.noat.sexhack.client.guiscreen.settings.WurstplusSetting;
+import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.WurstplusHack;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.hacks.chat.WurstplusAutoEz;
 import me.noat.sexhack.client.util.*;
 import me.zero.alpine.fork.listener.EventHandler;
@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class WurstplusAutoCrystalNew extends WurstplusHack {
+public class WurstplusAutoCrystalNew extends Module {
 
     public WurstplusAutoCrystalNew() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
@@ -49,67 +49,67 @@ public class WurstplusAutoCrystalNew extends WurstplusHack {
         this.description = "kills people (if ur good)";
     }
 
-    WurstplusSetting debug = create("Debug", "CaDebug", false);
-    WurstplusSetting place_crystal = create("Place", "CaPlace", true);
-    WurstplusSetting break_crystal = create("Break", "CaBreak", true);
-    WurstplusSetting packet_break = create("Packet Break", "CaPacketBreak", true);
-    WurstplusSetting break_trys = create("Break Attempts", "CaBreakAttempts", 2, 1, 6);
-    WurstplusSetting anti_weakness = create("Anti-Weakness", "CaAntiWeakness", true);
+    Setting debug = create("Debug", "CaDebug", false);
+    Setting place_crystal = create("Place", "CaPlace", true);
+    Setting break_crystal = create("Break", "CaBreak", true);
+    Setting packet_break = create("Packet Break", "CaPacketBreak", true);
+    Setting break_trys = create("Break Attempts", "CaBreakAttempts", 2, 1, 6);
+    Setting anti_weakness = create("Anti-Weakness", "CaAntiWeakness", true);
 
-    WurstplusSetting hit_range = create("Hit Range", "CaHitRange", 5.2f, 1f, 6f);
-    WurstplusSetting place_range = create("Place Range", "CaPlaceRange", 5.2f, 1f, 6f);
-    WurstplusSetting hit_range_wall = create("Range Wall", "CaRangeWall", 4f, 1f, 6f);
+    Setting hit_range = create("Hit Range", "CaHitRange", 5.2f, 1f, 6f);
+    Setting place_range = create("Place Range", "CaPlaceRange", 5.2f, 1f, 6f);
+    Setting hit_range_wall = create("Range Wall", "CaRangeWall", 4f, 1f, 6f);
 
-    WurstplusSetting place_delay = create("Place Delay", "CaPlaceDelay", 0, 0, 10);
-    WurstplusSetting break_delay = create("Break Delay", "CaBreakDelay", 2, 0, 10);
+    Setting place_delay = create("Place Delay", "CaPlaceDelay", 0, 0, 10);
+    Setting break_delay = create("Break Delay", "CaBreakDelay", 2, 0, 10);
 
-    WurstplusSetting min_player_place = create("Min Enemy Place", "CaMinEnemyPlace", 8, 0, 20);
-    WurstplusSetting min_player_break = create("Min Enemy Break", "CaMinEnemyBreak", 6, 0, 20);
-    WurstplusSetting max_self_damage = create("Max Self Damage", "CaMaxSelfDamage", 6, 0, 20);
+    Setting min_player_place = create("Min Enemy Place", "CaMinEnemyPlace", 8, 0, 20);
+    Setting min_player_break = create("Min Enemy Break", "CaMinEnemyBreak", 6, 0, 20);
+    Setting max_self_damage = create("Max Self Damage", "CaMaxSelfDamage", 6, 0, 20);
 
-    WurstplusSetting rotate_mode = create("Rotate", "CaRotateMode", "Good", combobox("Off", "Old", "Const", "Good"));
-    WurstplusSetting raytrace = create("Raytrace", "CaRaytrace", false);
+    Setting rotate_mode = create("Rotate", "CaRotateMode", "Good", combobox("Off", "Old", "Const", "Good"));
+    Setting raytrace = create("Raytrace", "CaRaytrace", false);
 
-    WurstplusSetting auto_switch = create("Auto Switch", "CaAutoSwitch", true);
-    WurstplusSetting anti_suicide = create("Anti Suicide", "CaAntiSuicide", true);
+    Setting auto_switch = create("Auto Switch", "CaAutoSwitch", true);
+    Setting anti_suicide = create("Anti Suicide", "CaAntiSuicide", true);
 
-    WurstplusSetting fast_mode = create("Fast Mode", "CaSpeed", true);
-    WurstplusSetting predict_mode = create("Predict", "CaPredict", false);
-    WurstplusSetting client_side = create("Client Side", "CaClientSide", false);
-    WurstplusSetting jumpy_mode = create("Jumpy Mode", "CaJumpyMode", false);
+    Setting fast_mode = create("Fast Mode", "CaSpeed", true);
+    Setting predict_mode = create("Predict", "CaPredict", false);
+    Setting client_side = create("Client Side", "CaClientSide", false);
+    Setting jumpy_mode = create("Jumpy Mode", "CaJumpyMode", false);
 
-    WurstplusSetting anti_stuck = create("Anti Stuck", "CaAntiStuck", false);
-    WurstplusSetting endcrystal = create("1.13 Mode", "CaThirteen", false);
-    WurstplusSetting faceplace_mode = create("Tabbott Mode", "CaTabbottMode", true);
-    WurstplusSetting faceplace_mode_damage = create("T Health", "CaTabbottModeHealth", 8, 0, 36);
+    Setting anti_stuck = create("Anti Stuck", "CaAntiStuck", false);
+    Setting endcrystal = create("1.13 Mode", "CaThirteen", false);
+    Setting faceplace_mode = create("Tabbott Mode", "CaTabbottMode", true);
+    Setting faceplace_mode_damage = create("T Health", "CaTabbottModeHealth", 8, 0, 36);
 
-    WurstplusSetting fuck_armor_mode = create("Armor Destroy", "CaArmorDestory", true);
-    WurstplusSetting fuck_armor_mode_precent = create("Armor %", "CaArmorPercent", 25, 0, 100);
-    WurstplusSetting multiplace_armor = create("Armor Multiplace", "CaArmorMultiplace", false);
+    Setting fuck_armor_mode = create("Armor Destroy", "CaArmorDestory", true);
+    Setting fuck_armor_mode_precent = create("Armor %", "CaArmorPercent", 25, 0, 100);
+    Setting multiplace_armor = create("Armor Multiplace", "CaArmorMultiplace", false);
 
-    WurstplusSetting stop_while_mining = create("Stop While Mining", "CaStopWhileMining", false);
-    WurstplusSetting faceplace_check = create("No Sword FP", "CaJumpyFaceMode", false);
+    Setting stop_while_mining = create("Stop While Mining", "CaStopWhileMining", false);
+    Setting faceplace_check = create("No Sword FP", "CaJumpyFaceMode", false);
 
-    WurstplusSetting swing = create("Swing", "CaSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    Setting swing = create("Swing", "CaSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
 
-    WurstplusSetting render_mode = create("Render", "CaRenderMode", "Pretty", combobox("Pretty", "Solid", "Outline", "None"));
-    WurstplusSetting old_render = create("Old Render", "CaOldRender", false);
-    WurstplusSetting future_render = create("Future Render", "CaFutureRender", false);
-    WurstplusSetting top_block = create("Top Block", "CaTopBlock", false);
-    WurstplusSetting r = create("R", "CaR", 255, 0, 255);
-    WurstplusSetting g = create("G", "CaG", 255, 0, 255);
-    WurstplusSetting b = create("B", "CaB", 255, 0, 255);
-    WurstplusSetting a = create("A", "CaA", 100, 0, 255);
-    WurstplusSetting a_out = create("Outline A", "CaOutlineA", 255, 0, 255);
-    WurstplusSetting rainbow_mode = create("Rainbow", "CaRainbow", false);
-    WurstplusSetting sat = create("Satiation", "CaSatiation", 0.8, 0, 1);
-    WurstplusSetting brightness = create("Brightness", "CaBrightness", 0.8, 0, 1);
-    WurstplusSetting height = create("Height", "CaHeight", 1.0, 0.0, 1.0);
+    Setting render_mode = create("Render", "CaRenderMode", "Pretty", combobox("Pretty", "Solid", "Outline", "None"));
+    Setting old_render = create("Old Render", "CaOldRender", false);
+    Setting future_render = create("Future Render", "CaFutureRender", false);
+    Setting top_block = create("Top Block", "CaTopBlock", false);
+    Setting r = create("R", "CaR", 255, 0, 255);
+    Setting g = create("G", "CaG", 255, 0, 255);
+    Setting b = create("B", "CaB", 255, 0, 255);
+    Setting a = create("A", "CaA", 100, 0, 255);
+    Setting a_out = create("Outline A", "CaOutlineA", 255, 0, 255);
+    Setting rainbow_mode = create("Rainbow", "CaRainbow", false);
+    Setting sat = create("Satiation", "CaSatiation", 0.8, 0, 1);
+    Setting brightness = create("Brightness", "CaBrightness", 0.8, 0, 1);
+    Setting height = create("Height", "CaHeight", 1.0, 0.0, 1.0);
 
-    WurstplusSetting render_damage = create("Render Damage", "RenderDamage", true);
+    Setting render_damage = create("Render Damage", "RenderDamage", true);
 
     // WurstplusSetting attempt_chain = create("Chain Mode", "CaChainMode", false);
-    WurstplusSetting chain_length = create("Chain Length", "CaChainLength", 3, 1, 6);
+    Setting chain_length = create("Chain Length", "CaChainLength", 3, 1, 6);
 
     private final ConcurrentHashMap<EntityEnderCrystal, Integer> attacked_crystals = new ConcurrentHashMap<>();
 
