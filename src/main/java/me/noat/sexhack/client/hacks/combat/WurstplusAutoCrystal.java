@@ -19,10 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
+import net.minecraft.item.*;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
 import net.minecraft.network.play.server.SPacketDestroyEntities;
@@ -69,7 +66,7 @@ public class WurstplusAutoCrystal extends WurstplusHack {
     WurstplusSetting rotate_mode = create("Rotate", "CaRotateMode", "Good", combobox("Off", "Old", "Const", "Good"));
     WurstplusSetting raytrace = create("Raytrace", "CaRaytrace", false);
 
-    WurstplusSetting auto_switch = create("Auto Switch", "CaAutoSwitch", true);
+    WurstplusSetting auto_switch = create("Auto Switch", "CaAutoSwitch", "Silent", combobox("Silent", "Normal", "None"));
     WurstplusSetting anti_suicide = create("Anti Suicide", "CaAntiSuicide", true);
 
     WurstplusSetting fast_mode = create("Fast Mode", "CaSpeed", true);
@@ -196,11 +193,6 @@ public class WurstplusAutoCrystal extends WurstplusHack {
 
     @EventHandler
     private final Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
-        if (event.get_packet() instanceof SPacketDestroyEntities) {
-            if (!hasPlace) {
-                place_crystal();
-            }
-        }
         if (event.get_packet() instanceof SPacketSpawnObject) {
             if (!hasBreak) {
                 break_crystal();
@@ -419,11 +411,11 @@ public class WurstplusAutoCrystal extends WurstplusHack {
                     minimum_damage = this.min_player_place.get_value(1);
                 }
 
-                final double target_damage = WP3CrystalUtil.calculateDamage(new BlockPos(block.getX(), block.getY(), block.getZ()), mc.player, true);
+                final double target_damage = WP3CrystalUtil.calculateDamage(new BlockPos(block.getX() + 0.5, block.getY() + 1, block.getZ() + 0.5), target, true);
 
                 if (target_damage < minimum_damage) continue;
 
-                final double self_damage = WP3CrystalUtil.calculateDamage(new BlockPos(block.getX(), block.getY(), block.getZ()), mc.player, true);
+                final double self_damage = WP3CrystalUtil.calculateDamage(new BlockPos(block.getX() + 0.5, block.getY() + 1, block.getZ() + 0.5), mc.player, true);
 
 
                 if (self_damage > maximum_damage_self || (anti_suicide.get_value(true) && (mc.player.getHealth() + mc.player.getAbsorptionAmount()) - self_damage <= 0.5)) continue;
@@ -500,8 +492,12 @@ public class WurstplusAutoCrystal extends WurstplusHack {
 
         boolean offhand_check = false;
         if (mc.player.getHeldItemOffhand().getItem() != Items.END_CRYSTAL) {
-            if (mc.player.getHeldItemMainhand().getItem() != Items.END_CRYSTAL && auto_switch.get_value(true)) {
-                if (find_crystals_hotbar() == -1) return;
+            if (mc.player.getHeldItemMainhand().getItem() != Items.END_CRYSTAL && !auto_switch.in("None")) {
+                if (auto_switch.in("Silent")) {
+                    WurstplusPlayerUtil.switchToHotbarSlot(ItemEndCrystal.class, true);
+                } else {
+                    WurstplusPlayerUtil.switchToHotbarSlot(ItemEndCrystal.class, false);
+                }
                 mc.player.inventory.currentItem = find_crystals_hotbar();
                 return;
             }
