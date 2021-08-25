@@ -192,11 +192,6 @@ public class WurstplusAutoCrystal extends Module {
 
     @EventHandler
     private final Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
-        if (event.get_packet() instanceof SPacketSpawnObject) {
-            if (!hasBreak) {
-                break_crystal();
-            }
-        }
         if (this.sequential.get_value(true)) {
             if (event.get_packet() instanceof SPacketSoundEffect) {
                 final SPacketSoundEffect packet = (SPacketSoundEffect) event.get_packet();
