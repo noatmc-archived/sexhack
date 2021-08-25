@@ -34,7 +34,7 @@ public class WurstplusPlayerUtil {
     void switchToHotbarSlot ( Class clazz , boolean silent ) {
         int slot = findHotbarBlock ( clazz );
         if ( slot > - 1 ) {
-            this.switchToHotbarSlot ( slot , silent );
+            switchToHotbarSlot ( slot , silent );
         }
     }
 
