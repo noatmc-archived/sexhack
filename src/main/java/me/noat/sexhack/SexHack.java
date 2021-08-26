@@ -23,7 +23,7 @@ public class SexHack {
 	private static SexHack MASTER;
 
 	public static final String WURSTPLUS_NAME = "SexHack";
-	public static final String WURSTPLUS_VERSION = "1.0.4";
+	public static final String WURSTPLUS_VERSION = "1.0.4.1";
 	public static final String WURSTPLUS_SIGN = " ";
 
 	public static final int WURSTPLUS_KEY_GUI = Keyboard.KEY_RSHIFT;
