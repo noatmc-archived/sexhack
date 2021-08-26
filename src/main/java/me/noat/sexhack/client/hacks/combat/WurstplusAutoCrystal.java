@@ -70,7 +70,6 @@ public class WurstplusAutoCrystal extends Module {
 
     Setting fast_mode = create("Fast Mode", "CaSpeed", true);
     Setting sequential = create("Sequential", "SequentialCA", true);
-    Setting cancel_crystal = create("Cancel Crystal", "CaClientSide", false);
     Setting jumpy_mode = create("Jumpy Mode", "CaJumpyMode", false);
 
     Setting anti_stuck = create("Anti Stuck", "CaAntiStuck", false);
@@ -589,12 +588,6 @@ public class WurstplusAutoCrystal extends Module {
         rotate_to(crystal);
         for (int i = 0; i < break_trys.get_value(1); i++) {
             WurstplusEntityUtil.attackEntity(crystal, false, swing);
-        }
-
-        if (cancel_crystal.get_value(true) && crystal.isEntityAlive()) {
-            crystal.setDead();
-            mc.world.removeAllEntities();
-            mc.world.getLoadedEntityList();
         }
 
         add_attacked_crystal(crystal);
