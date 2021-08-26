@@ -509,9 +509,11 @@ public class WurstplusAutoCrystal extends Module {
         for (int i = 0; i < break_trys.get_value(1); i++) {
             WurstplusBlockUtil.placeCrystalOnBlock(target_block, offhand_check ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
         }
-
-        hasPlace = true;
         hasBreak = false;
+        if (debug.get_value(true)) {
+            WurstplusMessageUtil.send_client_message("setting hasPlace bool to true");
+        }
+        hasPlace = true;
 
     }
 
@@ -599,6 +601,9 @@ public class WurstplusAutoCrystal extends Module {
 
         break_delay_counter = 0;
         hasPlace = false;
+        if (debug.get_value(true)) {
+            WurstplusMessageUtil.send_client_message("setting hasBreak bool to true");
+        }
         hasBreak = true;
 
     }
@@ -771,12 +776,16 @@ public class WurstplusAutoCrystal extends Module {
         remove_visual_timer.reset();
         detail_name = null;
         detail_hp = 20;
+        hasPlace = false;
+        hasBreak = false;
     }
 
     @Override
     public void disable() {
         render_block_init = null;
         autoez_target = null;
+        hasPlace = false;
+        hasBreak = false;
     }
 
     @Override
