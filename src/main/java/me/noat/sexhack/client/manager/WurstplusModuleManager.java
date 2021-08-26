@@ -61,7 +61,7 @@ public class WurstplusModuleManager {
 		add_hack(new WurstplusBedAura());
 		add_hack(new WurstplusOffhand());
 		add_hack(new WurstplusAutoGapple());
-		add_hack(new WurstplusAutoCrystalNew());
+		// add_hack(new WurstplusAutoCrystalNew());
 		add_hack(new WurstplusAutoTotem());
 		add_hack(new WurstplusAutoMine());
 
@@ -111,7 +111,7 @@ public class WurstplusModuleManager {
 
 		// Dev
 		add_hack(new WurstplusFakePlayer());
-		add_hack(new CrystalAura());
+		// add_hack(new CrystalAura());
 
 		array_hacks.sort(Comparator.comparing(Module::get_name));
 	}
