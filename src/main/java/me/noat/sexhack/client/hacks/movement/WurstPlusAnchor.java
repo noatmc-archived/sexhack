@@ -52,8 +52,7 @@ public class WurstPlusAnchor extends Module {
 
         if (mc.world.getBlockState(blockpos.add(0, 0, -1)).getBlock() == Blocks.OBSIDIAN ||mc.world.getBlockState(blockpos.add(0, 0, -1)).getBlock() == Blocks.BEDROCK) ++holeblocks;
 
-        if (holeblocks >= 9) return true;
-        else return false;
+        return holeblocks >= 9;
     }
     private Vec3d Center = Vec3d.ZERO;
 
@@ -66,7 +65,7 @@ public class WurstPlusAnchor extends Module {
     }
 
     @EventHandler
-    private Listener<WurstplusEventMotionUpdate> OnClientTick = new Listener<>(event -> {
+    private final Listener<WurstplusEventMotionUpdate> OnClientTick = new Listener<>(event -> {
         if (mc.player.rotationPitch >= Pitch.get_value(60)) {
 
             if (isBlockHole(getPlayerPos().down(1)) || isBlockHole(getPlayerPos().down(2)) ||

@@ -6,7 +6,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class WurstplusEventDamageBlock extends WurstplusEventCancellable {
 
-    private BlockPos BlockPos;
+    private final BlockPos BlockPos;
     private EnumFacing Direction;
 
     public WurstplusEventDamageBlock(BlockPos posBlock, EnumFacing directionFacing)

@@ -343,7 +343,7 @@ public class WurstplusHoleESP extends Module {
 					color_a = ao.get_value(1);
 				} else continue;
 
-				if (hide_own.get_value(true) && hole.getKey().equals((Object)new BlockPos(mc.player.posX, mc.player.posY, mc.player.posZ))) {
+				if (hide_own.get_value(true) && hole.getKey().equals(new BlockPos(mc.player.posX, mc.player.posY, mc.player.posZ))) {
 					continue;
 				}
 
@@ -403,6 +403,6 @@ public class WurstplusHoleESP extends Module {
 	}
 
 	public BlockPos player_as_blockpos() {
-		return new BlockPos(Math.floor((double) mc.player.posX), Math.floor((double) mc.player.posY), Math.floor((double) mc.player.posZ));
+		return new BlockPos(Math.floor(mc.player.posX), Math.floor(mc.player.posY), Math.floor(mc.player.posZ));
 	}
 }

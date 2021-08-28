@@ -13,11 +13,11 @@ import me.noat.sexhack.client.guiscreen.settings.Setting;
 
 
 public class WurstplusSlider extends WurstplusAbstractWidget {
-	private WurstplusFrame        frame;
-	private WurstplusModuleButton master;
-	private Setting setting;
+	private final WurstplusFrame        frame;
+	private final WurstplusModuleButton master;
+	private final Setting setting;
 
-	private String slider_name;
+	private final String slider_name;
 
 	private double double_;
 	private int    intenger;
@@ -34,9 +34,9 @@ public class WurstplusSlider extends WurstplusAbstractWidget {
 	private boolean compare;
 	private boolean click;
 
-	private WurstplusDraw font = new WurstplusDraw(1);
+	private final WurstplusDraw font = new WurstplusDraw(1);
 
-	private int border_size = 0;
+	private final int border_size = 0;
 
 	public WurstplusSlider(WurstplusFrame frame, WurstplusModuleButton master, String tag, int update_postion) {
 		this.frame   = frame;
@@ -124,12 +124,8 @@ public class WurstplusSlider extends WurstplusAbstractWidget {
 	}
 
 	public boolean motion(int mx, int my) {
-		if (mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height()) {
-			return true;
-		}
-
-		return false;
-	}
+        return mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height();
+    }
 
 	public boolean can() {
 		return this.can;

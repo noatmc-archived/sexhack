@@ -72,36 +72,24 @@ public class WurstplusSurroundBlocks extends WurstplusPinnable {
     public Block get_neg_x() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
         Block b = mc.world.getBlockState(player_block.west()).getBlock();
-        if (b != null) {
-            return b;
-        }
-        return null;
+        return b;
     }
 
     public Block get_pos_x() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
         Block b = mc.world.getBlockState(player_block.east()).getBlock();
-        if (b != null) {
-            return b;
-        }
-        return null;
+        return b;
     }
 
     public Block get_pos_z() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
         Block b = mc.world.getBlockState(player_block.south()).getBlock();
-        if (b != null) {
-            return b;
-        }
-        return null;
+        return b;
     }
 
     public Block get_neg_z() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
         Block b = mc.world.getBlockState(player_block.north()).getBlock();
-        if (b != null) {
-            return b;
-        }
-        return null;
+        return b;
     }
 }

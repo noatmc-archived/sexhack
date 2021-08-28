@@ -14,11 +14,11 @@ import org.lwjgl.opengl.GL11;
 
 
 public class WurstplusLabel extends WurstplusAbstractWidget {
-	private WurstplusFrame        frame;
-	private WurstplusModuleButton master;
-	private Setting setting;
+	private final WurstplusFrame        frame;
+	private final WurstplusModuleButton master;
+	private final Setting setting;
 
-	private String label_name;
+	private final String label_name;
 
 	private int x;
 	private int y;
@@ -33,7 +33,7 @@ public class WurstplusLabel extends WurstplusAbstractWidget {
 
 	private final WurstplusDraw font = new WurstplusDraw(1);
 
-	private int border_size = 0;
+	private final int border_size = 0;
 
 	public WurstplusLabel(WurstplusFrame frame, WurstplusModuleButton master, String tag, int update_postion) {
 		this.frame   = frame;
@@ -116,12 +116,8 @@ public class WurstplusLabel extends WurstplusAbstractWidget {
 	}
 
 	public boolean motion(int mx, int my) {
-		if (mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height()) {
-			return true;
-		}
-
-		return false;
-	}
+        return mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height();
+    }
 
 	public boolean can() {
 		return this.can;

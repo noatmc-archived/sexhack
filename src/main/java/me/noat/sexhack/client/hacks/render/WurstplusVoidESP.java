@@ -60,10 +60,7 @@ public class WurstplusVoidESP extends Module {
         if (blockPos.getY() != 0)
             return false;
 
-        if (mc.world.getBlockState(blockPos).getBlock() != Blocks.AIR)
-            return false;
-
-        return true;
+        return mc.world.getBlockState(blockPos).getBlock() == Blocks.AIR;
 
     }
 

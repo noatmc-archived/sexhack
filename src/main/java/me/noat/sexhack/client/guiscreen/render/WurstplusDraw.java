@@ -16,10 +16,10 @@ import java.util.Arrays;
 
 
 public class WurstplusDraw {
-	private static FontRenderer font_renderer = Minecraft.getMinecraft().fontRenderer;
-	private static FontRenderer custom_font   = Minecraft.getMinecraft().fontRenderer; 
+	private static final FontRenderer font_renderer = Minecraft.getMinecraft().fontRenderer;
+	private static final FontRenderer custom_font   = Minecraft.getMinecraft().fontRenderer;
 
-	private float size;
+	private final float size;
 
 	public WurstplusDraw(float size) {
 		this.size = size;

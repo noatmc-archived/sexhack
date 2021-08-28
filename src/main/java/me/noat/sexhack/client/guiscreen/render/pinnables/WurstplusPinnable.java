@@ -11,8 +11,8 @@ import org.lwjgl.opengl.GL11;
 
 
 public class WurstplusPinnable {
-	private String title;
-	private String tag;
+	private final String title;
+	private final String tag;
 
 	private boolean state;
 	private boolean move;
@@ -123,12 +123,8 @@ public class WurstplusPinnable {
 	}
 
 	public boolean motion(int mx, int my) {
-		if (mx >= get_x() && my >= get_y() && mx <= get_x() + get_width() && my <= get_y() + get_height()) {
-			return true;
-		}
-
-		return false;
-	}
+        return mx >= get_x() && my >= get_y() && mx <= get_x() + get_width() && my <= get_y() + get_height();
+    }
 
 	public void crush(int mx, int my) {
 		// Get current screen real length.

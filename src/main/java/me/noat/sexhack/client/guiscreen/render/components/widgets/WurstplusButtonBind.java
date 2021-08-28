@@ -10,10 +10,10 @@ import java.awt.*;
 
 
 public class WurstplusButtonBind extends WurstplusAbstractWidget {
-	private WurstplusFrame        frame;
-	private WurstplusModuleButton master;
+	private final WurstplusFrame        frame;
+	private final WurstplusModuleButton master;
 
-	private String button_name;
+	private final String button_name;
 	private String points;
 
 	private int x;
@@ -29,9 +29,9 @@ public class WurstplusButtonBind extends WurstplusAbstractWidget {
 	private boolean can;
 	private boolean waiting;
 
-	private WurstplusDraw font = new WurstplusDraw(1);
+	private final WurstplusDraw font = new WurstplusDraw(1);
 
-	private int border_size = 0;
+	private final int border_size = 0;
 
 	public WurstplusButtonBind(WurstplusFrame frame, WurstplusModuleButton master, String tag, int update_postion) {
 		this.frame   = frame;
@@ -107,12 +107,8 @@ public class WurstplusButtonBind extends WurstplusAbstractWidget {
 	}
 
 	public boolean motion(int mx, int my) {
-		if (mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height()) {
-			return true;
-		}
-
-		return false;
-	}
+        return mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height();
+    }
 
 	public boolean can() {
 		return this.can;

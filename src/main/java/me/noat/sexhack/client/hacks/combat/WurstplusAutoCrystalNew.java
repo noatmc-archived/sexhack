@@ -149,14 +149,14 @@ public class WurstplusAutoCrystalNew extends Module {
     private int place_delay_counter;
 
     @EventHandler
-    private Listener<WurstplusEventEntityRemoved> on_entity_removed = new Listener<>(event -> {
+    private final Listener<WurstplusEventEntityRemoved> on_entity_removed = new Listener<>(event -> {
         if (event.get_entity() instanceof EntityEnderCrystal) {
             attacked_crystals.remove(event.get_entity());
         }
     });
 
     @EventHandler
-    private Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
+    private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
         if (event.get_packet() instanceof CPacketPlayer && is_rotating && rotate_mode.in("Old")) {
             if (debug.get_value(true)) {
                 WurstplusMessageUtil.send_client_message("Rotating");
@@ -179,7 +179,7 @@ public class WurstplusAutoCrystalNew extends Module {
     });
 
     @EventHandler
-    private Listener<WurstplusEventMotionUpdate> on_movement = new Listener<>(event -> {
+    private final Listener<WurstplusEventMotionUpdate> on_movement = new Listener<>(event -> {
         if (event.stage == 0 && (rotate_mode.in("Good") || rotate_mode.in("Const"))) {
             if (debug.get_value(true)) {
                 WurstplusMessageUtil.send_client_message("updating rotation");

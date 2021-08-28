@@ -5,10 +5,10 @@ import me.noat.sexhack.client.hacks.Module;
 import java.util.List;
 
 public class Setting {
-	private Module master;
+	private final Module master;
 
-	private String name;
-	private String tag;
+	private final String name;
+	private final String tag;
 
 	private boolean button;
 
@@ -21,7 +21,7 @@ public class Setting {
 	private double min;
 	private double max;
 
-	private String type;
+	private final String type;
 
 	public Setting(Module master, String name, String tag, boolean value) {
 		this.master = master;

@@ -101,7 +101,7 @@ public class WurstplusHoleFill extends Module {
 
         holes.clear();
 
-        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(WurstplusPlayerUtil.GetLocalPlayerPosFloored(), hole_range.get_value(1), (int) hole_range.get_value(1), false, true, 0)) {
+        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(WurstplusPlayerUtil.GetLocalPlayerPosFloored(), hole_range.get_value(1), hole_range.get_value(1), false, true, 0)) {
 
             if (!mc.world.getBlockState(pos).getBlock().equals(Blocks.AIR)) {
                 continue;

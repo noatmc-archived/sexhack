@@ -13,14 +13,14 @@ import java.util.ArrayList;
 // TO DO: use witchcraft to make click gui scrollable.
 
 public class WurstplusGUI extends GuiScreen {
-	private ArrayList<WurstplusFrame> frame;
+	private final ArrayList<WurstplusFrame> frame;
 
 	private int frame_x;
 
 	private WurstplusFrame current;
 
-	private boolean event_start;
-	private boolean event_finish;
+	private final boolean event_start;
+	private final boolean event_finish;
 
 	// Frame.
 	public int theme_frame_name_r = 0;

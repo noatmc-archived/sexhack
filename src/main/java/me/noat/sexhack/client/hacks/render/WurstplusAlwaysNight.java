@@ -17,7 +17,7 @@ public class WurstplusAlwaysNight extends Module {
     }
 
     @EventHandler
-    private Listener<WurstplusEventRender> on_render = new Listener<>(event -> {
+    private final Listener<WurstplusEventRender> on_render = new Listener<>(event -> {
         if (mc.world == null) return;
         mc.world.setWorldTime(18000);
     });

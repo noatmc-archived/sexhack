@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 
 public class WurstplusFrame {
-	private WurstplusCategory category;
+	private final WurstplusCategory category;
 
-	private ArrayList<WurstplusModuleButton> module_button;
+	private final ArrayList<WurstplusModuleButton> module_button;
 
 	private int x;
 	private int y;
@@ -22,14 +22,14 @@ public class WurstplusFrame {
 	private int height;
 
 	private int width_name;
-	private int width_abs;
+	private final int width_abs;
 
 	private String frame_name;
-	private String frame_tag;
+	private final String frame_tag;
 
-	private WurstplusDraw font = new WurstplusDraw(1);
+	private final WurstplusDraw font = new WurstplusDraw(1);
 
-	private boolean first = false;
+	private final boolean first = false;
 	private boolean move;
 
 	private int move_x;

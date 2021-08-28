@@ -9,10 +9,10 @@ import java.util.ArrayList;
 
 
 public class WurstplusFrame {
-	private ArrayList<WurstplusPinnableButton> pinnable_button;
+	private final ArrayList<WurstplusPinnableButton> pinnable_button;
 
-	private String name;
-	private String tag;
+	private final String name;
+	private final String tag;
 
 	private int x;
 	private int y;
@@ -26,9 +26,9 @@ public class WurstplusFrame {
 	private boolean move;
 	private boolean can;
 
-	private int border_size = 2;
+	private final int border_size = 2;
 
-	private WurstplusDraw font = new WurstplusDraw(1);
+	private final WurstplusDraw font = new WurstplusDraw(1);
 
 	public static int nc_r = 0;
 	public static int nc_g = 0;
@@ -219,10 +219,10 @@ public class WurstplusFrame {
 		bd_a  = color;
 		bdw_a = 255;
 
-		WurstplusDraw.draw_rect(this.x, this.y, this.x + this.width, this.y + this.height, this.bg_r, this.bg_g, this.bg_b, this.bg_a);
-		WurstplusDraw.draw_rect(this.x - 1, this.y, this.width + 1, this.height, this.bd_r, this.bd_g, this.bd_b, this.bd_a, this.border_size, "left-right");
+		WurstplusDraw.draw_rect(this.x, this.y, this.x + this.width, this.y + this.height, bg_r, bg_g, bg_b, bg_a);
+		WurstplusDraw.draw_rect(this.x - 1, this.y, this.width + 1, this.height, bd_r, bd_g, bd_b, bd_a, this.border_size, "left-right");
 
-		WurstplusDraw.draw_string(this.name, this.x + 4, this.y + 4, this.nc_r, this.nc_g, this.nc_b, this.nc_a);
+		WurstplusDraw.draw_string(this.name, this.x + 4, this.y + 4, nc_r, nc_g, nc_b, nc_a);
 
 		if (is_moving()) {
 			crush(mx, my);
@@ -234,7 +234,7 @@ public class WurstplusFrame {
 			pinnables_buttons.render(mx, my, separate);
 
 			if (pinnables_buttons.motion(mx, my)) {
-				WurstplusDraw.draw_rect(get_x() - 1, pinnables_buttons.get_save_y(), get_width() + 1, pinnables_buttons.get_height(), this.bdw_r, this.bdw_g, this.bdw_b, this.bdw_a, this.border_size, "right-left");
+				WurstplusDraw.draw_rect(get_x() - 1, pinnables_buttons.get_save_y(), get_width() + 1, pinnables_buttons.get_height(), bdw_r, bdw_g, bdw_b, bdw_a, this.border_size, "right-left");
 			}
 		}
 	}

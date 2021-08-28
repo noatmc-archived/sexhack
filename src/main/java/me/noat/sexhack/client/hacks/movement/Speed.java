@@ -74,7 +74,7 @@ public class Speed extends Module {
     }
 
     @EventHandler
-    private Listener<WurstplusEventPlayerJump> on_jump = new Listener<>(event -> {
+    private final Listener<WurstplusEventPlayerJump> on_jump = new Listener<>(event -> {
 
         if (speed_mode.in("Strafe")) {
             event.cancel();
@@ -83,7 +83,7 @@ public class Speed extends Module {
     });
 
     @EventHandler
-    private Listener<WurstplusEventMove> player_move = new Listener<>(event -> {
+    private final Listener<WurstplusEventMove> player_move = new Listener<>(event -> {
 
         if (speed_mode.in("On Ground")) return;
 

@@ -109,7 +109,7 @@ public class WurstplusWebfill extends Module {
 
         holes.clear();
 
-        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(WurstplusPlayerUtil.GetLocalPlayerPosFloored(), web_range.get_value(1), (int) web_range.get_value(1), false, true, 0)) {
+        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(WurstplusPlayerUtil.GetLocalPlayerPosFloored(), web_range.get_value(1), web_range.get_value(1), false, true, 0)) {
 
             if (!mc.world.getBlockState(pos).getBlock().equals(Blocks.AIR)) {
                 continue;
@@ -183,12 +183,12 @@ public class WurstplusWebfill extends Module {
 
             if (!WurstplusBlockInteractHelper.canBeClicked(neighbor)) continue;
 
-            if (WurstplusBlockInteractHelper.blackList.contains((Object)(neighborPos = mc.world.getBlockState(neighbor).getBlock()))) {
-                mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)mc.player, CPacketEntityAction.Action.START_SNEAKING));
+            if (WurstplusBlockInteractHelper.blackList.contains(neighborPos = mc.world.getBlockState(neighbor).getBlock())) {
+                mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
                 sneak = true;
             }
 
-            Vec3d hitVec = new Vec3d((Vec3i)neighbor).add(0.5, 0.5, 0.5).add(new Vec3d(side2.getDirectionVec()).scale(0.5));
+            Vec3d hitVec = new Vec3d(neighbor).add(0.5, 0.5, 0.5).add(new Vec3d(side2.getDirectionVec()).scale(0.5));
 
             if (web_rotate.get_value(true)) {
                 WurstplusBlockInteractHelper.faceVectorPacketInstant(hitVec);
