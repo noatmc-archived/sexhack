@@ -30,7 +30,7 @@ public class WurstplusWatermarkChat extends WurstplusCommand {
                 watermark.append(word).append(" ");
             }
             WurstplusWatermarkUtil.set_message(watermark.toString());
-            WurstplusMessageUtil.send_client_message("chat's watermark change to " + ChatFormatting.BOLD + watermark);
+            WurstplusMessageUtil.send_client_message("chat's watermark change to " + ChatFormatting.BOLD + watermark.toString());
             SexHack.get_config_manager().save_settings();
             return true;
         }

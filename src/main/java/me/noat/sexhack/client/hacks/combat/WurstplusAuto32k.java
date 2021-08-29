@@ -217,7 +217,10 @@ public class WurstplusAuto32k extends Module {
                 }
 
                 if (!(gui.inventorySlots.inventorySlots.get(0).getStack().getItem() instanceof ItemAir)) {
-                    boolean swapReady = !((GuiContainer) mc.currentScreen).inventorySlots.getSlot(0).getStack().isEmpty;
+                    boolean swapReady = true;
+                    if (((GuiContainer)mc.currentScreen).inventorySlots.getSlot(0).getStack().isEmpty) {
+                        swapReady = false;
+                    }
                     if (!((GuiContainer)mc.currentScreen).inventorySlots.getSlot(shulker_slot + 32).getStack().isEmpty) {
                         swapReady = false;
                     }

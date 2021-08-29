@@ -29,11 +29,11 @@ public class WurstplusPing extends WurstplusPinnable {
         try {
             int ping = mc.getConnection().getPlayerInfo(mc.player.getUniqueID()).getResponseTime();
 		if (ping <= 50) {
-			return "\u00A7a"+ ping;
+			return "\u00A7a"+Integer.toString(ping);
 		} else if (ping <= 150) {
-			return "\u00A73"+ ping;
+			return "\u00A73"+Integer.toString(ping);
 		} else {
-			return "\u00A74"+ ping;
+			return "\u00A74"+Integer.toString(ping);
 		}
         } catch (Exception e) {
             return "oh no";

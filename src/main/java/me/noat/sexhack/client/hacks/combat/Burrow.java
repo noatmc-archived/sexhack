@@ -99,7 +99,11 @@ public class Burrow extends Module {
             if (mc.player.posY > (oldPos.getY() + 1.04)) {
                 int old = mc.player.inventory.currentItem;
                 this.switchToSlot(swapBlock);
-                WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, rotate.get_value(true), true, false);
+                if (rotate.get_value(true)) {
+                    WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, true, true, false);
+                } else {
+                    WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, false, true, false);
+                }
 
                 this.switchToSlot(old);
                 mc.player.motionY = force.get_value(1);
@@ -140,7 +144,11 @@ public class Burrow extends Module {
             );
             int old = mc.player.inventory.currentItem;
             this.switchToSlot(swapBlock);
-            WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, rotate.get_value(true), true, false);
+            if (rotate.get_value(true)) {
+                WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, true, true, false);
+            } else {
+                WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, false, true, false);
+            }
             this.switchToSlot(old);
             mc.player.connection.sendPacket(
                     new CPacketPlayer.Position(

@@ -35,7 +35,7 @@ public class WurstplusAutoEz extends Module {
     private static final ConcurrentHashMap targeted_players = new ConcurrentHashMap();
 
     @EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
+    private Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
 
         if (mc.player == null) return;
 
@@ -52,7 +52,7 @@ public class WurstplusAutoEz extends Module {
     });
 
     @EventHandler
-    private final Listener<LivingDeathEvent> living_death_listener = new Listener<>(event -> {
+    private Listener<LivingDeathEvent> living_death_listener = new Listener<>(event -> {
 
         if (mc.player == null) return;
 

@@ -30,7 +30,7 @@ public class WurstplusChatSuffix extends WurstplusCommand {
                 csuffix.append(word).append(" ");
             }
             WurstplusChatSuffixUtil.set_message(csuffix.toString());
-            WurstplusMessageUtil.send_client_message("chatsuffix change to " + ChatFormatting.BOLD + csuffix);
+            WurstplusMessageUtil.send_client_message("chatsuffix change to " + ChatFormatting.BOLD + csuffix.toString());
             SexHack.get_config_manager().save_settings();
             return true;
         }

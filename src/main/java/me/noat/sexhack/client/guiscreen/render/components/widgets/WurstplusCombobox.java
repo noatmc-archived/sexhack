@@ -11,13 +11,13 @@ import java.util.ArrayList;
 
 
 public class WurstplusCombobox extends WurstplusAbstractWidget {
-	private final ArrayList<String> values;
+	private ArrayList<String> values;
 
-	private final WurstplusFrame        frame;
-	private final WurstplusModuleButton master;
-	private final Setting setting;
+	private WurstplusFrame        frame;
+	private WurstplusModuleButton master;
+	private Setting setting;
 
-	private final String combobox_name;
+	private String combobox_name;
 
 	private int x;
 	private int y;
@@ -31,9 +31,9 @@ public class WurstplusCombobox extends WurstplusAbstractWidget {
 
 	private boolean can;
 
-	private final WurstplusDraw font = new WurstplusDraw(1);
+	private WurstplusDraw font = new WurstplusDraw(1);
 
-	private final int border_size = 0;
+	private int border_size = 0;
 
 	public WurstplusCombobox(WurstplusFrame frame, WurstplusModuleButton master, String tag, int update_postion) {
 		this.values  = new ArrayList<>();
@@ -129,8 +129,12 @@ public class WurstplusCombobox extends WurstplusAbstractWidget {
 	}
 
 	public boolean motion(int mx, int my) {
-        return mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height();
-    }
+		if (mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height()) {
+			return true;
+		}
+
+		return false;
+	}
 
 	public boolean can() {
 		return this.can;

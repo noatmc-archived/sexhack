@@ -21,7 +21,7 @@ public class ElytraFly extends Module {
     }
 
     @EventHandler
-    private final Listener<WurstplusEventPlayerTravel> onTravel = new Listener<>(event -> {
+    private Listener<WurstplusEventPlayerTravel> onTravel = new Listener<>(event -> {
         if (mc.player.getItemStackFromSlot(EntityEquipmentSlot.CHEST).getItem() == Items.ELYTRA && mc.player.isElytraFlying()) {
             HandleControlMode(event);
         }

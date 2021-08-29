@@ -3,7 +3,6 @@ package me.noat.sexhack.client.guiscreen.hud;
 
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
-import net.minecraft.client.Minecraft;
 
 public class WurstplusFPS extends WurstplusPinnable {
     
@@ -27,13 +26,13 @@ public class WurstplusFPS extends WurstplusPinnable {
 	}
 	
     public String get_fps() {
-		int fps = Minecraft.getDebugFPS();
+		int fps = mc.getDebugFPS();
 		if (fps >= 60) {
-			return "\u00A7a"+ fps;
+			return "\u00A7a"+Integer.toString(fps);
 		} else if (fps >= 30) {
-			return "\u00A73"+ fps;
+			return "\u00A73"+Integer.toString(fps);
 		} else {
-			return "\u00A74"+ fps;
+			return "\u00A74"+Integer.toString(fps);
 		}
     }
 

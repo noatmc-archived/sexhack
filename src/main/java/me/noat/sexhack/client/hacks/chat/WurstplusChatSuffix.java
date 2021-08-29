@@ -63,7 +63,7 @@ public class WurstplusChatSuffix extends Module {
 	};
 
 	@EventHandler
-	private final Listener<WurstplusEventPacket.SendPacket> listener = new Listener<>(event -> {
+	private Listener<WurstplusEventPacket.SendPacket> listener = new Listener<>(event -> {
 		// If not be the CPacketChatMessage return.
 		if (!(event.get_packet() instanceof CPacketChatMessage)) {
 			return;
@@ -128,7 +128,7 @@ public class WurstplusChatSuffix extends Module {
 				suffix_with_randoms.append(convert_base(random_string(random_client_name)));
 				suffix_with_randoms.append(convert_base(random_string(random_client_finish)));
 
-				message += SexHack.WURSTPLUS_SIGN + suffix_with_randoms;
+				message += SexHack.WURSTPLUS_SIGN + suffix_with_randoms.toString();
 			}
 
 			// If message 256 string length substring.

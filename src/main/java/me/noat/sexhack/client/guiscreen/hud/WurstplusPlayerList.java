@@ -57,7 +57,7 @@ public class WurstplusPlayerList extends WurstplusPinnable {
 
             sb_health.append(hp);
 
-            players.put(posString + " " + sb_health + " " + ((WurstplusFriendUtil.isFriend(player.getName()) ? ChatFormatting.GREEN : ChatFormatting.RESET)) + player.getName(), (int) mc.player.getDistance(player));
+            players.put(posString + " " + sb_health.toString() + " " + ((WurstplusFriendUtil.isFriend(player.getName()) ? ChatFormatting.GREEN : ChatFormatting.RESET)) + player.getName(), (int) mc.player.getDistance(player));
 
         }
 

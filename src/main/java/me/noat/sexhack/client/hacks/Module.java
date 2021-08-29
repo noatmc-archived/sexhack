@@ -8,7 +8,6 @@ import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import me.zero.alpine.fork.listener.Listenable;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
@@ -179,10 +178,6 @@ public class Module implements Listenable {
 	}
 
 	public void update() {
-
-	}
-
-	public void onTick(TickEvent.ClientTickEvent event) {
 
 	}
 

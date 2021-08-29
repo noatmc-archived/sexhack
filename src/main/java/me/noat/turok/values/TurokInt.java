@@ -8,12 +8,12 @@ package me.noat.turok.values;
 *
 */
 public class TurokInt {
-	private final TurokString name;
-	private final TurokString tag;
+	private TurokString name;
+	private TurokString tag;
 
 	private int value;
-	private final int max;
-	private final int min;
+	private int max;
+	private int min;
 
 	public TurokInt(TurokString name, TurokString tag, int _int, int min, int max) {
 		this.name  = name;

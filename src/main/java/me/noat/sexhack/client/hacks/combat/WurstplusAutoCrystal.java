@@ -1,16 +1,16 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.SexHack;
+import me.noat.turok.draw.RenderHelp;
 import me.noat.sexhack.client.event.events.WurstplusEventEntityRemoved;
 import me.noat.sexhack.client.event.events.WurstplusEventMotionUpdate;
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
+import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.hacks.chat.WurstplusAutoEz;
 import me.noat.sexhack.client.util.*;
-import me.noat.turok.draw.RenderHelp;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.entity.Entity;
@@ -23,12 +23,11 @@ import net.minecraft.item.*;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
 import net.minecraft.network.play.server.SPacketSoundEffect;
+import net.minecraft.network.play.server.SPacketSpawnObject;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -87,7 +86,7 @@ public class WurstplusAutoCrystal extends Module {
 
     Setting swing = create("Swing", "CaSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
 
-    Setting render_mode = create("Render", "CaRenderMode", "Pretty", combobox("Pretty", "Solid", "Outline", "None", "Circle"));
+    Setting render_mode = create("Render", "CaRenderMode", "Pretty", combobox("Pretty", "Solid", "Outline", "None"));
     Setting old_render = create("Old Render", "CaOldRender", false);
     Setting future_render = create("Future Render", "CaFutureRender", false);
     Setting top_block = create("Top Block", "CaTopBlock", false);
@@ -123,7 +122,6 @@ public class WurstplusAutoCrystal extends Module {
     private double render_damage_value;
     private boolean hasPlace = false;
     private boolean hasBreak = false;
-    private boolean circle;
 
     private float yaw;
     private float pitch;
@@ -143,14 +141,14 @@ public class WurstplusAutoCrystal extends Module {
     private int place_delay_counter;
 
     @EventHandler
-    private final Listener<WurstplusEventEntityRemoved> on_entity_removed = new Listener<>(event -> {
+    private Listener<WurstplusEventEntityRemoved> on_entity_removed = new Listener<>(event -> {
         if (event.get_entity() instanceof EntityEnderCrystal) {
             attacked_crystals.remove(event.get_entity());
         }
     });
 
     @EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
+    private Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
         if (event.get_packet() instanceof CPacketPlayer && is_rotating && rotate_mode.in("Old")) {
             if (debug.get_value(true)) {
                 WurstplusMessageUtil.send_client_message("Rotating");
@@ -173,7 +171,7 @@ public class WurstplusAutoCrystal extends Module {
     });
 
     @EventHandler
-    private final Listener<WurstplusEventMotionUpdate> on_movement = new Listener<>(event -> {
+    private Listener<WurstplusEventMotionUpdate> on_movement = new Listener<>(event -> {
         if (event.stage == 0 && (rotate_mode.in("Good") || rotate_mode.in("Const"))) {
             if (debug.get_value(true)) {
                 WurstplusMessageUtil.send_client_message("updating rotation");
@@ -191,6 +189,7 @@ public class WurstplusAutoCrystal extends Module {
         }
     });
 
+    @EventHandler
     private final Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
         if (this.sequential.get_value(true)) {
             if (event.get_packet() instanceof SPacketSoundEffect) {
@@ -198,7 +197,7 @@ public class WurstplusAutoCrystal extends Module {
 
                     final SPacketSoundEffect packet2 = (SPacketSoundEffect) event.get_packet();
                     if (packet2.getCategory() == SoundCategory.BLOCKS && packet2.getSound() == SoundEvents.ENTITY_GENERIC_EXPLODE) {
-                        final List<Entity> entities = new ArrayList<Entity>(mc.world.loadedEntityList);
+                        final List<Entity> entities = new ArrayList<Entity>(this.mc.world.loadedEntityList);
                         for (int size = entities.size(), i = 0; i < size; ++i) {
                             final Entity entity = entities.get(i);
                             if (entity instanceof EntityEnderCrystal && entity.getDistanceSq(packet2.getX(), packet2.getY(), packet2.getZ()) < 36.0) {
@@ -229,12 +228,12 @@ public class WurstplusAutoCrystal extends Module {
             return;
         }
 
-        if (break_crystal.get_value(true) && break_delay_counter > break_timeout && hasBreak == false) {
-            break_crystal();
-        }
-
         if (place_crystal.get_value(true) && place_delay_counter > place_timeout && hasPlace == false) {
             place_crystal();
+        }
+
+        if (break_crystal.get_value(true) && break_delay_counter > break_timeout && hasBreak == false) {
+            break_crystal();
         }
 
         if (!did_anything) {
@@ -262,7 +261,7 @@ public class WurstplusAutoCrystal extends Module {
         place_delay_counter++;
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    @Override
     public void update() {
         if (rotate_mode.in("Off") || rotate_mode.in("Old")) {
             do_ca();
@@ -328,11 +327,11 @@ public class WurstplusAutoCrystal extends Module {
                     minimum_damage = this.min_player_break.get_value(1);
                 }
 
-                final double target_damage = WP3CrystalUtil.calculateDamage(crystal, target, true);
+                final double target_damage = WurstplusCrystalUtil.calculateDamage(crystal, target);
 
                 if (target_damage < minimum_damage) continue;
 
-                final double self_damage = WP3CrystalUtil.calculateDamage(crystal, mc.player, true);
+                final double self_damage = WurstplusCrystalUtil.calculateDamage(crystal, mc.player);
 
                 if (self_damage > maximum_damage_self || (anti_suicide.get_value(true) && (mc.player.getHealth() + mc.player.getAbsorptionAmount()) - self_damage <= 0.5)) continue;
 
@@ -405,11 +404,11 @@ public class WurstplusAutoCrystal extends Module {
                     minimum_damage = this.min_player_place.get_value(1);
                 }
 
-                final double target_damage = WP3CrystalUtil.calculateDamage(new BlockPos(block.getX() + 0.5, block.getY() + 1, block.getZ() + 0.5), target, true);
+                final double target_damage = WurstplusCrystalUtil.calculateDamage((double) block.getX() + 0.5, (double) block.getY() + 1, (double) block.getZ() + 0.5, target);
 
                 if (target_damage < minimum_damage) continue;
 
-                final double self_damage = WP3CrystalUtil.calculateDamage(new BlockPos(block.getX() + 0.5, block.getY() + 1, block.getZ() + 0.5), mc.player, true);
+                final double self_damage = WurstplusCrystalUtil.calculateDamage((double) block.getX() + 0.5, (double) block.getY() + 1, (double) block.getZ() + 0.5, mc.player);
 
                 if (self_damage > maximum_damage_self || (anti_suicide.get_value(true) && (mc.player.getHealth() + mc.player.getAbsorptionAmount()) - self_damage <= 0.5)) continue;
 
@@ -705,25 +704,16 @@ public class WurstplusAutoCrystal extends Module {
         if (render_mode.in("Pretty")) {
             outline = true;
             solid = true;
-            circle = false;
         }
 
         if (render_mode.in("Solid")) {
             outline = false;
             solid = true;
-            circle = false;
         }
 
         if (render_mode.in("Outline")) {
             outline = true;
             solid = false;
-            circle = false;
-        }
-
-        if (render_mode.in("Circle")) {
-            outline = false;
-            solid = false;
-            circle = true;
         }
 
         render_block(render_block_init);
@@ -763,9 +753,6 @@ public class WurstplusAutoCrystal extends Module {
                     "all"
             );
             RenderHelp.release();
-        }
-        if (circle) {
-            CircleRenderUtil.drawCircle(new BlockPos(render_block.getX(), render_block.getY() + 1, render_block.getZ()), (float) 0.5, new Color(r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1)));
         }
     }
 

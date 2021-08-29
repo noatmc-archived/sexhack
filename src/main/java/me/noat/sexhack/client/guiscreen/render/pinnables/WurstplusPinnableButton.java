@@ -6,11 +6,11 @@ import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 
 
 public class WurstplusPinnableButton {
-	private final WurstplusPinnable pinnable;
-	private final WurstplusFrame master;
+	private WurstplusPinnable pinnable;
+	private WurstplusFrame master;
 
-	private final String name;
-	private final String tag;
+	private String name;
+	private String tag;
 
 	private int x;
 	private int y;
@@ -20,9 +20,9 @@ public class WurstplusPinnableButton {
 	private int width;
 	private int height;
 
-	private final boolean first;
+	private boolean first;
 
-	private final WurstplusDraw font = new WurstplusDraw(1);
+	private WurstplusDraw font = new WurstplusDraw(1);
 
 	public static int nc_r = 0;
 	public static int nc_g = 0;
@@ -98,12 +98,20 @@ public class WurstplusPinnableButton {
 	}
 
 	public boolean motion(int mx, int my, int p_x, int p_y, int p_w, int p_h) {
-        return mx >= p_x && my >= p_y && mx <= p_x + p_w && my <= p_y + p_h;
-    }
+		if (mx >= p_x && my >= p_y && mx <= p_x + p_w && my <= p_y + p_h) {
+			return true;
+		}
+
+		return false;
+	}
 
 	public boolean motion(int mx, int my) {
-        return mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height();
-    }
+		if (mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height()) {
+			return true;
+		}
+
+		return false;
+	}
 
 	public void click(int mx, int my, int mouse) {
 		this.pinnable.click(mx, my, mouse);
@@ -129,11 +137,11 @@ public class WurstplusPinnableButton {
 		this.save_y = this.y + this.master.get_y() - 10;
 
 		if (this.pinnable.is_active()) {
-			WurstplusDraw.draw_rect(this.x, this.save_y, this.x + this.width - separate, this.save_y + this.height, bg_r, bg_g, bg_b, bg_a);
+			WurstplusDraw.draw_rect(this.x, this.save_y, this.x + this.width - separate, this.save_y + this.height, this.bg_r, this.bg_g, this.bg_b, this.bg_a);
 		
-			WurstplusDraw.draw_string(this.pinnable.get_title(), this.x + separate, this.save_y, nc_r, nc_g, nc_b, nc_a);
+			WurstplusDraw.draw_string(this.pinnable.get_title(), this.x + separate, this.save_y, this.nc_r, this.nc_g, this.nc_b, this.nc_a);
 		} else {
-			WurstplusDraw.draw_string(this.pinnable.get_title(), this.x + separate, this.save_y, nc_r, nc_g, nc_b, nc_a);
+			WurstplusDraw.draw_string(this.pinnable.get_title(), this.x + separate, this.save_y, this.nc_r, this.nc_g, this.nc_b, this.nc_a);
 		}
 
 		this.pinnable.render(mx, my, 0);

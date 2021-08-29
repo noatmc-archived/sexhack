@@ -12,12 +12,12 @@ import java.util.ArrayList;
 
 
 public class WurstplusModuleButton {
-	private final Module module;
-	private final WurstplusFrame  master;
+	private Module module;
+	private WurstplusFrame  master;
 
-	private final ArrayList<WurstplusAbstractWidget> widget;
+	private ArrayList<WurstplusAbstractWidget> widget;
 
-	private final String module_name;
+	private String module_name;
 
 	private boolean opened;
 
@@ -31,12 +31,12 @@ public class WurstplusModuleButton {
 
 	private int save_y;
 
-	private final WurstplusDraw font = new WurstplusDraw(1);
+	private WurstplusDraw font = new WurstplusDraw(1);
 
-	private final int border_a    = 200;
-	private final int border_size = 1;
+	private int border_a    = 200;
+	private int border_size = 1;
 
-	private final int master_height_cache;
+	private int master_height_cache;
 
 	public int settings_height;
 
@@ -197,8 +197,12 @@ public class WurstplusModuleButton {
 	}
 
 	public boolean motion(int mx, int my) {
-        return mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height();
-    }
+		if (mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height()) {
+			return true;
+		}
+
+		return false;
+	}
 
 	public void does_widgets_can(boolean can) {
 		for (WurstplusAbstractWidget widgets : this.widget) {
@@ -266,15 +270,15 @@ public class WurstplusModuleButton {
 		if (this.module.is_active()) {
 			WurstplusDraw.draw_rect(this.x, this.save_y, this.x + this.width - separe, this.save_y + this.height, bg_r, bg_g, bg_b, bg_a);
 
-			WurstplusDraw.draw_string(this.module_name, this.x + separe, this.save_y, nm_r, nm_g, nm_b, nm_a);
+			font.draw_string(this.module_name, this.x + separe, this.save_y, nm_r, nm_g, nm_b, nm_a);
 		} else {
-			WurstplusDraw.draw_string(this.module_name, this.x + separe, this.save_y, nm_r, nm_g, nm_b, nm_a);
+			font.draw_string(this.module_name, this.x + separe, this.save_y, nm_r, nm_g, nm_b, nm_a);
 		}
 
 		for (WurstplusAbstractWidget widgets : this.widget) {
 			widgets.set_x(get_x());
 
-			boolean is_passing_in_widget = this.opened && widgets.motion_pass(mx, my);
+			boolean is_passing_in_widget = this.opened ? widgets.motion_pass(mx, my) : false;
 
 			if (motion(mx, my) || is_passing_in_widget) {
 				WurstplusDraw.draw_rect(this.master.get_x() - 1, this.save_y, this.master.get_width() + 1, this.opened_height, bd_r, bd_g, bd_b, border_a, this.border_size, "right-left");

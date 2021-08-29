@@ -68,7 +68,7 @@ public class WurstplusAnnouncer extends Module {
     private static float lostHealth;
 
     @EventHandler
-    private final Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
+    private Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
         if (mc.world == null) return;
 
         if (event.get_packet() instanceof SPacketUseBed) {
@@ -77,7 +77,7 @@ public class WurstplusAnnouncer extends Module {
     });
 
     @EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
+    private Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
         if (mc.world == null) return;
 
         if (event.get_packet() instanceof CPacketPlayerDigging) {

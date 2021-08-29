@@ -10,10 +10,10 @@ package me.noat.turok.values;
 *
 */
 public class TurokBoolean {
-	private final TurokString name;
-	private final TurokString tag;
+	private TurokString name;
+	private TurokString tag;
 
-	private final TurokGeneric<Boolean> value;
+	private TurokGeneric<Boolean> value;
 
 	public TurokBoolean(TurokString name, TurokString tag, boolean _bool) {
 		this.name  = name;

@@ -11,7 +11,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -78,7 +77,7 @@ public class WurstplusFriendUtil {
             conn.setRequestMethod("POST");
 
             OutputStream os = conn.getOutputStream();
-            os.write(data.getBytes(StandardCharsets.UTF_8));
+            os.write(data.getBytes("UTF-8"));
             os.close();
 
             // read the response

@@ -21,12 +21,12 @@ public class WurstplusCoordinates extends WurstplusPinnable {
 		int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
 		int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").get_value(1);
 
-		String x = SexHack.g + "[" + SexHack.r + (int) (mc.player.posX) + SexHack.g + "]" + SexHack.r;
-		String y = SexHack.g + "[" + SexHack.r + (int) (mc.player.posY) + SexHack.g + "]" + SexHack.r;
-		String z = SexHack.g + "[" + SexHack.r + (int) (mc.player.posZ) + SexHack.g + "]" + SexHack.r;
+		String x = SexHack.g + "[" + SexHack.r + Integer.toString((int) (mc.player.posX)) + SexHack.g + "]" + SexHack.r;
+		String y = SexHack.g + "[" + SexHack.r + Integer.toString((int) (mc.player.posY)) + SexHack.g + "]" + SexHack.r;
+		String z = SexHack.g + "[" + SexHack.r + Integer.toString((int) (mc.player.posZ)) + SexHack.g + "]" + SexHack.r;
 
-		String x_nether = SexHack.g + "[" + SexHack.r + Math.round(mc.player.dimension != -1 ? (mc.player.posX / 8) : (mc.player.posX * 8)) + SexHack.g + "]" + SexHack.r;
-		String z_nether = SexHack.g + "[" + SexHack.r + Math.round(mc.player.dimension != -1 ? (mc.player.posZ / 8) : (mc.player.posZ * 8)) + SexHack.g + "]" + SexHack.r;
+		String x_nether = SexHack.g + "[" + SexHack.r + Long.toString(Math.round(mc.player.dimension != -1 ? (mc.player.posX / 8) : (mc.player.posX * 8))) + SexHack.g + "]" + SexHack.r;
+		String z_nether = SexHack.g + "[" + SexHack.r + Long.toString(Math.round(mc.player.dimension != -1 ? (mc.player.posZ / 8) : (mc.player.posZ * 8))) + SexHack.g + "]" + SexHack.r;
 
 		String line = "XYZ " + x + y + z + " XZ " + x_nether + z_nether;
 

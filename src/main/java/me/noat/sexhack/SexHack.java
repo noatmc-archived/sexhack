@@ -92,7 +92,7 @@ public class SexHack {
 		config_manager.load_settings();
 
 		send_minecraft_log("done");
-		HWID.hwidCheck();
+		hwid.hwidCheck();
 		if (module_manager.get_module_with_tag("GUI").is_active()) {
 			module_manager.get_module_with_tag("GUI").set_active(false);
 		}

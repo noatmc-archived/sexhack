@@ -105,7 +105,7 @@ public class WurstplusAntiRacist extends Module {
     // Anti n-word
 
     @EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> listener = new Listener<>(event -> {
+    private Listener<WurstplusEventPacket.SendPacket> listener = new Listener<>(event -> {
 
         if (!(event.get_packet() instanceof CPacketChatMessage)) {
             return;

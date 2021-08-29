@@ -106,7 +106,11 @@ public class WurstplusAutoNomadHut extends Module {
 				BlockPos offsetPos = new BlockPos(this.targets[this.offset_step]);
 				BlockPos targetPos = new BlockPos(mc.player.getPositionVector()).add(offsetPos.getX(), offsetPos.getY(), offsetPos.getZ()).down();
 
-				boolean try_to_place = mc.world.getBlockState(targetPos).getMaterial().isReplaceable();
+				boolean try_to_place = true;
+
+				if (!mc.world.getBlockState(targetPos).getMaterial().isReplaceable()) {
+					try_to_place = false;
+				}
 
 				for (Entity entity : mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(targetPos))) {
 					if (entity instanceof EntityItem || entity instanceof EntityXPOrb) continue;
@@ -152,12 +156,12 @@ public class WurstplusAutoNomadHut extends Module {
 			
 			mc.player.inventory.currentItem = new_slot;
 
-            if (WurstplusBlockInteractHelper.blackList.contains(neighborPos = mc.world.getBlockState(neighbor).getBlock())) {
-                mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
+            if (WurstplusBlockInteractHelper.blackList.contains((Object)(neighborPos = mc.world.getBlockState(neighbor).getBlock()))) {
+                mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)mc.player, CPacketEntityAction.Action.START_SNEAKING));
                 this.sneak = true;
 			}
 			
-			Vec3d hitVec = new Vec3d(neighbor).add(0.5, 0.5, 0.5).add(new Vec3d(side2.getDirectionVec()).scale(0.5));
+			Vec3d hitVec = new Vec3d((Vec3i)neighbor).add(0.5, 0.5, 0.5).add(new Vec3d(side2.getDirectionVec()).scale(0.5));
 			
             if (this.rotate.get_value(true)) {
                 WurstplusBlockInteractHelper.faceVectorPacketInstant(hitVec);

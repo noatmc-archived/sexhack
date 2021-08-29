@@ -62,7 +62,9 @@ public class WurstplusAutoWither extends Module {
 
         }
 
-        return count == 2;
+        if (count != 2) {
+            return false;
+        } return true;
 
     }
 

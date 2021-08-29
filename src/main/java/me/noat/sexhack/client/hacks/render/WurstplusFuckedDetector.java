@@ -88,7 +88,12 @@ public class WurstplusFuckedDetector extends Module {
             return true;
         }
 
-        return WurstplusCrystalUtil.canPlaceCrystal(pos.north()) || (WurstplusCrystalUtil.canPlaceCrystal(pos.north().north()) && mc.world.getBlockState(pos.add(0, 1, -1)).getBlock() == Blocks.AIR);
+        if (WurstplusCrystalUtil.canPlaceCrystal(pos.north()) || (WurstplusCrystalUtil.canPlaceCrystal(pos.north().north()) && mc.world.getBlockState(pos.add(0, 1, -1)).getBlock() == Blocks.AIR)) {
+            return true;
+        }
+
+
+        return false;
 
     }
 

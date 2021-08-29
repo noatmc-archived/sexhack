@@ -43,13 +43,13 @@ public class CrystalAura extends Module {
                 blockgameAtomicBombDamage = WurstplusCrystalUtil.calculateDamage(block.getX() + 0.5, (double) block.getY() + 1, (double) block.getZ() + 0.5, player);
                 selfDmg = WurstplusCrystalUtil.calculateDamage(block.getX() + 0.5, (double) block.getY() + 1, (double) block.getZ() + 0.5, mc.player);
 
-                if (blockgameAtomicBombDamage > minDmg) continue;
                 if (blockgameAtomicBombDamage > selfDmg) continue;
 
                 return block = damage_block;
             }
-            blocks.clear();
         }
+
+        blocks.clear();
         return damage_block;
     }
 

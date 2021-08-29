@@ -20,8 +20,8 @@ buildscript {
 	}
 
 
-apply plugin: "net.minecraftforge.gradle.forge"
-apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: "net.minecraftforge.gradle.forge";
+apply plugin: "com.github.johnrengelman.shadow";
 apply plugin: "org.spongepowered.mixin"
 
 version          project.client_version
@@ -107,7 +107,7 @@ processResources {
 		exclude "mcmod.info"
 	}
 
-	rename "(.+_at.cfg)", 'META-INF/$1'
+	rename "(.+_at.cfg)", 'META-INF/$1';
 }
 
 jar {

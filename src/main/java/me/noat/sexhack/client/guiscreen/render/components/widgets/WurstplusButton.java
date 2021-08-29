@@ -10,11 +10,11 @@ import me.noat.sexhack.client.guiscreen.settings.Setting;
 
 
 public class WurstplusButton extends WurstplusAbstractWidget {
-	private final WurstplusFrame        frame;
-	private final WurstplusModuleButton master;
-	private final Setting setting;
+	private WurstplusFrame        frame;
+	private WurstplusModuleButton master;
+	private Setting setting;
 
-	private final String button_name;
+	private String button_name;
 
 	private int x;
 	private int y;
@@ -26,9 +26,9 @@ public class WurstplusButton extends WurstplusAbstractWidget {
 
 	private boolean can;
 
-	private final WurstplusDraw font = new WurstplusDraw(1);
+	private WurstplusDraw font = new WurstplusDraw(1);
 
-	private final int border_size = 0;
+	private int border_size = 0;
 
 	public WurstplusButton(WurstplusFrame frame, WurstplusModuleButton master, String tag, int update_postion) {
 		this.frame   = frame;
@@ -107,8 +107,12 @@ public class WurstplusButton extends WurstplusAbstractWidget {
 	}
 
 	public boolean motion(int mx, int my) {
-        return mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height();
-    }
+		if (mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height()) {
+			return true;
+		}
+
+		return false;
+	}
 
 	public boolean can() {
 		return this.can;

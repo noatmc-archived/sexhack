@@ -8,7 +8,7 @@ package me.noat.turok.task;
 *
 */
 public class Rect {
-	private final String tag;
+	private String tag;
 
 	private int x;
 	private int y;
@@ -35,8 +35,12 @@ public class Rect {
 	}
 
 	public boolean event_mouse(int mx, int my) {
-        return mx >= get_x() && my >= get_y() && mx <= get_screen_width() && my <= get_screen_height();
-    }
+		if (mx >= get_x() && my >= get_y() && mx <= get_screen_width() && my <= get_screen_height()) {
+			return true;
+		}
+
+		return false;
+	}
 
 	public String get_tag() {
 		return this.tag;
@@ -59,10 +63,10 @@ public class Rect {
 	}
 
 	public int get_screen_width() {
-		return (this.x + this.width);
+		return ((int) this.x + this.width);
 	}
 
 	public int get_screen_height() {
-		return (this.y + this.height);
+		return ((int) this.y + this.height);
 	}
 }

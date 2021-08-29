@@ -45,6 +45,10 @@ public class HWIDUtil {
 
     public static boolean isHwidThere() {
         List yes = checkHWIDUrl();
-        return yes.contains(getHWID());
+        if (yes.contains(getHWID())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

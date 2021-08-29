@@ -7,7 +7,7 @@ import net.minecraft.entity.Entity;
 
 
 public class WurstplusEventEntity extends WurstplusEventCancellable {
-	private final Entity entity;
+	private Entity entity;
 
 	public WurstplusEventEntity(Entity entity) {
 		this.entity = entity;

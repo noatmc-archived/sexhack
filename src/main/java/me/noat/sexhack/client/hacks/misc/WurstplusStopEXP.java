@@ -29,7 +29,7 @@ public class WurstplusStopEXP extends Module {
 	private boolean should_cancel = false;
 
 	@EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> packet_event = new Listener<>(event -> {
+    private Listener<WurstplusEventPacket.SendPacket> packet_event = new Listener<>(event -> {
 		if (event.get_packet() instanceof CPacketPlayerTryUseItem && should_cancel) {
 			event.cancel();
 		}
@@ -53,7 +53,11 @@ public class WurstplusStopEXP extends Module {
 
 			if (counter == 1 || counter == 4) {
 				if (percent >= helmet_boot_percent.get_value(1)) {
-					should_cancel = is_holding_exp();
+					if (is_holding_exp()) {
+						should_cancel = true;
+					} else {
+						should_cancel = false;
+					}
 				} else {
 					should_cancel = false;
 				}
@@ -61,7 +65,11 @@ public class WurstplusStopEXP extends Module {
 			
 			if (counter == 2 || counter == 3) {
 				if (percent >= chest_leggings_percent.get_value(1)) {
-					should_cancel = is_holding_exp();
+					if (is_holding_exp()) {
+						should_cancel = true;
+					} else {
+						should_cancel = false;
+					}
 				} else {
 					should_cancel = false;
 				}
@@ -85,8 +93,11 @@ public class WurstplusStopEXP extends Module {
 	}
 	
 	public boolean is_holding_exp() {
-
-		return mc.player.getHeldItemMainhand().getItem() instanceof ItemExpBottle || mc.player.getHeldItemOffhand().getItem() instanceof ItemExpBottle;
+		
+		if (mc.player.getHeldItemMainhand().getItem() instanceof ItemExpBottle || mc.player.getHeldItemOffhand().getItem() instanceof ItemExpBottle) {
+			return true;
+		}
+		return false;
 
 	}
 

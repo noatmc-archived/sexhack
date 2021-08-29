@@ -29,11 +29,11 @@ public class WurstplusTPS extends WurstplusPinnable {
         try {
             int tps = Math.round(WurstplusEventHandler.INSTANCE.get_tick_rate());
         if (tps >= 16) {
-            return "\u00A7a"+ tps;
+            return "\u00A7a"+Integer.toString(tps);
         } else if (tps >= 10) {
-            return "\u00A73"+ tps;
+            return "\u00A73"+Integer.toString(tps);
         } else {
-            return "\u00A74"+ tps;
+            return "\u00A74"+Integer.toString(tps);
         }
         } catch (Exception e) {
             return "oh no " +e;
