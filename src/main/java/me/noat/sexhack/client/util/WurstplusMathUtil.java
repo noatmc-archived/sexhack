@@ -17,7 +17,7 @@ import java.util.Random;
 public class WurstplusMathUtil {
 
     private static final Minecraft mc = Minecraft.getMinecraft();
-    private static Random random = new Random();
+    private static final Random random;
 
     static {
         random = new Random();

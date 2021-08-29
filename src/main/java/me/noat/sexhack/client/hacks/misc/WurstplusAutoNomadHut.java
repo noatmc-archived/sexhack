@@ -138,7 +138,6 @@ public class WurstplusAutoNomadHut extends Module {
 
         for (EnumFacing side : EnumFacing.values()) {
 
-            Block neighborPos;
             BlockPos neighbor = pos.offset(side);
 
             EnumFacing side2 = side.getOpposite();
@@ -147,7 +146,7 @@ public class WurstplusAutoNomadHut extends Module {
 
             mc.player.inventory.currentItem = new_slot;
 
-            if (WurstplusBlockInteractHelper.blackList.contains(neighborPos = mc.world.getBlockState(neighbor).getBlock())) {
+            if (WurstplusBlockInteractHelper.blackList.contains( mc.world.getBlockState(neighbor).getBlock() )) {
                 mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
                 this.sneak = true;
             }

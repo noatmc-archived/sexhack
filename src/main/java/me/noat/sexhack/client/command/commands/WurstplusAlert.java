@@ -53,7 +53,7 @@ public class WurstplusAlert extends WurstplusCommand {
             return true;
         }
 
-        boolean value = true;
+        boolean value;
 
         if (state.equals("true") || state.equals("on")) {
             value = true;

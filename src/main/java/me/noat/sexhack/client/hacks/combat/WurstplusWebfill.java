@@ -171,14 +171,13 @@ public class WurstplusWebfill extends Module {
 
         for (EnumFacing side : EnumFacing.values()) {
 
-            Block neighborPos;
             BlockPos neighbor = pos.offset(side);
 
             EnumFacing side2 = side.getOpposite();
 
             if (!WurstplusBlockInteractHelper.canBeClicked(neighbor)) continue;
 
-            if (WurstplusBlockInteractHelper.blackList.contains(neighborPos = mc.world.getBlockState(neighbor).getBlock())) {
+            if (WurstplusBlockInteractHelper.blackList.contains( mc.world.getBlockState(neighbor).getBlock() )) {
                 mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
                 sneak = true;
             }

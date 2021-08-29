@@ -40,13 +40,12 @@ public class WurstplusPlayerUtil {
 
     public static int findHotbarBlock(Class clazz) {
         for (int i = 0; i < 9; ++i) {
-            Block block;
             ItemStack stack = mc.player.inventory.getStackInSlot(i);
             if (stack == ItemStack.EMPTY) continue;
             if (clazz.isInstance(stack.getItem())) {
                 return i;
             }
-            if (!(stack.getItem() instanceof ItemBlock) || !clazz.isInstance(block = ((ItemBlock) stack.getItem()).getBlock()))
+            if (!(stack.getItem() instanceof ItemBlock) || !clazz.isInstance( ((ItemBlock) stack.getItem()).getBlock() ))
                 continue;
             return i;
         }

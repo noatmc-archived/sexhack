@@ -439,7 +439,7 @@ public class WurstplusAutoCrystalNew extends Module {
         render_damage_value = best_damage;
         render_block_init = best_block;
 
-        damage_blocks = sort_best_blocks(damage_blocks);
+        sort_best_blocks ( damage_blocks );
 
         //if (!attempt_chain.get_value(true)) {
         return best_block;
@@ -463,7 +463,6 @@ public class WurstplusAutoCrystalNew extends Module {
                 mc.player.inventory.currentItem = find_crystals_hotbar();
             }
         } else {
-            offhand_check = true;
         }
     }
 

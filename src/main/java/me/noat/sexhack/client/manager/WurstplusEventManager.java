@@ -122,7 +122,6 @@ public class WurstplusEventManager {
             if (!true_command && me.noat.sexhack.client.manager.WurstplusCommandManager.command_list.has_prefix(event.getMessage())) {
                 WurstplusMessageUtil.send_client_message("Try using " + me.noat.sexhack.client.manager.WurstplusCommandManager.get_prefix() + "help list to see all commands");
 
-                true_command = false;
             }
         }
     }

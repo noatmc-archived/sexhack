@@ -420,7 +420,7 @@ public class WurstplusAutoCrystal extends Module {
         render_damage_value = best_damage;
         render_block_init = best_block;
 
-        damage_blocks = sort_best_blocks(damage_blocks);
+        sort_best_blocks ( damage_blocks );
 
         //if (!attempt_chain.get_value(true)) {
         return best_block;

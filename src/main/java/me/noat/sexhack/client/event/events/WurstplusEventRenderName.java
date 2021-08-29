@@ -16,9 +16,6 @@ public class WurstplusEventRenderName extends WurstplusEventCancellable {
         super();
 
         Entity = entityIn;
-        x = X;
-        y = Y;
-        z = Z;
         Name = name;
         DistanceSq = distanceSq;
     }

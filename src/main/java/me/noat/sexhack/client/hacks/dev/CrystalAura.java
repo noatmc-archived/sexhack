@@ -44,7 +44,7 @@ public class CrystalAura extends Module {
 
                 if (blockgameAtomicBombDamage > selfDmg) continue;
 
-                return block = damage_block;
+                return damage_block;
             }
         }
 

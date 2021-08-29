@@ -198,7 +198,7 @@ public class WurstplusFrame {
         };
 
         int color_b = Color.HSBtoRGB(tick_color[0], 1, 1);
-        int color = (color_b);
+        int color;
 
         if ((color_b) <= 50) {
             color = 50;

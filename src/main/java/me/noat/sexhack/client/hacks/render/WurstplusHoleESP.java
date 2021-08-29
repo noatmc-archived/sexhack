@@ -311,7 +311,7 @@ public class WurstplusHoleESP extends Module {
 
     @Override
     public void render(WurstplusEventRender event) {
-        float off_set_h = 0;
+        float off_set_h;
 
         if (!holes.isEmpty()) {
             off_set_h = (float) off_set.get_value(1.0);
