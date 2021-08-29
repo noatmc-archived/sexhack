@@ -10,5 +10,5 @@ public class WurstplusEventMotionUpdate extends WurstplusEventCancellable {
         super();
         this.stage = stage;
     }
-    
+
 }

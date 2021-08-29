@@ -7,22 +7,18 @@ class WurstplusEventStage
         extends Event {
     private int stage;
 
-    public
-    WurstplusEventStage ( ) {
+    public WurstplusEventStage() {
     }
 
-    public
-    WurstplusEventStage ( int stage ) {
+    public WurstplusEventStage(int stage) {
         this.stage = stage;
     }
 
-    public
-    int getStage ( ) {
+    public int getStage() {
         return this.stage;
     }
 
-    public
-    void setStage ( int stage ) {
+    public void setStage(int stage) {
         this.stage = stage;
     }
 }

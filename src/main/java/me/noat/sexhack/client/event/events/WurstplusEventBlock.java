@@ -17,12 +17,12 @@ public class WurstplusEventBlock extends WurstplusEventCancellable {
         this.stage = stage;
     }
 
-    public void set_stage(int stage) {
-        this.stage = stage;
-    }
-
     public int get_stage() {
         return this.stage;
+    }
+
+    public void set_stage(int stage) {
+        this.stage = stage;
     }
 
 }
