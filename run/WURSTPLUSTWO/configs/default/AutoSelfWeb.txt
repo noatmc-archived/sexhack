@@ -1,3 +1,0 @@
-AlwaysOn:true
-AutoWebRotate:true
-AutoWebRange:4

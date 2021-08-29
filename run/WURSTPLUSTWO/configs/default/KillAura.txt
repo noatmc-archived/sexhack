@@ -1,7 +1,0 @@
-KillAuraMode:A32k
-KillAuraPlayer:true
-KillAuraHostile:false
-KillAuraSword:true
-KillAuraSyncTps:true
-KillAuraRange:5.0
-KillAuraDelay:2

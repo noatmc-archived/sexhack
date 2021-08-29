@@ -1,4 +1,0 @@
-HoleFillToggle:true
-HoleFillRotate:true
-HoleFillRange:4
-HoleFillSwing:Mainhand

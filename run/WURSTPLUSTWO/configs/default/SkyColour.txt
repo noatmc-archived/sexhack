@@ -1,4 +1,0 @@
-SkyColourR:255
-SkyColourG:255
-SkyColourB:255
-SkyColourRainbow:false

@@ -1,2 +1,0 @@
-MineEndCrystal:false
-MineRange:4

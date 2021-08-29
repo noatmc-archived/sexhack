@@ -1,3 +1,0 @@
-SelfTrapToggle:false
-SelfTrapRotate:false
-SelfTrapSwing:Mainhand

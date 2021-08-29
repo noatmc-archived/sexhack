@@ -1,3 +1,0 @@
-WebFillToggle:true
-WebFillRotate:true
-WebFillRange:4

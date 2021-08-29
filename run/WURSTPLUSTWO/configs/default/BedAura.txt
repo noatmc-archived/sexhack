@@ -1,4 +1,0 @@
-BedAuraDelay:6
-BedAuraRange:5
-BedAuraRotate:false
-BedAuraSwing:Mainhand

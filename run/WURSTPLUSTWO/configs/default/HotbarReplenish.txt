@@ -1,3 +1,0 @@
-AutoReplenishMode:All
-AutoReplenishThreshold:32
-AutoReplenishDelay:2

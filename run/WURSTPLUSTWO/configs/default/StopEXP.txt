@@ -1,2 +1,0 @@
-StopEXHelmet:80
-StopEXChest:100

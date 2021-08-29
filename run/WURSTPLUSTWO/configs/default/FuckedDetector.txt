@@ -1,7 +1,0 @@
-FuckedDrawOwn:false
-FuckedDrawFriends:false
-FuckedRenderMode:Pretty
-FuckedR:255
-FuckedG:255
-FuckedB:255
-FuckedA:100

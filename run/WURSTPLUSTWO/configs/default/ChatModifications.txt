@@ -1,3 +1,0 @@
-ChatModsTimeStamps:true
-ChatModsDateFormat:24HR
-ChatModsNameHighlight:true

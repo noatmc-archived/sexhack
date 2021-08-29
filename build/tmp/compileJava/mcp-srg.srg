@@ -1,6 +1,0 @@
-FD: me/noat/sexhack/mixins/WurstplusMixinEntity/motionX me/noat/sexhack/mixins/WurstplusMixinEntity/field_70159_w
-FD: me/noat/sexhack/mixins/WurstplusMixinEntity/motionY me/noat/sexhack/mixins/WurstplusMixinEntity/field_70181_x
-FD: me/noat/sexhack/mixins/WurstplusMixinEntity/motionZ me/noat/sexhack/mixins/WurstplusMixinEntity/field_70179_y
-MD: me/noat/sexhack/mixins/WurstplusMixinAbstractClientPlayer/getPlayerInfo ()Lnet/minecraft/client/network/NetworkPlayerInfo; me/noat/sexhack/mixins/WurstplusMixinAbstractClientPlayer/func_175155_b ()Lnet/minecraft/client/network/NetworkPlayerInfo;
-MD: me/noat/sexhack/mixins/WurstplusMixinEntity/move (Lnet/minecraft/entity/MoverType;DDD)V me/noat/sexhack/mixins/WurstplusMixinEntity/func_70091_d (Lnet/minecraft/entity/MoverType;DDD)V
-MD: me/noat/sexhack/mixins/WurstplusMixinItemRenderer/renderItemInFirstPerson (Lnet/minecraft/client/entity/AbstractClientPlayer;FFLnet/minecraft/util/EnumHand;FLnet/minecraft/item/ItemStack;F)V me/noat/sexhack/mixins/WurstplusMixinItemRenderer/func_187457_a (Lnet/minecraft/client/entity/AbstractClientPlayer;FFLnet/minecraft/util/EnumHand;FLnet/minecraft/item/ItemStack;F)V

@@ -1,7 +1,0 @@
-BurrowRotate:false
-BurrowType:Packet
-BurrowBlock:Obsidian
-BurrowForce:1.5
-BurrowInstant:true
-BurrowCenter:false
-BurrowBypass:false

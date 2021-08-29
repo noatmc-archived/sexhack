@@ -1,4 +1,0 @@
-TracerFriends:false
-TracerRange:50
-TracerWidth:1.0
-TracerOffset:0.0

@@ -1,9 +1,0 @@
-GMSpoofs:1
-GMRotate:false
-GMAntiIllegal:false
-GMCheckPos:false
-GMOneDotThirteen:false
-GMEntityCheck:false
-GMAttacks:1
-GMOffset:1
-GMDelay:1

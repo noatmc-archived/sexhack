@@ -1,8 +1,0 @@
-SpeedmineMode:Normal
-SpeedmineDamagaeAmmount:0.7
-SpeedmineReset:true
-SpeedMineBreakAnim:false
-SpeedmineNoDelay:false
-SpeedmineNoSwing:false
-SpeedmineMultiTask:false
-SpeedmineDoubleBreak:false

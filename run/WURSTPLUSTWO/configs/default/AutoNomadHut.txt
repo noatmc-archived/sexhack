@@ -1,3 +1,0 @@
-NomadSmoth:true
-NomadToggle:true
-NomadTickToPlace:2

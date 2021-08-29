@@ -1,3 +1,0 @@
-AntiRacistDelay:10
-AntiRacismAntiNword:true
-AntiRacismChanter:false

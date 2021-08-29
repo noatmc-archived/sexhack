@@ -1,4 +1,0 @@
-WurstplusFastPlace:false
-WurstplusFastBreak:false
-WurstplusFastCrystal:false
-WurstplusFastExp:true

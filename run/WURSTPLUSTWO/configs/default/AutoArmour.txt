@@ -1,7 +1,0 @@
-AADelay:2
-AASmartMode:true
-AAEquipArmour:true
-AAPlayerRange:8
-AACrystalRange:13
-AATBootPercent:80
-AATChestPercent:80

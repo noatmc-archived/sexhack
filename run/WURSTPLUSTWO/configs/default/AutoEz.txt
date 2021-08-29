@@ -1,2 +1,0 @@
-EzDiscord:false
-EzCustom:false
