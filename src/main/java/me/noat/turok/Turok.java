@@ -15,7 +15,7 @@ import me.noat.turok.task.Font;
 *
 */
 public class Turok {
-	private String tag;
+	private final String tag;
 
 	private Font font_manager;
 

@@ -241,10 +241,10 @@ public class WurstplusHoleESP extends Module {
                 if (possible) {
                     if (safe_sides == 5) {
                         if (!this.bedrock_enable.get_value(true)) continue;
-                        holes.add(new WurstplusPair<BlockPos, Boolean>(pos, true));
+                        holes.add( new WurstplusPair <> ( pos , true ));
                     } else {
                         if (!this.obsidian_enable.get_value(true)) continue;
-                        holes.add(new WurstplusPair<BlockPos, Boolean>(pos, false));
+                        holes.add( new WurstplusPair <> ( pos , false ));
                     }
                     continue;
                 }
@@ -259,11 +259,11 @@ public class WurstplusHoleESP extends Module {
                     // to avoid rendering the same hole twice
 
                     if (safe_sides == 8) {
-                        holes.add(new WurstplusPair<BlockPos, Boolean>(pos, true));
-                        if (low_ceiling_hole) holes.add(new WurstplusPair<BlockPos, Boolean>(second_pos, true));
+                        holes.add( new WurstplusPair <> ( pos , true ));
+                        if (low_ceiling_hole) holes.add( new WurstplusPair <> ( second_pos , true ));
                     } else {
-                        holes.add(new WurstplusPair<BlockPos, Boolean>(pos, false));
-                        if (low_ceiling_hole) holes.add(new WurstplusPair<BlockPos, Boolean>(second_pos, false));
+                        holes.add( new WurstplusPair <> ( pos , false ));
+                        if (low_ceiling_hole) holes.add( new WurstplusPair <> ( second_pos , false ));
                     }
 
                 }
@@ -366,7 +366,7 @@ public class WurstplusHoleESP extends Module {
 
         int plus_y = 0;
 
-        List<BlockPos> sphere_block = new ArrayList<BlockPos>();
+        List<BlockPos> sphere_block = new ArrayList <> ( );
 
         int cx = pos.getX();
         int cy = pos.getY();

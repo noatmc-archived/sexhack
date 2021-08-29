@@ -34,7 +34,6 @@ public class WurstplusSocks extends Module {
     protected void enable() {
         if (find_in_hotbar() == -1) {
             this.set_disable();
-            return;
         }
     }
 

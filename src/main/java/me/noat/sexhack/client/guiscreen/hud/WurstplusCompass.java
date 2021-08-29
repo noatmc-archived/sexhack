@@ -6,6 +6,8 @@ import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
 import me.noat.sexhack.client.util.WurstplusMathUtil;
 
+import java.util.Objects;
+
 public class WurstplusCompass extends WurstplusPinnable {
 
     private static final double half_pi = Math.PI / 2;
@@ -41,7 +43,7 @@ public class WurstplusCompass extends WurstplusPinnable {
 
     private double get_pos_on_compass(Direction dir) {
 
-        double yaw = Math.toRadians(WurstplusMathUtil.wrap(mc.getRenderViewEntity().rotationYaw));
+        double yaw = Math.toRadians(WurstplusMathUtil.wrap( Objects.requireNonNull ( mc.getRenderViewEntity ( ) ).rotationYaw));
         int index = dir.ordinal();
         return yaw + (index * half_pi);
 
@@ -53,7 +55,7 @@ public class WurstplusCompass extends WurstplusPinnable {
 
     private double get_y(double rad) {
 
-        final double epic_pitch = WurstplusMathUtil.clamp2(mc.getRenderViewEntity().rotationPitch + 30f, -90f, 90f);
+        final double epic_pitch = WurstplusMathUtil.clamp2( Objects.requireNonNull ( mc.getRenderViewEntity ( ) ).rotationPitch + 30f, -90f, 90f);
         final double pitch_radians = Math.toRadians(epic_pitch);
         return Math.cos(rad) * Math.sin(pitch_radians) * (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDCompassScale").get_value(1));
 

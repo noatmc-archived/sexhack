@@ -20,8 +20,8 @@ buildscript {
 	}
 
 
-apply plugin: "net.minecraftforge.gradle.forge";
-apply plugin: "com.github.johnrengelman.shadow";
+apply plugin: "net.minecraftforge.gradle.forge"
+apply plugin: "com.github.johnrengelman.shadow"
 apply plugin: "org.spongepowered.mixin"
 
 version          project.client_version
@@ -30,7 +30,7 @@ group            project.client_group
 minecraft {
 	version  = "1.12.2-14.23.0.2531"
 	runDir   = "run"
-	coreMod  = "me.travis.wurstplus.mixins.WurstplusMixinLoader"
+	coreMod  = "me.noat.sexhack.mixins.WurstplusMixinLoader"
 	mappings = "snapshot_20180814"
 	makeObfSourceJar = true
 }
@@ -67,18 +67,18 @@ dependencies {
 		exclude module: "gson"
 	}
 
-	// compile 'com.github.Vatuu:discord-rpc:1.5.0'
 }
 
 shadowJar {
 	dependencies {
-		// include(dependency('com.github.Vatuu:discord-rpc'))
 		include(dependency('com.github.ionar2:Alpine'))
 		include(dependency("org.javassist:javassist"))
 		include(dependency("org.spongepowered:mixin"))
 		include(dependency("net.jodah:typetools"))
 		include(dependency('com.googlecode.json-simple:json-simple:1.1.1'))
 	}
+	exclude 'dummyThing'
+	exclude 'LICENSE.txt'
 }
 
 mixin {
@@ -107,7 +107,7 @@ processResources {
 		exclude "mcmod.info"
 	}
 
-	rename "(.+_at.cfg)", 'META-INF/$1';
+	rename "(.+_at.cfg)", 'META-INF/$1'
 }
 
 jar {
@@ -115,7 +115,7 @@ jar {
 		attributes (
 			"FMLCorePluginContainsFMLMod" : "true",
 			"ForceLoadAsMod"              : "true",
-			"FMLCorePlugin"               : "me.travis.wurstplus.mixins.WurstplusMixinLoader",
+			"FMLCorePlugin"               : "me.noat.sexhack.mixins.WurstplusMixinLoader",
 			"MixinConfigs"                : "mixins.wurstplus.json",
 			"tweakClass"                  : "org.spongepowered.asm.launch.MixinTweaker",
 			"TweakOrder"                  : 0,

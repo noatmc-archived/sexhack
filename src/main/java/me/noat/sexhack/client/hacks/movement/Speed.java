@@ -11,6 +11,8 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.util.math.MathHelper;
 
+import java.util.Objects;
+
 
 public class Speed extends Module {
 
@@ -46,7 +48,7 @@ public class Speed extends Module {
         float rotation_yaw = mc.player.rotationYaw;
 
         if (mc.player.isPotionActive(MobEffects.SPEED)) {
-            final int amp = mc.player.getActivePotionEffect(MobEffects.SPEED).getAmplifier();
+            final int amp = Objects.requireNonNull ( mc.player.getActivePotionEffect ( MobEffects.SPEED ) ).getAmplifier();
             player_speed *= (1.2f * (amp + 1));
         }
 

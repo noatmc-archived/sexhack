@@ -67,7 +67,7 @@ public class WurstplusAutoCrystal extends Module {
 
                 final SPacketSoundEffect packet2 = (SPacketSoundEffect) event.get_packet();
                 if (packet2.getCategory() == SoundCategory.BLOCKS && packet2.getSound() == SoundEvents.ENTITY_GENERIC_EXPLODE) {
-                    final List<Entity> entities = new ArrayList<Entity>(mc.world.loadedEntityList);
+                    final List<Entity> entities = new ArrayList <> ( mc.world.loadedEntityList );
                     for (int size = entities.size(), i = 0; i < size; ++i) {
                         final Entity entity = entities.get(i);
                         if (entity instanceof EntityEnderCrystal && entity.getDistanceSq(packet2.getX(), packet2.getY(), packet2.getZ()) < 36.0) {
@@ -209,11 +209,11 @@ public class WurstplusAutoCrystal extends Module {
             return;
         }
 
-        if (place_crystal.get_value(true) && place_delay_counter > place_timeout && hasPlace == false) {
+        if (place_crystal.get_value(true) && place_delay_counter > place_timeout && ! hasPlace ) {
             place_crystal();
         }
 
-        if (break_crystal.get_value(true) && break_delay_counter > break_timeout && hasBreak == false) {
+        if (break_crystal.get_value(true) && break_delay_counter > break_timeout && ! hasBreak ) {
             break_crystal();
         }
 

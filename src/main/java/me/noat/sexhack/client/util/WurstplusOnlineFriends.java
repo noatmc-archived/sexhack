@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class WurstplusOnlineFriends {
 
-    public static List<Entity> entities = new ArrayList<Entity>();
+    public static List<Entity> entities = new ArrayList <> ( );
 
     static public List<Entity> getFriends() {
         entities.clear();

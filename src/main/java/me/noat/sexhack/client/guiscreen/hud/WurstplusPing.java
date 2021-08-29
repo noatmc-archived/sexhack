@@ -4,6 +4,8 @@ package me.noat.sexhack.client.guiscreen.hud;
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
 
+import java.util.Objects;
+
 public class WurstplusPing extends WurstplusPinnable {
 
     public WurstplusPing() {
@@ -27,7 +29,7 @@ public class WurstplusPing extends WurstplusPinnable {
 
     public String get_ping() {
         try {
-            int ping = mc.getConnection().getPlayerInfo(mc.player.getUniqueID()).getResponseTime();
+            int ping = Objects.requireNonNull ( mc.getConnection ( ) ).getPlayerInfo(mc.player.getUniqueID()).getResponseTime();
             if (ping <= 50) {
                 return "\u00A7a" + ping;
             } else if (ping <= 150) {

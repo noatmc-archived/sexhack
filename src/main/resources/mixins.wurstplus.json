@@ -4,20 +4,20 @@
 	"package"            : "me.noat.sexhack.mixins",
 	"refmap"             : "mixins.wurstplus.refmap.json",
 	"mixins"             : [
-		"WurstplusMixinPlayerControllerMP",
-		"WurstplusMixinNetworkManager",
-		"WurstplusMixinMinecraft",
-		"WurstplusMixinEntitySP",
-		"WurstplusMixinEntity",
-		"WurstplusMixinGuiNewChat",
-		"WurstplusMixinGuiScreen",
-		"WurstplusMixinEntityRenderer",
-		"WurstplusMixinWorld",
-		"WurstplusMixinRenderPlayer",
-		"WurstplusMixinPlayer",
-		"WurstplusMixinItemRenderer",
-		"WurstplusMixinGuiPlayerTabOverlay",
-		"WurstplusMixinRenderLivingBase",
-		"WurstplusMixinAbstractClientPlayer"
-	]
+      "WurstplusMixinAbstractClientPlayer",
+      "WurstplusMixinEntity",
+      "WurstplusMixinEntityRenderer",
+      "WurstplusMixinEntitySP",
+      "WurstplusMixinGuiNewChat",
+      "WurstplusMixinGuiPlayerTabOverlay",
+      "WurstplusMixinGuiScreen",
+      "WurstplusMixinItemRenderer",
+      "WurstplusMixinMinecraft",
+      "WurstplusMixinNetworkManager",
+      "WurstplusMixinPlayer",
+      "WurstplusMixinPlayerControllerMP",
+      "WurstplusMixinRenderLivingBase",
+      "WurstplusMixinRenderPlayer",
+      "WurstplusMixinWorld"
+    ]
 }

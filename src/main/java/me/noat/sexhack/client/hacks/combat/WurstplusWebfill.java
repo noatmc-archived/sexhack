@@ -8,23 +8,20 @@ import me.noat.sexhack.client.util.WurstplusBlockInteractHelper.ValidResult;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import me.noat.sexhack.client.util.WurstplusPlayerUtil;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.CPacketEntityAction;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3i;
 
 import java.util.ArrayList;
 
 public class WurstplusWebfill extends Module {
 
-    private final ArrayList<BlockPos> holes = new ArrayList<BlockPos>();
+    private final ArrayList<BlockPos> holes = new ArrayList <> ( );
     Setting web_toggle = create("Toggle", "WebFillToggle", true);
     Setting web_rotate = create("Rotate", "WebFillRotate", true);
     Setting web_range = create("Range", "WebFillRange", 4, 1, 6);
@@ -67,7 +64,7 @@ public class WurstplusWebfill extends Module {
 
         BlockPos pos_to_fill = null;
 
-        for (BlockPos pos : new ArrayList<BlockPos>(holes)) {
+        for (BlockPos pos : new ArrayList <> ( holes )) {
 
             if (pos == null) continue;
 

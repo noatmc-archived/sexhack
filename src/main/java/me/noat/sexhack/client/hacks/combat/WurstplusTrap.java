@@ -166,7 +166,7 @@ public class WurstplusTrap extends Module {
 
         }
 
-        final List<Vec3d> place_targets = new ArrayList<Vec3d>();
+        final List<Vec3d> place_targets = new ArrayList <> ( );
 
         if (place_mode.in("Normal")) {
             Collections.addAll(place_targets, offsets_default);

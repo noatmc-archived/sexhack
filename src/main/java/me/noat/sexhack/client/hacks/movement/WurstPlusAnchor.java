@@ -17,7 +17,7 @@ public class WurstPlusAnchor extends Module {
     // Written by NathanW, thanks to my friend Ian for some hole shit.
 
     public static boolean AnchorING;
-    private final ArrayList<BlockPos> holes = new ArrayList<BlockPos>();
+    private final ArrayList<BlockPos> holes = new ArrayList <> ( );
     Setting Pitch = create("Pitch", "AnchorPitch", 60, 0, 90);
     Setting Pull = create("Pull", "AnchorPull", true);
     int holeblocks;

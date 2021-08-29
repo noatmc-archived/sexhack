@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class WurstplusFuckedDetector extends Module {
 
-    public Set<BlockPos> fucked_players = new HashSet<BlockPos>();
+    public Set<BlockPos> fucked_players = new HashSet <> ( );
     Setting draw_own = create("Draw Own", "FuckedDrawOwn", false);
     Setting draw_friends = create("Draw Friends", "FuckedDrawFriends", false);
 

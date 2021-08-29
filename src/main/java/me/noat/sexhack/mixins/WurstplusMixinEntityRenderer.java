@@ -19,7 +19,6 @@ public class WurstplusMixinEntityRenderer {
         WurstplusEventBus.EVENT_BUS.post(event);
 
         if (event.isCancelled()) {
-            return;
         }
 
     }

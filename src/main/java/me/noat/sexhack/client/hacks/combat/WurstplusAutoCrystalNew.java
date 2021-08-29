@@ -461,7 +461,6 @@ public class WurstplusAutoCrystalNew extends Module {
             if (mc.player.getHeldItemMainhand().getItem() != Items.END_CRYSTAL && auto_switch.get_value(true)) {
                 if (find_crystals_hotbar() == -1) return;
                 mc.player.inventory.currentItem = find_crystals_hotbar();
-                return;
             }
         } else {
             offhand_check = true;

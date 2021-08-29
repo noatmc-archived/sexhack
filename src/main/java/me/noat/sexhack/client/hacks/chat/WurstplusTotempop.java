@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 public class WurstplusTotempop extends Module {
 
-    public static final HashMap<String, Integer> totem_pop_counter = new HashMap<String, Integer>();
+    public static final HashMap<String, Integer> totem_pop_counter = new HashMap <> ( );
     public static ChatFormatting red = ChatFormatting.RED;
     public static ChatFormatting green = ChatFormatting.GREEN;
     public static ChatFormatting gold = ChatFormatting.GOLD;
