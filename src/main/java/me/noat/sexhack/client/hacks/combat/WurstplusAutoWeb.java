@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -16,21 +16,19 @@ import net.minecraft.util.math.Vec3d;
 
 public class WurstplusAutoWeb extends Module {
 
-    public WurstplusAutoWeb() {
-        super(WurstplusCategory.WURSTPLUS_COMBAT);
-
-        this.name        = "Auto Self Web";
-        this.tag         = "AutoSelfWeb";
-        this.description = "places fuckin webs at ur feet";
-    }
-
     Setting always_on = create("Always On", "AlwaysOn", true);
     Setting rotate = create("Rotate", "AutoWebRotate", true);
     Setting range = create("Enemy Range", "AutoWebRange", 4, 0, 8);
-
     int new_slot = -1;
-
     boolean sneak = false;
+
+    public WurstplusAutoWeb() {
+        super(WurstplusCategory.WURSTPLUS_COMBAT);
+
+        this.name = "Auto Self Web";
+        this.tag = "AutoSelfWeb";
+        this.description = "places fuckin webs at ur feet";
+    }
 
     @Override
     public void enable() {
@@ -87,15 +85,14 @@ public class WurstplusAutoWeb extends Module {
 
     }
 
-    public EntityPlayer find_closest_target()  {
+    public EntityPlayer find_closest_target() {
 
         if (mc.world.playerEntities.isEmpty())
             return null;
 
         EntityPlayer closestTarget = null;
 
-        for (final EntityPlayer target : mc.world.playerEntities)
-        {
+        for (final EntityPlayer target : mc.world.playerEntities) {
             if (target == mc.player)
                 continue;
 
@@ -136,10 +133,10 @@ public class WurstplusAutoWeb extends Module {
 
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
         return mc.world.getBlockState(player_block.east()).getBlock() != Blocks.AIR
-            && mc.world.getBlockState(player_block.west()).getBlock() != Blocks.AIR
+                && mc.world.getBlockState(player_block.west()).getBlock() != Blocks.AIR
                 && mc.world.getBlockState(player_block.north()).getBlock() != Blocks.AIR
-                    && mc.world.getBlockState(player_block.south()).getBlock() != Blocks.AIR
-                        && mc.world.getBlockState(player_block).getBlock() == Blocks.AIR;
+                && mc.world.getBlockState(player_block.south()).getBlock() != Blocks.AIR
+                && mc.world.getBlockState(player_block).getBlock() == Blocks.AIR;
 
     }
 

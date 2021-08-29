@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper.ValidResult;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
@@ -24,21 +24,19 @@ import java.util.ArrayList;
 
 public class WurstplusWebfill extends Module {
 
-    public WurstplusWebfill() {
-        super(WurstplusCategory.WURSTPLUS_COMBAT);
-
-        this.name        = "Web Fill";
-        this.tag         = "WebFill";
-        this.description = "its like hole fill, but more annoying";
-    }
-
+    private final ArrayList<BlockPos> holes = new ArrayList<BlockPos>();
     Setting web_toggle = create("Toggle", "WebFillToggle", true);
     Setting web_rotate = create("Rotate", "WebFillRotate", true);
     Setting web_range = create("Range", "WebFillRange", 4, 1, 6);
-
-    private final ArrayList<BlockPos> holes = new ArrayList<BlockPos>();
-
     private boolean sneak;
+
+    public WurstplusWebfill() {
+        super(WurstplusCategory.WURSTPLUS_COMBAT);
+
+        this.name = "Web Fill";
+        this.tag = "WebFill";
+        this.description = "its like hole fill, but more annoying";
+    }
 
     @Override
     public void enable() {
@@ -109,7 +107,7 @@ public class WurstplusWebfill extends Module {
 
         holes.clear();
 
-        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(WurstplusPlayerUtil.GetLocalPlayerPosFloored(), web_range.get_value(1), (int) web_range.get_value(1), false, true, 0)) {
+        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(WurstplusPlayerUtil.GetLocalPlayerPosFloored(), web_range.get_value(1), web_range.get_value(1), false, true, 0)) {
 
             if (!mc.world.getBlockState(pos).getBlock().equals(Blocks.AIR)) {
                 continue;
@@ -125,12 +123,12 @@ public class WurstplusWebfill extends Module {
 
             boolean possible = true;
 
-            for (BlockPos seems_blocks : new BlockPos[] {
-                    new BlockPos( 0, -1,  0),
-                    new BlockPos( 0,  0, -1),
-                    new BlockPos( 1,  0,  0),
-                    new BlockPos( 0,  0,  1),
-                    new BlockPos(-1,  0,  0)
+            for (BlockPos seems_blocks : new BlockPos[]{
+                    new BlockPos(0, -1, 0),
+                    new BlockPos(0, 0, -1),
+                    new BlockPos(1, 0, 0),
+                    new BlockPos(0, 0, 1),
+                    new BlockPos(-1, 0, 0)
             }) {
                 Block block = mc.world.getBlockState(pos.add(seems_blocks)).getBlock();
 
@@ -183,12 +181,12 @@ public class WurstplusWebfill extends Module {
 
             if (!WurstplusBlockInteractHelper.canBeClicked(neighbor)) continue;
 
-            if (WurstplusBlockInteractHelper.blackList.contains((Object)(neighborPos = mc.world.getBlockState(neighbor).getBlock()))) {
-                mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)mc.player, CPacketEntityAction.Action.START_SNEAKING));
+            if (WurstplusBlockInteractHelper.blackList.contains(neighborPos = mc.world.getBlockState(neighbor).getBlock())) {
+                mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
                 sneak = true;
             }
 
-            Vec3d hitVec = new Vec3d((Vec3i)neighbor).add(0.5, 0.5, 0.5).add(new Vec3d(side2.getDirectionVec()).scale(0.5));
+            Vec3d hitVec = new Vec3d(neighbor).add(0.5, 0.5, 0.5).add(new Vec3d(side2.getDirectionVec()).scale(0.5));
 
             if (web_rotate.get_value(true)) {
                 WurstplusBlockInteractHelper.faceVectorPacketInstant(hitVec);

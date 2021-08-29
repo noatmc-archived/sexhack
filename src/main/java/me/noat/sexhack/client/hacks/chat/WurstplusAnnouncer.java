@@ -3,8 +3,8 @@ package me.noat.sexhack.client.hacks.chat;
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.init.Items;
@@ -27,14 +27,20 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class WurstplusAnnouncer extends Module {
 
-    public WurstplusAnnouncer() {
-        super(WurstplusCategory.WURSTPLUS_CHAT);
-
-        this.name = "Announcer";
-        this.tag = "Announcer";
-        this.description = "how to get muted 101";
-    }
-
+    private static final Queue<String> message_q = new ConcurrentLinkedQueue<>();
+    private static final Map<String, Integer> mined_blocks = new ConcurrentHashMap<>();
+    private static final Map<String, Integer> placed_blocks = new ConcurrentHashMap<>();
+    private static final Map<String, Integer> dropped_items = new ConcurrentHashMap<>();
+    private static final Map<String, Integer> consumed_items = new ConcurrentHashMap<>();
+    private static DecimalFormat df = new DecimalFormat();
+    private static Vec3d thisTickPos;
+    private static Vec3d lastTickPos;
+    private static int delay_count;
+    private static double distanceTraveled;
+    private static float thisTickHealth;
+    private static float lastTickHealth;
+    private static float gainedHealth;
+    private static float lostHealth;
     Setting min_distance = create("Min Distance", "AnnouncerMinDist", 12, 1, 100);
     Setting max_distance = create("Max Distance", "AnnouncerMaxDist", 144, 12, 1200);
     Setting delay = create("Delay Seconds", "AnnouncerDelay", 4, 0, 20);
@@ -43,41 +49,17 @@ public class WurstplusAnnouncer extends Module {
     Setting movement_string = create("Movement", "AnnouncerMovement", "Aha x", combobox("Aha x", "Leyta", "FUCK"));
     Setting suffix = create("Suffix", "AnnouncerSuffix", true);
     Setting smol = create("Small Text", "AnnouncerSmallText", false);
-
-    private static DecimalFormat df = new DecimalFormat();
-
-    private static final Queue<String> message_q = new ConcurrentLinkedQueue<>();
-
-    private static final Map<String, Integer> mined_blocks = new ConcurrentHashMap<>();
-    private static final Map<String, Integer> placed_blocks = new ConcurrentHashMap<>();
-    private static final Map<String, Integer> dropped_items = new ConcurrentHashMap<>();
-    private static final Map<String, Integer> consumed_items = new ConcurrentHashMap<>();
-
     private boolean first_run;
-
-    private static Vec3d thisTickPos;
-    private static Vec3d lastTickPos;
-
-    private static int delay_count;
-
-    private static double distanceTraveled;
-
-    private static float thisTickHealth;
-    private static float lastTickHealth;
-    private static float gainedHealth;
-    private static float lostHealth;
-
     @EventHandler
-    private Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
+    private final Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
         if (mc.world == null) return;
 
         if (event.get_packet() instanceof SPacketUseBed) {
             queue_message("I am going to bed now, goodnight");
         }
     });
-
     @EventHandler
-    private Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
+    private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
         if (mc.world == null) return;
 
         if (event.get_packet() instanceof CPacketPlayerDigging) {
@@ -132,6 +114,20 @@ public class WurstplusAnnouncer extends Module {
 
         }
     });
+
+    public WurstplusAnnouncer() {
+        super(WurstplusCategory.WURSTPLUS_CHAT);
+
+        this.name = "Announcer";
+        this.tag = "Announcer";
+        this.description = "how to get muted 101";
+    }
+
+    public static double round(double unrounded, int precision) {
+        BigDecimal bd = new BigDecimal(unrounded);
+        BigDecimal rounded = bd.setScale(precision, BigDecimal.ROUND_HALF_UP);
+        return rounded.doubleValue();
+    }
 
     @Override
     public void update() {
@@ -213,12 +209,6 @@ public class WurstplusAnnouncer extends Module {
         delay_count = 0;
     }
 
-    public static double round(double unrounded, int precision) {
-        BigDecimal bd = new BigDecimal(unrounded);
-        BigDecimal rounded = bd.setScale(precision, BigDecimal.ROUND_HALF_UP);
-        return rounded.doubleValue();
-    }
-
     private void composeGameTickData() {
         CharSequence sb;
         if (first_run) {
@@ -226,50 +216,53 @@ public class WurstplusAnnouncer extends Module {
             return;
         }
         if (distanceTraveled >= 1.0) {
-            if (distanceTraveled < (double)(this.delay.get_value(1) * this.min_distance.get_value(1))) {
+            if (distanceTraveled < (double) (this.delay.get_value(1) * this.min_distance.get_value(1))) {
                 return;
             }
-            if (distanceTraveled > (double)(this.delay.get_value(1) * this.max_distance.get_value(1))) {
+            if (distanceTraveled > (double) (this.delay.get_value(1) * this.max_distance.get_value(1))) {
                 distanceTraveled = 0.0;
                 return;
             }
             sb = new StringBuilder();
             if (movement_string.in("Aha x")) {
-                ((StringBuilder)sb).append("aha x, I just traveled ");
+                ((StringBuilder) sb).append("aha x, I just traveled ");
             }
             if (movement_string.in("FUCK")) {
-                ((StringBuilder)sb).append("FUCK, I just fucking traveled ");
+                ((StringBuilder) sb).append("FUCK, I just fucking traveled ");
             }
             if (movement_string.in("Leyta")) {
-                ((StringBuilder)sb).append("leyta bitch, I just traveled ");
+                ((StringBuilder) sb).append("leyta bitch, I just traveled ");
             }
             if (units.in("Feet")) {
-                ((StringBuilder)sb).append(round(distanceTraveled*3.2808,2));
-                if ((int)distanceTraveled == (double) 1) {
-                    ((StringBuilder)sb).append(" Foot");
+                ((StringBuilder) sb).append(round(distanceTraveled * 3.2808, 2));
+                if ((int) distanceTraveled == (double) 1) {
+                    ((StringBuilder) sb).append(" Foot");
                 } else {
-                    ((StringBuilder)sb).append(" Feet");
+                    ((StringBuilder) sb).append(" Feet");
                 }
-            } if (units.in("Yards")) {
-                ((StringBuilder)sb).append(round(distanceTraveled*1.0936,2));
-                if ((int)distanceTraveled == (double) 1) {
-                    ((StringBuilder)sb).append(" Yard");
+            }
+            if (units.in("Yards")) {
+                ((StringBuilder) sb).append(round(distanceTraveled * 1.0936, 2));
+                if ((int) distanceTraveled == (double) 1) {
+                    ((StringBuilder) sb).append(" Yard");
                 } else {
-                    ((StringBuilder)sb).append(" Yards");
+                    ((StringBuilder) sb).append(" Yards");
                 }
-            } if (units.in("Inches")) {
-                ((StringBuilder)sb).append(round(distanceTraveled*39.37,2));
-                if ((int)distanceTraveled == (double) 1) {
-                    ((StringBuilder)sb).append(" Inch");
+            }
+            if (units.in("Inches")) {
+                ((StringBuilder) sb).append(round(distanceTraveled * 39.37, 2));
+                if ((int) distanceTraveled == (double) 1) {
+                    ((StringBuilder) sb).append(" Inch");
                 } else {
-                    ((StringBuilder)sb).append(" Inches");
+                    ((StringBuilder) sb).append(" Inches");
                 }
-            } if (units.in("Meters")) {
-                ((StringBuilder)sb).append(round(distanceTraveled,2));
-                if ((int)distanceTraveled == (double) 1) {
-                    ((StringBuilder)sb).append(" Meter");
+            }
+            if (units.in("Meters")) {
+                ((StringBuilder) sb).append(round(distanceTraveled, 2));
+                if ((int) distanceTraveled == (double) 1) {
+                    ((StringBuilder) sb).append(" Meter");
                 } else {
-                    ((StringBuilder)sb).append(" Meters");
+                    ((StringBuilder) sb).append(" Meters");
                 }
             }
             this.queue_message(sb.toString());
@@ -277,12 +270,12 @@ public class WurstplusAnnouncer extends Module {
         }
         if (lostHealth != 0.0f) {
             sb = "HECK! I just lost " + df.format(lostHealth) + " health D:";
-            this.queue_message((String)sb);
+            this.queue_message((String) sb);
             lostHealth = 0.0f;
         }
         if (gainedHealth != 0.0f) {
             sb = "#ezmode I now have " + df.format(gainedHealth) + " more health";
-            this.queue_message((String)sb);
+            this.queue_message((String) sb);
             gainedHealth = 0.0f;
         }
     }

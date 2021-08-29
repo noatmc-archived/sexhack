@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
+import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.MappingUtil;
 import me.noat.sexhack.client.util.WurstplusBurrowUtil;
 import net.minecraft.block.Block;
@@ -22,14 +22,6 @@ import java.lang.reflect.Field;
 
 public class Burrow extends Module {
 
-    public Burrow() {
-        super(WurstplusCategory.WURSTPLUS_COMBAT);
-
-        this.name        = "Burrow";
-        this.tag         = "Burrow";
-        this.description = "troll";
-    }
-
     Setting rotate = create("Rotate", "BurrowRotate", false);
     Setting type = create("Type", "BurrowType", "Packet", combobox("Packet", "Normal"));
     Setting block = create("Block", "BurrowBlock", "Obsidian", combobox("Obsidian", "Echest"));
@@ -37,12 +29,18 @@ public class Burrow extends Module {
     Setting instant = create("Instant", "BurrowInstant", true);
     Setting center = create("Center", "BurrowCenter", false);
     Setting bypass = create("Bypass", "BurrowBypass", false);
-
     int swapBlock = -1;
     Vec3d centerBlock = Vec3d.ZERO;
     BlockPos oldPos;
     Block blockW = Blocks.OBSIDIAN;
     boolean flag;
+    public Burrow() {
+        super(WurstplusCategory.WURSTPLUS_COMBAT);
+
+        this.name = "Burrow";
+        this.tag = "Burrow";
+        this.description = "troll";
+    }
 
     public static BlockPos getPlayerPos() {
         return new BlockPos(Math.floor(mc.player.posX), Math.floor(mc.player.posY), Math.floor(mc.player.posZ));
@@ -94,16 +92,12 @@ public class Burrow extends Module {
 
     @Override
     public void update() {
-        if(nullCheck())return;
+        if (nullCheck()) return;
         if (type.in("Normal")) {
             if (mc.player.posY > (oldPos.getY() + 1.04)) {
                 int old = mc.player.inventory.currentItem;
                 this.switchToSlot(swapBlock);
-                if (rotate.get_value(true)) {
-                    WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, true, true, false);
-                } else {
-                    WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, false, true, false);
-                }
+                WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, rotate.get_value(true), true, false);
 
                 this.switchToSlot(old);
                 mc.player.motionY = force.get_value(1);
@@ -144,11 +138,7 @@ public class Burrow extends Module {
             );
             int old = mc.player.inventory.currentItem;
             this.switchToSlot(swapBlock);
-            if (rotate.get_value(true)) {
-                WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, true, true, false);
-            } else {
-                WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, false, true, false);
-            }
+            WurstplusBurrowUtil.placeBlock(oldPos, EnumHand.MAIN_HAND, rotate.get_value(true), true, false);
             this.switchToSlot(old);
             mc.player.connection.sendPacket(
                     new CPacketPlayer.Position(
@@ -158,7 +148,7 @@ public class Burrow extends Module {
                             false
                     )
             );
-            if(bypass.get_value(true) && !mc.player.isSneaking()) {
+            if (bypass.get_value(true) && !mc.player.isSneaking()) {
                 mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
                 mc.player.setSneaking(true);
                 mc.playerController.updateController();
@@ -171,8 +161,8 @@ public class Burrow extends Module {
     }
 
     @Override
-    public void disable(){
-        if(instant.get_value(true) && !nullCheck()){
+    public void disable() {
+        if (instant.get_value(true) && !nullCheck()) {
             this.setTimer(1f);
         }
     }
@@ -198,12 +188,12 @@ public class Burrow extends Module {
     private Vec3d getCenter(double posX, double posY, double posZ) {
         double x = Math.floor(posX) + 0.5D;
         double y = Math.floor(posY);
-        double z = Math.floor(posZ) + 0.5D ;
+        double z = Math.floor(posZ) + 0.5D;
 
         return new Vec3d(x, y, z);
     }
 
-    public boolean nullCheck(){
+    public boolean nullCheck() {
         return mc.player == null || mc.world == null;
     }
 

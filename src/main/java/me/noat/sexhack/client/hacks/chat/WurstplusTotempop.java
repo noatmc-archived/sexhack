@@ -2,8 +2,8 @@ package me.noat.sexhack.client.hacks.chat;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import me.zero.alpine.fork.listener.EventHandler;
@@ -17,23 +17,13 @@ import java.util.HashMap;
 
 public class WurstplusTotempop extends Module {
 
-    public WurstplusTotempop() {
-		super(WurstplusCategory.WURSTPLUS_CHAT);
-
-		this.name        = "Totem Pop Counter";
-		this.tag         = "TotemPopCounter";
-		this.description = "dude idk wurst+ is just outdated";
-    }
-
     public static final HashMap<String, Integer> totem_pop_counter = new HashMap<String, Integer>();
-
     public static ChatFormatting red = ChatFormatting.RED;
     public static ChatFormatting green = ChatFormatting.GREEN;
     public static ChatFormatting gold = ChatFormatting.GOLD;
     public static ChatFormatting grey = ChatFormatting.GRAY;
     public static ChatFormatting bold = ChatFormatting.BOLD;
     public static ChatFormatting reset = ChatFormatting.RESET;
-
     @EventHandler
     private final Listener<WurstplusEventPacket.ReceivePacket> packet_event = new Listener<>(event -> {
 
@@ -57,9 +47,9 @@ public class WurstplusTotempop extends Module {
                 if (entity == mc.player) return;
 
                 if (WurstplusFriendUtil.isFriend(entity.getName())) {
-                    WurstplusMessageUtil.client_message_simple( red + "" + bold + " TotemPop " + reset + grey + " > " + reset + "dude, " + bold + green + entity.getName() + reset + " has popped " + bold + count + reset + " totems. you should go help them");
+                    WurstplusMessageUtil.client_message_simple(red + "" + bold + " TotemPop " + reset + grey + " > " + reset + "dude, " + bold + green + entity.getName() + reset + " has popped " + bold + count + reset + " totems. you should go help them");
                 } else {
-                    WurstplusMessageUtil.client_message_simple( red + "" + bold + " TotemPop " + reset + grey + " > " + reset + "dude, " + bold + red + entity.getName() + reset + " has popped " + bold + count + reset + " totems. what a loser");
+                    WurstplusMessageUtil.client_message_simple(red + "" + bold + " TotemPop " + reset + grey + " > " + reset + "dude, " + bold + red + entity.getName() + reset + " has popped " + bold + count + reset + " totems. what a loser");
                 }
 
             }
@@ -68,8 +58,16 @@ public class WurstplusTotempop extends Module {
 
     });
 
+    public WurstplusTotempop() {
+        super(WurstplusCategory.WURSTPLUS_CHAT);
+
+        this.name = "Totem Pop Counter";
+        this.tag = "TotemPopCounter";
+        this.description = "dude idk wurst+ is just outdated";
+    }
+
     @Override
-	public void update() {
+    public void update() {
 
         for (EntityPlayer player : mc.world.playerEntities) {
 
@@ -84,15 +82,15 @@ public class WurstplusTotempop extends Module {
                 if (player == mc.player) continue;
 
                 if (WurstplusFriendUtil.isFriend(player.getName())) {
-                    WurstplusMessageUtil.client_message_simple( red + "" + bold + " TotemPop " + reset + grey + " > " + reset + "dude, " + bold + green + player.getName() + reset + " just fucking DIED after popping " + bold + count + reset + " totems. RIP :pray:");
+                    WurstplusMessageUtil.client_message_simple(red + "" + bold + " TotemPop " + reset + grey + " > " + reset + "dude, " + bold + green + player.getName() + reset + " just fucking DIED after popping " + bold + count + reset + " totems. RIP :pray:");
                 } else {
-                    WurstplusMessageUtil.client_message_simple( red + "" + bold + " TotemPop " + reset + grey + " > " + reset + "dude, " + bold + red + player.getName() + reset + " just fucking DIED after popping " + bold + count + reset + " totems");
+                    WurstplusMessageUtil.client_message_simple(red + "" + bold + " TotemPop " + reset + grey + " > " + reset + "dude, " + bold + red + player.getName() + reset + " just fucking DIED after popping " + bold + count + reset + " totems");
                 }
 
             }
 
         }
 
-	}
+    }
 
 }

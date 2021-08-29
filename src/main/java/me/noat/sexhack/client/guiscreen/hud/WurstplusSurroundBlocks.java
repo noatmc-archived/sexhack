@@ -19,14 +19,13 @@ public class WurstplusSurroundBlocks extends WurstplusPinnable {
 
         GlStateManager.pushMatrix();
         RenderHelper.enableGUIStandardItemLighting();
-        
+
         Block west = get_neg_x();
         Block east = get_pos_x();
         Block north = get_neg_z();
         Block south = get_pos_z();
 
-        switch (WurstplusPlayerUtil.GetFacing())
-        {
+        switch (WurstplusPlayerUtil.GetFacing()) {
             case North:
                 west = get_neg_x();
                 east = get_pos_x();
@@ -55,15 +54,15 @@ public class WurstplusSurroundBlocks extends WurstplusPinnable {
                 break;
         }
 
-        mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(west), this.get_x()-20, this.get_y());
-        mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(east), this.get_x()+20, this.get_y());
-        mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(north), this.get_x(), this.get_y()-20);
-        mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(south), this.get_x(), this.get_y()+20);
+        mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(west), this.get_x() - 20, this.get_y());
+        mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(east), this.get_x() + 20, this.get_y());
+        mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(north), this.get_x(), this.get_y() - 20);
+        mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(south), this.get_x(), this.get_y() + 20);
 
         // create_line(line, this.docking(1, line), 2, nl_r, nl_g, nl_b);
 
-        RenderHelper.disableStandardItemLighting();			
-		GlStateManager.popMatrix();
+        RenderHelper.disableStandardItemLighting();
+        GlStateManager.popMatrix();
 
         this.set_width(50);
         this.set_height(25);
@@ -72,36 +71,24 @@ public class WurstplusSurroundBlocks extends WurstplusPinnable {
     public Block get_neg_x() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
         Block b = mc.world.getBlockState(player_block.west()).getBlock();
-        if (b != null) {
-            return b;
-        }
-        return null;
+        return b;
     }
 
     public Block get_pos_x() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
         Block b = mc.world.getBlockState(player_block.east()).getBlock();
-        if (b != null) {
-            return b;
-        }
-        return null;
+        return b;
     }
 
     public Block get_pos_z() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
         Block b = mc.world.getBlockState(player_block.south()).getBlock();
-        if (b != null) {
-            return b;
-        }
-        return null;
+        return b;
     }
 
     public Block get_neg_z() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
         Block b = mc.world.getBlockState(player_block.north()).getBlock();
-        if (b != null) {
-            return b;
-        }
-        return null;
+        return b;
     }
 }

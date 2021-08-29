@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
@@ -10,18 +10,16 @@ import net.minecraft.item.Item;
 
 public class WurstplusAutoTotem extends Module {
 
+    Setting delay = create("Delay", "TotemDelay", false);
+    private boolean switching = false;
+    private int last_slot;
     public WurstplusAutoTotem() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
-        this.name        = "Auto Totem";
-        this.tag         = "AutoTotem";
+        this.name = "Auto Totem";
+        this.tag = "AutoTotem";
         this.description = "put totem in offhand";
     }
-
-    Setting delay = create("Delay", "TotemDelay", false);
-
-    private boolean switching = false;
-    private int last_slot;
 
     @Override
     public void update() {
@@ -43,9 +41,9 @@ public class WurstplusAutoTotem extends Module {
 
     private int get_item_slot() {
         if (Items.TOTEM_OF_UNDYING == mc.player.getHeldItemOffhand().getItem()) return -1;
-        for(int i = 36; i >= 0; i--) {
+        for (int i = 36; i >= 0; i--) {
             final Item item = mc.player.inventory.getStackInSlot(i).getItem();
-            if(item == Items.TOTEM_OF_UNDYING) {
+            if (item == Items.TOTEM_OF_UNDYING) {
                 if (i < 9) {
                     return -1;
                 }

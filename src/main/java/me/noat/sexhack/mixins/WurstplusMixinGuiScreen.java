@@ -42,7 +42,7 @@ public class WurstplusMixinGuiScreen {
                     // We'll take over!
                     info.cancel();
 
-                    NonNullList<ItemStack> nonnulllist = NonNullList.<ItemStack>withSize(27, ItemStack.EMPTY);
+                    NonNullList<ItemStack> nonnulllist = NonNullList.withSize(27, ItemStack.EMPTY);
                     ItemStackHelper.loadAllItems(blockEntityTag, nonnulllist);
 
                     GlStateManager.enableBlend();
@@ -52,11 +52,11 @@ public class WurstplusMixinGuiScreen {
                     GlStateManager.disableDepth();
 
 
-                    int width = Math.max(144, fontRenderer.getStringWidth(stack.getDisplayName())+3); //9*16
+                    int width = Math.max(144, fontRenderer.getStringWidth(stack.getDisplayName()) + 3); //9*16
 
                     int x1 = x + 12;
                     int y1 = y - 12;
-                    int height = 48+9; //3*16
+                    int height = 48 + 9; //3*16
 
                     this.itemRender.zLevel = 300.0F;
                     this.drawGradientRectP(x1 - 3, y1 - 4, x1 + width + 3, y1 - 3, -267386864, -267386864);
@@ -69,7 +69,7 @@ public class WurstplusMixinGuiScreen {
                     this.drawGradientRectP(x1 - 3, y1 - 3, x1 + width + 3, y1 - 3 + 1, 1347420415, 1347420415);
                     this.drawGradientRectP(x1 - 3, y1 + height + 2, x1 + width + 3, y1 + height + 3, 1344798847, 1344798847);
 
-                    fontRenderer.drawString(stack.getDisplayName(), x+12, y-12, 0xffffff);
+                    fontRenderer.drawString(stack.getDisplayName(), x + 12, y - 12, 0xffffff);
 
                     GlStateManager.enableBlend();
                     GlStateManager.enableAlpha();
@@ -97,16 +97,15 @@ public class WurstplusMixinGuiScreen {
         }
     }
 
-    private void drawGradientRectP(int left, int top, int right, int bottom, int startColor, int endColor)
-    {
-        float f = (float)(startColor >> 24 & 255) / 255.0F;
-        float f1 = (float)(startColor >> 16 & 255) / 255.0F;
-        float f2 = (float)(startColor >> 8 & 255) / 255.0F;
-        float f3 = (float)(startColor & 255) / 255.0F;
-        float f4 = (float)(endColor >> 24 & 255) / 255.0F;
-        float f5 = (float)(endColor >> 16 & 255) / 255.0F;
-        float f6 = (float)(endColor >> 8 & 255) / 255.0F;
-        float f7 = (float)(endColor & 255) / 255.0F;
+    private void drawGradientRectP(int left, int top, int right, int bottom, int startColor, int endColor) {
+        float f = (float) (startColor >> 24 & 255) / 255.0F;
+        float f1 = (float) (startColor >> 16 & 255) / 255.0F;
+        float f2 = (float) (startColor >> 8 & 255) / 255.0F;
+        float f3 = (float) (startColor & 255) / 255.0F;
+        float f4 = (float) (endColor >> 24 & 255) / 255.0F;
+        float f5 = (float) (endColor >> 16 & 255) / 255.0F;
+        float f6 = (float) (endColor >> 8 & 255) / 255.0F;
+        float f7 = (float) (endColor & 255) / 255.0F;
         GlStateManager.disableTexture2D();
         GlStateManager.enableBlend();
         GlStateManager.disableAlpha();

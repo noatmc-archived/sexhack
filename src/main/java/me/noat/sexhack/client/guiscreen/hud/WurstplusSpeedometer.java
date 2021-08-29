@@ -29,7 +29,7 @@ public class WurstplusSpeedometer extends WurstplusPinnable {
         create_line(bps, this.docking(1, bps), 2, nl_r, nl_g, nl_b, nl_a);
 
         this.set_width(this.get(bps, "width") + 2);
-        this.set_height(this.get(bps, "height")  + 2);
+        this.set_height(this.get(bps, "height") + 2);
 
     }
 

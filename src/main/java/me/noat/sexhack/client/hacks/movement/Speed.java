@@ -3,8 +3,8 @@ package me.noat.sexhack.client.hacks.movement;
 import me.noat.sexhack.client.event.events.WurstplusEventMove;
 import me.noat.sexhack.client.event.events.WurstplusEventPlayerJump;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.init.MobEffects;
@@ -14,76 +14,22 @@ import net.minecraft.util.math.MathHelper;
 
 public class Speed extends Module {
 
-    public Speed() {
-        super(WurstplusCategory.WURSTPLUS_MOVEMENT);
-
-        this.name        = "Strafe";
-        this.tag         = "Strafe";
-        this.description = "its like running, but faster";
-    }
-
     Setting speed_mode = create("Mode", "StrafeMode", "Strafe", combobox("Strafe", "On Ground"));
     Setting auto_sprint = create("Auto Sprint", "StrafeSprint", true);
     Setting on_water = create("On Water", "StrafeOnWater", true);
     Setting auto_jump = create("Auto Jump", "StrafeAutoJump", true);
     Setting backward = create("Backwards", "StrafeBackwards", true);
     Setting bypass = create("Bypass", "StrafeBypass", false);
-
-    @Override
-    public void update() {
-
-        if (mc.player.isRiding()) return;
-
-        if (mc.player.isInWater() || mc.player.isInLava()) {
-            if (!on_water.get_value(true)) return;
-        }
-
-        if (mc.player.moveForward != 0 || mc.player.moveStrafing != 0) {
-
-            if (mc.player.moveForward < 0 && !backward.get_value(true)) return;
-
-            if (auto_sprint.get_value(true)) {
-                mc.player.setSprinting(true);
-            }
-
-            if (mc.player.onGround && speed_mode.in("Strafe")) {
-
-                if (auto_jump.get_value(true)) {
-                    mc.player.motionY = 0.405f;
-                }
-
-                final float yaw = get_rotation_yaw() * 0.017453292F;
-                mc.player.motionX -= MathHelper.sin(yaw) * 0.2f;
-                mc.player.motionZ += MathHelper.cos(yaw) * 0.2f;
-
-            } else if (mc.player.onGround && speed_mode.in("On Ground")) {
-
-                final float yaw = get_rotation_yaw();
-                mc.player.motionX -= MathHelper.sin(yaw) * 0.2f;
-                mc.player.motionZ += MathHelper.cos(yaw) * 0.2f;
-                mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY+0.4, mc.player.posZ, false));
-
-            }
-
-        }
-
-        if (mc.gameSettings.keyBindJump.isKeyDown() && mc.player.onGround) {
-            mc.player.motionY = 0.405f;
-        }
-
-    }
-
     @EventHandler
-    private Listener<WurstplusEventPlayerJump> on_jump = new Listener<>(event -> {
+    private final Listener<WurstplusEventPlayerJump> on_jump = new Listener<>(event -> {
 
         if (speed_mode.in("Strafe")) {
             event.cancel();
         }
 
     });
-
     @EventHandler
-    private Listener<WurstplusEventMove> player_move = new Listener<>(event -> {
+    private final Listener<WurstplusEventMove> player_move = new Listener<>(event -> {
 
         if (speed_mode.in("On Ground")) return;
 
@@ -91,7 +37,8 @@ public class Speed extends Module {
             if (!speed_mode.get_value(true)) return;
         }
 
-        if (mc.player.isSneaking() || mc.player.isOnLadder() || mc.player.isInWeb || mc.player.isInLava() || mc.player.isInWater() || mc.player.capabilities.isFlying) return;
+        if (mc.player.isSneaking() || mc.player.isOnLadder() || mc.player.isInWeb || mc.player.isInLava() || mc.player.isInWater() || mc.player.capabilities.isFlying)
+            return;
 
         float player_speed = 0.2873f;
         float move_forward = mc.player.movementInput.moveForward;
@@ -100,7 +47,7 @@ public class Speed extends Module {
 
         if (mc.player.isPotionActive(MobEffects.SPEED)) {
             final int amp = mc.player.getActivePotionEffect(MobEffects.SPEED).getAmplifier();
-            player_speed *= (1.2f * (amp+1));
+            player_speed *= (1.2f * (amp + 1));
         }
 
         if (!bypass.get_value(true)) {
@@ -134,6 +81,58 @@ public class Speed extends Module {
 
     });
 
+    public Speed() {
+        super(WurstplusCategory.WURSTPLUS_MOVEMENT);
+
+        this.name = "Strafe";
+        this.tag = "Strafe";
+        this.description = "its like running, but faster";
+    }
+
+    @Override
+    public void update() {
+
+        if (mc.player.isRiding()) return;
+
+        if (mc.player.isInWater() || mc.player.isInLava()) {
+            if (!on_water.get_value(true)) return;
+        }
+
+        if (mc.player.moveForward != 0 || mc.player.moveStrafing != 0) {
+
+            if (mc.player.moveForward < 0 && !backward.get_value(true)) return;
+
+            if (auto_sprint.get_value(true)) {
+                mc.player.setSprinting(true);
+            }
+
+            if (mc.player.onGround && speed_mode.in("Strafe")) {
+
+                if (auto_jump.get_value(true)) {
+                    mc.player.motionY = 0.405f;
+                }
+
+                final float yaw = get_rotation_yaw() * 0.017453292F;
+                mc.player.motionX -= MathHelper.sin(yaw) * 0.2f;
+                mc.player.motionZ += MathHelper.cos(yaw) * 0.2f;
+
+            } else if (mc.player.onGround && speed_mode.in("On Ground")) {
+
+                final float yaw = get_rotation_yaw();
+                mc.player.motionX -= MathHelper.sin(yaw) * 0.2f;
+                mc.player.motionZ += MathHelper.cos(yaw) * 0.2f;
+                mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 0.4, mc.player.posZ, false));
+
+            }
+
+        }
+
+        if (mc.gameSettings.keyBindJump.isKeyDown() && mc.player.onGround) {
+            mc.player.motionY = 0.405f;
+        }
+
+    }
+
     private float get_rotation_yaw() {
         float rotation_yaw = mc.player.rotationYaw;
         if (mc.player.moveForward < 0.0f) {
@@ -142,8 +141,7 @@ public class Speed extends Module {
         float n = 1.0f;
         if (mc.player.moveForward < 0.0f) {
             n = -0.5f;
-        }
-        else if (mc.player.moveForward > 0.0f) {
+        } else if (mc.player.moveForward > 0.0f) {
             n = 0.5f;
         }
         if (mc.player.moveStrafing > 0.0f) {

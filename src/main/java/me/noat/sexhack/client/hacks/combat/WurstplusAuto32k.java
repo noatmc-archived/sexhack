@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import net.minecraft.block.BlockShulkerBox;
@@ -24,31 +24,27 @@ import java.util.Objects;
 
 public class WurstplusAuto32k extends Module {
 
-    public WurstplusAuto32k() {
-        super(WurstplusCategory.WURSTPLUS_COMBAT);
-
-        this.name        = "Auto 32k";
-        this.tag         = "Auto32k";
-        this.description = "fastest in the west";
-    }
-
-    private BlockPos pos;
-
-    private int hopper_slot;
-    private int redstone_slot;
-    private int shulker_slot;
-    private int ticks_past;
-    private int[] rot;
-
-    private boolean setup;
-    private boolean place_redstone;
-    private boolean dispenser_done;
-  
     Setting place_mode = create("Place Mode", "AutotkPlaceMode", "Auto", combobox("Auto", "Looking", "Hopper"));
     Setting swing = create("Swing", "AutotkSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
     Setting delay = create("Delay", "AutotkDelay", 4, 0, 10);
     Setting rotate = create("Rotate", "Autotkrotate", false);
     Setting debug = create("Debug", "AutotkDebug", false);
+    private BlockPos pos;
+    private int hopper_slot;
+    private int redstone_slot;
+    private int shulker_slot;
+    private int ticks_past;
+    private int[] rot;
+    private boolean setup;
+    private boolean place_redstone;
+    private boolean dispenser_done;
+    public WurstplusAuto32k() {
+        super(WurstplusCategory.WURSTPLUS_COMBAT);
+
+        this.name = "Auto 32k";
+        this.tag = "Auto32k";
+        this.description = "fastest in the west";
+    }
 
     @Override
     protected void enable() {
@@ -96,7 +92,7 @@ public class WurstplusAuto32k extends Module {
             double pos_x = (double) pos.getX() - mc.player.posX;
             double pos_z = (double) pos.getZ() - mc.player.posZ;
 
-            rot = Math.abs(pos_x) > Math.abs(pos_z) ? (pos_x > 0.0D ? new int[] {-1, 0} : new int[] {1, 0}) : (pos_z > 0.0D ? new int[] {0, -1} : new int[] {0, 1});
+            rot = Math.abs(pos_x) > Math.abs(pos_z) ? (pos_x > 0.0D ? new int[]{-1, 0} : new int[]{1, 0}) : (pos_z > 0.0D ? new int[]{0, -1} : new int[]{0, 1});
 
             if (WurstplusBlockUtil.canPlaceBlock(this.pos) && WurstplusBlockUtil.isBlockEmpty(this.pos) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(this.rot[0], 0, this.rot[1])) &&
                     WurstplusBlockUtil.isBlockEmpty(this.pos.add(0, 1, 0)) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(0, 2, 0)) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(this.rot[0], 1, this.rot[1]))) {
@@ -117,11 +113,10 @@ public class WurstplusAuto32k extends Module {
                 for (int y = -1; y <= 1; y++) {
                     for (int z = -2; z <= 2; z++) {
 
-                        this.rot = Math.abs(x) > Math.abs(z) ? (x > 0 ? new int[] {-1, 0} : new int[] {1, 0}) : (z > 0 ? new int[] {0, -1} : new int[] {0, 1});
+                        this.rot = Math.abs(x) > Math.abs(z) ? (x > 0 ? new int[]{-1, 0} : new int[]{1, 0}) : (z > 0 ? new int[]{0, -1} : new int[]{0, 1});
                         this.pos = mc.player.getPosition().add(x, y, z);
 
-                        if (mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add(x - rot[0] / 2f, (double) y + 0.5D, z + rot[1] / 2)) <= 4.5D && mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add((double) x + 0.5D, (double) y + 2.5D, (double) z + 0.5D)) <= 4.5D && WurstplusBlockUtil.canPlaceBlock(this.pos) && WurstplusBlockUtil.isBlockEmpty(this.pos) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(this.rot[0], 0, this.rot[1])) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(0, 1, 0)) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(0, 2, 0)) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(this.rot[0], 1, this.rot[1])))
-                        {
+                        if (mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add(x - rot[0] / 2f, (double) y + 0.5D, z + rot[1] / 2)) <= 4.5D && mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add((double) x + 0.5D, (double) y + 2.5D, (double) z + 0.5D)) <= 4.5D && WurstplusBlockUtil.canPlaceBlock(this.pos) && WurstplusBlockUtil.isBlockEmpty(this.pos) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(this.rot[0], 0, this.rot[1])) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(0, 1, 0)) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(0, 2, 0)) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(this.rot[0], 1, this.rot[1]))) {
                             WurstplusBlockUtil.placeBlock(this.pos, block_slot, rotate.get_value(true), false, swing);
                             WurstplusBlockUtil.rotatePacket((double) this.pos.add(-this.rot[0], 1, -this.rot[1]).getX() + 0.5D, this.pos.getY() + 1, (double) this.pos.add(-this.rot[0], 1, -this.rot[1]).getZ() + 0.5D);
                             WurstplusBlockUtil.placeBlock(this.pos.up(), dispenser_slot, false, false, swing);
@@ -141,7 +136,7 @@ public class WurstplusAuto32k extends Module {
             for (int z = -2; z <= 2; z++) {
                 for (int y = -1; y <= 2; y++) {
                     for (int x = -2; x <= 2; x++) {
-                        if ((z != 0 || y != 0 || x != 0) && (z != 0 || y != 1 || x != 0) && WurstplusBlockUtil.isBlockEmpty(mc.player.getPosition().add(z, y, x)) && mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add((double) z + 0.5D, (double) y + 0.5D, (double) x + 0.5D)) < 4.5D && WurstplusBlockUtil.isBlockEmpty(mc.player.getPosition().add(z, y + 1, x)) && mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add((double) z + 0.5D, (double) y + 1.5D, (double) x + 0.5D)) < 4.5D)  {
+                        if ((z != 0 || y != 0 || x != 0) && (z != 0 || y != 1 || x != 0) && WurstplusBlockUtil.isBlockEmpty(mc.player.getPosition().add(z, y, x)) && mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add((double) z + 0.5D, (double) y + 0.5D, (double) x + 0.5D)) < 4.5D && WurstplusBlockUtil.isBlockEmpty(mc.player.getPosition().add(z, y + 1, x)) && mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add((double) z + 0.5D, (double) y + 1.5D, (double) x + 0.5D)) < 4.5D) {
 
                             WurstplusBlockUtil.placeBlock(mc.player.getPosition().add(z, y, x), hopper_slot, rotate.get_value(true), false, swing);
                             WurstplusBlockUtil.placeBlock(mc.player.getPosition().add(z, y + 1, x), shulker_slot, rotate.get_value(true), false, swing);
@@ -210,22 +205,19 @@ public class WurstplusAuto32k extends Module {
 
                 int slot;
                 for (slot = 32; slot <= 40; slot++) {
-                    if (EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, gui.inventorySlots.getSlot(slot).getStack()) > 5)  {
+                    if (EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, gui.inventorySlots.getSlot(slot).getStack()) > 5) {
                         mc.player.inventory.currentItem = slot - 32;
                         break;
                     }
                 }
 
                 if (!(gui.inventorySlots.inventorySlots.get(0).getStack().getItem() instanceof ItemAir)) {
-                    boolean swapReady = true;
-                    if (((GuiContainer)mc.currentScreen).inventorySlots.getSlot(0).getStack().isEmpty) {
-                        swapReady = false;
-                    }
-                    if (!((GuiContainer)mc.currentScreen).inventorySlots.getSlot(shulker_slot + 32).getStack().isEmpty) {
+                    boolean swapReady = !((GuiContainer) mc.currentScreen).inventorySlots.getSlot(0).getStack().isEmpty;
+                    if (!((GuiContainer) mc.currentScreen).inventorySlots.getSlot(shulker_slot + 32).getStack().isEmpty) {
                         swapReady = false;
                     }
                     if (swapReady) {
-                        mc.playerController.windowClick(((GuiContainer)mc.currentScreen).inventorySlots.windowId, 0, shulker_slot, ClickType.SWAP, mc.player);
+                        mc.playerController.windowClick(((GuiContainer) mc.currentScreen).inventorySlots.windowId, 0, shulker_slot, ClickType.SWAP, mc.player);
                         this.disable();
                     }
                 }

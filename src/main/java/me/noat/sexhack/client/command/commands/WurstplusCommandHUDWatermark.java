@@ -3,8 +3,8 @@ package me.noat.sexhack.client.command.commands;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.command.WurstplusCommand;
-import me.noat.sexhack.client.util.WurstplusWatermarkUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
+import me.noat.sexhack.client.util.WurstplusWatermarkUtil;
 
 public class WurstplusCommandHUDWatermark extends WurstplusCommand {
 
@@ -30,7 +30,7 @@ public class WurstplusCommandHUDWatermark extends WurstplusCommand {
                 wm.append(word).append(" ");
             }
             WurstplusWatermarkUtil.set_message(wm.toString());
-            WurstplusMessageUtil.send_client_message("watermark message changed to " + ChatFormatting.BOLD + wm.toString());
+            WurstplusMessageUtil.send_client_message("watermark message changed to " + ChatFormatting.BOLD + wm);
             SexHack.get_config_manager().save_settings();
             return true;
         }

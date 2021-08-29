@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.misc;
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSoulSand;
 import net.minecraft.init.Items;
@@ -11,6 +11,9 @@ import net.minecraft.item.ItemStack;
 
 public class WurstplusAutoWither extends Module {
 
+    Setting range = create("Range", "WitherRange", 4, 0, 6);
+    private int head_slot;
+    private int sand_slot;
     public WurstplusAutoWither() {
         super(WurstplusCategory.WURSTPLUS_MISC);
 
@@ -18,11 +21,6 @@ public class WurstplusAutoWither extends Module {
         this.tag = "AutoWither";
         this.description = "makes withers";
     }
-
-    Setting range = create("Range", "WitherRange", 4, 0, 6);
-
-    private int head_slot;
-    private int sand_slot;
 
     @Override
     protected void enable() {
@@ -62,9 +60,7 @@ public class WurstplusAutoWither extends Module {
 
         }
 
-        if (count != 2) {
-            return false;
-        } return true;
+        return count == 2;
 
     }
 

@@ -18,6 +18,24 @@ public class WurstplusEffectHud extends WurstplusPinnable {
         super("Effect Hud", "effecthud", 1, 0, 0);
     }
 
+    public static String get_friendly_potion_name(PotionEffect potionEffect) {
+
+        String effectName = I18n.format(potionEffect.getPotion().getName());
+        if (potionEffect.getAmplifier() == 1) {
+            effectName = effectName + " " + I18n.format("enchantment.level.2");
+        } else if (potionEffect.getAmplifier() == 2) {
+            effectName = effectName + " " + I18n.format("enchantment.level.3");
+        } else if (potionEffect.getAmplifier() == 3) {
+            effectName = effectName + " " + I18n.format("enchantment.level.4");
+        }
+
+        return effectName;
+    }
+
+    public static String get_name_duration_string(PotionEffect potionEffect) {
+        return String.format("%s (%s)", get_friendly_potion_name(potionEffect), Potion.getPotionDurationString(potionEffect, 1.0F));
+    }
+
     @Override
     public void render() {
 
@@ -69,24 +87,6 @@ public class WurstplusEffectHud extends WurstplusPinnable {
         this.set_width(this.get("weakness", "width") + 12);
         this.set_height(this.get("weakness", "height") + 36);
 
-    }
-
-    public static String get_friendly_potion_name(PotionEffect potionEffect) {
-        
-        String effectName = I18n.format(potionEffect.getPotion().getName());
-        if (potionEffect.getAmplifier() == 1) {
-            effectName = effectName + " " + I18n.format("enchantment.level.2");
-        } else if (potionEffect.getAmplifier() == 2) {
-            effectName = effectName + " " + I18n.format("enchantment.level.3");
-        } else if (potionEffect.getAmplifier() == 3) {
-            effectName = effectName + " " + I18n.format("enchantment.level.4");
-        }
-
-        return effectName;
-    }
-
-    public static String get_name_duration_string(PotionEffect potionEffect) {
-        return String.format("%s (%s)", get_friendly_potion_name(potionEffect), Potion.getPotionDurationString(potionEffect, 1.0F));
     }
 
 }

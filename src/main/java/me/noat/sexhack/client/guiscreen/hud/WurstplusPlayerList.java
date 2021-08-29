@@ -11,12 +11,24 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 public class WurstplusPlayerList extends WurstplusPinnable {
-    
+
+    DecimalFormat df_health = new DecimalFormat("#.#");
+
     public WurstplusPlayerList() {
         super("Player List", "PlayerList", 1, 0, 0);
     }
 
-    DecimalFormat df_health = new DecimalFormat("#.#");
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+        List<Map.Entry<K, V>> list =
+                new LinkedList<>(map.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+
+        Map<K, V> result = new LinkedHashMap<>();
+        for (Map.Entry<K, V> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+        return result;
+    }
 
     @Override
     public void render() {
@@ -24,9 +36,9 @@ public class WurstplusPlayerList extends WurstplusPinnable {
         int counter = 12;
 
         int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
-		int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
-		int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
-		int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").get_value(1);
+        int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
+        int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
+        int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").get_value(1);
 
         df_health.setRoundingMode(RoundingMode.HALF_UP);
 
@@ -57,7 +69,7 @@ public class WurstplusPlayerList extends WurstplusPinnable {
 
             sb_health.append(hp);
 
-            players.put(posString + " " + sb_health.toString() + " " + ((WurstplusFriendUtil.isFriend(player.getName()) ? ChatFormatting.GREEN : ChatFormatting.RESET)) + player.getName(), (int) mc.player.getDistance(player));
+            players.put(posString + " " + sb_health + " " + ((WurstplusFriendUtil.isFriend(player.getName()) ? ChatFormatting.GREEN : ChatFormatting.RESET)) + player.getName(), (int) mc.player.getDistance(player));
 
         }
 
@@ -76,24 +88,12 @@ public class WurstplusPlayerList extends WurstplusPinnable {
             counter += 12;
 
             String line = player.getKey() + " " + player.getValue();
-		    create_line(line, this.docking(1, line), counter, nl_r, nl_g, nl_b, nl_a);
+            create_line(line, this.docking(1, line), counter, nl_r, nl_g, nl_b, nl_a);
         }
 
         this.set_width(24);
-		this.set_height(counter + 2);
+        this.set_height(counter + 2);
 
-    }
-
-    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
-        List<Map.Entry<K, V>> list =
-                new LinkedList<>(map.entrySet());
-        list.sort(Map.Entry.comparingByValue());
-
-        Map<K, V> result = new LinkedHashMap<>();
-        for (Map.Entry<K, V> entry : list) {
-            result.put(entry.getKey(), entry.getValue());
-        }
-        return result;
     }
 
 }

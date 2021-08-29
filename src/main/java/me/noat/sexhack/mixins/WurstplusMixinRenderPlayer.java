@@ -13,16 +13,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class WurstplusMixinRenderPlayer {
 
     @Inject(method = "renderEntityName", at = @At("HEAD"), cancellable = true)
-	public void renderLivingLabel(AbstractClientPlayer entityIn, double x, double y, double z, String name, double distanceSq, CallbackInfo info) {
+    public void renderLivingLabel(AbstractClientPlayer entityIn, double x, double y, double z, String name, double distanceSq, CallbackInfo info) {
 
-		WurstplusEventRenderName event_packet = new WurstplusEventRenderName(entityIn, x, y, z, name, distanceSq);
+        WurstplusEventRenderName event_packet = new WurstplusEventRenderName(entityIn, x, y, z, name, distanceSq);
 
         WurstplusEventBus.EVENT_BUS.post(event_packet);
-        
+
         if (event_packet.isCancelled()) {
             info.cancel();
         }
 
-	}
-    
+    }
+
 }

@@ -18,45 +18,40 @@ public class WurstplusMathUtil {
 
     private static final Minecraft mc = Minecraft.getMinecraft();
     private static Random random = new Random();
-    
-    public static Vec3d interpolateEntity(Entity entity, float time)
-    {
+
+    static {
+        random = new Random();
+    }
+
+    public static Vec3d interpolateEntity(Entity entity, float time) {
         return new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * time,
                 entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * time,
                 entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * time);
     }
 
-    public static double[] directionSpeedNoForward(double speed)
-    {
+    public static double[] directionSpeedNoForward(double speed) {
         final Minecraft mc = Minecraft.getMinecraft();
         float forward = 1f;
-        
+
         if (mc.gameSettings.keyBindLeft.isPressed() || mc.gameSettings.keyBindRight.isPressed() || mc.gameSettings.keyBindBack.isPressed() || mc.gameSettings.keyBindForward.isPressed())
             forward = mc.player.movementInput.moveForward;
-        
+
         float side = mc.player.movementInput.moveStrafe;
         float yaw = mc.player.prevRotationYaw
                 + (mc.player.rotationYaw - mc.player.prevRotationYaw) * mc.getRenderPartialTicks();
 
-        if (forward != 0)
-        {
-            if (side > 0)
-            {
+        if (forward != 0) {
+            if (side > 0) {
                 yaw += (forward > 0 ? -45 : 45);
-            }
-            else if (side < 0)
-            {
+            } else if (side < 0) {
                 yaw += (forward > 0 ? 45 : -45);
             }
             side = 0;
 
             // forward = clamp(forward, 0, 1);
-            if (forward > 0)
-            {
+            if (forward > 0) {
                 forward = 1;
-            }
-            else if (forward < 0)
-            {
+            } else if (forward < 0) {
                 forward = -1;
             }
         }
@@ -66,70 +61,57 @@ public class WurstplusMathUtil {
         final double posX = (forward * speed * cos + side * speed * sin);
         final double posZ = (forward * speed * sin - side * speed * cos);
         return new double[]
-        { posX, posZ };
+                {posX, posZ};
     }
-    
-    public static Vec3d mult(Vec3d factor, Vec3d multiplier)
-    {
+
+    public static Vec3d mult(Vec3d factor, Vec3d multiplier) {
         return new Vec3d(factor.x * multiplier.x, factor.y * multiplier.y, factor.z * multiplier.z);
     }
 
-    public static Vec3d mult(Vec3d factor, float multiplier)
-    {
+    public static Vec3d mult(Vec3d factor, float multiplier) {
         return new Vec3d(factor.x * multiplier, factor.y * multiplier, factor.z * multiplier);
     }
 
-    public static Vec3d div(Vec3d factor, Vec3d divisor)
-    {
+    public static Vec3d div(Vec3d factor, Vec3d divisor) {
         return new Vec3d(factor.x / divisor.x, factor.y / divisor.y, factor.z / divisor.z);
     }
 
-    public static Vec3d div(Vec3d factor, float divisor)
-    {
+    public static Vec3d div(Vec3d factor, float divisor) {
         return new Vec3d(factor.x / divisor, factor.y / divisor, factor.z / divisor);
     }
 
-    public static float clamp2(float num, float min, float max)
-    {
-        if (num < min)
-        {
+    public static float clamp2(float num, float min, float max) {
+        if (num < min) {
             return min;
-        }
-        else
-        {
+        } else {
             return num > max ? max : num;
         }
     }
 
     // linearly maps value from the range (a..b) to (c..d)
-    public static double map(double value, double a, double b, double c, double d)
-    {
+    public static double map(double value, double a, double b, double c, double d) {
         // first map value from (a..b) to (0..1)
         value = (value - a) / (b - a);
         // then map it from (0..1) to (c..d) and return it
         return c + value * (d - c);
     }
 
-    public static double linear(double from, double to, double incline)
-    {
+    public static double linear(double from, double to, double incline) {
         return (from < to - incline) ? (from + incline) : ((from > to + incline) ? (from - incline) : to);
     }
 
-    public static double parabolic(double from, double to, double incline)
-    {
+    public static double parabolic(double from, double to, double incline) {
         return from + (to - from) / incline;
     }
 
-    public static double getDistance(Vec3d pos, double x, double y, double z)
-    {
+    public static double getDistance(Vec3d pos, double x, double y, double z) {
         final double deltaX = pos.x - x;
         final double deltaY = pos.y - y;
         final double deltaZ = pos.z - z;
-        return (double) MathHelper.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
+        return MathHelper.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
     }
 
-    public static double[] calcIntersection(double[] line, double[] line2)
-    {
+    public static double[] calcIntersection(double[] line, double[] line2) {
         final double a1 = line[3] - line[1];
         final double b1 = line[0] - line[2];
         final double c1 = a1 * line[0] + b1 * line[1];
@@ -141,14 +123,13 @@ public class WurstplusMathUtil {
         final double delta = a1 * b2 - a2 * b1;
 
         return new double[]
-        { (b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta };
+                {(b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta};
     }
-    
-    public static double calculateAngle(double x1, double y1, double x2, double y2)
-    {
+
+    public static double calculateAngle(double x1, double y1, double x2, double y2) {
         double angle = Math.toDegrees(Math.atan2(x2 - x1, y2 - y1));
         // Keep angle between 0 and 360
-        angle = angle + Math.ceil( -angle / 360 ) * 360;
+        angle = angle + Math.ceil(-angle / 360) * 360;
 
         return angle;
     }
@@ -225,15 +206,6 @@ public class WurstplusMathUtil {
         return new Vec3d(Math.cos(degToRad(yaw + 90.0f)), 0.0, Math.sin(degToRad(yaw + 90.0f)));
     }
 
-    public static float round(final float value, final int places) {
-        if (places < 0) {
-            throw new IllegalArgumentException();
-        }
-        BigDecimal bd = BigDecimal.valueOf(value);
-        bd = bd.setScale(places, RoundingMode.FLOOR);
-        return bd.floatValue();
-    }
-
 //    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(final Map<K, V> map, final boolean descending) {
 //        final List<Map.Entry<K, V>> list = new LinkedList<Map.Entry<K, V>>(map.entrySet());
 //        if (descending) {
@@ -248,6 +220,15 @@ public class WurstplusMathUtil {
 //        }
 //        return result;
 //    }
+
+    public static float round(final float value, final int places) {
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.FLOOR);
+        return bd.floatValue();
+    }
 
     public static String getTimeOfDay() {
         final Calendar c = Calendar.getInstance();
@@ -284,15 +265,13 @@ public class WurstplusMathUtil {
         if (forward != 0.0f) {
             if (side > 0.0f) {
                 yaw += ((forward > 0.0f) ? -45 : 45);
-            }
-            else if (side < 0.0f) {
+            } else if (side < 0.0f) {
                 yaw += ((forward > 0.0f) ? 45 : -45);
             }
             side = 0.0f;
             if (forward > 0.0f) {
                 forward = 1.0f;
-            }
-            else if (forward < 0.0f) {
+            } else if (forward < 0.0f) {
                 forward = -1.0f;
             }
         }
@@ -300,7 +279,7 @@ public class WurstplusMathUtil {
         final double cos = Math.cos(Math.toRadians(yaw + 90.0f));
         final double posX = forward * speed * cos + side * speed * sin;
         final double posZ = forward * speed * sin - side * speed * cos;
-        return new double[] { posX, posZ };
+        return new double[]{posX, posZ};
     }
 
     public static List<Vec3d> getBlockBlocks(final Entity entity) {
@@ -319,8 +298,7 @@ public class WurstplusMathUtil {
                 vec3ds.add(new Vec3d(maxX, y, maxZ));
                 return vec3ds;
             }
-        }
-        else if (minZ != maxZ) {
+        } else if (minZ != maxZ) {
             vec3ds.add(new Vec3d(minX, y, minZ));
             vec3ds.add(new Vec3d(minX, y, maxZ));
             return vec3ds;
@@ -332,7 +310,7 @@ public class WurstplusMathUtil {
     public static boolean areVec3dsAlignedRetarded(final Vec3d vec3d1, final Vec3d vec3d2) {
         final BlockPos pos1 = new BlockPos(vec3d1);
         final BlockPos pos2 = new BlockPos(vec3d2.x, vec3d1.y, vec3d2.z);
-        return pos1.equals((Object)pos2);
+        return pos1.equals(pos2);
     }
 
     public static float[] calcAngle(final Vec3d from, final Vec3d to) {
@@ -340,11 +318,7 @@ public class WurstplusMathUtil {
         final double difY = (to.y - from.y) * -1.0;
         final double difZ = to.z - from.z;
         final double dist = MathHelper.sqrt(difX * difX + difZ * difZ);
-        return new float[] { (float)MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(difZ, difX)) - 90.0), (float)MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(difY, dist))) };
-    }
-
-    static {
-        random = new Random();
+        return new float[]{(float) MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(difZ, difX)) - 90.0), (float) MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(difY, dist)))};
     }
 
 }

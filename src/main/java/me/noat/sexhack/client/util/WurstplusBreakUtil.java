@@ -31,7 +31,7 @@ public class WurstplusBreakUtil {
 
         IBlockState state = mc.world.getBlockState(current_block);
 
-        if (is_done(state) || mc.player.getDistanceSq(current_block) > (range*range)) {
+        if (is_done(state) || mc.player.getDistanceSq(current_block) > (range * range)) {
             current_block = null;
             return false;
         }

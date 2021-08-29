@@ -14,37 +14,34 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(value = Entity.class)
 public class WurstplusMixinEntity {
-	// Inject.
-	@Redirect(method = "applyEntityCollision", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;addVelocity(DDD)V"))
-	public void velocity(Entity entity, double x, double y, double z) {
-		WurstplusEventEntity.WurstplusEventColision event = new WurstplusEventEntity.WurstplusEventColision(entity, x, y, z);
-
-		WurstplusEventBus.EVENT_BUS.post(event);
-
-		if (event.isCancelled()) {
-			return;
-		}
-
-		entity.motionX += x;
-		entity.motionY += y;
-		entity.motionZ += z;
-
-		entity.isAirBorne = true;
-	}	
-
-	@Shadow
-    public void move(MoverType type, double x, double y, double z)
-    {
-
-	}
-	
-	@Shadow
+    @Shadow
     public double motionX;
-
     @Shadow
     public double motionY;
-
     @Shadow
     public double motionZ;
+
+    // Inject.
+    @Redirect(method = "applyEntityCollision", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;addVelocity(DDD)V"))
+    public void velocity(Entity entity, double x, double y, double z) {
+        WurstplusEventEntity.WurstplusEventColision event = new WurstplusEventEntity.WurstplusEventColision(entity, x, y, z);
+
+        WurstplusEventBus.EVENT_BUS.post(event);
+
+        if (event.isCancelled()) {
+            return;
+        }
+
+        entity.motionX += x;
+        entity.motionY += y;
+        entity.motionZ += z;
+
+        entity.isAirBorne = true;
+    }
+
+    @Shadow
+    public void move(MoverType type, double x, double y, double z) {
+
+    }
 
 }

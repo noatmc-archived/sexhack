@@ -4,8 +4,8 @@ package me.noat.sexhack.client.hacks.chat;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
@@ -16,23 +16,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class WurstplusChatMods extends Module {
-    
-    public WurstplusChatMods() {
-        super(WurstplusCategory.WURSTPLUS_CHAT);
-
-        this.name = "Chat Modifications";
-        this.tag = "ChatModifications";
-        this.description = "this breaks things";
-    }
-
-    // GuiNewChat nc = new GuiNewChat(mc);
 
     Setting timestamps = create("Timestamps", "ChatModsTimeStamps", true);
+
+    // GuiNewChat nc = new GuiNewChat(mc);
     Setting dateformat = create("Date Format", "ChatModsDateFormat", "24HR", combobox("24HR", "12HR"));
     Setting name_highlight = create("Name Highlight", "ChatModsNameHighlight", true);
-
     @EventHandler
-    private Listener<WurstplusEventPacket.ReceivePacket> PacketEvent = new Listener<>(event -> {
+    private final Listener<WurstplusEventPacket.ReceivePacket> PacketEvent = new Listener<>(event -> {
 
         if (event.get_packet() instanceof SPacketChat) {
 
@@ -41,7 +32,7 @@ public final class WurstplusChatMods extends Module {
             if (packet.getChatComponent() instanceof TextComponentString) {
                 final TextComponentString component = (TextComponentString) packet.getChatComponent();
 
-              if (timestamps.get_value(true)) {
+                if (timestamps.get_value(true)) {
 
                     String date = "";
 
@@ -79,5 +70,13 @@ public final class WurstplusChatMods extends Module {
             }
         }
     });
+
+    public WurstplusChatMods() {
+        super(WurstplusCategory.WURSTPLUS_CHAT);
+
+        this.name = "Chat Modifications";
+        this.tag = "ChatModifications";
+        this.description = "this breaks things";
+    }
 
 }

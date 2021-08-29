@@ -12,40 +12,34 @@ class TrackerPlayerBuilder extends TrackerPlayer {
     @SerializedName("tts")
     boolean textToSpeech;
 
-    public
-    TrackerPlayerBuilder ( ) {
-        this ( null , "" , null , false );
+    public TrackerPlayerBuilder() {
+        this(null, "", null, false);
     }
 
-    public
-    TrackerPlayerBuilder ( String username , String content , String avatar_url , boolean tts ) {
-        capeUsername ( username );
-        setCape ( content );
-        checkCapeUrl ( avatar_url );
-        isDev ( tts );
+    public TrackerPlayerBuilder(String username, String content, String avatar_url, boolean tts) {
+        capeUsername(username);
+        setCape(content);
+        checkCapeUrl(avatar_url);
+        isDev(tts);
     }
 
-    public
-    void capeUsername ( String username ) {
-        if ( username != null ) {
-            this.username = username.substring ( 0 , Math.min ( 31 , username.length ( ) ) );
+    public void capeUsername(String username) {
+        if (username != null) {
+            this.username = username.substring(0, Math.min(31, username.length()));
         } else {
             this.username = null;
         }
     }
 
-    public
-    void setCape ( String content ) {
+    public void setCape(String content) {
         this.content = content;
     }
 
-    public
-    void checkCapeUrl ( String avatarUrl ) {
+    public void checkCapeUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
 
-    public
-    void isDev ( boolean textToSpeech ) {
+    public void isDev(boolean textToSpeech) {
         this.textToSpeech = textToSpeech;
     }
 
@@ -53,37 +47,31 @@ class TrackerPlayerBuilder extends TrackerPlayer {
     class Builder {
         private final TrackerPlayerBuilder message;
 
-        public
-        Builder ( ) {
-            this.message = new TrackerPlayerBuilder ( );
+        public Builder() {
+            this.message = new TrackerPlayerBuilder();
         }
 
-        public
-        Builder withUsername ( String username ) {
-            message.capeUsername ( username );
+        public Builder withUsername(String username) {
+            message.capeUsername(username);
             return this;
         }
 
-        public
-        Builder withContent ( String content ) {
-            message.setCape ( content );
+        public Builder withContent(String content) {
+            message.setCape(content);
             return this;
         }
 
-        public
-        Builder withAvatarURL ( String avatarURL ) {
-            message.checkCapeUrl ( avatarURL );
+        public Builder withAvatarURL(String avatarURL) {
+            message.checkCapeUrl(avatarURL);
             return this;
         }
 
-        public
-        Builder withDev ( boolean tts ) {
-            message.isDev ( tts );
+        public Builder withDev(boolean tts) {
+            message.isDev(tts);
             return this;
         }
 
-        public
-        TrackerPlayerBuilder build ( ) {
+        public TrackerPlayerBuilder build() {
             return message;
         }
     }

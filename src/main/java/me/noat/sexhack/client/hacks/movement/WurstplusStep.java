@@ -1,28 +1,29 @@
 package me.noat.sexhack.client.hacks.movement;
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
 
 public class WurstplusStep extends Module {
-    
+
+    Setting mode = create("Mode", "StepMode", "Normal", combobox("Normal", "Reverse"));
+
     public WurstplusStep() {
         super(WurstplusCategory.WURSTPLUS_MOVEMENT);
 
-		this.name        = "Step";
-		this.tag         = "Step";
-		this.description = "Move up / down block big";
+        this.name = "Step";
+        this.tag = "Step";
+        this.description = "Move up / down block big";
     }
-
-    Setting mode = create("Mode", "StepMode", "Normal", combobox("Normal", "Reverse"));
 
     @Override
     public void update() {
 
         if (!mc.player.collidedHorizontally && mode.in("Normal")) return;
-        if (!mc.player.onGround || mc.player.isOnLadder() || mc.player.isInWater() || mc.player.isInLava() || mc.player.movementInput.jump || mc.player.noClip) return;
+        if (!mc.player.onGround || mc.player.isOnLadder() || mc.player.isInWater() || mc.player.isInLava() || mc.player.movementInput.jump || mc.player.noClip)
+            return;
         if (mc.player.moveForward == 0 && mc.player.moveStrafing == 0) return;
 
         final double n = get_n_normal();
@@ -89,6 +90,5 @@ public class WurstplusStep extends Module {
 
     }
 
-    
 
 }

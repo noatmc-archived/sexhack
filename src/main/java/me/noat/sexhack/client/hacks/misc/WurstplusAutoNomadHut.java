@@ -2,8 +2,8 @@ package me.noat.sexhack.client.hacks.misc;
 
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import net.minecraft.block.Block;
@@ -24,7 +24,19 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3i;
 
 public class WurstplusAutoNomadHut extends Module {
-    
+
+    Setting rotate = create("Rotate", "NomadSmoth", true);
+    Setting triggerable = create("Toggle", "NomadToggle", true);
+    Setting tick_for_place = create("Blocks per tick", "NomadTickToPlace", 2, 1, 8);
+    Vec3d[] targets = new Vec3d[]{new Vec3d(0.0, 0.0, 0.0), new Vec3d(1.0, 0.0, 0.0), new Vec3d(0.0, 0.0, 1.0), new Vec3d(-1.0, 0.0, 0.0), new Vec3d(0.0, 0.0, -1.0), new Vec3d(1.0, 0.0, 1.0), new Vec3d(1.0, 0.0, -1.0), new Vec3d(-1.0, 0.0, 1.0), new Vec3d(-1.0, 0.0, -1.0), new Vec3d(2.0, 0.0, 0.0), new Vec3d(2.0, 0.0, 1.0), new Vec3d(2.0, 0.0, -1.0), new Vec3d(-2.0, 0.0, 0.0), new Vec3d(-2.0, 0.0, 1.0), new Vec3d(-2.0, 0.0, -1.0), new Vec3d(0.0, 0.0, 2.0), new Vec3d(1.0, 0.0, 2.0), new Vec3d(-1.0, 0.0, 2.0), new Vec3d(0.0, 0.0, -2.0), new Vec3d(-1.0, 0.0, -2.0), new Vec3d(1.0, 0.0, -2.0), new Vec3d(2.0, 1.0, -1.0), new Vec3d(2.0, 1.0, 1.0), new Vec3d(-2.0, 1.0, 0.0), new Vec3d(-2.0, 1.0, 1.0), new Vec3d(-2.0, 1.0, -1.0), new Vec3d(0.0, 1.0, 2.0), new Vec3d(1.0, 1.0, 2.0), new Vec3d(-1.0, 1.0, 2.0), new Vec3d(0.0, 1.0, -2.0), new Vec3d(1.0, 1.0, -2.0), new Vec3d(-1.0, 1.0, -2.0), new Vec3d(2.0, 2.0, -1.0), new Vec3d(2.0, 2.0, 1.0), new Vec3d(-2.0, 2.0, 1.0), new Vec3d(-2.0, 2.0, -1.0), new Vec3d(1.0, 2.0, 2.0), new Vec3d(-1.0, 2.0, 2.0), new Vec3d(1.0, 2.0, -2.0), new Vec3d(-1.0, 2.0, -2.0), new Vec3d(2.0, 3.0, 0.0), new Vec3d(2.0, 3.0, -1.0), new Vec3d(2.0, 3.0, 1.0), new Vec3d(-2.0, 3.0, 0.0), new Vec3d(-2.0, 3.0, 1.0), new Vec3d(-2.0, 3.0, -1.0), new Vec3d(0.0, 3.0, 2.0), new Vec3d(1.0, 3.0, 2.0), new Vec3d(-1.0, 3.0, 2.0), new Vec3d(0.0, 3.0, -2.0), new Vec3d(1.0, 3.0, -2.0), new Vec3d(-1.0, 3.0, -2.0), new Vec3d(0.0, 4.0, 0.0), new Vec3d(1.0, 4.0, 0.0), new Vec3d(-1.0, 4.0, 0.0), new Vec3d(0.0, 4.0, 1.0), new Vec3d(0.0, 4.0, -1.0), new Vec3d(1.0, 4.0, 1.0), new Vec3d(-1.0, 4.0, 1.0), new Vec3d(-1.0, 4.0, -1.0), new Vec3d(1.0, 4.0, -1.0), new Vec3d(2.0, 4.0, 0.0), new Vec3d(2.0, 4.0, 1.0), new Vec3d(2.0, 4.0, -1.0)};
+    int new_slot = 0;
+    int old_slot = 0;
+    int y_level = 0;
+    int tick_runs = 0;
+    int blocks_placed = 0;
+    int offset_step = 0;
+    boolean sneak = false;
+
     public WurstplusAutoNomadHut() {
 
         super(WurstplusCategory.WURSTPLUS_MISC);
@@ -34,150 +46,131 @@ public class WurstplusAutoNomadHut extends Module {
         this.description = "i fucking hate fit";
     }
 
-    Setting rotate         = create("Rotate",           "NomadSmoth",       true);
-	Setting triggerable    = create("Toggle",			 "NomadToggle", 		true);
-	Setting tick_for_place = create("Blocks per tick",	 "NomadTickToPlace", 2, 1, 8);
+    @Override
+    public void enable() {
 
-    Vec3d[] targets = new Vec3d[] { new Vec3d(0.0, 0.0, 0.0), new Vec3d(1.0, 0.0, 0.0), new Vec3d(0.0, 0.0, 1.0), new Vec3d(-1.0, 0.0, 0.0), new Vec3d(0.0, 0.0, -1.0), new Vec3d(1.0, 0.0, 1.0), new Vec3d(1.0, 0.0, -1.0), new Vec3d(-1.0, 0.0, 1.0), new Vec3d(-1.0, 0.0, -1.0), new Vec3d(2.0, 0.0, 0.0), new Vec3d(2.0, 0.0, 1.0), new Vec3d(2.0, 0.0, -1.0), new Vec3d(-2.0, 0.0, 0.0), new Vec3d(-2.0, 0.0, 1.0), new Vec3d(-2.0, 0.0, -1.0), new Vec3d(0.0, 0.0, 2.0), new Vec3d(1.0, 0.0, 2.0), new Vec3d(-1.0, 0.0, 2.0), new Vec3d(0.0, 0.0, -2.0), new Vec3d(-1.0, 0.0, -2.0), new Vec3d(1.0, 0.0, -2.0), new Vec3d(2.0, 1.0, -1.0), new Vec3d(2.0, 1.0, 1.0), new Vec3d(-2.0, 1.0, 0.0), new Vec3d(-2.0, 1.0, 1.0), new Vec3d(-2.0, 1.0, -1.0), new Vec3d(0.0, 1.0, 2.0), new Vec3d(1.0, 1.0, 2.0), new Vec3d(-1.0, 1.0, 2.0), new Vec3d(0.0, 1.0, -2.0), new Vec3d(1.0, 1.0, -2.0), new Vec3d(-1.0, 1.0, -2.0), new Vec3d(2.0, 2.0, -1.0), new Vec3d(2.0, 2.0, 1.0), new Vec3d(-2.0, 2.0, 1.0), new Vec3d(-2.0, 2.0, -1.0), new Vec3d(1.0, 2.0, 2.0), new Vec3d(-1.0, 2.0, 2.0), new Vec3d(1.0, 2.0, -2.0), new Vec3d(-1.0, 2.0, -2.0), new Vec3d(2.0, 3.0, 0.0), new Vec3d(2.0, 3.0, -1.0), new Vec3d(2.0, 3.0, 1.0), new Vec3d(-2.0, 3.0, 0.0), new Vec3d(-2.0, 3.0, 1.0), new Vec3d(-2.0, 3.0, -1.0), new Vec3d(0.0, 3.0, 2.0), new Vec3d(1.0, 3.0, 2.0), new Vec3d(-1.0, 3.0, 2.0), new Vec3d(0.0, 3.0, -2.0), new Vec3d(1.0, 3.0, -2.0), new Vec3d(-1.0, 3.0, -2.0), new Vec3d(0.0, 4.0, 0.0), new Vec3d(1.0, 4.0, 0.0), new Vec3d(-1.0, 4.0, 0.0), new Vec3d(0.0, 4.0, 1.0), new Vec3d(0.0, 4.0, -1.0), new Vec3d(1.0, 4.0, 1.0), new Vec3d(-1.0, 4.0, 1.0), new Vec3d(-1.0, 4.0, -1.0), new Vec3d(1.0, 4.0, -1.0), new Vec3d(2.0, 4.0, 0.0), new Vec3d(2.0, 4.0, 1.0), new Vec3d(2.0, 4.0, -1.0) };
+        if (mc.player != null) {
 
-    int new_slot    	= 0;
-	int old_slot    	= 0;
-	int y_level 		= 0;
-	int tick_runs  		= 0;
-	int blocks_placed 	= 0;
-    int offset_step 	= 0;
-    
-    boolean sneak = false;
+            old_slot = mc.player.inventory.currentItem;
+            new_slot = find_in_hotbar();
+
+            if (new_slot == -1) {
+                WurstplusMessageUtil.send_client_error_message("cannot find obi in hotbar");
+                set_active(false);
+            }
+
+            y_level = (int) Math.round(mc.player.posY);
+
+        }
+
+    }
 
     @Override
-	public void enable() {
+    public void disable() {
 
-		if (mc.player != null) {
+        if (mc.player != null) {
 
-			old_slot = mc.player.inventory.currentItem;
-			new_slot = find_in_hotbar();
+            if (new_slot != old_slot && old_slot != -1) {
+                mc.player.inventory.currentItem = old_slot;
+            }
 
-			if (new_slot == -1) {
-				WurstplusMessageUtil.send_client_error_message("cannot find obi in hotbar");
-				set_active(false);
-			}
+            if (sneak) {
+                mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
 
-			y_level = (int) Math.round(mc.player.posY);
+                sneak = false;
+            }
 
-		}
+            old_slot = -1;
+            new_slot = -1;
+        }
 
-	}
+    }
 
-	@Override
-	public void disable() {
+    @Override
+    public void update() {
 
-		if (mc.player != null) {
+        if (mc.player != null) {
 
-			if (new_slot != old_slot && old_slot != - 1) {
-				mc.player.inventory.currentItem = old_slot;
-			}
+            blocks_placed = 0;
 
-			if (sneak) {
-				mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+            while (blocks_placed < this.tick_for_place.get_value(1)) {
 
-				sneak = false;
-			}
+                if (this.offset_step >= this.targets.length) {
+                    this.offset_step = 0;
+                    break;
+                }
 
-			old_slot = - 1;
-			new_slot = - 1;
-		}
+                BlockPos offsetPos = new BlockPos(this.targets[this.offset_step]);
+                BlockPos targetPos = new BlockPos(mc.player.getPositionVector()).add(offsetPos.getX(), offsetPos.getY(), offsetPos.getZ()).down();
 
-	}
+                boolean try_to_place = mc.world.getBlockState(targetPos).getMaterial().isReplaceable();
 
-	@Override
-	public void update() {
+                for (Entity entity : mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(targetPos))) {
+                    if (entity instanceof EntityItem || entity instanceof EntityXPOrb) continue;
+                    try_to_place = false;
+                    break;
+                }
 
-		if (mc.player != null) {
+                if (try_to_place && this.place_blocks(targetPos)) {
+                    ++blocks_placed;
+                }
 
-			blocks_placed = 0;
+                ++offset_step;
 
-			while (blocks_placed < this.tick_for_place.get_value(1)) {
+            }
 
-				if (this.offset_step >= this.targets.length) {
-					this.offset_step = 0;
-					break;
-				}
+            if (blocks_placed > 0 && this.new_slot != this.old_slot) {
+                mc.player.inventory.currentItem = this.old_slot;
+            }
 
-				BlockPos offsetPos = new BlockPos(this.targets[this.offset_step]);
-				BlockPos targetPos = new BlockPos(mc.player.getPositionVector()).add(offsetPos.getX(), offsetPos.getY(), offsetPos.getZ()).down();
+            ++this.tick_runs;
 
-				boolean try_to_place = true;
+        }
+    }
 
-				if (!mc.world.getBlockState(targetPos).getMaterial().isReplaceable()) {
-					try_to_place = false;
-				}
-
-				for (Entity entity : mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(targetPos))) {
-					if (entity instanceof EntityItem || entity instanceof EntityXPOrb) continue;
-					try_to_place = false;
-					break;
-				}
-
-				if (try_to_place && this.place_blocks(targetPos)) {
-					++blocks_placed;
-				}
-
-				++offset_step;
-
-			}
-
-			if (blocks_placed > 0 && this.new_slot != this.old_slot) {
-				mc.player.inventory.currentItem = this.old_slot;
-			}
-
-			++this.tick_runs;
-
-		}
-	}
-
-	private boolean place_blocks(BlockPos pos) {
+    private boolean place_blocks(BlockPos pos) {
 
         if (!mc.world.getBlockState(pos).getMaterial().isReplaceable()) {
             return false;
-		}
-		
+        }
+
         if (!WurstplusBlockInteractHelper.checkForNeighbours(pos)) {
             return false;
-		}
-		
+        }
+
         for (EnumFacing side : EnumFacing.values()) {
 
             Block neighborPos;
-			BlockPos neighbor = pos.offset(side);
-			
-			EnumFacing side2 = side.getOpposite();
-			
-			if (!WurstplusBlockInteractHelper.canBeClicked(neighbor)) continue;
-			
-			mc.player.inventory.currentItem = new_slot;
+            BlockPos neighbor = pos.offset(side);
 
-            if (WurstplusBlockInteractHelper.blackList.contains((Object)(neighborPos = mc.world.getBlockState(neighbor).getBlock()))) {
-                mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)mc.player, CPacketEntityAction.Action.START_SNEAKING));
+            EnumFacing side2 = side.getOpposite();
+
+            if (!WurstplusBlockInteractHelper.canBeClicked(neighbor)) continue;
+
+            mc.player.inventory.currentItem = new_slot;
+
+            if (WurstplusBlockInteractHelper.blackList.contains(neighborPos = mc.world.getBlockState(neighbor).getBlock())) {
+                mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
                 this.sneak = true;
-			}
-			
-			Vec3d hitVec = new Vec3d((Vec3i)neighbor).add(0.5, 0.5, 0.5).add(new Vec3d(side2.getDirectionVec()).scale(0.5));
-			
+            }
+
+            Vec3d hitVec = new Vec3d(neighbor).add(0.5, 0.5, 0.5).add(new Vec3d(side2.getDirectionVec()).scale(0.5));
+
             if (this.rotate.get_value(true)) {
                 WurstplusBlockInteractHelper.faceVectorPacketInstant(hitVec);
-			}
-			
+            }
+
             mc.playerController.processRightClickBlock(mc.player, mc.world, neighbor, side2, hitVec, EnumHand.MAIN_HAND);
-			mc.player.swingArm(EnumHand.MAIN_HAND);
-			
+            mc.player.swingArm(EnumHand.MAIN_HAND);
+
             return true;
-		}
-		
-		return false;
-		
+        }
+
+        return false;
+
     }
 
-	private int find_in_hotbar() {
+    private int find_in_hotbar() {
 
         for (int i = 0; i < 9; ++i) {
 
@@ -189,10 +182,10 @@ public class WurstplusAutoNomadHut extends Module {
 
                 if (block instanceof BlockEnderChest)
                     return i;
-                
+
                 else if (block instanceof BlockObsidian)
                     return i;
-                
+
             }
         }
         return -1;

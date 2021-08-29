@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -20,20 +21,6 @@ public class WurstplusEnemyUtil {
 
     public static boolean isEnemy(String name) {
         return enemies.stream().anyMatch(enemy -> enemy.username.equalsIgnoreCase(name));
-    }
-
-    public static class Enemy {
-        String username;
-        UUID uuid;
-
-        public Enemy(String username, UUID uuid) {
-            this.username = username;
-            this.uuid = uuid;
-        }
-
-        public String getUsername() {
-            return username;
-        }
     }
 
     public static Enemy get_enemy_object(String name) {
@@ -50,7 +37,7 @@ public class WurstplusEnemyUtil {
                         String id = element.getAsJsonArray().get(0).getAsJsonObject().get("id").getAsString();
                         String username = element.getAsJsonArray().get(0).getAsJsonObject().get("name").getAsString();
                         return new Enemy(username, UUIDTypeAdapter.fromString(id));
-                    }catch (Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -61,7 +48,7 @@ public class WurstplusEnemyUtil {
     }
 
     private static String request_ids(String data) {
-        try{
+        try {
             String query = "https://api.mojang.com/profiles/minecraft";
 
             URL url = new URL(query);
@@ -73,7 +60,7 @@ public class WurstplusEnemyUtil {
             conn.setRequestMethod("POST");
 
             OutputStream os = conn.getOutputStream();
-            os.write(data.getBytes("UTF-8"));
+            os.write(data.getBytes(StandardCharsets.UTF_8));
             os.close();
 
             // read the response
@@ -83,7 +70,7 @@ public class WurstplusEnemyUtil {
             conn.disconnect();
 
             return res;
-        }catch (Exception e) {
+        } catch (Exception e) {
             return null;
         }
     }
@@ -92,6 +79,20 @@ public class WurstplusEnemyUtil {
         java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
         String r = s.hasNext() ? s.next() : "/";
         return r;
+    }
+
+    public static class Enemy {
+        String username;
+        UUID uuid;
+
+        public Enemy(String username, UUID uuid) {
+            this.username = username;
+            this.uuid = uuid;
+        }
+
+        public String getUsername() {
+            return username;
+        }
     }
 
 }

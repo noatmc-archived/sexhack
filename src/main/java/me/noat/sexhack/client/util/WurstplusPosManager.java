@@ -4,12 +4,11 @@ import net.minecraft.client.Minecraft;
 
 public class WurstplusPosManager {
 
+    private static final Minecraft mc = Minecraft.getMinecraft();
     private static double x;
     private static double y;
     private static double z;
     private static boolean onground;
-
-    private static final Minecraft mc = Minecraft.getMinecraft();
 
     public static void updatePosition() {
         x = mc.player.posX;

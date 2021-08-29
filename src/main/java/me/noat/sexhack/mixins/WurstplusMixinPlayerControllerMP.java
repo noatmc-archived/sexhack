@@ -20,34 +20,33 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(value = PlayerControllerMP.class)
 public class WurstplusMixinPlayerControllerMP {
 
-	// Player damage fix the hit.
-	@Redirect(method = "onPlayerDamageBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/state/IBlockState;getPlayerRelativeBlockHardness(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;)F"))
-	private float onPlayerDamageBlockSpeed(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
-		return state.getPlayerRelativeBlockHardness(player, world, pos) * (SexHack.get_event_handler().get_tick_rate() / 20f);
-	}
+    // Player damage fix the hit.
+    @Redirect(method = "onPlayerDamageBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/state/IBlockState;getPlayerRelativeBlockHardness(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;)F"))
+    private float onPlayerDamageBlockSpeed(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
+        return state.getPlayerRelativeBlockHardness(player, world, pos) * (SexHack.get_event_handler().get_tick_rate() / 20f);
+    }
 
-	@Inject(method = "onPlayerDamageBlock", at = @At("HEAD"), cancellable = true)
-	public void onPlayerDamageBlock(BlockPos posBlock, EnumFacing directionFacing, CallbackInfoReturnable<Boolean> info) {
+    @Inject(method = "onPlayerDamageBlock", at = @At("HEAD"), cancellable = true)
+    public void onPlayerDamageBlock(BlockPos posBlock, EnumFacing directionFacing, CallbackInfoReturnable<Boolean> info) {
 
         WurstplusEventDamageBlock event_packet = new WurstplusEventDamageBlock(posBlock, directionFacing);
 
-		WurstplusEventBus.EVENT_BUS.post(event_packet);
+        WurstplusEventBus.EVENT_BUS.post(event_packet);
 
-		if (event_packet.isCancelled()) {
-			info.setReturnValue(false);
-			info.cancel();
-		}
+        if (event_packet.isCancelled()) {
+            info.setReturnValue(false);
+            info.cancel();
+        }
 
-		final WurstplusEventBlock event = new WurstplusEventBlock(4, posBlock, directionFacing);
-		WurstplusEventBus.EVENT_BUS.post(event);
-	}
+        final WurstplusEventBlock event = new WurstplusEventBlock(4, posBlock, directionFacing);
+        WurstplusEventBus.EVENT_BUS.post(event);
+    }
 
-	@Inject(method = { "clickBlock" }, at = { @At("HEAD") }, cancellable = true)
-	private void clickBlockHook(final BlockPos pos, final EnumFacing face, final CallbackInfoReturnable<Boolean> info) {
-		final WurstplusEventBlock event = new WurstplusEventBlock(3, pos, face);
-		WurstplusEventBus.EVENT_BUS.post(event);
-	}
-
+    @Inject(method = {"clickBlock"}, at = {@At("HEAD")}, cancellable = true)
+    private void clickBlockHook(final BlockPos pos, final EnumFacing face, final CallbackInfoReturnable<Boolean> info) {
+        final WurstplusEventBlock event = new WurstplusEventBlock(3, pos, face);
+        WurstplusEventBus.EVENT_BUS.post(event);
+    }
 
 
 }

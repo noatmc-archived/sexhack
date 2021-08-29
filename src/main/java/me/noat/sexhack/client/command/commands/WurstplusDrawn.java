@@ -9,7 +9,7 @@ import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import java.util.List;
 
 public class WurstplusDrawn extends WurstplusCommand {
-    
+
     public WurstplusDrawn() {
         super("drawn", "Hide elements of the array list");
     }
@@ -35,7 +35,7 @@ public class WurstplusDrawn extends WurstplusCommand {
         }
 
         return false;
-    
+
     }
 
     public boolean is_module(String s) {

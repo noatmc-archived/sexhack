@@ -7,15 +7,15 @@ import net.minecraft.client.gui.GuiScreen;
 
 
 public class WurstplusEventGUIScreen extends WurstplusEventCancellable {
-	private final GuiScreen guiscreen;
+    private final GuiScreen guiscreen;
 
-	public WurstplusEventGUIScreen(GuiScreen screen) {
-		super();
+    public WurstplusEventGUIScreen(GuiScreen screen) {
+        super();
 
-		guiscreen = screen;
-	}
+        guiscreen = screen;
+    }
 
-	public GuiScreen get_guiscreen() {
-		return guiscreen;
-	}
+    public GuiScreen get_guiscreen() {
+        return guiscreen;
+    }
 }

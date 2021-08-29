@@ -2,21 +2,13 @@ package me.noat.sexhack.client.hacks.render;
 
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class WurstplusViewmodleChanger extends Module {
-    public WurstplusViewmodleChanger() {
-        super(WurstplusCategory.WURSTPLUS_RENDER);
-
-        this.name = "Custom Viewmodel";
-        this.tag = "CustomViewmodel";
-        this.description = "anti chad";
-    }
-
     Setting custom_fov = create("FOV", "FOVSlider", 130, 110, 170);
     Setting items = create("Items", "FOVItems", false);
     Setting viewmodle_fov = create("Items FOV", "ItemsFOVSlider", 130, 110, 170);
@@ -26,9 +18,16 @@ public class WurstplusViewmodleChanger extends Module {
     Setting offset_y = create("Offset Y", "FOVOffsetY", 0.0, -1.0, 1.0);
     Setting main_x = create("Main X", "FOVMainX", 0.0, -1.0, 1.0);
     Setting main_y = create("Main Y", "FOVMainY", 0.0, -1.0, 1.0);
-
-
     private float fov;
+
+
+    public WurstplusViewmodleChanger() {
+        super(WurstplusCategory.WURSTPLUS_RENDER);
+
+        this.name = "Custom Viewmodel";
+        this.tag = "CustomViewmodel";
+        this.description = "anti chad";
+    }
 
     @Override
     protected void enable() {

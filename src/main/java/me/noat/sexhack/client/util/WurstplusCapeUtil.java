@@ -24,7 +24,7 @@ public class WurstplusCapeUtil {
             }
 
             return uuid_list;
-        } catch (Exception ignored){
+        } catch (Exception ignored) {
             return null;
         }
     }

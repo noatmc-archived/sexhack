@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WurstplusDrawnUtil {
-    
+
     public static List<String> hidden_tags = new ArrayList<>();
 
     public static void add_remove_item(String s) {

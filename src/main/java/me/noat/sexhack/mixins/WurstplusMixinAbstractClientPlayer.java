@@ -13,13 +13,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import javax.annotation.Nullable;
 
-@Mixin(value={AbstractClientPlayer.class})
+@Mixin(value = {AbstractClientPlayer.class})
 public abstract class WurstplusMixinAbstractClientPlayer {
     @Shadow
     @Nullable
     protected abstract NetworkPlayerInfo getPlayerInfo();
 
-    @Inject(method={"getLocationCape"}, at={@At(value="HEAD")}, cancellable=true)
+    @Inject(method = {"getLocationCape"}, at = {@At(value = "HEAD")}, cancellable = true)
     public void getLocationCape(CallbackInfoReturnable<ResourceLocation> callbackInfoReturnable) {
 
         if (SexHack.get_hack_manager().get_module_with_tag("Capes").is_active()) {
@@ -30,33 +30,33 @@ public abstract class WurstplusMixinAbstractClientPlayer {
             }
             ResourceLocation r;
             if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("Clockwork")) {
-              r = new ResourceLocation("custom/clockwork.png");
+                r = new ResourceLocation("custom/clockwork.png");
             } else {
-              if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("OG")) {
-                  r = new ResourceLocation("custom/cape-old.png");
-              } else {
-                if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("ifarticuhm")) {
-                    r = new ResourceLocation("custom/ifarticuhm.png");
+                if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("OG")) {
+                    r = new ResourceLocation("custom/cape-old.png");
                 } else {
-                  if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("Clockwork MC")) {
-                      r = new ResourceLocation("custom/clockworkmc.png");
-                  } else {
-                    if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("Ping Players")) {
-                      r = new ResourceLocation("custom/pingplayers.png");
+                    if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("ifarticuhm")) {
+                        r = new ResourceLocation("custom/ifarticuhm.png");
                     } else {
-                      if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("teejwrld")) {
-                        r = new ResourceLocation("custom/teejwrld.png");
-                      } else {
-                        if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("cringesyringe")) {
-                          r = new ResourceLocation("custom/cringesyringe.png");
+                        if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("Clockwork MC")) {
+                            r = new ResourceLocation("custom/clockworkmc.png");
                         } else {
-                          r = new ResourceLocation("custom/cape.png");
+                            if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("Ping Players")) {
+                                r = new ResourceLocation("custom/pingplayers.png");
+                            } else {
+                                if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("teejwrld")) {
+                                    r = new ResourceLocation("custom/teejwrld.png");
+                                } else {
+                                    if (SexHack.get_setting_manager().get_setting_with_tag("Capes", "CapeCape").in("cringesyringe")) {
+                                        r = new ResourceLocation("custom/cringesyringe.png");
+                                    } else {
+                                        r = new ResourceLocation("custom/cape.png");
+                                    }
+                                }
+                            }
                         }
-                      }
                     }
-                  }
                 }
-              }
             }
 
             callbackInfoReturnable.setReturnValue(r);

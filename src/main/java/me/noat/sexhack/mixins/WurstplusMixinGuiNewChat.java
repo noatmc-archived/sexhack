@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 //Data
 //randospongethingo
 
-@Mixin({ GuiNewChat.class })
+@Mixin({GuiNewChat.class})
 public class WurstplusMixinGuiNewChat {
 
     @Redirect(method = "drawChat", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiNewChat;drawRect(IIIII)V", ordinal = 0))

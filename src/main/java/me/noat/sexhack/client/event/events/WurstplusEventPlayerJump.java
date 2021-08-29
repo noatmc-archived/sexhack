@@ -3,7 +3,7 @@ package me.noat.sexhack.client.event.events;
 import me.noat.sexhack.client.event.WurstplusEventCancellable;
 
 public class WurstplusEventPlayerJump extends WurstplusEventCancellable {
-    
+
     public double motion_x;
     public double motion_y;
 

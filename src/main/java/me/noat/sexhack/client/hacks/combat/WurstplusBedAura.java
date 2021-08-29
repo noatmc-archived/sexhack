@@ -1,13 +1,13 @@
 package me.noat.sexhack.client.hacks.combat;
 
-import me.noat.turok.draw.RenderHelp;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
+import me.noat.turok.draw.RenderHelp;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,23 +22,29 @@ import java.util.stream.Collectors;
 
 public class WurstplusBedAura extends Module {
 
-    public WurstplusBedAura() {
-        super(WurstplusCategory.WURSTPLUS_COMBAT);
-
-        this.name        = "Bed Aura";
-        this.tag         = "BedAura";
-        this.description = "fucking endcrystal.me";
-    }
-
-    Setting delay = create("Delay", "BedAuraDelay", 6, 0 , 20);
+    Setting delay = create("Delay", "BedAuraDelay", 6, 0, 20);
     Setting range = create("Range", "BedAuraRange", 5, 0, 6);
     Setting hard = create("Hard Rotate", "BedAuraRotate", false);
     Setting swing = create("Swing", "BedAuraSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
-
     private BlockPos render_pos;
     private int counter;
     private spoof_face spoof_looking;
+    public WurstplusBedAura() {
+        super(WurstplusCategory.WURSTPLUS_COMBAT);
 
+        this.name = "Bed Aura";
+        this.tag = "BedAura";
+        this.description = "fucking endcrystal.me";
+    }
+
+    public static BlockPos get_pos_floor(EntityPlayer player) {
+        return new BlockPos(Math.floor(player.posX), Math.floor(player.posY), Math.floor(player.posZ));
+    }
+
+    public static boolean is_bed(final BlockPos pos) {
+        final Block block = mc.world.getBlockState(pos).getBlock();
+        return block == Blocks.BED;
+    }
 
     @Override
     protected void enable() {
@@ -210,15 +216,6 @@ public class WurstplusBedAura extends Module {
 
     }
 
-    public static BlockPos get_pos_floor(EntityPlayer player) {
-        return new BlockPos(Math.floor(player.posX), Math.floor(player.posY), Math.floor(player.posZ));
-    }
-
-    public static boolean is_bed(final BlockPos pos) {
-        final Block block = mc.world.getBlockState(pos).getBlock();
-        return block == Blocks.BED;
-    }
-
     @Override
     public void render(WurstplusEventRender event) {
 
@@ -227,9 +224,9 @@ public class WurstplusBedAura extends Module {
         RenderHelp.prepare("lines");
         RenderHelp.draw_cube_line(RenderHelp.get_buffer_build(),
                 render_pos.getX(), render_pos.getY(), render_pos.getZ(),
-            1, .2f, 1,
-            255, 20, 20, 180,
-            "all"
+                1, .2f, 1,
+                255, 20, 20, 180,
+                "all"
         );
         RenderHelp.release();
 

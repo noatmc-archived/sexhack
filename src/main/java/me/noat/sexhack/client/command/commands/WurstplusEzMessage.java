@@ -30,7 +30,7 @@ public class WurstplusEzMessage extends WurstplusCommand {
                 ez.append(word).append(" ");
             }
             WurstplusEzMessageUtil.set_message(ez.toString());
-            WurstplusMessageUtil.send_client_message("ez message changed to " + ChatFormatting.BOLD + ez.toString());
+            WurstplusMessageUtil.send_client_message("ez message changed to " + ChatFormatting.BOLD + ez);
             SexHack.get_config_manager().save_settings();
             return true;
         }

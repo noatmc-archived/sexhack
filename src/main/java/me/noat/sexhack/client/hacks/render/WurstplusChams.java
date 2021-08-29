@@ -3,8 +3,8 @@ package me.noat.sexhack.client.hacks.render;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.event.events.WurstplusEventRenderEntityModel;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusEntityUtil;
 import me.noat.sexhack.client.util.WurstplusRenderUtil;
 import net.minecraft.client.renderer.GlStateManager;
@@ -23,14 +23,6 @@ import org.lwjgl.opengl.GL11;
 import java.awt.*;
 
 public class WurstplusChams extends Module {
-
-    public WurstplusChams() {
-        super(WurstplusCategory.WURSTPLUS_RENDER);
-
-        this.name = "Chams";
-        this.tag = "Chams";
-        this.description = "see even less (now with epic colours)";
-    }
 
     Setting mode = create("Mode", "ChamsMode", "Outline", combobox("Outline", "Wireframe"));
     Setting players = create("Players", "ChamsPlayers", true);
@@ -51,6 +43,13 @@ public class WurstplusChams extends Module {
     Setting rainbow_mode = create("Rainbow", "ChamsRainbow", false);
     Setting sat = create("Satiation", "ChamsSatiation", 0.8, 0, 1);
     Setting brightness = create("Brightness", "ChamsBrightness", 0.8, 0, 1);
+    public WurstplusChams() {
+        super(WurstplusCategory.WURSTPLUS_RENDER);
+
+        this.name = "Chams";
+        this.tag = "Chams";
+        this.description = "see even less (now with epic colours)";
+    }
 
     @Override
     public void update() {
@@ -213,17 +212,16 @@ public class WurstplusChams extends Module {
         if (mode.in("outline")) {
             WurstplusRenderUtil.renderOne(width.get_value(1));
             event.modelBase.render(event.entity, event.limbSwing, event.limbSwingAmount, event.age, event.headYaw, event.headPitch, event.scale);
-            GlStateManager.glLineWidth((float)width.get_value(1));
+            GlStateManager.glLineWidth((float) width.get_value(1));
             WurstplusRenderUtil.renderTwo();
             event.modelBase.render(event.entity, event.limbSwing, event.limbSwingAmount, event.age, event.headYaw, event.headPitch, event.scale);
-            GlStateManager.glLineWidth((float)width.get_value(1));
+            GlStateManager.glLineWidth((float) width.get_value(1));
             WurstplusRenderUtil.renderThree();
             WurstplusRenderUtil.renderFour(color);
             event.modelBase.render(event.entity, event.limbSwing, event.limbSwingAmount, event.age, event.headYaw, event.headPitch, event.scale);
-            GlStateManager.glLineWidth((float)width.get_value(1));
+            GlStateManager.glLineWidth((float) width.get_value(1));
             WurstplusRenderUtil.renderFive();
-        }
-        else {
+        } else {
             GL11.glPushMatrix();
             GL11.glPushAttrib(1048575);
             GL11.glPolygonMode(1028, 6913);
@@ -233,8 +231,8 @@ public class WurstplusChams extends Module {
             GL11.glEnable(2848);
             GL11.glEnable(3042);
             GlStateManager.blendFunc(770, 771);
-            GlStateManager.color((float)color.getRed(), (float)color.getGreen(), (float)color.getBlue(), (float)color.getAlpha());
-            GlStateManager.glLineWidth((float)width.get_value(1));
+            GlStateManager.color((float) color.getRed(), (float) color.getGreen(), (float) color.getBlue(), (float) color.getAlpha());
+            GlStateManager.glLineWidth((float) width.get_value(1));
             event.modelBase.render(event.entity, event.limbSwing, event.limbSwingAmount, event.age, event.headYaw, event.headPitch, event.scale);
             GL11.glPopAttrib();
             GL11.glPopMatrix();
@@ -245,8 +243,8 @@ public class WurstplusChams extends Module {
         try {
             mc.gameSettings.fancyGraphics = fancyGraphics;
             mc.gameSettings.gammaSetting = gamma;
+        } catch (Exception ignore) {
         }
-        catch (Exception ignore) {}
         event.cancel();
     }
 

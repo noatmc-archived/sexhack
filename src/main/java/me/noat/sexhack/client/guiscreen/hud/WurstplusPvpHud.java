@@ -6,16 +6,16 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class WurstplusPvpHud extends WurstplusPinnable {
-    
+
     public WurstplusPvpHud() {
         super("PVP Hud", "pvphud", 1, 0, 0);
     }
 
     @Override
-	public void render() {
-		int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
-		int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
-		int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
+    public void render() {
+        int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
+        int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
+        int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
         int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").get_value(1);
 
         String totem = "Totems: " + get_totems();
@@ -34,8 +34,8 @@ public class WurstplusPvpHud extends WurstplusPinnable {
         create_line(socks, this.docking(1, socks), 56, nl_r, nl_g, nl_b, nl_a);
         create_line(selftrap, this.docking(1, selftrap), 67, nl_r, nl_g, nl_b, nl_a);
 
-		this.set_width(this.get(surround, "width") + 2);
-		this.set_height(this.get(surround, "height") * 5);
+        this.set_width(this.get(surround, "width") + 2);
+        this.set_height(this.get(surround, "height") * 5);
     }
 
     public String selftrap_enabled() {
@@ -58,7 +58,7 @@ public class WurstplusPvpHud extends WurstplusPinnable {
         } catch (Exception e) {
             return "0";
         }
-        
+
     }
 
     public String aura_enabled() {
@@ -71,7 +71,7 @@ public class WurstplusPvpHud extends WurstplusPinnable {
         } catch (Exception e) {
             return "0";
         }
-        
+
     }
 
     public String socks_enabled() {
@@ -96,7 +96,7 @@ public class WurstplusPvpHud extends WurstplusPinnable {
         } catch (Exception e) {
             return "0";
         }
-        
+
     }
 
     public String holefill_enabled() {
@@ -109,7 +109,7 @@ public class WurstplusPvpHud extends WurstplusPinnable {
         } catch (Exception e) {
             return "0";
         }
-        
+
     }
 
     public String get_totems() {
@@ -119,14 +119,14 @@ public class WurstplusPvpHud extends WurstplusPinnable {
             int totems = offhand() + mc.player.inventory.mainInventory.stream().filter(itemStack -> itemStack.getItem() == Items.TOTEM_OF_UNDYING).mapToInt(ItemStack::getCount).sum();
 
             if (totems > 1) {
-                return "\u00A7a "+totems;
+                return "\u00A7a " + totems;
             } else {
-                return "\u00A74 "+totems;
+                return "\u00A74 " + totems;
             }
 
         } catch (Exception e) {
             return "0";
-        }        
+        }
 
     }
 

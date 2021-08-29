@@ -10,35 +10,36 @@ import java.util.Map;
 
 
 public class WurstplusMixinLoader implements IFMLLoadingPlugin {
-	public WurstplusMixinLoader() {
-		MixinBootstrap.init();
+    public WurstplusMixinLoader() {
+        MixinBootstrap.init();
 
-		Mixins.addConfiguration("mixins.wurstplus.json");
-		
-		MixinEnvironment.getDefaultEnvironment().setObfuscationContext("searge");
-	}
+        Mixins.addConfiguration("mixins.wurstplus.json");
 
-	@Override
-	public String[] getASMTransformerClass() {
-		return new String[0];
-	}
+        MixinEnvironment.getDefaultEnvironment().setObfuscationContext("searge");
+    }
 
-	@Override
-	public String getModContainerClass() {
-		return null;
-	}
+    @Override
+    public String[] getASMTransformerClass() {
+        return new String[0];
+    }
 
-	@Nullable
-	@Override
-	public String getSetupClass() {
-		return null;
-	}
+    @Override
+    public String getModContainerClass() {
+        return null;
+    }
 
-	@Override
-	public void injectData(Map<String, Object> data) {}
+    @Nullable
+    @Override
+    public String getSetupClass() {
+        return null;
+    }
 
-	@Override
-	public String getAccessTransformerClass() {
-		return null;
-	}
+    @Override
+    public void injectData(Map<String, Object> data) {
+    }
+
+    @Override
+    public String getAccessTransformerClass() {
+        return null;
+    }
 }

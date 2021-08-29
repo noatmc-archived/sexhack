@@ -7,105 +7,103 @@ import net.minecraft.client.gui.GuiScreen;
 
 
 public class WurstplusHUD extends GuiScreen {
-	private final WurstplusFrame frame;
+    private final WurstplusFrame frame;
+    public boolean on_gui;
+    public boolean back;
+    private int frame_height;
 
-	private int frame_height;
+    public WurstplusHUD() {
+        this.frame = new WurstplusFrame("Wurst+2 HUD", "WurstplusHUD", 40, 40);
+        this.back = false;
+        this.on_gui = false;
+    }
 
-	public boolean on_gui;
-	public boolean back;
+    public WurstplusFrame get_frame_hud() {
+        return this.frame;
+    }
 
-	public WurstplusHUD() {
-		this.frame  = new WurstplusFrame("Wurst+2 HUD", "WurstplusHUD", 40, 40);
-		this.back   = false;
-		this.on_gui = false;
-	}
+    @Override
+    public boolean doesGuiPauseGame() {
+        return false;
+    }
 
-	public WurstplusFrame get_frame_hud() {
-		return this.frame;
-	}
+    @Override
+    public void initGui() {
+        this.on_gui = true;
 
-	@Override
-	public boolean doesGuiPauseGame() {
-		return false;
-	}
+        WurstplusFrame.nc_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameR").get_value(1);
+        WurstplusFrame.nc_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameG").get_value(1);
+        WurstplusFrame.nc_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameB").get_value(1);
 
-	@Override
-	public void initGui() {
-		this.on_gui = true;
+        WurstplusFrame.bg_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameR").get_value(1);
+        WurstplusFrame.bg_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameG").get_value(1);
+        WurstplusFrame.bg_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameB").get_value(1);
+        WurstplusFrame.bg_a = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameA").get_value(1);
 
-		WurstplusFrame.nc_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameR").get_value(1);
-		WurstplusFrame.nc_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameG").get_value(1);
-		WurstplusFrame.nc_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameB").get_value(1);
-		
-		WurstplusFrame.bg_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameR").get_value(1);
-		WurstplusFrame.bg_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameG").get_value(1);
-		WurstplusFrame.bg_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameB").get_value(1);
-		WurstplusFrame.bg_a = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameA").get_value(1);
-		
-		WurstplusFrame.bd_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameR").get_value(1);
-		WurstplusFrame.bd_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameG").get_value(1);
-		WurstplusFrame.bd_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameB").get_value(1);
-		WurstplusFrame.bd_a = 0;
-		
-		WurstplusFrame.bdw_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetR").get_value(1);
-		WurstplusFrame.bdw_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetG").get_value(1);
-		WurstplusFrame.bdw_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetB").get_value(1);
-		WurstplusFrame.bdw_a = 255;
+        WurstplusFrame.bd_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameR").get_value(1);
+        WurstplusFrame.bd_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameG").get_value(1);
+        WurstplusFrame.bd_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameB").get_value(1);
+        WurstplusFrame.bd_a = 0;
 
-		WurstplusPinnableButton.nc_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetR").get_value(1);
-		WurstplusPinnableButton.nc_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetG").get_value(1);
-		WurstplusPinnableButton.nc_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetB").get_value(1);
-	
-		WurstplusPinnableButton.bg_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetR").get_value(1);
-		WurstplusPinnableButton.bg_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetG").get_value(1);
-		WurstplusPinnableButton.bg_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetB").get_value(1);
-		WurstplusPinnableButton.bg_a = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetA").get_value(1);
-	
-		WurstplusPinnableButton.bd_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetR").get_value(1);
-		WurstplusPinnableButton.bd_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetG").get_value(1);
-		WurstplusPinnableButton.bd_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetB").get_value(1);
-	}
+        WurstplusFrame.bdw_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetR").get_value(1);
+        WurstplusFrame.bdw_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetG").get_value(1);
+        WurstplusFrame.bdw_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetB").get_value(1);
+        WurstplusFrame.bdw_a = 255;
 
-	@Override
-	public void onGuiClosed() {
-		if (this.back) {
-			SexHack.get_hack_manager().get_module_with_tag("GUI").set_active(true);
-			SexHack.get_hack_manager().get_module_with_tag("HUD").set_active(false);
-		} else {
-			SexHack.get_hack_manager().get_module_with_tag("HUD").set_active(false);
-			SexHack.get_hack_manager().get_module_with_tag("GUI").set_active(false);
-		}
+        WurstplusPinnableButton.nc_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetR").get_value(1);
+        WurstplusPinnableButton.nc_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetG").get_value(1);
+        WurstplusPinnableButton.nc_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetB").get_value(1);
 
-		this.on_gui = false;
+        WurstplusPinnableButton.bg_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetR").get_value(1);
+        WurstplusPinnableButton.bg_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetG").get_value(1);
+        WurstplusPinnableButton.bg_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetB").get_value(1);
+        WurstplusPinnableButton.bg_a = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetA").get_value(1);
 
-		SexHack.get_config_manager().save_settings();
-	}
+        WurstplusPinnableButton.bd_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetR").get_value(1);
+        WurstplusPinnableButton.bd_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetG").get_value(1);
+        WurstplusPinnableButton.bd_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetB").get_value(1);
+    }
 
-	@Override
-	protected void mouseClicked(int mx, int my, int mouse) {
-		this.frame.mouse(mx, my, mouse);
+    @Override
+    public void onGuiClosed() {
+        if (this.back) {
+            SexHack.get_hack_manager().get_module_with_tag("GUI").set_active(true);
+            SexHack.get_hack_manager().get_module_with_tag("HUD").set_active(false);
+        } else {
+            SexHack.get_hack_manager().get_module_with_tag("HUD").set_active(false);
+            SexHack.get_hack_manager().get_module_with_tag("GUI").set_active(false);
+        }
 
-		if (mouse == 0) {
-			if (this.frame.motion(mx, my) && this.frame.can()) {
-				this.frame.set_move(true);
+        this.on_gui = false;
 
-				this.frame.set_move_x(mx - this.frame.get_x());
-				this.frame.set_move_y(my - this.frame.get_y());
-			}
-		}
-	}
+        SexHack.get_config_manager().save_settings();
+    }
 
-	@Override
-	protected void mouseReleased(int mx, int my, int state) {
-		this.frame.release(mx, my, state);
+    @Override
+    protected void mouseClicked(int mx, int my, int mouse) {
+        this.frame.mouse(mx, my, mouse);
 
-		this.frame.set_move(false);
-	}
+        if (mouse == 0) {
+            if (this.frame.motion(mx, my) && this.frame.can()) {
+                this.frame.set_move(true);
 
-	@Override
-	public void drawScreen(int mx, int my, float tick) {
-		this.drawDefaultBackground();
+                this.frame.set_move_x(mx - this.frame.get_x());
+                this.frame.set_move_y(my - this.frame.get_y());
+            }
+        }
+    }
 
-		this.frame.render(mx, my, 2);
-	}
+    @Override
+    protected void mouseReleased(int mx, int my, int state) {
+        this.frame.release(mx, my, state);
+
+        this.frame.set_move(false);
+    }
+
+    @Override
+    public void drawScreen(int mx, int my, float tick) {
+        this.drawDefaultBackground();
+
+        this.frame.render(mx, my, 2);
+    }
 }

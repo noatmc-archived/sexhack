@@ -25,7 +25,7 @@ public abstract class WurstplusMixinItemRenderer {
     @Shadow
     public abstract void renderItemInFirstPerson(final AbstractClientPlayer p0, final float p1, final float p2, final EnumHand p3, final float p4, final ItemStack p5, final float p6);
 
-    @Inject(method = { "renderItemInFirstPerson(Lnet/minecraft/client/entity/AbstractClientPlayer;FFLnet/minecraft/util/EnumHand;FLnet/minecraft/item/ItemStack;F)V" }, at = { @At("HEAD") }, cancellable = true)
+    @Inject(method = {"renderItemInFirstPerson(Lnet/minecraft/client/entity/AbstractClientPlayer;FFLnet/minecraft/util/EnumHand;FLnet/minecraft/item/ItemStack;F)V"}, at = {@At("HEAD")}, cancellable = true)
     public void renderItemInFirstPersonHook(final AbstractClientPlayer player, final float p_187457_2_, final float p_187457_3_, final EnumHand hand, final float p_187457_5_, final ItemStack stack, final float p_187457_7_, final CallbackInfo info) {
         if (this.injection) {
             info.cancel();
@@ -37,9 +37,8 @@ public abstract class WurstplusMixinItemRenderer {
                     xOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainX").get_value(1);
                     yOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainY").get_value(1);
                 }
-            }
-            else if (SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVOffset").get_value(true) &&
-            SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active()) {
+            } else if (SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVOffset").get_value(true) &&
+                    SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active()) {
                 xOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVOffsetX").get_value(1);
                 yOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVOffsetY").get_value(1);
             }
@@ -48,7 +47,7 @@ public abstract class WurstplusMixinItemRenderer {
         }
     }
 
-    @Redirect(method = { "renderArmFirstPerson" }, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;translate(FFF)V", ordinal = 0))
+    @Redirect(method = {"renderArmFirstPerson"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;translate(FFF)V", ordinal = 0))
     public void translateHook(final float x, final float y, final float z) {
         GlStateManager.translate(x + (SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active() ? SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainX").get_value(1) : 0.0f),
                 y + (SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active() ? SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainX").get_value(1) : 0.0f), z);

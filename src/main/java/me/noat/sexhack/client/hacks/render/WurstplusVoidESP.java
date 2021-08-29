@@ -3,8 +3,8 @@ package me.noat.sexhack.client.hacks.render;
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.client.renderer.culling.Frustum;
@@ -20,23 +20,21 @@ import java.util.List;
 
 public class WurstplusVoidESP extends Module {
 
+    public final List<BlockPos> void_blocks = new ArrayList<>();
+    private final ICamera camera = new Frustum();
+    Setting void_radius = create("Range", "VoidESPRange", 6, 1, 10);
+
     public WurstplusVoidESP() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
-        this.name        = "Void ESP";
-        this.tag         = "VoidESP";
+        this.name = "Void ESP";
+        this.tag = "VoidESP";
         this.description = "OH FUCK A DEEP HOLE";
     }
 
-    Setting void_radius = create("Range", "VoidESPRange", 6, 1, 10);
-
-    public final List<BlockPos> void_blocks = new ArrayList<>();
-
-    private final ICamera camera = new Frustum();
-
     @Override
     public void update() {
-        
+
         if (mc.player == null) return;
 
         void_blocks.clear();
@@ -60,15 +58,12 @@ public class WurstplusVoidESP extends Module {
         if (blockPos.getY() != 0)
             return false;
 
-        if (mc.world.getBlockState(blockPos).getBlock() != Blocks.AIR)
-            return false;
-
-        return true;
+        return mc.world.getBlockState(blockPos).getBlock() == Blocks.AIR;
 
     }
 
     @Override
-	public void render(WurstplusEventRender event) {
+    public void render(WurstplusEventRender event) {
 
         int r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
         int g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
@@ -83,8 +78,7 @@ public class WurstplusVoidESP extends Module {
             camera.setPosition(mc.getRenderViewEntity().posX, mc.getRenderViewEntity().posY, mc.getRenderViewEntity().posZ);
 
             if (camera.isBoundingBoxInFrustum(new AxisAlignedBB(bb.minX + mc.getRenderManager().viewerPosX, bb.minY + mc.getRenderManager().viewerPosY, bb.minZ + mc.getRenderManager().viewerPosZ,
-                    bb.maxX + mc.getRenderManager().viewerPosX, bb.maxY + mc.getRenderManager().viewerPosY, bb.maxZ + mc.getRenderManager().viewerPosZ)))
-            {
+                    bb.maxX + mc.getRenderManager().viewerPosX, bb.maxY + mc.getRenderManager().viewerPosY, bb.maxZ + mc.getRenderManager().viewerPosZ))) {
                 GlStateManager.pushMatrix();
                 GlStateManager.enableBlend();
                 GlStateManager.disableDepth();
@@ -108,5 +102,5 @@ public class WurstplusVoidESP extends Module {
         });
 
     }
-    
+
 }

@@ -2,8 +2,8 @@ package me.noat.sexhack.client.hacks.render;
 
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -15,18 +15,17 @@ import java.awt.*;
 
 public class WurstplusTracers extends Module {
 
-    public WurstplusTracers() {
-        super(WurstplusCategory.WURSTPLUS_RENDER);
-
-        this.name        = "Tracers";
-        this.tag         = "Tracers";
-        this.description = "DRAWS LINES";
-    }
-
     Setting friends = create("Friends", "TracerFriends", false);
     Setting range = create("Range", "TracerRange", 50, 0, 250);
     Setting width = create("Width", "TracerWidth", 1.0f, 0.0f, 5.0f);
     Setting offset = create("Offset", "TracerOffset", 0f, -4.0f, 4.0f);
+    public WurstplusTracers() {
+        super(WurstplusCategory.WURSTPLUS_RENDER);
+
+        this.name = "Tracers";
+        this.tag = "Tracers";
+        this.description = "DRAWS LINES";
+    }
 
     @Override
     public void render(WurstplusEventRender event) {
@@ -60,7 +59,7 @@ public class WurstplusTracers extends Module {
         final double posX = this.interpolate(entity.posX, entity.lastTickPosX) - mc.getRenderManager().renderPosX;
         final double posY = this.interpolate(entity.posY, entity.lastTickPosY) - mc.getRenderManager().renderPosY;
         final double posZ = this.interpolate(entity.posZ, entity.lastTickPosZ) - mc.getRenderManager().renderPosZ;
-        return new double[] { posX, posY, posZ };
+        return new double[]{posX, posY, posZ};
     }
 
     public void drawLineToEntity(final Entity e, final float red, final float green, final float blue, final float opacity) {
@@ -69,7 +68,7 @@ public class WurstplusTracers extends Module {
     }
 
     public void drawLine(final double posx, final double posy, final double posz, final double up, final float red, final float green, final float blue, final float opacity) {
-        final Vec3d eyes = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-(float)Math.toRadians(mc.player.rotationPitch)).rotateYaw(-(float)Math.toRadians(mc.player.rotationYaw));
+        final Vec3d eyes = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-(float) Math.toRadians(mc.player.rotationPitch)).rotateYaw(-(float) Math.toRadians(mc.player.rotationYaw));
         drawLineFromPosToPos(eyes.x, eyes.y + mc.player.getEyeHeight() + (float) offset.get_value(1), eyes.z, posx, posy, posz, up, red, green, blue, opacity);
 
     }
@@ -100,10 +99,10 @@ public class WurstplusTracers extends Module {
 
     public float[] getColorByDistance(final Entity entity) {
         if (entity instanceof EntityPlayer && WurstplusFriendUtil.isFriend(entity.getName())) {
-            return new float[] { 0.0f, 0.5f, 1.0f, 1.0f };
+            return new float[]{0.0f, 0.5f, 1.0f, 1.0f};
         }
-        final Color col = new Color(Color.HSBtoRGB((float)(Math.max(0.0, Math.min(mc.player.getDistanceSq(entity), 2500.0f) / 2500.0f) / 3.0), 1.0f, 0.8f) | 0xFF000000);
-        return new float[] { col.getRed() / 255.0f, col.getGreen() / 255.0f, col.getBlue() / 255.0f, 1.0f };
+        final Color col = new Color(Color.HSBtoRGB((float) (Math.max(0.0, Math.min(mc.player.getDistanceSq(entity), 2500.0f) / 2500.0f) / 3.0), 1.0f, 0.8f) | 0xFF000000);
+        return new float[]{col.getRed() / 255.0f, col.getGreen() / 255.0f, col.getBlue() / 255.0f, 1.0f};
     }
 
 }

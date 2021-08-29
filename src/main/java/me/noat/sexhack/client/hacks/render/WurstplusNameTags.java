@@ -3,8 +3,8 @@ package me.noat.sexhack.client.hacks.render;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.event.events.WurstplusEventRenderName;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.chat.WurstplusTotempop;
 import me.noat.sexhack.client.util.WurstplusDamageUtil;
 import me.noat.sexhack.client.util.WurstplusEnemyUtil;
@@ -30,14 +30,10 @@ import java.util.Objects;
 
 public class WurstplusNameTags extends Module {
 
-    public WurstplusNameTags() {
-        super(WurstplusCategory.WURSTPLUS_RENDER);
-
-        this.name = "Name Tags";
-        this.tag = "NameTags";
-        this.description = "MORE DETAILED NAMESSSSS";
-    }
-
+    @EventHandler
+    private final Listener<WurstplusEventRenderName> on_render_name = new Listener<>(event -> {
+        event.cancel();
+    });
     Setting show_armor = create("Armor", "NametagArmor", true);
     Setting show_health = create("Health", "NametagHealth", true);
     Setting show_ping = create("Ping", "NametagPing", true);
@@ -56,10 +52,13 @@ public class WurstplusNameTags extends Module {
     Setting sat = create("Saturation", "NametagSatiation", 0.8, 0, 1);
     Setting brightness = create("Brightness", "NametagBrightness", 0.8, 0, 1);
 
-    @EventHandler
-    private final Listener<WurstplusEventRenderName> on_render_name = new Listener<>(event -> {
-            event.cancel();
-    });
+    public WurstplusNameTags() {
+        super(WurstplusCategory.WURSTPLUS_RENDER);
+
+        this.name = "Name Tags";
+        this.tag = "NameTags";
+        this.description = "MORE DETAILED NAMESSSSS";
+    }
 
     @Override
     public void render(WurstplusEventRender event) {
@@ -117,7 +116,7 @@ public class WurstplusNameTags extends Module {
         GlStateManager.enablePolygonOffset();
         GlStateManager.doPolygonOffset(1.0f, -1500000.0f);
         GlStateManager.disableLighting();
-        GlStateManager.translate((float)x, (float)tempY + 1.4f, (float)z);
+        GlStateManager.translate((float) x, (float) tempY + 1.4f, (float) z);
         GlStateManager.rotate(-mc.getRenderManager().playerViewY, 0.0f, 1.0f, 0.0f);
         GlStateManager.rotate(mc.getRenderManager().playerViewX, (mc.gameSettings.thirdPersonView == 2) ? -1.0f : 1.0f, 0.0f, 0.0f);
         GlStateManager.scale(-scale, -scale, scale);
@@ -139,8 +138,8 @@ public class WurstplusNameTags extends Module {
             green = 40;
             blue = 7;
         }
-        WurstplusRenderUtil.drawRect((float)(-width - 2)-1, (float)(-(mc.fontRenderer.FONT_HEIGHT + 1))-1, width + 3f, 2.5f, red, green, blue, (float) a.get_value(1));
-        WurstplusRenderUtil.drawRect((float)(-width - 2), (float)(-(mc.fontRenderer.FONT_HEIGHT + 1)), width + 2.0f, 1.5f, 1426063360);
+        WurstplusRenderUtil.drawRect((float) (-width - 2) - 1, (float) (-(mc.fontRenderer.FONT_HEIGHT + 1)) - 1, width + 3f, 2.5f, red, green, blue, (float) a.get_value(1));
+        WurstplusRenderUtil.drawRect((float) (-width - 2), (float) (-(mc.fontRenderer.FONT_HEIGHT + 1)), width + 2.0f, 1.5f, 1426063360);
         GlStateManager.disableBlend();
         final ItemStack renderMainHand = player.getHeldItemMainhand().copy();
         if (renderMainHand.hasEffect() && (renderMainHand.getItem() instanceof ItemTool || renderMainHand.getItem() instanceof ItemArmor)) {
@@ -151,7 +150,7 @@ public class WurstplusNameTags extends Module {
             final int stackNameWidth = mc.fontRenderer.getStringWidth(stackName) / 2;
             GL11.glPushMatrix();
             GL11.glScalef(0.75f, 0.75f, 0.0f);
-            mc.fontRenderer.drawStringWithShadow(stackName, (float)(-stackNameWidth), -(this.getBiggestArmorTag(player) + 18.0f), -1);
+            mc.fontRenderer.drawStringWithShadow(stackName, (float) (-stackNameWidth), -(this.getBiggestArmorTag(player) + 18.0f), -1);
             GL11.glScalef(1.5f, 1.5f, 1.0f);
             GL11.glPopMatrix();
         }
@@ -196,7 +195,7 @@ public class WurstplusNameTags extends Module {
             this.renderItemStack(renderMainHand, xOffset);
             GlStateManager.popMatrix();
         }
-        mc.fontRenderer.drawStringWithShadow(displayTag, (float)(-width), (float)(-(mc.fontRenderer.FONT_HEIGHT - 1)), this.getDisplayColour(player));
+        mc.fontRenderer.drawStringWithShadow(displayTag, (float) (-width), (float) (-(mc.fontRenderer.FONT_HEIGHT - 1)), this.getDisplayColour(player));
         camera.posX = originalPositionX;
         camera.posY = originalPositionY;
         camera.posZ = originalPositionZ;
@@ -234,7 +233,7 @@ public class WurstplusNameTags extends Module {
         int enchantmentY = -37;
         final NBTTagList enchants = stack.getEnchantmentTagList();
         if (enchants.tagCount() > 2 && simplify.get_value(true)) {
-            mc.fontRenderer.drawStringWithShadow("god", (float)(x * 2), (float)enchantmentY, -3977919);
+            mc.fontRenderer.drawStringWithShadow("god", (float) (x * 2), (float) enchantmentY, -3977919);
             enchantmentY -= 8;
         } else {
             for (int index = 0; index < enchants.tagCount(); ++index) {
@@ -244,7 +243,7 @@ public class WurstplusNameTags extends Module {
                 if (enc != null) {
                     String encName = enc.isCurse() ? (TextFormatting.RED + enc.getTranslatedName(level).substring(11).substring(0, 1).toLowerCase()) : enc.getTranslatedName(level).substring(0, 1).toLowerCase();
                     encName += level;
-                    mc.fontRenderer.drawStringWithShadow(encName, (float)(x * 2), (float)enchantmentY, -1);
+                    mc.fontRenderer.drawStringWithShadow(encName, (float) (x * 2), (float) enchantmentY, -1);
                     enchantmentY -= 8;
                 }
             }
@@ -254,14 +253,12 @@ public class WurstplusNameTags extends Module {
             String color;
             if (percent >= 60) {
                 color = section_sign() + "a";
-            }
-            else if (percent >= 25) {
+            } else if (percent >= 25) {
                 color = section_sign() + "e";
-            }
-            else {
+            } else {
                 color = section_sign() + "c";
             }
-            mc.fontRenderer.drawStringWithShadow(color + percent + "%", (float)(x * 2), (enchantmentY < -62) ? (float)enchantmentY : -62 , -1);
+            mc.fontRenderer.drawStringWithShadow(color + percent + "%", (float) (x * 2), (enchantmentY < -62) ? (float) enchantmentY : -62, -1);
         }
     }
 
@@ -332,20 +329,15 @@ public class WurstplusNameTags extends Module {
         String color;
         if (health > 25.0f) {
             color = section_sign() + "5";
-        }
-        else if (health > 20.0f) {
+        } else if (health > 20.0f) {
             color = section_sign() + "a";
-        }
-        else if (health > 15.0f) {
+        } else if (health > 15.0f) {
             color = section_sign() + "2";
-        }
-        else if (health > 10.0f) {
+        } else if (health > 10.0f) {
             color = section_sign() + "6";
-        }
-        else if (health > 5.0f) {
+        } else if (health > 5.0f) {
             color = section_sign() + "c";
-        }
-        else {
+        } else {
             color = section_sign() + "4";
         }
         String pingStr = "";
@@ -360,20 +352,20 @@ public class WurstplusNameTags extends Module {
                     pingStr += section_sign() + "2";
                 }
                 pingStr += responseTime + "ms ";
+            } catch (Exception ignore) {
             }
-            catch (Exception ignore) {}
         }
         String popStr = " ";
         if (show_totems.get_value(true)) {
             try {
                 popStr += (WurstplusTotempop.totem_pop_counter.get(player.getName()) == null ? section_sign() + "70" : section_sign() + "c -" + WurstplusTotempop.totem_pop_counter.get(player.getName()));
-            } catch (Exception ignore) {}
+            } catch (Exception ignore) {
+            }
         }
         if (Math.floor(health) == health) {
-            name = name + color + " " + ((health > 0.0f) ? Integer.valueOf((int)Math.floor(health)) : "dead");
-        }
-        else {
-            name = name + color + " " + ((health > 0.0f) ? Integer.valueOf((int)health) : "dead");
+            name = name + color + " " + ((health > 0.0f) ? Integer.valueOf((int) Math.floor(health)) : "dead");
+        } else {
+            name = name + color + " " + ((health > 0.0f) ? Integer.valueOf((int) health) : "dead");
         }
         return pingStr + section_sign() + "r" + name + section_sign() + "r" + popStr;
     }

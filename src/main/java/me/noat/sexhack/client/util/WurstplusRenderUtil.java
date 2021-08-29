@@ -24,6 +24,11 @@ public class WurstplusRenderUtil {
     public static RenderItem itemRender;
     public static ICamera camera;
 
+    static {
+        itemRender = mc.getRenderItem();
+        camera = new Frustum();
+    }
+
     public static void renderOne(final float lineWidth) {
         checkSetupFBO();
         GL11.glPushAttrib(1048575);
@@ -94,7 +99,7 @@ public class WurstplusRenderUtil {
 
     public static void drawText(final BlockPos pos, final String text) {
         GlStateManager.pushMatrix();
-        glBillboardDistanceScaled(pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f, (EntityPlayer)mc.player, 1.0f);
+        glBillboardDistanceScaled(pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f, mc.player, 1.0f);
         GlStateManager.disableDepth();
         GlStateManager.translate(-(mc.fontRenderer.getStringWidth(text) / 2.0), 0.0, 0.0);
         mc.fontRenderer.drawStringWithShadow(text, 0.0f, 0.0f, -5592406);
@@ -177,7 +182,7 @@ public class WurstplusRenderUtil {
 
     public static void glBillboardDistanceScaled(final float x, final float y, final float z, final EntityPlayer player, final float scale) {
         glBillboard(x, y, z);
-        final int distance = (int)player.getDistance(x, y, z);
+        final int distance = (int) player.getDistance(x, y, z);
         float scaleDistance = distance / 2.0f / (2.0f + (2.0f - scale));
         if (scaleDistance < 1.0f) {
             scaleDistance = 1.0f;
@@ -209,7 +214,7 @@ public class WurstplusRenderUtil {
 
     public static void drawArc(final float cx, final float cy, final float r, final float start_angle, final float end_angle, final int num_segments) {
         GL11.glBegin(4);
-        for (int i = (int)(num_segments / (360.0f / start_angle)) + 1; i <= num_segments / (360.0f / end_angle); ++i) {
+        for (int i = (int) (num_segments / (360.0f / start_angle)) + 1; i <= num_segments / (360.0f / end_angle); ++i) {
             final double previousangle = 6.283185307179586 * (i - 1) / num_segments;
             final double angle = 6.283185307179586 * i / num_segments;
             GL11.glVertex2d(cx, cy);
@@ -221,7 +226,7 @@ public class WurstplusRenderUtil {
 
     public static void drawArcOutline(final float cx, final float cy, final float r, final float start_angle, final float end_angle, final int num_segments) {
         GL11.glBegin(2);
-        for (int i = (int)(num_segments / (360.0f / start_angle)) + 1; i <= num_segments / (360.0f / end_angle); ++i) {
+        for (int i = (int) (num_segments / (360.0f / start_angle)) + 1; i <= num_segments / (360.0f / end_angle); ++i) {
             final double angle = 6.283185307179586 * i / num_segments;
             GL11.glVertex2d(cx + Math.cos(angle) * r, cy + Math.sin(angle) * r);
         }
@@ -275,11 +280,6 @@ public class WurstplusRenderUtil {
         EXTFramebufferObject.glRenderbufferStorageEXT(36161, 34041, mc.displayWidth, mc.displayHeight);
         EXTFramebufferObject.glFramebufferRenderbufferEXT(36160, 36128, 36161, stencilDepthBufferID);
         EXTFramebufferObject.glFramebufferRenderbufferEXT(36160, 36096, 36161, stencilDepthBufferID);
-    }
-
-    static {
-        itemRender = mc.getRenderItem();
-        camera = new Frustum();
     }
 
 }

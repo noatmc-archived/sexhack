@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.misc;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import net.minecraft.entity.Entity;
@@ -11,25 +11,23 @@ import net.minecraft.util.math.RayTraceResult;
 import org.lwjgl.input.Mouse;
 
 public class WurstplusMiddleClickFriends extends Module {
-    
-    public WurstplusMiddleClickFriends() {
-        super(WurstplusCategory.WURSTPLUS_MISC);
-
-		this.name        = "Middleclick Friends";
-		this.tag         = "MiddleclickFriends";
-		this.description = "you press button and the world becomes a better place :D";
-    }
-
-    private boolean clicked = false;
 
     public static ChatFormatting red = ChatFormatting.RED;
     public static ChatFormatting green = ChatFormatting.GREEN;
     public static ChatFormatting bold = ChatFormatting.BOLD;
     public static ChatFormatting reset = ChatFormatting.RESET;
+    private boolean clicked = false;
+    public WurstplusMiddleClickFriends() {
+        super(WurstplusCategory.WURSTPLUS_MISC);
+
+        this.name = "Middleclick Friends";
+        this.tag = "MiddleclickFriends";
+        this.description = "you press button and the world becomes a better place :D";
+    }
 
     @Override
-	public void update() {
-        
+    public void update() {
+
         if (mc.currentScreen != null) {
             return;
         }
@@ -58,7 +56,7 @@ public class WurstplusMiddleClickFriends extends Module {
                 WurstplusFriendUtil.Friend f = WurstplusFriendUtil.friends.stream().filter(friend -> friend.getUsername().equalsIgnoreCase(player.getName())).findFirst().get();
                 WurstplusFriendUtil.friends.remove(f);
                 WurstplusMessageUtil.send_client_message("Player " + red + bold + player.getName() + reset + " is now not your friend :(");
-                            
+
             } else {
                 WurstplusFriendUtil.Friend f = WurstplusFriendUtil.get_friend_object(player.getName());
                 WurstplusFriendUtil.friends.add(f);
@@ -67,6 +65,6 @@ public class WurstplusMiddleClickFriends extends Module {
 
         }
 
-	}
+    }
 
 }

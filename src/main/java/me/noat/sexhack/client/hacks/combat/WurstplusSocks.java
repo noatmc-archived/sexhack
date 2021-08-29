@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper.ValidResult;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
@@ -20,16 +20,15 @@ public class WurstplusSocks extends Module {
 
     // if you use this ur actually bad
 
-    public WurstplusSocks() {
-		super(WurstplusCategory.WURSTPLUS_COMBAT);
-
-		this.name        = "Socks"; 
-		this.tag         = "Socks";
-		this.description = "Protects your feet";
-    }
-
     Setting rotate = create("Rotate", "SocksRotate", false);
     Setting swing = create("Swing", "SocksSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    public WurstplusSocks() {
+        super(WurstplusCategory.WURSTPLUS_COMBAT);
+
+        this.name = "Socks";
+        this.tag = "Socks";
+        this.description = "Protects your feet";
+    }
 
     @Override
     protected void enable() {
@@ -40,7 +39,7 @@ public class WurstplusSocks extends Module {
     }
 
     @Override
-	public void update() {
+    public void update() {
 
         final int slot = find_in_hotbar();
 
@@ -49,8 +48,7 @@ public class WurstplusSocks extends Module {
         BlockPos center_pos = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
         ArrayList<BlockPos> blocks_to_fill = new ArrayList<>();
 
-        switch (WurstplusPlayerUtil.GetFacing())
-        {
+        switch (WurstplusPlayerUtil.GetFacing()) {
             case East:
                 blocks_to_fill.add(center_pos.east().east());
                 blocks_to_fill.add(center_pos.east().east().up());
@@ -110,10 +108,10 @@ public class WurstplusSocks extends Module {
 
                 if (block instanceof BlockEnderChest)
                     return i;
-                
+
                 else if (block instanceof BlockObsidian)
                     return i;
-                
+
             }
         }
         return -1;

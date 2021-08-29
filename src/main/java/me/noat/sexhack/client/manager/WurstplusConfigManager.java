@@ -7,10 +7,6 @@ import me.noat.sexhack.client.guiscreen.render.components.WurstplusFrame;
 import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.Module;
-import me.noat.sexhack.client.util.WurstplusDrawnUtil;
-import me.noat.sexhack.client.util.WurstplusEnemyUtil;
-import me.noat.sexhack.client.util.WurstplusEzMessageUtil;
-import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import me.noat.sexhack.client.util.*;
 
 import java.io.*;
@@ -28,8 +24,6 @@ public class WurstplusConfigManager {
     // FOLDERS
     private final String MAIN_FOLDER = "WURSTPLUSTWO/";
     private final String CONFIGS_FOLDER = MAIN_FOLDER + "configs/";
-    private String ACTIVE_CONFIG_FOLDER = CONFIGS_FOLDER + "default/";
-
     // STATIC FILES
     private final String CLIENT_FILE = "client.json";
     private final String CONFIG_FILE = "config.txt";
@@ -40,7 +34,6 @@ public class WurstplusConfigManager {
     private final String FRIENDS_FILE = "friends.json";
     private final String HUD_FILE = "hud.json";
     private final String BINDS_FILE = "binds.txt";
-
     // DIRS
     private final String CLIENT_DIR = MAIN_FOLDER + CLIENT_FILE;
     private final String CONFIG_DIR = MAIN_FOLDER + CONFIG_FILE;
@@ -50,15 +43,9 @@ public class WurstplusConfigManager {
     private final String ENEMIES_DIR = MAIN_FOLDER + ENEMIES_FILE;
     private final String FRIENDS_DIR = MAIN_FOLDER + FRIENDS_FILE;
     private final String HUD_DIR = MAIN_FOLDER + HUD_FILE;
-
-    private String CURRENT_CONFIG_DIR = MAIN_FOLDER + CONFIGS_FOLDER + ACTIVE_CONFIG_FOLDER;
-    private String BINDS_DIR = CURRENT_CONFIG_DIR + BINDS_FILE;
-
     // FOLDER PATHS
     private final Path MAIN_FOLDER_PATH = Paths.get(MAIN_FOLDER);
     private final Path CONFIGS_FOLDER_PATH = Paths.get(CONFIGS_FOLDER);
-    private Path ACTIVE_CONFIG_FOLDER_PATH = Paths.get(ACTIVE_CONFIG_FOLDER);
-
     // FILE PATHS
     private final Path CLIENT_PATH = Paths.get(CLIENT_DIR);
     private final Path CHATSUFFIX_PATH = Paths.get(CHATSUFFIX_DIR);
@@ -68,7 +55,10 @@ public class WurstplusConfigManager {
     private final Path ENEMIES_PATH = Paths.get(ENEMIES_DIR);
     private final Path FRIENDS_PATH = Paths.get(FRIENDS_DIR);
     private final Path HUD_PATH = Paths.get(HUD_DIR);
-
+    private String ACTIVE_CONFIG_FOLDER = CONFIGS_FOLDER + "default/";
+    private String CURRENT_CONFIG_DIR = MAIN_FOLDER + CONFIGS_FOLDER + ACTIVE_CONFIG_FOLDER;
+    private String BINDS_DIR = CURRENT_CONFIG_DIR + BINDS_FILE;
+    private Path ACTIVE_CONFIG_FOLDER_PATH = Paths.get(ACTIVE_CONFIG_FOLDER);
     private Path BINDS_PATH = Paths.get(BINDS_DIR);
     private Path CURRENT_CONFIG_PATH = Paths.get(CURRENT_CONFIG_DIR);
 
@@ -105,6 +95,7 @@ public class WurstplusConfigManager {
         writer.close();
 
     }
+
     private void load_ezmessage() throws IOException {
         StringBuilder sb = new StringBuilder();
         for (String s : Files.readAllLines(EZ_PATH)) {
@@ -130,11 +121,11 @@ public class WurstplusConfigManager {
     }
 
     private void load_chatsuffixmessage() throws IOException {
-      StringBuilder cs = new StringBuilder();
-      for (String csm : Files.readAllLines(CHATSUFFIX_PATH)) {
-          cs.append(csm);
-      }
-      WurstplusEzMessageUtil.set_message(cs.toString());
+        StringBuilder cs = new StringBuilder();
+        for (String csm : Files.readAllLines(CHATSUFFIX_PATH)) {
+            cs.append(csm);
+        }
+        WurstplusEzMessageUtil.set_message(cs.toString());
     }
 
     // LOAD & SAVE DRAWN
@@ -169,7 +160,8 @@ public class WurstplusConfigManager {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get(FRIENDS_DIR));
 
-        WurstplusFriendUtil.friends = gson.fromJson(reader, new TypeToken<ArrayList<WurstplusFriendUtil.Friend>>(){}.getType());
+        WurstplusFriendUtil.friends = gson.fromJson(reader, new TypeToken<ArrayList<WurstplusFriendUtil.Friend>>() {
+        }.getType());
 
         reader.close();
     }
@@ -191,7 +183,8 @@ public class WurstplusConfigManager {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get(ENEMIES_DIR));
 
-        WurstplusEnemyUtil.enemies = gson.fromJson(reader, new TypeToken<ArrayList<WurstplusEnemyUtil.Enemy>>(){}.getType());
+        WurstplusEnemyUtil.enemies = gson.fromJson(reader, new TypeToken<ArrayList<WurstplusEnemyUtil.Enemy>>() {
+        }.getType());
 
         reader.close();
     }
@@ -323,7 +316,7 @@ public class WurstplusConfigManager {
         }
 
         main_json.add("configuration", config);
-        main_json.add("gui",           gui);
+        main_json.add("gui", gui);
 
         JsonElement json_pretty = parser.parse(main_json.toString());
 
@@ -339,9 +332,9 @@ public class WurstplusConfigManager {
 
     private void load_client() throws IOException {
         InputStream stream = Files.newInputStream(CLIENT_PATH);
-        JsonObject  json_client = new JsonParser().parse(new InputStreamReader(stream)).getAsJsonObject();
-        JsonObject  json_config = json_client.get("configuration").getAsJsonObject();
-        JsonObject  json_gui = json_client.get("gui").getAsJsonObject();
+        JsonObject json_client = new JsonParser().parse(new InputStreamReader(stream)).getAsJsonObject();
+        JsonObject json_config = json_client.get("configuration").getAsJsonObject();
+        JsonObject json_gui = json_client.get("gui").getAsJsonObject();
 
         WurstplusCommandManager.set_prefix(json_config.get("prefix").getAsString());
 
@@ -366,28 +359,28 @@ public class WurstplusConfigManager {
         JsonObject main_json = new JsonObject();
 
         JsonObject main_frame = new JsonObject();
-        JsonObject main_hud   = new JsonObject();
+        JsonObject main_hud = new JsonObject();
 
         main_frame.add("name", new JsonPrimitive(SexHack.click_hud.get_frame_hud().get_name()));
-        main_frame.add("tag",  new JsonPrimitive(SexHack.click_hud.get_frame_hud().get_tag()));
-        main_frame.add("x",    new JsonPrimitive(SexHack.click_hud.get_frame_hud().get_x()));
-        main_frame.add("y",    new JsonPrimitive(SexHack.click_hud.get_frame_hud().get_y()));
+        main_frame.add("tag", new JsonPrimitive(SexHack.click_hud.get_frame_hud().get_tag()));
+        main_frame.add("x", new JsonPrimitive(SexHack.click_hud.get_frame_hud().get_x()));
+        main_frame.add("y", new JsonPrimitive(SexHack.click_hud.get_frame_hud().get_y()));
 
         for (WurstplusPinnable pinnables_hud : SexHack.get_hud_manager().get_array_huds()) {
             JsonObject frame_info = new JsonObject();
 
             frame_info.add("title", new JsonPrimitive(pinnables_hud.get_title()));
-            frame_info.add("tag",   new JsonPrimitive(pinnables_hud.get_tag()));
+            frame_info.add("tag", new JsonPrimitive(pinnables_hud.get_tag()));
             frame_info.add("state", new JsonPrimitive(pinnables_hud.is_active()));
-            frame_info.add("dock",  new JsonPrimitive(pinnables_hud.get_dock()));
-            frame_info.add("x",     new JsonPrimitive(pinnables_hud.get_x()));
-            frame_info.add("y",     new JsonPrimitive(pinnables_hud.get_y()));
+            frame_info.add("dock", new JsonPrimitive(pinnables_hud.get_dock()));
+            frame_info.add("x", new JsonPrimitive(pinnables_hud.get_x()));
+            frame_info.add("y", new JsonPrimitive(pinnables_hud.get_y()));
 
             main_hud.add(pinnables_hud.get_tag(), frame_info);
         }
 
         main_json.add("frame", main_frame);
-        main_json.add("hud",   main_hud);
+        main_json.add("hud", main_hud);
 
         JsonElement pretty_json = parser.parse(main_json.toString());
 
@@ -405,10 +398,10 @@ public class WurstplusConfigManager {
     }
 
     private void load_hud() throws IOException {
-        InputStream input_stream  = Files.newInputStream(HUD_PATH);
-        JsonObject  main_hud   = new JsonParser().parse(new InputStreamReader(input_stream)).getAsJsonObject();
-        JsonObject  main_frame = main_hud.get("frame").getAsJsonObject();
-        JsonObject  main_huds  = main_hud.get("hud").getAsJsonObject();
+        InputStream input_stream = Files.newInputStream(HUD_PATH);
+        JsonObject main_hud = new JsonParser().parse(new InputStreamReader(input_stream)).getAsJsonObject();
+        JsonObject main_frame = main_hud.get("frame").getAsJsonObject();
+        JsonObject main_huds = main_hud.get("hud").getAsJsonObject();
 
         SexHack.click_hud.get_frame_hud().set_x(main_frame.get("x").getAsInt());
         SexHack.click_hud.get_frame_hud().set_y(main_frame.get("y").getAsInt());
@@ -461,7 +454,8 @@ public class WurstplusConfigManager {
                 final Module module = SexHack.get_hack_manager().get_module_with_tag(tag);
                 module.set_bind(Integer.parseInt(bind));
                 module.set_active(Boolean.parseBoolean(active));
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
         br.close();
 

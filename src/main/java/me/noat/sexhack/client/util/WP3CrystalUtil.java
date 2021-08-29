@@ -32,6 +32,7 @@ import java.util.stream.Collectors;
 public class WP3CrystalUtil {
 
     private static final Minecraft mc = Minecraft.getMinecraft();
+
     public static Boolean getArmourFucker(EntityPlayer player, float percent) {
         for (ItemStack stack : player.getArmorInventoryList()) {
             if (stack == null || stack.getItem() == Items.AIR) return true;
@@ -150,10 +151,14 @@ public class WP3CrystalUtil {
 
     public static float getDamageFromDifficulty(float damage) {
         switch (mc.world.getDifficulty()) {
-            case PEACEFUL: return 0;
-            case EASY:     return Math.min(damage / 2 + 1, damage);
-            case HARD:     return damage * 3 / 2;
-            default:       return damage;
+            case PEACEFUL:
+                return 0;
+            case EASY:
+                return Math.min(damage / 2 + 1, damage);
+            case HARD:
+                return damage * 3 / 2;
+            default:
+                return damage;
         }
     }
 
@@ -391,15 +396,15 @@ public class WP3CrystalUtil {
             if (e == null) {
                 if (isOnGround(0, 0, 0, entity)) {
                     motionY = shouldStrafe ? 0.4 : -0.07840015258789;
-                }else {
+                } else {
                     motionY -= 0.08;
                     motionY *= 0.9800000190734863D;
                 }
                 e = placeValue(motionX, motionY, motionZ, (EntityPlayer) entity);
-            }else {
+            } else {
                 if (isOnGround(0, 0, 0, e)) {
                     motionY = shouldStrafe ? 0.4 : -0.07840015258789;
-                }else {
+                } else {
                     motionY -= 0.08;
                     motionY *= 0.9800000190734863D;
                 }
@@ -465,15 +470,13 @@ public class WP3CrystalUtil {
             if (offsetX > 0.0D && other.maxX <= this1.minX) {
                 double d1 = (this1.minX - 0.3) - other.maxX;
 
-                if (d1 < offsetX)
-                {
+                if (d1 < offsetX) {
                     offsetX = d1;
                 }
             } else if (offsetX < 0.0D && other.minX >= this1.maxX) {
                 double d0 = (this1.maxX + 0.3) - other.minX;
 
-                if (d0 > offsetX)
-                {
+                if (d0 > offsetX) {
                     offsetX = d0;
                 }
             }
@@ -488,8 +491,7 @@ public class WP3CrystalUtil {
                 if (d1 < offsetZ) {
                     offsetZ = d1;
                 }
-            }
-            else if (offsetZ < 0.0D && other.minZ >= this1.maxZ) {
+            } else if (offsetZ < 0.0D && other.minZ >= this1.maxZ) {
                 double d0 = (this1.maxZ + 0.3) - other.minZ;
                 if (d0 > offsetZ) {
                     offsetZ = d0;

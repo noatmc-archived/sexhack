@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper.ValidResult;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
@@ -19,38 +19,37 @@ import net.minecraft.util.math.BlockPos;
 import java.util.ArrayList;
 
 public class WurstplusHoleFill extends Module {
-    
-    public WurstplusHoleFill() {
-		super(WurstplusCategory.WURSTPLUS_COMBAT);
 
-		this.name        = "Hole Fill"; 
-		this.tag         = "HoleFill";
-		this.description = "Turn holes into floors";
-    }
-    
+    private final ArrayList<BlockPos> holes = new ArrayList<>();
     Setting hole_toggle = create("Toggle", "HoleFillToggle", true);
     Setting hole_rotate = create("Rotate", "HoleFillRotate", true);
     Setting hole_range = create("Range", "HoleFillRange", 4, 1, 6);
     Setting swing = create("Swing", "HoleFillSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
 
 
-    private final ArrayList<BlockPos> holes = new ArrayList<>();
+    public WurstplusHoleFill() {
+        super(WurstplusCategory.WURSTPLUS_COMBAT);
+
+        this.name = "Hole Fill";
+        this.tag = "HoleFill";
+        this.description = "Turn holes into floors";
+    }
 
     @Override
-	public void enable() {
-		if (find_in_hotbar() == -1) {
-		    this.set_disable();
+    public void enable() {
+        if (find_in_hotbar() == -1) {
+            this.set_disable();
         }
         find_new_holes();
-	}
+    }
 
-	@Override
-	public void disable() {
+    @Override
+    public void disable() {
         holes.clear();
     }
-    
+
     @Override
-	public void update() {
+    public void update() {
 
         if (find_in_hotbar() == -1) {
             this.disable();
@@ -101,7 +100,7 @@ public class WurstplusHoleFill extends Module {
 
         holes.clear();
 
-        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(WurstplusPlayerUtil.GetLocalPlayerPosFloored(), hole_range.get_value(1), (int) hole_range.get_value(1), false, true, 0)) {
+        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(WurstplusPlayerUtil.GetLocalPlayerPosFloored(), hole_range.get_value(1), hole_range.get_value(1), false, true, 0)) {
 
             if (!mc.world.getBlockState(pos).getBlock().equals(Blocks.AIR)) {
                 continue;
@@ -117,12 +116,12 @@ public class WurstplusHoleFill extends Module {
 
             boolean possible = true;
 
-            for (BlockPos seems_blocks : new BlockPos[] {
-            new BlockPos( 0, -1,  0),
-            new BlockPos( 0,  0, -1),
-            new BlockPos( 1,  0,  0),
-            new BlockPos( 0,  0,  1),
-            new BlockPos(-1,  0,  0)
+            for (BlockPos seems_blocks : new BlockPos[]{
+                    new BlockPos(0, -1, 0),
+                    new BlockPos(0, 0, -1),
+                    new BlockPos(1, 0, 0),
+                    new BlockPos(0, 0, 1),
+                    new BlockPos(-1, 0, 0)
             }) {
                 Block block = mc.world.getBlockState(pos.add(seems_blocks)).getBlock();
 

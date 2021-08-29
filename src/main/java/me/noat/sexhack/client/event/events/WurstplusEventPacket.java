@@ -7,39 +7,37 @@ import net.minecraft.network.Packet;
 
 
 public class WurstplusEventPacket extends WurstplusEventCancellable {
-	private final Packet packet;
-	private int stage;
-	
-	public WurstplusEventPacket(Packet packet) {
-		super();
+    private final Packet packet;
+    private int stage;
 
-		this.packet = packet;
-		this.stage = stage;
-	}
+    public WurstplusEventPacket(Packet packet) {
+        super();
 
-	public Packet get_packet() {
-		return this.packet;
-	}
+        this.packet = packet;
+        this.stage = stage;
+    }
 
-	public static class ReceivePacket extends WurstplusEventPacket {
-		public ReceivePacket(Packet packet) {
-			super(packet);
-		}
-	}
+    public Packet get_packet() {
+        return this.packet;
+    }
 
-	public
-	int getStage ( ) {
-			return this.stage;
-	}
+    public int getStage() {
+        return this.stage;
+    }
 
-	public
-	void setStage ( int stage ) {
-			this.stage = stage;
-	}
+    public void setStage(int stage) {
+        this.stage = stage;
+    }
 
-	public static class SendPacket extends WurstplusEventPacket {
-		public SendPacket(Packet packet) {
-			super(packet);
-		}
-	}
+    public static class ReceivePacket extends WurstplusEventPacket {
+        public ReceivePacket(Packet packet) {
+            super(packet);
+        }
+    }
+
+    public static class SendPacket extends WurstplusEventPacket {
+        public SendPacket(Packet packet) {
+            super(packet);
+        }
+    }
 }

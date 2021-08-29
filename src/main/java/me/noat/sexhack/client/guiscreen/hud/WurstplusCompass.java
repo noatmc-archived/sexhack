@@ -7,25 +7,17 @@ import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
 import me.noat.sexhack.client.util.WurstplusMathUtil;
 
 public class WurstplusCompass extends WurstplusPinnable {
-    
-    public WurstplusCompass() {
-		super("Compass", "Compass", 1, 0, 0);
-    }
-    
-    public WurstplusDraw font = new WurstplusDraw(1);
 
     private static final double half_pi = Math.PI / 2;
+    public WurstplusDraw font = new WurstplusDraw(1);
 
-    private enum Direction {
-        N,
-        W,
-        S,
-        E
+    public WurstplusCompass() {
+        super("Compass", "Compass", 1, 0, 0);
     }
 
     @Override
-	public void render() {
-        
+    public void render() {
+
         int r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
         int g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
         int b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
@@ -39,11 +31,11 @@ public class WurstplusCompass extends WurstplusPinnable {
             } else {
                 create_line(dir.name(), (int) (this.docking(1, dir.name()) + get_x(rad)), (int) get_y(rad), 225, 225, 225, 225);
             }
-            
+
         }
 
         this.set_width(50);
-		this.set_height(50);
+        this.set_height(50);
 
     }
 
@@ -65,6 +57,13 @@ public class WurstplusCompass extends WurstplusPinnable {
         final double pitch_radians = Math.toRadians(epic_pitch);
         return Math.cos(rad) * Math.sin(pitch_radians) * (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDCompassScale").get_value(1));
 
+    }
+
+    private enum Direction {
+        N,
+        W,
+        S,
+        E
     }
 
 }

@@ -1,7 +1,7 @@
 package me.noat.sexhack.client.hacks.dev;
 
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
 import me.noat.sexhack.client.util.WurstplusCrystalUtil;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
@@ -14,18 +14,17 @@ import net.minecraft.util.math.BlockPos;
 import java.util.List;
 
 public class CrystalAura extends Module {
-    public CrystalAura() {
-        super(WurstplusCategory.WURSTPLUS_BETA);
-        this.name        = "CrystalAura";
-        this.tag         = "woohoo";
-        this.description = ":^)";
-    }
-
     int minDmg = 3;
     double blockgameAtomicBombDamage;
     double selfDmg;
     BlockPos damage_block;
     WurstplusTimer timerPlace;
+    public CrystalAura() {
+        super(WurstplusCategory.WURSTPLUS_BETA);
+        this.name = "CrystalAura";
+        this.tag = "woohoo";
+        this.description = ":^)";
+    }
 
     public BlockPos getBlockForCrystalAura() {
         List<BlockPos> blocks = WurstplusCrystalUtil.possiblePlacePositions((float) 6, false, true);
@@ -63,6 +62,7 @@ public class CrystalAura extends Module {
             timerPlace.reset();
         }
     }
+
     public void place_crystal() {
         BlockPos crystalPlacePos = getBlockForCrystalAura();
         WurstplusBlockUtil.placeCrystalOnBlock(crystalPlacePos, EnumHand.OFF_HAND);

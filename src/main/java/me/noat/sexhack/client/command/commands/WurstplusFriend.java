@@ -6,15 +6,14 @@ import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
 public class WurstplusFriend extends WurstplusCommand {
-    
-    public WurstplusFriend() {
-        super("friend", "To add friends");
-    }
 
     public static ChatFormatting red = ChatFormatting.RED;
     public static ChatFormatting green = ChatFormatting.GREEN;
     public static ChatFormatting bold = ChatFormatting.BOLD;
     public static ChatFormatting reset = ChatFormatting.RESET;
+    public WurstplusFriend() {
+        super("friend", "To add friends");
+    }
 
     public boolean get_message(String[] message) {
 
@@ -32,7 +31,7 @@ public class WurstplusFriend extends WurstplusCommand {
                     WurstplusMessageUtil.send_client_message("You appear to have " + red + bold + "no" + reset + " friends :(");
                 } else {
                     for (WurstplusFriendUtil.Friend friend : WurstplusFriendUtil.friends) {
-                        WurstplusMessageUtil.send_client_message("" + green + bold +  friend.getUsername());
+                        WurstplusMessageUtil.send_client_message("" + green + bold + friend.getUsername());
                     }
                 }
                 return true;
@@ -69,7 +68,7 @@ public class WurstplusFriend extends WurstplusCommand {
                 } else {
                     WurstplusFriendUtil.Friend f = WurstplusFriendUtil.friends.stream().filter(friend -> friend.getUsername().equalsIgnoreCase(message[2])).findFirst().get();
                     WurstplusFriendUtil.friends.remove(f);
-                    WurstplusMessageUtil.send_client_message("Player " + red + bold + message[2]  + reset + " is now not your friend :(");
+                    WurstplusMessageUtil.send_client_message("Player " + red + bold + message[2] + reset + " is now not your friend :(");
                     return true;
                 }
             }

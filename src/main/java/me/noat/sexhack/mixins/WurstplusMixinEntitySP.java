@@ -18,19 +18,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = EntityPlayerSP.class)
 public class WurstplusMixinEntitySP extends WurstplusMixinEntity {
 
-	@Inject(method = "move", at = @At("HEAD"), cancellable = true)
-	private void move(MoverType type, double x, double y, double z, CallbackInfo info) {
+    @Inject(method = "move", at = @At("HEAD"), cancellable = true)
+    private void move(MoverType type, double x, double y, double z, CallbackInfo info) {
 
-		WurstplusEventMove event = new WurstplusEventMove(type, x, y, z);
-		WurstplusEventBus.EVENT_BUS.post(event);
+        WurstplusEventMove event = new WurstplusEventMove(type, x, y, z);
+        WurstplusEventBus.EVENT_BUS.post(event);
 
-		if (event.isCancelled()) {
+        if (event.isCancelled()) {
             super.move(type, event.get_x(), event.get_y(), event.get_z());
-			info.cancel();
-		}
-	}
+            info.cancel();
+        }
+    }
 
-	@Inject(method = "onUpdateWalkingPlayer", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "onUpdateWalkingPlayer", at = @At("HEAD"), cancellable = true)
     public void OnPreUpdateWalkingPlayer(CallbackInfo p_Info) {
 
         WurstplusEventMotionUpdate l_Event = new WurstplusEventMotionUpdate(0);

@@ -17,7 +17,7 @@ public class WurstplusConfig extends WurstplusCommand {
             return true;
         } else if (message.length == 2) {
             String config = message[1];
-            if (SexHack.get_config_manager().set_active_config_folder(config+"/")) {
+            if (SexHack.get_config_manager().set_active_config_folder(config + "/")) {
                 WurstplusMessageUtil.send_client_message("new config folder set as " + config);
             } else {
                 WurstplusMessageUtil.send_client_error_message("cannot set folder to " + config);

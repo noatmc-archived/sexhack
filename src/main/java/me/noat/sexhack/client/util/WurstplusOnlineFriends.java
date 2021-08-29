@@ -14,8 +14,8 @@ public class WurstplusOnlineFriends {
     static public List<Entity> getFriends() {
         entities.clear();
         entities.addAll(Minecraft.getMinecraft().world.playerEntities.stream().filter(entityPlayer -> WurstplusFriendUtil.isFriend(entityPlayer.getName())).collect(Collectors.toList()));
-     
+
         return entities;
     }
-       
+
 }

@@ -11,16 +11,16 @@ public class WurstplusEventRenderName extends WurstplusEventCancellable {
     public double Z;
     public String Name;
     public double DistanceSq;
-    
-    public WurstplusEventRenderName(AbstractClientPlayer entityIn, double x, double y, double z, String name, double distanceSq) {
-		super();
 
-		Entity = entityIn;
+    public WurstplusEventRenderName(AbstractClientPlayer entityIn, double x, double y, double z, String name, double distanceSq) {
+        super();
+
+        Entity = entityIn;
         x = X;
         y = Y;
         z = Z;
         Name = name;
         DistanceSq = distanceSq;
-	}
+    }
 
 }

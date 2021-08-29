@@ -19,8 +19,7 @@ public class WurstplusEntityUtil {
     public static void attackEntity(final Entity entity, final boolean packet, final Setting setting) {
         if (packet) {
             mc.player.connection.sendPacket(new CPacketUseEntity(entity));
-        }
-        else {
+        } else {
             mc.playerController.attackEntity(mc.player, entity);
         }
         if (setting.in("Mainhand") || setting.in("Both")) {
@@ -31,30 +30,25 @@ public class WurstplusEntityUtil {
         }
     }
 
-    public static boolean isLiving(Entity e)
-    {
+    public static boolean isLiving(Entity e) {
         return e instanceof EntityLivingBase;
     }
 
-    public static Vec3d getInterpolatedAmount(Entity entity, double x, double y, double z)
-    {
+    public static Vec3d getInterpolatedAmount(Entity entity, double x, double y, double z) {
         return new Vec3d((entity.posX - entity.lastTickPosX) * x, 0 * y,
                 (entity.posZ - entity.lastTickPosZ) * z);
     }
 
-    public static Vec3d getInterpolatedAmount(Entity entity, double ticks)
-    {
+    public static Vec3d getInterpolatedAmount(Entity entity, double ticks) {
         return getInterpolatedAmount(entity, ticks, ticks, ticks);
     }
 
-    public static Vec3d getInterpolatedPos(Entity entity, float ticks)
-    {
+    public static Vec3d getInterpolatedPos(Entity entity, float ticks) {
         return new Vec3d(entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ)
                 .add(getInterpolatedAmount(entity, ticks));
     }
 
-    public static Vec3d getInterpolatedRenderPos(Entity entity, float ticks)
-    {
+    public static Vec3d getInterpolatedRenderPos(Entity entity, float ticks) {
         return getInterpolatedPos(entity, ticks).subtract(mc.getRenderManager().renderPosX,
                 mc.getRenderManager().renderPosY,
                 mc.getRenderManager().renderPosZ);
@@ -67,24 +61,21 @@ public class WurstplusEntityUtil {
         if (mc.world.getBlockState(pos.north()).getBlock() == Blocks.OBSIDIAN) {
             if (end_crystal) {
                 return pos.north();
-            }
-            else if (mc.world.getBlockState(pos.north().north()).getBlock() == Blocks.AIR) {
+            } else if (mc.world.getBlockState(pos.north().north()).getBlock() == Blocks.AIR) {
                 return pos.north();
             }
         }
         if (mc.world.getBlockState(pos.east()).getBlock() == Blocks.OBSIDIAN) {
             if (end_crystal) {
                 return pos.east();
-            }
-            else if (mc.world.getBlockState(pos.east().east()).getBlock() == Blocks.AIR) {
+            } else if (mc.world.getBlockState(pos.east().east()).getBlock() == Blocks.AIR) {
                 return pos.east();
             }
         }
         if (mc.world.getBlockState(pos.south()).getBlock() == Blocks.OBSIDIAN) {
             if (end_crystal) {
                 return pos.south();
-            }
-            else if (mc.world.getBlockState(pos.south().south()).getBlock() == Blocks.AIR) {
+            } else if (mc.world.getBlockState(pos.south().south()).getBlock() == Blocks.AIR) {
                 return pos.south();
             }
 
@@ -92,8 +83,7 @@ public class WurstplusEntityUtil {
         if (mc.world.getBlockState(pos.west()).getBlock() == Blocks.OBSIDIAN) {
             if (end_crystal) {
                 return pos.west();
-            }
-            else if (mc.world.getBlockState(pos.west().west()).getBlock() == Blocks.AIR) {
+            } else if (mc.world.getBlockState(pos.west().west()).getBlock() == Blocks.AIR) {
                 return pos.west();
             }
         }

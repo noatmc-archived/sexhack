@@ -7,14 +7,13 @@ import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
 public class WurstplusEnemy extends WurstplusCommand {
 
-    public WurstplusEnemy() {
-        super("enemy", "To add enemy");
-    }
-
     public static ChatFormatting red = ChatFormatting.GREEN;
     public static ChatFormatting green = ChatFormatting.RED;
     public static ChatFormatting bold = ChatFormatting.BOLD;
     public static ChatFormatting reset = ChatFormatting.RESET;
+    public WurstplusEnemy() {
+        super("enemy", "To add enemy");
+    }
 
     public boolean get_message(String[] message) {
 
@@ -32,7 +31,7 @@ public class WurstplusEnemy extends WurstplusCommand {
                     WurstplusMessageUtil.send_client_message("You appear to have " + red + bold + "no" + reset + " enemies :)");
                 } else {
                     for (WurstplusEnemyUtil.Enemy Enemy : WurstplusEnemyUtil.enemies) {
-                        WurstplusMessageUtil.send_client_message("" + green + bold +  Enemy.getUsername());
+                        WurstplusMessageUtil.send_client_message("" + green + bold + Enemy.getUsername());
                     }
                 }
                 return true;
@@ -69,7 +68,7 @@ public class WurstplusEnemy extends WurstplusCommand {
                 } else {
                     WurstplusEnemyUtil.Enemy f = WurstplusEnemyUtil.enemies.stream().filter(Enemy -> Enemy.getUsername().equalsIgnoreCase(message[2])).findFirst().get();
                     WurstplusEnemyUtil.enemies.remove(f);
-                    WurstplusMessageUtil.send_client_message("Player " + red + bold + message[2]  + reset + " is now not your Enemy :)");
+                    WurstplusMessageUtil.send_client_message("Player " + red + bold + message[2] + reset + " is now not your Enemy :)");
                     return true;
                 }
             }

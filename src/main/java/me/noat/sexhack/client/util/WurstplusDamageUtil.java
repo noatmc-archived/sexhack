@@ -9,11 +9,11 @@ public class WurstplusDamageUtil {
     }
 
     public static float getDamageInPercent(final ItemStack stack) {
-        return getItemDamage(stack) / (float)stack.getMaxDamage() * 100.0f;
+        return getItemDamage(stack) / (float) stack.getMaxDamage() * 100.0f;
     }
 
     public static int getRoundedDamage(final ItemStack stack) {
-        return (int)getDamageInPercent(stack);
+        return (int) getDamageInPercent(stack);
     }
 
     public static boolean hasDurability(final ItemStack stack) {

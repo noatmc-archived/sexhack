@@ -1,11 +1,11 @@
 package me.noat.sexhack.client.hacks.render;
 
-import me.noat.turok.draw.RenderHelp;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusEntityUtil;
+import me.noat.turok.draw.RenderHelp;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 
@@ -13,15 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WurstplusCityEsp extends Module {
-
-    public WurstplusCityEsp() {
-        super(WurstplusCategory.WURSTPLUS_RENDER);
-
-        this.name = "CityESP";
-        this.tag = "City ESP";
-        this.description = "jumpy isnt gonna be happy about this";
-
-    }
 
     Setting endcrystal_mode = create("EndCrystal", "CityEndCrystal", false);
     Setting mode = create("Mode", "CityMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
@@ -31,11 +22,17 @@ public class WurstplusCityEsp extends Module {
     Setting g = create("G", "CityG", 255, 0, 255);
     Setting b = create("B", "CityB", 0, 0, 255);
     Setting a = create("A", "CityA", 50, 0, 255);
-
     List<BlockPos> blocks = new ArrayList<>();
-
     boolean outline = false;
-    boolean solid   = false;
+    boolean solid = false;
+    public WurstplusCityEsp() {
+        super(WurstplusCategory.WURSTPLUS_RENDER);
+
+        this.name = "CityESP";
+        this.tag = "City ESP";
+        this.description = "jumpy isnt gonna be happy about this";
+
+    }
 
     @Override
     public void update() {
@@ -60,26 +57,26 @@ public class WurstplusCityEsp extends Module {
 
             if (mode.in("Pretty")) {
                 outline = true;
-                solid   = true;
+                solid = true;
             }
 
             if (mode.in("Solid")) {
                 outline = false;
-                solid   = true;
+                solid = true;
             }
 
             if (mode.in("Outline")) {
                 outline = true;
-                solid   = false;
+                solid = false;
             }
 
             if (solid) {
                 RenderHelp.prepare("quads");
                 RenderHelp.draw_cube(RenderHelp.get_buffer_build(),
                         pos.getX(), pos.getY(), pos.getZ(),
-                1, off_set_h, 1,
-                r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1),
-                "all"
+                        1, off_set_h, 1,
+                        r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1),
+                        "all"
                 );
 
                 RenderHelp.release();
@@ -89,10 +86,10 @@ public class WurstplusCityEsp extends Module {
             if (outline) {
                 RenderHelp.prepare("lines");
                 RenderHelp.draw_cube_line(RenderHelp.get_buffer_build(),
-                    pos.getX(), pos.getY(), pos.getZ(),
-                    1, off_set_h, 1,
-                    r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1),
-                    "all"
+                        pos.getX(), pos.getY(), pos.getZ(),
+                        1, off_set_h, 1,
+                        r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1),
+                        "all"
                 );
 
                 RenderHelp.release();

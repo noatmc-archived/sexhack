@@ -6,8 +6,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.CPacketEntityAction;
-import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketHeldItemChange;
+import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -143,11 +143,11 @@ public class WurstplusBurrowUtil {
         return -1;
     }
 
-   public static void switchToSlot(final int slot) {
-    mc.player.connection.sendPacket(new CPacketHeldItemChange(slot));
-    mc.player.inventory.currentItem = slot;
-    mc.playerController.updateController();
-}
+    public static void switchToSlot(final int slot) {
+        mc.player.connection.sendPacket(new CPacketHeldItemChange(slot));
+        mc.player.inventory.currentItem = slot;
+        mc.playerController.updateController();
+    }
 
     /*
     End Inventory Util

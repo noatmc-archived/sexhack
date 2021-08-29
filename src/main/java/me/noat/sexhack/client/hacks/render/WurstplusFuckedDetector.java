@@ -1,13 +1,13 @@
 package me.noat.sexhack.client.hacks.render;
 
-import me.noat.turok.draw.RenderHelp;
 import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusCrystalUtil;
 import me.noat.sexhack.client.util.WurstplusEntityUtil;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
+import me.noat.turok.draw.RenderHelp;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -17,6 +17,19 @@ import java.util.Set;
 
 public class WurstplusFuckedDetector extends Module {
 
+    public Set<BlockPos> fucked_players = new HashSet<BlockPos>();
+    Setting draw_own = create("Draw Own", "FuckedDrawOwn", false);
+    Setting draw_friends = create("Draw Friends", "FuckedDrawFriends", false);
+
+    Setting render_mode = create("Render Mode", "FuckedRenderMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
+    Setting r = create("R", "FuckedR", 255, 0, 255);
+    Setting g = create("G", "FuckedG", 255, 0, 255);
+    Setting b = create("B", "FuckedB", 255, 0, 255);
+    Setting a = create("A", "FuckedA", 100, 0, 255);
+
+    private boolean solid;
+    private boolean outline;
+
     public WurstplusFuckedDetector() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
@@ -24,20 +37,6 @@ public class WurstplusFuckedDetector extends Module {
         this.tag = "FuckedDetector";
         this.description = "see if people are hecked";
     }
-
-    Setting draw_own = create("Draw Own", "FuckedDrawOwn", false);
-    Setting draw_friends = create("Draw Friends", "FuckedDrawFriends", false);
-
-    Setting render_mode = create("Render Mode", "FuckedRenderMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
-    Setting r = create("R", "FuckedR", 255, 0, 255);
-	  Setting g = create("G", "FuckedG", 255, 0, 255);
-	  Setting b = create("B", "FuckedB", 255, 0, 255);
-    Setting a = create("A", "FuckedA", 100, 0, 255);
-
-    private boolean solid;
-    private boolean outline;
-
-    public Set<BlockPos> fucked_players = new HashSet<BlockPos>();
 
     @Override
     protected void enable() {
@@ -88,17 +87,12 @@ public class WurstplusFuckedDetector extends Module {
             return true;
         }
 
-        if (WurstplusCrystalUtil.canPlaceCrystal(pos.north()) || (WurstplusCrystalUtil.canPlaceCrystal(pos.north().north()) && mc.world.getBlockState(pos.add(0, 1, -1)).getBlock() == Blocks.AIR)) {
-            return true;
-        }
-
-
-        return false;
+        return WurstplusCrystalUtil.canPlaceCrystal(pos.north()) || (WurstplusCrystalUtil.canPlaceCrystal(pos.north().north()) && mc.world.getBlockState(pos.add(0, 1, -1)).getBlock() == Blocks.AIR);
 
     }
 
     @Override
-	public void render(WurstplusEventRender event) {
+    public void render(WurstplusEventRender event) {
 
         if (render_mode.in("Pretty")) {
             outline = true;

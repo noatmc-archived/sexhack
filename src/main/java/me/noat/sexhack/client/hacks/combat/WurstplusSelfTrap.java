@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper;
 import me.noat.sexhack.client.util.WurstplusBlockInteractHelper.ValidResult;
 import me.noat.sexhack.client.util.WurstplusBlockUtil;
@@ -18,21 +18,20 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
 public class WurstplusSelfTrap extends Module {
-    
-    public WurstplusSelfTrap() {
-
-        super(WurstplusCategory.WURSTPLUS_COMBAT);
-
-		this.name        = "Self Trap";
-		this.tag         = "SelfTrap";
-		this.description = "oh 'eck, ive trapped me sen again";
-    }
 
     Setting toggle = create("Toggle", "SelfTrapToggle", false);
     Setting rotate = create("Rotate", "SelfTrapRotate", false);
     Setting swing = create("Swing", "SelfTrapSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
-
     private BlockPos trap_pos;
+
+    public WurstplusSelfTrap() {
+
+        super(WurstplusCategory.WURSTPLUS_COMBAT);
+
+        this.name = "Self Trap";
+        this.tag = "SelfTrap";
+        this.description = "oh 'eck, ive trapped me sen again";
+    }
 
     @Override
     protected void enable() {
@@ -51,7 +50,7 @@ public class WurstplusSelfTrap extends Module {
             if (!toggle.get_value(true)) {
                 toggle();
                 return;
-            } 
+            }
 
         }
 
@@ -59,17 +58,17 @@ public class WurstplusSelfTrap extends Module {
 
         if (result == ValidResult.AlreadyBlockThere && !mc.world.getBlockState(trap_pos).getMaterial().isReplaceable()) {
             return;
-        } 
+        }
 
         if (result == ValidResult.NoNeighbors) {
 
             BlockPos[] tests = {
-                trap_pos.north(),
-                trap_pos.south(),
-                trap_pos.east(),
-                trap_pos.west(),
-                trap_pos.up(),
-                trap_pos.down().west() // ????? salhack is weird and i dont care enough to remove this. who the fuck uses this shit anyways fr fucking jumpy
+                    trap_pos.north(),
+                    trap_pos.south(),
+                    trap_pos.east(),
+                    trap_pos.west(),
+                    trap_pos.up(),
+                    trap_pos.down().west() // ????? salhack is weird and i dont care enough to remove this. who the fuck uses this shit anyways fr fucking jumpy
             };
 
             for (BlockPos pos_ : tests) {
@@ -114,10 +113,10 @@ public class WurstplusSelfTrap extends Module {
 
                 if (block instanceof BlockEnderChest)
                     return i;
-                
+
                 else if (block instanceof BlockObsidian)
                     return i;
-                
+
             }
         }
         return -1;

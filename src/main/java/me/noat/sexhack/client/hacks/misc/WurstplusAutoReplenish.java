@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.misc;
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.util.WurstplusPair;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -16,6 +16,11 @@ import java.util.Map;
 
 public class WurstplusAutoReplenish extends Module {
 
+    Setting mode = create("Mode", "AutoReplenishMode", "All", combobox("All", "Crystals", "Xp", "Both"));
+    Setting threshold = create("Threshold", "AutoReplenishThreshold", 32, 1, 63);
+    Setting tickdelay = create("Delay", "AutoReplenishDelay", 2, 1, 10);
+    private int delay_step = 0;
+
     public WurstplusAutoReplenish() {
         super(WurstplusCategory.WURSTPLUS_MISC);
 
@@ -23,12 +28,6 @@ public class WurstplusAutoReplenish extends Module {
         this.tag = "HotbarReplenish";
         this.description = "chad this doesnt desync you i swear";
     }
-
-    Setting mode = create("Mode", "AutoReplenishMode", "All", combobox("All", "Crystals", "Xp", "Both"));
-    Setting threshold = create("Threshold", "AutoReplenishThreshold", 32, 1, 63);
-    Setting tickdelay = create("Delay", "AutoReplenishDelay", 2, 1, 10);
-
-    private int delay_step = 0;
 
     @Override
     public void update() {
@@ -80,7 +79,7 @@ public class WurstplusAutoReplenish extends Module {
         }
         return returnPair;
     }
-    
+
     private int findCompatibleInventorySlot(final ItemStack hotbarStack) {
         int inventorySlot = -1;
         int smallestStackSize = 999;
@@ -103,14 +102,14 @@ public class WurstplusAutoReplenish extends Module {
         }
         return inventorySlot;
     }
-    
+
     private boolean isCompatibleStacks(final ItemStack stack1, final ItemStack stack2) {
         if (!stack1.getItem().equals(stack2.getItem())) {
             return false;
         }
         if (stack1.getItem() instanceof ItemBlock && stack2.getItem() instanceof ItemBlock) {
-            final Block block1 = ((ItemBlock)stack1.getItem()).getBlock();
-            final Block block2 = ((ItemBlock)stack2.getItem()).getBlock();
+            final Block block1 = ((ItemBlock) stack1.getItem()).getBlock();
+            final Block block2 = ((ItemBlock) stack2.getItem()).getBlock();
             if (!block1.material.equals(block2.material)) {
                 return false;
             }
@@ -121,7 +120,7 @@ public class WurstplusAutoReplenish extends Module {
     private Map<Integer, ItemStack> get_inventory() {
         return get_inv_slots(9, 35);
     }
-    
+
     private Map<Integer, ItemStack> get_hotbar() {
         return get_inv_slots(36, 44);
     }
@@ -129,7 +128,7 @@ public class WurstplusAutoReplenish extends Module {
     private Map<Integer, ItemStack> get_inv_slots(int current, final int last) {
         final Map<Integer, ItemStack> fullInventorySlots = new HashMap<Integer, ItemStack>();
         while (current <= last) {
-            fullInventorySlots.put(current, (ItemStack) mc.player.inventoryContainer.getInventory().get(current));
+            fullInventorySlots.put(current, mc.player.inventoryContainer.getInventory().get(current));
             ++current;
         }
         return fullInventorySlots;

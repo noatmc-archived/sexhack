@@ -1,8 +1,8 @@
 package me.noat.sexhack.client.hacks.combat;
 
 import me.noat.sexhack.client.guiscreen.settings.Setting;
-import me.noat.sexhack.client.hacks.WurstplusCategory;
 import me.noat.sexhack.client.hacks.Module;
+import me.noat.sexhack.client.hacks.WurstplusCategory;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
@@ -10,18 +10,16 @@ import net.minecraft.item.Item;
 
 public class WurstplusAutoGapple extends Module {
 
+    Setting delay = create("Delay", "GappleDelay", false);
+    private boolean switching = false;
+    private int last_slot;
     public WurstplusAutoGapple() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
-        this.name        = "Auto Gapple";
-        this.tag         = "AutoGapple";
+        this.name = "Auto Gapple";
+        this.tag = "AutoGapple";
         this.description = "put gapple in offhand";
     }
-
-    Setting delay = create("Delay", "GappleDelay", false);
-
-    private boolean switching = false;
-    private int last_slot;
 
     @Override
     public void update() {
@@ -39,9 +37,9 @@ public class WurstplusAutoGapple extends Module {
 
     private int get_item_slot() {
         if (Items.GOLDEN_APPLE == mc.player.getHeldItemOffhand().getItem()) return -1;
-        for(int i = 36; i >= 0; i--) {
+        for (int i = 36; i >= 0; i--) {
             final Item item = mc.player.inventory.getStackInSlot(i).getItem();
-            if(item == Items.GOLDEN_APPLE) {
+            if (item == Items.GOLDEN_APPLE) {
                 if (i < 9) {
                     return -1;
                 }
