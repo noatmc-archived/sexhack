@@ -1,0 +1,2 @@
+SocksRotate:false
+SocksSwing:Mainhand

@@ -1,0 +1,6 @@
+TrapPlaceMode:Extra
+TrapSpeed:4
+TrapRotation:true
+TrapChadMode:true
+TrapRange:4
+TrapSwing:Mainhand

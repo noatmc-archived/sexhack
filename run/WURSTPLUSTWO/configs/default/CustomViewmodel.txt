@@ -1,0 +1,9 @@
+FOVSlider:130
+FOVItems:false
+ItemsFOVSlider:130
+FOVOffset:true
+FOVOffsetMain:0.7
+FOVOffsetX:0.0
+FOVOffsetY:0.0
+FOVMainX:0.0
+FOVMainY:0.0

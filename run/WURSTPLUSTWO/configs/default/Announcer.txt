@@ -1,0 +1,8 @@
+AnnouncerMinDist:12
+AnnouncerMaxDist:144
+AnnouncerDelay:4
+AnnouncerQueueSize:5
+AnnouncerUnits:Meters
+AnnouncerMovement:Aha x
+AnnouncerSuffix:true
+AnnouncerSmallText:false

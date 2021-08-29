@@ -1,0 +1,9 @@
+HUDStringsList:Strings
+HUDStringsColorR:255
+HUDStringsColorG:255
+HUDStringsColorB:255
+HUDStringsColorA:230
+HUDCompassScale:16
+HUDArrayList:Free
+HUDAllPotions:false
+HUDMaxPlayers:24

@@ -1,0 +1,2 @@
+AnchorPitch:60
+AnchorPull:true

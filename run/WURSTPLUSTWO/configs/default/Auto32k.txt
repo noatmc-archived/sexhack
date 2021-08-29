@@ -1,0 +1,5 @@
+AutotkPlaceMode:Auto
+AutotkSwing:Mainhand
+AutotkDelay:4
+Autotkrotate:false
+AutotkDebug:false

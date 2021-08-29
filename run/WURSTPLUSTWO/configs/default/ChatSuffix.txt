@@ -1,0 +1,2 @@
+ChatSuffixIgnore:true
+ChatSuffixType:Default

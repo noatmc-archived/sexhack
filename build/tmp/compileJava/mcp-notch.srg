@@ -1,0 +1,6 @@
+FD: me/noat/sexhack/mixins/WurstplusMixinEntity/motionX me/noat/sexhack/mixins/WurstplusMixinEntity/s
+FD: me/noat/sexhack/mixins/WurstplusMixinEntity/motionY me/noat/sexhack/mixins/WurstplusMixinEntity/t
+FD: me/noat/sexhack/mixins/WurstplusMixinEntity/motionZ me/noat/sexhack/mixins/WurstplusMixinEntity/u
+MD: me/noat/sexhack/mixins/WurstplusMixinAbstractClientPlayer/getPlayerInfo ()Lnet/minecraft/client/network/NetworkPlayerInfo; me/noat/sexhack/mixins/WurstplusMixinAbstractClientPlayer/b ()Lbsc;
+MD: me/noat/sexhack/mixins/WurstplusMixinEntity/move (Lnet/minecraft/entity/MoverType;DDD)V me/noat/sexhack/mixins/WurstplusMixinEntity/a (Lvv;DDD)V
+MD: me/noat/sexhack/mixins/WurstplusMixinItemRenderer/renderItemInFirstPerson (Lnet/minecraft/client/entity/AbstractClientPlayer;FFLnet/minecraft/util/EnumHand;FLnet/minecraft/item/ItemStack;F)V me/noat/sexhack/mixins/WurstplusMixinItemRenderer/a (Lbua;FFLub;FLaip;F)V

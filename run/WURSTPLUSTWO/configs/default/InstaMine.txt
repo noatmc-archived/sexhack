@@ -1,0 +1,7 @@
+IMAutoBreak:true
+IMDelay:20
+IMOnlyPickaxe:true
+InstantMineR:255
+InstantMineG:255
+InstantMineB:255
+InstantMineA:100

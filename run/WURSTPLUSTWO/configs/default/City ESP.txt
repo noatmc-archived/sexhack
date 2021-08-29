@@ -1,0 +1,8 @@
+CityEndCrystal:false
+CityMode:Pretty
+CityOffSetSide:0.2
+CityRange:6
+CityR:0
+CityG:255
+CityB:0
+CityA:50

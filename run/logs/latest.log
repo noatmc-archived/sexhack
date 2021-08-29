@@ -1,0 +1,1067 @@
+[22:32:43] [main/INFO]: Extra: []
+[22:32:44] [main/INFO]: Running with arguments: [--userProperties, {}, --assetsDir, C:/Users/autty/.gradle/caches/minecraft/assets, --assetIndex, 1.12, --accessToken{REDACTED}, --version, 1.12.2, --tweakClass, net.minecraftforge.fml.common.launcher.FMLTweaker, --tweakClass, net.minecraftforge.gradle.tweakers.CoremodTweaker]
+[22:32:44] [main/INFO]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLTweaker
+[22:32:44] [main/INFO]: Using primary tweak class name net.minecraftforge.fml.common.launcher.FMLTweaker
+[22:32:44] [main/INFO]: Loading tweak class name net.minecraftforge.gradle.tweakers.CoremodTweaker
+[22:32:44] [main/INFO]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLTweaker
+[22:32:44] [main/INFO]: Forge Mod Loader version 14.23.0.2531 for Minecraft 1.12.2 loading
+[22:32:44] [main/INFO]: Java is OpenJDK 64-Bit Server VM, version 1.8.0_292, running on Windows 10:amd64:10.0, installed at C:\Program Files\AdoptOpenJDK\jdk-8.0.292.10-hotspot\jre
+[22:32:44] [main/INFO]: Managed to load a deobfuscated Minecraft name- we are in a deobfuscated environment. Skipping runtime deobfuscation
+[22:32:44] [main/INFO]: Ignoring missing certificate for coremod FMLCorePlugin (net.minecraftforge.fml.relauncher.FMLCorePlugin), we are in deobf and it's a forge core plugin
+[22:32:44] [main/INFO]: Ignoring missing certificate for coremod FMLForgePlugin (net.minecraftforge.classloading.FMLForgePlugin), we are in deobf and it's a forge core plugin
+[22:32:44] [main/INFO]: Found a command line coremod : me.travis.wurstplus.mixins.WurstplusMixinLoader
+[22:32:44] [main/ERROR]: Coremod me.travis.wurstplus.mixins.WurstplusMixinLoader: Unable to class load the plugin java.lang.ClassNotFoundException: me.travis.wurstplus.mixins.WurstplusMixinLoader
+[22:32:44] [main/INFO]: Calling tweak class net.minecraftforge.gradle.tweakers.CoremodTweaker
+[22:32:44] [main/INFO]: Injecting location in coremod net.minecraftforge.fml.relauncher.FMLCorePlugin
+[22:32:44] [main/INFO]: Injecting location in coremod net.minecraftforge.classloading.FMLForgePlugin
+[22:32:44] [main/INFO]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[22:32:44] [main/INFO]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[22:32:44] [main/INFO]: Loading tweak class name net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
+[22:32:44] [main/INFO]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[22:32:44] [main/INFO]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[22:32:44] [main/INFO]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[22:32:45] [main/ERROR]: FML appears to be missing any signature data. This is not a good thing
+[22:32:45] [main/INFO]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[22:32:45] [main/INFO]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[22:32:46] [main/INFO]: Calling tweak class net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
+[22:32:46] [main/INFO]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweaker
+[22:32:46] [main/INFO]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweaker
+[22:32:46] [main/INFO]: Launching wrapped minecraft {net.minecraft.client.main.Main}
+[22:32:46] [main/INFO]: Setting user: Player500
+[22:32:50] [main/WARN]: Skipping bad option: lastServer:
+[22:32:50] [main/INFO]: LWJGL Version: 2.9.4
+[22:32:50] [main/INFO]: -- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_292, AdoptOpenJDK
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), AdoptOpenJDK
+	Memory: 418742256 bytes (399 MB) / 678952960 bytes (647 MB) up to 3791650816 bytes (3616 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: 
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'Intel' Version: '4.6.0 - Build 27.20.100.8729' Renderer: 'Intel(R) UHD Graphics 630'
+[22:32:50] [main/INFO]: MinecraftForge v14.23.0.2531 Initialized
+[22:32:50] [main/INFO]: Starts to replace vanilla recipe ingredients with ore ingredients.
+[22:32:51] [main/INFO]: Replaced 1036 ore ingredients
+[22:32:51] [main/INFO]: Found 0 mods from the command line. Injecting into mod discoverer
+[22:32:51] [main/INFO]: Searching E:\Coding Projects\sexhack\run\mods for mods
+[22:32:51] [main/INFO]: Mod sexhack is missing the required element 'name'. Substituting sexhack
+[22:32:52] [main/INFO]: Forge Mod Loader has identified 5 mods to load
+[22:32:53] [main/INFO]: Attempting connection with missing mods [minecraft, mcp, FML, forge, sexhack] at CLIENT
+[22:32:53] [main/INFO]: Attempting connection with missing mods [minecraft, mcp, FML, forge, sexhack] at SERVER
+[22:32:53] [Thread-3/INFO]: Using sync timing. 200 frames of Display.update took 58598600 nanos
+[22:32:53] [main/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:sexhack
+[22:32:53] [main/INFO]: Processing ObjectHolder annotations
+[22:32:53] [main/INFO]: Found 1168 ObjectHolder annotations
+[22:32:53] [main/INFO]: Identifying ItemStackHolder annotations
+[22:32:53] [main/INFO]: Found 0 ItemStackHolder annotations
+[22:32:53] [main/INFO]: Configured a dormant chunk cache size of 0
+[22:32:53] [Forge Version Check/INFO]: [forge] Starting version check at http://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json
+[22:32:53] [main/INFO]: Applying holder lookups
+[22:32:53] [main/INFO]: Holder lookups applied
+[22:32:53] [main/INFO]: Applying holder lookups
+[22:32:53] [main/INFO]: Holder lookups applied
+[22:32:53] [main/INFO]: Applying holder lookups
+[22:32:53] [main/INFO]: Holder lookups applied
+[22:32:53] [main/INFO]: Applying holder lookups
+[22:32:53] [main/INFO]: Holder lookups applied
+[22:32:53] [main/INFO]: Injecting itemstacks
+[22:32:53] [main/INFO]: Itemstack injection complete
+[22:32:57] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[22:32:57] [Thread-5/INFO]: Initializing LWJGL OpenAL
+[22:32:57] [Thread-5/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[22:32:58] [Thread-5/INFO]: OpenAL initialized.
+[22:32:58] [Sound Library Loader/INFO]: Sound engine started
+[22:33:02] [main/INFO]: Max texture size: 16384
+[22:33:03] [main/INFO]: Created: 512x512 textures-atlas
+[22:33:04] [main/INFO]: Applying holder lookups
+[22:33:04] [main/INFO]: Holder lookups applied
+[22:33:04] [main/INFO]: starting wurstplustwo
+[22:33:04] [main/INFO]: initialising managers
+[22:33:04] [main/INFO]: done
+[22:33:04] [main/INFO]: initialising guis
+[22:33:04] [main/INFO]: done
+[22:33:04] [main/INFO]: initialising skidded framework
+[22:33:04] [main/INFO]: done
+[22:33:04] [main/INFO]: initialising commands and events
+[22:33:04] [main/INFO]: done
+[22:33:04] [main/INFO]: loading settings
+[22:33:05] [main/INFO]: done
+[22:33:06] [main/INFO]: client started
+[22:33:06] [main/INFO]: we gaming
+[22:33:06] [main/INFO]: Injecting itemstacks
+[22:33:06] [main/INFO]: Itemstack injection complete
+[22:33:06] [main/INFO]: Forge Mod Loader has successfully loaded 5 mods
+[22:33:06] [main/WARN]: Skipping bad option: lastServer:
+[22:33:06] [main/INFO]: Narrator library for x64 successfully loaded
+[22:33:07] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
+[22:33:10] [Server thread/INFO]: Starting integrated minecraft server version 1.12.2
+[22:33:10] [Server thread/INFO]: Generating keypair
+[22:33:10] [Server thread/INFO]: Injecting existing registry data into this server instance
+[22:33:10] [Server thread/INFO]: Applying holder lookups
+[22:33:10] [Server thread/INFO]: Holder lookups applied
+[22:33:10] [Server thread/INFO]: Loading dimension 0 (New World) (net.minecraft.server.integrated.IntegratedServer@1aed665c)
+[22:33:11] [Server thread/INFO]: Loaded 488 advancements
+[22:33:11] [Server thread/INFO]: Loading dimension 1 (New World) (net.minecraft.server.integrated.IntegratedServer@1aed665c)
+[22:33:11] [Server thread/INFO]: Loading dimension -1 (New World) (net.minecraft.server.integrated.IntegratedServer@1aed665c)
+[22:33:11] [Server thread/INFO]: Preparing start region for level 0
+[22:33:12] [Server thread/INFO]: Changing view distance to 12, from 10
+[22:33:16] [Netty Local Client IO #0/INFO]: Server protocol version 2
+[22:33:16] [Netty Server IO #1/INFO]: Client protocol version 2
+[22:33:16] [Netty Server IO #1/INFO]: Client attempting to join with 5 mods : minecraft@1.12.2,FML@8.0.99.99,forge@14.23.0.2531,sexhack@1.0.4.1,mcp@9.42
+[22:33:16] [Netty Local Client IO #0/INFO]: [Netty Local Client IO #0] Client side modded connection established
+[22:33:16] [Server thread/INFO]: [Server thread] Server side modded connection established
+[22:33:16] [Server thread/INFO]: Player500[local:E:175a459f] logged in with entity id 260 at (-224.69999998807907, 62.0, 59.69999998807907)
+[22:33:16] [Server thread/INFO]: Player500 joined the game
+[22:33:16] [Server thread/INFO]: Player500 has made the advancement [Ice Bucket Challenge]
+[22:33:17] [Server thread/INFO]: Saving and pausing game...
+[22:33:17] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[22:33:17] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[22:33:17] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[22:33:17] [main/INFO]: [CHAT] Player500 has made the advancement [Ice Bucket Challenge]
+[22:33:17] [main/INFO]: Loaded 12 advancements
+[22:33:17] [Server thread/INFO]: Saving and pausing game...
+[22:33:18] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[22:33:18] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[22:33:18] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[22:35:11] [Server thread/INFO]: [Player500: Set own game mode to Creative Mode]
+[22:35:11] [main/INFO]: [CHAT] Your game mode has been updated to Creative Mode
+[22:35:12] [Server thread/INFO]: Saving and pausing game...
+[22:35:12] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[22:35:12] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[22:35:12] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[22:35:17] [main/INFO]: [CHAT] §6SexHack§7 > §r§rFake Player§c Disabled
+[22:35:17] [main/INFO]: [CHAT] §6SexHack§7 > §r§rFake Player§2 Enabled
+[22:35:21] [main/INFO]: [CHAT] §6SexHack§7 > §rwe§2 gaming 
+[22:35:21] [main/INFO]: [CHAT] §6SexHack§7 > §rwe aint§c gaming §rno more
+[22:35:22] [main/INFO]: [CHAT] §6SexHack§7 > §rwe§2 gaming 
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:22] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:23] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:23] [main/INFO]: [CHAT] §6SexHack§7 > §rwe aint§c gaming §rno more
+[22:35:28] [main/INFO]: [CHAT] §6SexHack§7 > §rwe§2 gaming 
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:28] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:29] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:30] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:31] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:31] [main/INFO]: [CHAT] §6SexHack§7 > §rwe aint§c gaming §rno more
+[22:35:32] [Server thread/INFO]: Saving and pausing game...
+[22:35:32] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[22:35:32] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[22:35:32] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[22:35:33] [main/INFO]: [CHAT] §6SexHack§7 > §rwe§2 gaming 
+[22:35:33] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:33] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:34] [main/INFO]: [CHAT] §6SexHack§7 > §rwe aint§c gaming §rno more
+[22:35:34] [main/INFO]: [CHAT] §6SexHack§7 > §rwe§2 gaming 
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:34] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6SexHack§7 > §rwe aint§c gaming §rno more
+[22:35:36] [main/INFO]: [CHAT] §6SexHack§7 > §rwe§2 gaming 
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:36] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:37] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:37] [main/INFO]: [CHAT] §6SexHack§7 > §rwe aint§c gaming §rno more
+[22:35:38] [main/INFO]: [CHAT] §6SexHack§7 > §rwe§2 gaming 
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rattacking
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasBreak bool to true
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rplacing
+[22:35:38] [main/INFO]: [CHAT] §6§6SexHack§7 > §r§rsetting hasPlace bool to true
+[22:35:38] [main/INFO]: [CHAT] §6SexHack§7 > §rwe aint§c gaming §rno more
+[22:35:40] [Server thread/INFO]: Saving and pausing game...
+[22:35:40] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[22:35:40] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[22:35:40] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[22:35:40] [Server thread/INFO]: Stopping server
+[22:35:40] [Server thread/INFO]: Saving players
+[22:35:40] [Server thread/INFO]: Player500 lost connection: Disconnected
+[22:35:40] [Server thread/INFO]: Player500 left the game
+[22:35:40] [Server thread/INFO]: Stopping singleplayer server as player logged out
+[22:35:40] [Server thread/INFO]: Saving worlds
+[22:35:40] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[22:35:40] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[22:35:40] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[22:35:40] [Server thread/INFO]: Unloading dimension 0
+[22:35:40] [Server thread/INFO]: Unloading dimension -1
+[22:35:40] [Server thread/INFO]: Unloading dimension 1
+[22:35:41] [Server thread/INFO]: Applying holder lookups
+[22:35:41] [Server thread/INFO]: Holder lookups applied
+[22:35:42] [main/INFO]: Stopping!
+[22:35:42] [main/INFO]: SoundSystem shutting down...
+[22:35:43] [main/WARN]: Author: Paul Lamb, www.paulscode.com

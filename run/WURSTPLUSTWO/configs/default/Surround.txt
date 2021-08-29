@@ -1,0 +1,8 @@
+SurroundSmoth:true
+SurroundHybrid:true
+SurroundToggle:true
+SurroundCenter:false
+SurroundBlockFace:false
+SurroundTickToPlace:2
+SurroundTicks:20
+SurroundSwing:Mainhand

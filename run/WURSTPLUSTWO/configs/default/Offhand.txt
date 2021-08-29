@@ -1,0 +1,5 @@
+OffhandOffhand:Totem
+OffhandTotemHP:16
+OffhandGapple:false
+OffhandGappleHP:8
+OffhandDelay:false

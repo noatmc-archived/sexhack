@@ -1,0 +1,7 @@
+HighlightMode:Pretty
+HighlightRGBEffect:true
+HighlightR:177
+HighlightG:255
+HighlightB:0
+HighlightA:100
+HighlightLineA:255

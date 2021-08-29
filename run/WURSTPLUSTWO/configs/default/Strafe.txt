@@ -1,0 +1,6 @@
+StrafeMode:Strafe
+StrafeSprint:true
+StrafeOnWater:true
+StrafeAutoJump:true
+StrafeBackwards:true
+StrafeBypass:false
