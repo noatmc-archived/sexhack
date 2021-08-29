@@ -22,7 +22,9 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.*;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
+import net.minecraft.network.play.client.CPacketUseEntity;
 import net.minecraft.network.play.server.SPacketSoundEffect;
+import net.minecraft.network.play.server.SPacketSpawnObject;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -59,6 +61,7 @@ public class WurstplusAutoCrystal extends Module {
     Setting anti_suicide = create("Anti Suicide", "CaAntiSuicide", true);
     Setting fast_mode = create("Fast Mode", "CaSpeed", true);
     Setting sequential = create("Sequential", "SequentialCA", true);
+    Setting instant = create("Instant", "CaInstant", true);
     @EventHandler
     private final Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
         if (this.sequential.get_value(true)) {
@@ -77,7 +80,15 @@ public class WurstplusAutoCrystal extends Module {
                 }
             }
         }
-
+        if (instant.get_value(true)) {
+            SPacketSpawnObject packet2;
+            if (event.get_packet() instanceof SPacketSpawnObject && (packet2 = (SPacketSpawnObject) event.get_packet()).getType() == 51) {
+                CPacketUseEntity predict = new CPacketUseEntity();
+                predict.entityId = packet2.getEntityID();
+                predict.action = CPacketUseEntity.Action.ATTACK;
+                mc.player.connection.sendPacket(predict);
+            }
+        }
     });
     Setting jumpy_mode = create("Jumpy Mode", "CaJumpyMode", false);
     Setting anti_stuck = create("Anti Stuck", "CaAntiStuck", false);
@@ -186,7 +197,7 @@ public class WurstplusAutoCrystal extends Module {
     public WurstplusAutoCrystal() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
-        this.name = "Auto Crystal";
+        this.name = "!Auto Crystal";
         this.tag = "AutoCrystal";
         this.description = "kills people (if ur good)";
     }
@@ -209,12 +220,13 @@ public class WurstplusAutoCrystal extends Module {
             return;
         }
 
-        if (place_crystal.get_value(true) && place_delay_counter > place_timeout && ! hasPlace ) {
-            place_crystal();
-        }
 
         if (break_crystal.get_value(true) && break_delay_counter > break_timeout && ! hasBreak ) {
             break_crystal();
+        }
+
+        if (place_crystal.get_value(true) && place_delay_counter > place_timeout && ! hasPlace ) {
+            place_crystal();
         }
 
         if (!did_anything) {
