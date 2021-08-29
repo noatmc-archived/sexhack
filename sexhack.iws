@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="355da0d5-426a-4324-a668-3a3d1e795bc4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/dev/SexAura.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/combat/WurstplusAutoCrystal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/combat/WurstplusAutoCrystal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/dev/CrystalAura.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/dev/SexAura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/dev/SexAura.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

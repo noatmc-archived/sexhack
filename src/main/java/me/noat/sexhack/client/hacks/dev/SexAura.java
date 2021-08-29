@@ -41,8 +41,10 @@ public class SexAura extends Module {
             for (BlockPos blocks : WP3CrystalUtil.possiblePlacePositions(placeRange.get_value(1), true, false)) {
                 if (WP3CrystalUtil.calculateDamage(blocks, entity, true) > minDmg.get_value(1)) continue;
                 if (WP3CrystalUtil.calculateDamage(blocks, mc.player, true) <= selfDmg.get_value(1)) continue;
+                placePos = blocks;
             }
         }
+        return placePos;
     }
     @Override
     public void disable() {
