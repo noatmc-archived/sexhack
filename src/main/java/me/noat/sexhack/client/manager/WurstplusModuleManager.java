@@ -102,6 +102,7 @@ public class WurstplusModuleManager {
         add_hack(new WurstplusCapes());
         add_hack(new WurstplusAlwaysNight());
         add_hack(new WurstplusCityEsp());
+        add_hack(new PopChams());
 
         // Misc.
         add_hack(new WurstplusMiddleClickFriends());

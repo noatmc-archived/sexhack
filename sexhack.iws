@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="355da0d5-426a-4324-a668-3a3d1e795bc4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/render/PopChams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sexhack.iws" beforeDir="false" afterPath="$PROJECT_DIR$/sexhack.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/dev/WurstplusFakePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/dev/WurstplusFakePlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/util/WurstplusRenderUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/util/WurstplusRenderUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/chat/WurstplusTotempop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/chat/WurstplusTotempop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/manager/WurstplusModuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/manager/WurstplusModuleManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,6 +212,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

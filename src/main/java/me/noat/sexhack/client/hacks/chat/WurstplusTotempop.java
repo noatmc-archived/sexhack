@@ -1,3 +1,4 @@
+
 package me.noat.sexhack.client.hacks.chat;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
