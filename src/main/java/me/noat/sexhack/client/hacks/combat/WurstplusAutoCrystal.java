@@ -481,8 +481,11 @@ public class WurstplusAutoCrystal extends Module {
         boolean offhand_check = false;
         if (mc.player.getHeldItemOffhand().getItem() != Items.END_CRYSTAL) {
             if (mc.player.getHeldItemMainhand().getItem() != Items.END_CRYSTAL && !auto_switch.in("None")) {
-                WurstplusPlayerUtil.switchToHotbarSlot(ItemEndCrystal.class, auto_switch.in("Silent"));
-                mc.player.inventory.currentItem = find_crystals_hotbar();
+                if (!auto_switch.in("Silent")) {
+                    mc.player.inventory.currentItem = find_crystals_hotbar();
+                } else {
+                    WurstplusPlayerUtil.switchToHotbarSlot(ItemEndCrystal.class, true);
+                }
                 return;
             }
         } else {

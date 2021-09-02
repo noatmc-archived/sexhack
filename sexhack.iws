@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="355da0d5-426a-4324-a668-3a3d1e795bc4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/render/PopChams.java" afterDir="false" />
+    <list default="true" id="355da0d5-426a-4324-a668-3a3d1e795bc4" name="Default Changelist" comment="popchams that i pasted :troll:">
       <change beforePath="$PROJECT_DIR$/sexhack.iws" beforeDir="false" afterPath="$PROJECT_DIR$/sexhack.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/chat/WurstplusTotempop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/chat/WurstplusTotempop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/manager/WurstplusModuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/manager/WurstplusModuleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/combat/WurstplusAutoCrystal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/combat/WurstplusAutoCrystal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/combat/WurstplusOffhand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/combat/WurstplusOffhand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +195,14 @@
       <option name="presentableId" value="Default" />
       <updated>1630224199951</updated>
     </task>
+    <task id="LOCAL-00001" summary="popchams that i pasted :troll:">
+      <created>1630551878594</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1630551878594</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,7 +219,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="popchams that i pasted :troll:" />
+    <option name="LAST_COMMIT_MESSAGE" value="popchams that i pasted :troll:" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
