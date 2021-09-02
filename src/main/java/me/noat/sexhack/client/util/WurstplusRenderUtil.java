@@ -1,6 +1,7 @@
 package me.noat.sexhack.client.util;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.culling.ICamera;
@@ -27,6 +28,11 @@ public class WurstplusRenderUtil {
     static {
         itemRender = mc.getRenderItem();
         camera = new Frustum();
+    }
+
+    public static void drawRectangleCorrectly(int x, int y, int w, int h, int color) {
+        GL11.glLineWidth(1.0f);
+        Gui.drawRect(x, y, x + w, y + h, color);
     }
 
     public static void renderOne(final float lineWidth) {
