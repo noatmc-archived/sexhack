@@ -37,7 +37,7 @@ public class WurstplusEventManager {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onTick(TickEvent.ClientTickEvent event) {
         if (mc.player == null) {
             return;

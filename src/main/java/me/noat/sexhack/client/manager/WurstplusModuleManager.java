@@ -7,6 +7,7 @@ import me.noat.sexhack.client.hacks.WurstplusClickGUI;
 import me.noat.sexhack.client.hacks.WurstplusClickHUD;
 import me.noat.sexhack.client.hacks.chat.*;
 import me.noat.sexhack.client.hacks.combat.*;
+import me.noat.sexhack.client.hacks.dev.SexAura;
 import me.noat.sexhack.client.hacks.dev.WurstplusFakePlayer;
 import me.noat.sexhack.client.hacks.exploit.*;
 import me.noat.sexhack.client.hacks.misc.*;
@@ -102,7 +103,6 @@ public class WurstplusModuleManager {
         add_hack(new WurstplusCapes());
         add_hack(new WurstplusAlwaysNight());
         add_hack(new WurstplusCityEsp());
-        add_hack(new PopChams());
 
         // Misc.
         add_hack(new WurstplusMiddleClickFriends());
@@ -114,7 +114,7 @@ public class WurstplusModuleManager {
 
         // Dev
         add_hack(new WurstplusFakePlayer());
-        // add_hack(new CrystalAura());
+        add_hack(new SexAura());
 
         array_hacks.sort(Comparator.comparing(Module::get_name));
     }
