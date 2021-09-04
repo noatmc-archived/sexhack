@@ -20,24 +20,28 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class SexAura extends Module {
+    // settings
+    Setting logic = create("Logic", "aslogic", "BRPL", combobox("PLBR", "BRPL"));
+    Setting breakCrystal = create("Break", "asbreak", true);
+    Setting place = create("Place", "asplace", true);
+    Setting cancel = create("Cancel Crystal", "ascancel", true);
+    Setting breakRange = create("Break Range", "asbrange", 6.0f, 0.0f, 6.0f);
+    Setting placeRange = create("Place Range", "asrange", 6.0f, 0.0f, 6.0f);
     // cancel crystal system
     @EventHandler
     private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
         CPacketUseEntity packet;
-        if (event.getStage() == 0 && event.get_packet() instanceof CPacketUseEntity && (packet = (CPacketUseEntity) event.get_packet()).getAction() == CPacketUseEntity.Action.ATTACK && packet.getEntityFromWorld(mc.world) instanceof EntityEnderCrystal) {
-            Objects.requireNonNull(packet.getEntityFromWorld(mc.world)).setDead();
-            mc.world.removeEntityFromWorld(packet.entityId);
+        if (cancel.get_value(true)) {
+            if (event.getStage() == 0 && event.get_packet() instanceof CPacketUseEntity && (packet = (CPacketUseEntity) event.get_packet()).getAction() == CPacketUseEntity.Action.ATTACK && packet.getEntityFromWorld(mc.world) instanceof EntityEnderCrystal) {
+                Objects.requireNonNull(packet.getEntityFromWorld(mc.world)).setDead();
+                mc.world.removeEntityFromWorld(packet.entityId);
+            }
         }
     });
-    // settings
-    Setting place = create("Place", "asplace", true);
-    Setting breakRange = create("Break Range", "asbrange", 6.0f, 0.0f, 6.0f);
-    Setting breakCrystal = create("Break", "asbreak", true);
-    Setting logic = create("Logic", "aslogic", "BRPL", combobox("PLBR", "BRPL"));
-    Setting placeRange = create("Place Range", "asrange", 6.0f, 0.0f, 6.0f);
-    private double damage;
     Setting minDmg = create("Minimum Dmg", "asmindmg", 6, 0, 36);
     Setting selfDmg = create("Max Self Dmg", "asmaxselfdmg", 8, 0, 36);
+    Setting debug = create("Debug", "asdebug", false);
+    private double damage;
     private BlockPos placePos;
     private EntityPlayer e;
     private BlockPos crystalPt2;
@@ -125,7 +129,9 @@ public class SexAura extends Module {
         if (placePos != null) {
             WurstplusBlockUtil.placeCrystalOnBlock(placePos, EnumHand.OFF_HAND); // place crystal with offhand :3
         }
-        WurstplusMessageUtil.send_client_message("placing crystal");
+        if (debug.get_value(true)) {
+            WurstplusMessageUtil.send_client_message("placing crystal");
+        }
         placing = false;
     }
 
@@ -142,7 +148,9 @@ public class SexAura extends Module {
             // attack crystal
             mc.player.connection.sendPacket(new CPacketUseEntity(crystals));
         }
-        WurstplusMessageUtil.send_client_message("breaking crystal");
+        if (debug.get_value(true)) {
+            WurstplusMessageUtil.send_client_message("breaking crystal");
+        }
         breaking = false;
     }
 
