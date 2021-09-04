@@ -5,10 +5,7 @@ import me.noat.sexhack.client.event.events.WurstplusEventRender;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.util.WurstplusBlockUtil;
-import me.noat.sexhack.client.util.WurstplusCrystalUtil;
-import me.noat.sexhack.client.util.WurstplusFriendUtil;
-import me.noat.sexhack.client.util.WurstplusRenderUtil;
+import me.noat.sexhack.client.util.*;
 import me.noat.turok.draw.RenderHelp;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
@@ -44,6 +41,8 @@ public class SexAura extends Module {
     private BlockPos placePos;
     private EntityPlayer e;
     private BlockPos crystalPt2;
+    private boolean placing;
+    private boolean breaking;
 
     public SexAura() {
         super(WurstplusCategory.WURSTPLUS_BETA);
@@ -76,18 +75,20 @@ public class SexAura extends Module {
     // autocrystal logic
     public void doAutoCrystal() {
         if (logic.in("BRPL")) { // if logic was break place
-            if (breakCrystal.get_value(true)) {
+            if (breakCrystal.get_value(true) && !breaking) {
                 breakCrystal();
+                WurstplusMessageUtil.send_client_message("breaking crystal");
             }
-            if (place.get_value(true)) {
+            if (place.get_value(true) && !placing) {
                 placeCrystal();
+                WurstplusMessageUtil.send_client_message("placing crystal");
             }
         }
         if (logic.in("PLBR")) { // if logic was place break
-            if (place.get_value(true)) {
+            if (place.get_value(true) && !placing) {
                 placeCrystal();
             }
-            if (breakCrystal.get_value(true)) {
+            if (breakCrystal.get_value(true) && !breaking) {
                 breakCrystal();
             }
         }
@@ -107,9 +108,8 @@ public class SexAura extends Module {
     public BlockPos getPos() {
         EntityPlayer target = getTarget(); // pull data from getting target function
         for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), true, false)) {
-            BlockPos crystal = new BlockPos(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5); // set new blockpos for crystal
-            double damageToTarget = WurstplusCrystalUtil.calculateDamage(crystal.getX() + 0.5, crystal.getY() + 1, crystal.getZ() + 0.5, target); // set variable for target dmg
-            double damageToSelf = WurstplusCrystalUtil.calculateDamage(crystal.getX() + 0.5, crystal.getY() + 1, crystal.getZ() + 0.5, mc.player); // set variable for self dmg
+            double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, target); // set variable for target dmg
+            double damageToSelf = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, mc.player); // set variable for self dmg
             if (damageToSelf > selfDmg.get_value(1)) continue; // check self dmg
             if (damageToTarget < minDmg.get_value(1)) continue; // check min dmg
             if (target.isDead || target.getHealth() <= 0) continue; // check if target is dead
@@ -120,13 +120,17 @@ public class SexAura extends Module {
     }
 
     public void placeCrystal() {
+        placing = true;
         placePos = getPos(); // get position from getPos() function
         if (placePos != null) {
             WurstplusBlockUtil.placeCrystalOnBlock(placePos, EnumHand.OFF_HAND); // place crystal with offhand :3
         }
+        WurstplusMessageUtil.send_client_message("placing crystal");
+        placing = false;
     }
 
     public void breakCrystal() {
+        breaking = true;
         // check for good crystals!
         EntityEnderCrystal crystals = mc.world.getLoadedEntityList().stream()
                 .filter(entity -> entity instanceof EntityEnderCrystal)
@@ -138,7 +142,10 @@ public class SexAura extends Module {
             // attack crystal
             mc.player.connection.sendPacket(new CPacketUseEntity(crystals));
         }
+        WurstplusMessageUtil.send_client_message("breaking crystal");
+        breaking = false;
     }
+
 
     // render, pasted from wurst+ 2's ac!
     @Override
