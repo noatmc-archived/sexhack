@@ -81,19 +81,21 @@ public class SexAura extends Module {
         if (logic.in("BRPL")) { // if logic was break place
             if (breakCrystal.get_value(true) && !breaking) {
                 breakCrystal();
-                WurstplusMessageUtil.send_client_message("breaking crystal");
+                if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("breaking crystal");
             }
             if (place.get_value(true) && !placing) {
                 placeCrystal();
-                WurstplusMessageUtil.send_client_message("placing crystal");
+                if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("placing crystal");
             }
         }
         if (logic.in("PLBR")) { // if logic was place break
             if (place.get_value(true) && !placing) {
                 placeCrystal();
+                if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("placing crystal");
             }
             if (breakCrystal.get_value(true) && !breaking) {
                 breakCrystal();
+                if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("breaking crystal");
             }
         }
     }
@@ -111,7 +113,7 @@ public class SexAura extends Module {
 
     public BlockPos getPos() {
         EntityPlayer target = getTarget(); // pull data from getting target function
-        for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), true, false)) {
+        for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), false, true)) {
             double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, target); // set variable for target dmg
             double damageToSelf = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, mc.player); // set variable for self dmg
             if (damageToSelf > selfDmg.get_value(1)) continue; // check self dmg
