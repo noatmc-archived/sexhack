@@ -12,6 +12,7 @@ import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.network.play.client.CPacketUseEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -40,13 +41,12 @@ public class SexAura extends Module {
     });
     Setting minDmg = create("Minimum Dmg", "asmindmg", 6, 0, 36);
     Setting selfDmg = create("Max Self Dmg", "asmaxselfdmg", 8, 0, 36);
+    Setting multiplace = create("Multiplace", "asmultiplace", false);
     Setting debug = create("Debug", "asdebug", false);
     private double damage;
     private BlockPos placePos;
     private EntityPlayer e;
     private BlockPos crystalPt2;
-    private boolean placing;
-    private boolean breaking;
 
     public SexAura() {
         super(WurstplusCategory.WURSTPLUS_BETA);
@@ -79,21 +79,21 @@ public class SexAura extends Module {
     // autocrystal logic
     public void doAutoCrystal() {
         if (logic.in("BRPL")) { // if logic was break place
-            if (breakCrystal.get_value(true) && !breaking) {
+            if (breakCrystal.get_value(true)) {
                 breakCrystal();
                 if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("breaking crystal");
             }
-            if (place.get_value(true) && !placing) {
+            if (place.get_value(true)) {
                 placeCrystal();
                 if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("placing crystal");
             }
         }
         if (logic.in("PLBR")) { // if logic was place break
-            if (place.get_value(true) && !placing) {
+            if (place.get_value(true)) {
                 placeCrystal();
                 if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("placing crystal");
             }
-            if (breakCrystal.get_value(true) && !breaking) {
+            if (breakCrystal.get_value(true)) {
                 breakCrystal();
                 if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("breaking crystal");
             }
@@ -113,7 +113,7 @@ public class SexAura extends Module {
 
     public BlockPos getPos() {
         EntityPlayer target = getTarget(); // pull data from getting target function
-        for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), false, true)) {
+        for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), false, multiplace.get_value(true))) {
             double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, target); // set variable for target dmg
             double damageToSelf = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, mc.player); // set variable for self dmg
             if (damageToSelf > selfDmg.get_value(1)) continue; // check self dmg
@@ -125,20 +125,21 @@ public class SexAura extends Module {
         return crystalPt2;
     }
 
+    public boolean isOffhandCrystal() {
+        return (mc.player.getHeldItemOffhand().item == Items.END_CRYSTAL);
+    }
+
     public void placeCrystal() {
-        placing = true;
         placePos = getPos(); // get position from getPos() function
         if (placePos != null) {
-            WurstplusBlockUtil.placeCrystalOnBlock(placePos, EnumHand.OFF_HAND); // place crystal with offhand :3
+            WurstplusBlockUtil.placeCrystalOnBlock(placePos, isOffhandCrystal() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND); // place crystal with offhand :3
         }
         if (debug.get_value(true)) {
             WurstplusMessageUtil.send_client_message("placing crystal");
         }
-        placing = false;
     }
 
     public void breakCrystal() {
-        breaking = true;
         // check for good crystals!
         EntityEnderCrystal crystals = mc.world.getLoadedEntityList().stream()
                 .filter(entity -> entity instanceof EntityEnderCrystal)
@@ -153,7 +154,6 @@ public class SexAura extends Module {
         if (debug.get_value(true)) {
             WurstplusMessageUtil.send_client_message("breaking crystal");
         }
-        breaking = false;
     }
 
 
@@ -161,15 +161,17 @@ public class SexAura extends Module {
     @Override
     public void render(WurstplusEventRender e) {
         BlockPos render_block = getPos();
-        RenderHelp.prepare("quads");
-        RenderHelp.draw_cube(RenderHelp.get_buffer_build(),
-                render_block.getX(), render_block.getY(), render_block.getZ(),
-                1, 1, 1,
-                255, 255, 255, 57,
-                "all"
-        );
-        RenderHelp.release();
-        WurstplusRenderUtil.drawText(render_block, ((Math.floor(this.damage) == this.damage) ? Integer.valueOf((int) this.damage) : String.format("%.1f", this.damage)) + "");
+        if (render_block != null) {
+            RenderHelp.prepare("quads");
+            RenderHelp.draw_cube(RenderHelp.get_buffer_build(),
+                    render_block.getX(), render_block.getY(), render_block.getZ(),
+                    1, 1, 1,
+                    255, 255, 255, 57,
+                    "all"
+            );
+            RenderHelp.release();
+            WurstplusRenderUtil.drawText(render_block, ((Math.floor(this.damage) == this.damage) ? Integer.valueOf((int) this.damage) : String.format("%.1f", this.damage)) + "");
+        }
     }
 
     @Override

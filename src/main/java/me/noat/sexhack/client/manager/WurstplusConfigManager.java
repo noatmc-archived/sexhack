@@ -22,7 +22,7 @@ import static me.noat.sexhack.SexHack.send_minecraft_log;
 public class WurstplusConfigManager {
 
     // FOLDERS
-    private final String MAIN_FOLDER = "WURSTPLUSTWO/";
+    private final String MAIN_FOLDER = "SexHack/";
     private final String CONFIGS_FOLDER = MAIN_FOLDER + "configs/";
     // STATIC FILES
     private final String CLIENT_FILE = "client.json";
