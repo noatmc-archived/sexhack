@@ -129,13 +129,15 @@ public class SexAura extends Module {
 
     // get target for autocrystal (nearest entity tbh)
     public EntityPlayer getTarget() {
-        for (Entity entity : mc.world.getLoadedEntityList()) {
+        List<Entity> a = mc.world.getLoadedEntityList();
+        for (Entity entity : a) {
             if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
             if (entity == mc.player) continue; // check if the player was you
             if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
             e = (EntityPlayer) entity; // set player as the target
         }
+        a.clear();
         return e;
     }
 
