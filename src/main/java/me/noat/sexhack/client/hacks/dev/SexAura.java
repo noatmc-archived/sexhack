@@ -14,10 +14,12 @@ import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.network.play.client.CPacketUseEntity;
+import net.minecraft.network.play.server.SPacketSpawnObject;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 
 public class SexAura extends Module {
@@ -26,6 +28,7 @@ public class SexAura extends Module {
     Setting breakCrystal = create("Break", "asbreak", true);
     Setting place = create("Place", "asplace", true);
     Setting cancel = create("Cancel Crystal", "ascancel", true);
+    private static EntityPlayer a;
     Setting breakRange = create("Break Range", "asbrange", 6.0f, 0.0f, 6.0f);
     Setting placeRange = create("Place Range", "asrange", 6.0f, 0.0f, 6.0f);
     // cancel crystal system
@@ -39,20 +42,33 @@ public class SexAura extends Module {
             }
         }
     });
+    Setting instant = create("Instant", "asinstant", true);
     Setting minDmg = create("Minimum Dmg", "asmindmg", 6, 0, 36);
     Setting selfDmg = create("Max Self Dmg", "asmaxselfdmg", 8, 0, 36);
-    Setting multiplace = create("Multiplace", "asmultiplace", false);
+    @EventHandler
+    private final Listener<WurstplusEventPacket.ReceivePacket> receive = new Listener<>(event -> {
+        if (instant.get_value(true)) {
+            SPacketSpawnObject packet2;
+            if (event.get_packet() instanceof SPacketSpawnObject && (packet2 = (SPacketSpawnObject) event.get_packet()).getType() == 51) {
+                CPacketUseEntity predict = new CPacketUseEntity();
+                predict.entityId = packet2.getEntityID();
+                predict.action = CPacketUseEntity.Action.ATTACK;
+                mc.player.connection.sendPacket(predict);
+            }
+        }
+    });
     Setting debug = create("Debug", "asdebug", false);
     private double damage;
     private BlockPos placePos;
     private EntityPlayer e;
     private BlockPos crystalPt2;
+    Setting nomultiplace = create("No Multiplace", "asmultiplace", true);
 
     public SexAura() {
         super(WurstplusCategory.WURSTPLUS_BETA);
 
         this.name = "!Auto Sex";
-        this.tag = "yes";
+        this.tag = "SexAura";
         this.description = "kills people (if ur good)";
     }
 
@@ -100,11 +116,23 @@ public class SexAura extends Module {
         }
     }
 
+    public static EntityPlayer staticGetTarget() {
+        for (Entity entity : mc.world.getLoadedEntityList()) {
+            if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
+            if (entity == mc.player) continue; // check if the player was you
+            if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
+            if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
+            a = (EntityPlayer) entity; // set player as the target
+        }
+        return a;
+    }
+
     // get target for autocrystal (nearest entity tbh)
     public EntityPlayer getTarget() {
         for (Entity entity : mc.world.getLoadedEntityList()) {
             if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
             if (entity == mc.player) continue; // check if the player was you
+            if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
             e = (EntityPlayer) entity; // set player as the target
         }
@@ -113,15 +141,19 @@ public class SexAura extends Module {
 
     public BlockPos getPos() {
         EntityPlayer target = getTarget(); // pull data from getting target function
-        for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), false, multiplace.get_value(true))) {
-            double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, target); // set variable for target dmg
-            double damageToSelf = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, mc.player); // set variable for self dmg
-            if (damageToSelf > selfDmg.get_value(1)) continue; // check self dmg
-            if (damageToTarget < minDmg.get_value(1)) continue; // check min dmg
-            if (target.isDead || target.getHealth() <= 0) continue; // check if target is dead
-            damage = damageToTarget;
-            crystalPt2 = blocks; // set the variable
+        List<BlockPos> blockPositions = WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), false, nomultiplace.get_value(false));
+        if (target != null) {
+            for (BlockPos blocks : blockPositions) {
+                double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, target); // set variable for target dmg
+                double damageToSelf = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, mc.player); // set variable for self dmg
+                if (damageToSelf > selfDmg.get_value(1)) continue; // check self dmg
+                if (damageToTarget < minDmg.get_value(1)) continue; // check min dmg
+                if (target.isDead || target.getHealth() <= 0) continue; // check if target is dead
+                damage = damageToTarget;
+                crystalPt2 = blocks; // set the variable
+            }
         }
+        blockPositions.clear();
         return crystalPt2;
     }
 

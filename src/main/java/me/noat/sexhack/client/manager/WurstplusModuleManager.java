@@ -103,6 +103,7 @@ public class WurstplusModuleManager {
         add_hack(new WurstplusCapes());
         add_hack(new WurstplusAlwaysNight());
         add_hack(new WurstplusCityEsp());
+        add_hack(new TargetHUD());
 
         // Misc.
         add_hack(new WurstplusMiddleClickFriends());
@@ -111,6 +112,7 @@ public class WurstplusModuleManager {
         add_hack(new WurstplusAutoNomadHut());
         add_hack(new WurstplusFastUtil());
         add_hack(new WurstplusSpeedmine());
+        add_hack(new RPC());
 
         // Dev
         add_hack(new WurstplusFakePlayer());

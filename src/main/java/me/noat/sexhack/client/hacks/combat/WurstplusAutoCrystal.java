@@ -22,9 +22,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.*;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
-import net.minecraft.network.play.client.CPacketUseEntity;
 import net.minecraft.network.play.server.SPacketSoundEffect;
-import net.minecraft.network.play.server.SPacketSpawnObject;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -78,15 +76,6 @@ public class WurstplusAutoCrystal extends Module {
                         }
                     }
                 }
-            }
-        }
-        if (instant.get_value(true)) {
-            SPacketSpawnObject packet2;
-            if (event.get_packet() instanceof SPacketSpawnObject && (packet2 = (SPacketSpawnObject) event.get_packet()).getType() == 51) {
-                CPacketUseEntity predict = new CPacketUseEntity();
-                predict.entityId = packet2.getEntityID();
-                predict.action = CPacketUseEntity.Action.ATTACK;
-                mc.player.connection.sendPacket(predict);
             }
         }
     });

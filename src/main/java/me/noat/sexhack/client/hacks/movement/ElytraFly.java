@@ -27,6 +27,13 @@ public class ElytraFly extends Module {
         this.description = "we flying";
     }
 
+    @Override
+    public void enable() {
+        if (!mc.player.isElytraFlying()) {
+            mc.player.jump();
+        }
+    }
+
     private void HandleControlMode(WurstplusEventPlayerTravel p_Event) {
         final double[] dir = WurstplusMathUtil.directionSpeed(speed.get_value(1));
 
@@ -41,7 +48,13 @@ public class ElytraFly extends Module {
             mc.player.motionZ = 0;
         }
 
-        mc.player.motionY = (-WurstplusMathUtil.degToRad(mc.player.rotationPitch)) * mc.player.movementInput.moveForward;
+        if (mc.player.movementInput.jump) {
+            mc.player.motionY = (WurstplusMathUtil.degToRad(90));
+        }
+
+        if (mc.player.movementInput.sneak) {
+            mc.player.motionY = (-WurstplusMathUtil.degToRad(90));
+        }
 
 
         mc.player.prevLimbSwingAmount = 0;

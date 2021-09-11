@@ -206,7 +206,29 @@ public class WurstplusNameTags extends Module {
         GlStateManager.popMatrix();
     }
 
-    private void renderItemStack(final ItemStack stack, final int x) {
+    public static void renderStatic(final ItemStack stack, final int x) {
+        GlStateManager.pushMatrix();
+        GlStateManager.depthMask(true);
+        GlStateManager.clear(256);
+        RenderHelper.enableStandardItemLighting();
+        mc.getRenderItem().zLevel = -150.0f;
+        GlStateManager.disableAlpha();
+        GlStateManager.enableDepth();
+        GlStateManager.disableCull();
+        mc.getRenderItem().renderItemAndEffectIntoGUI(stack, x, -29);
+        mc.getRenderItem().renderItemOverlays(mc.fontRenderer, stack, x, -29);
+        mc.getRenderItem().zLevel = 0.0f;
+        RenderHelper.disableStandardItemLighting();
+        GlStateManager.enableCull();
+        GlStateManager.enableAlpha();
+        GlStateManager.scale(0.5f, 0.5f, 0.5f);
+        GlStateManager.disableDepth();
+        GlStateManager.enableDepth();
+        GlStateManager.scale(2.0f, 2.0f, 2.0f);
+        GlStateManager.popMatrix();
+    }
+
+    public void renderItemStack(final ItemStack stack, final int x) {
         GlStateManager.pushMatrix();
         GlStateManager.depthMask(true);
         GlStateManager.clear(256);
