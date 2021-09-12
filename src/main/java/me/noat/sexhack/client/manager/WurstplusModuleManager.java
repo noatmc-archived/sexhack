@@ -80,6 +80,7 @@ public class WurstplusModuleManager {
         add_hack(new WurstplusCoordExploit());
         add_hack(new WurstplusNoHandshake());
         add_hack(new Burrow());
+        add_hack(new PacketPredict());
 
         // Movement.
         add_hack(new Speed());

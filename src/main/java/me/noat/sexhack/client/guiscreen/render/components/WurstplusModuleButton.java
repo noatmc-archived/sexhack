@@ -121,7 +121,7 @@ public class WurstplusModuleButton {
     }
 
     public int get_settings_height() {
-        return this.settings_height;
+        return this.settings_height + 9;
     }
 
     public int get_cache_height() {
@@ -161,7 +161,7 @@ public class WurstplusModuleButton {
     }
 
     public int get_save_y() {
-        return this.save_y;
+        return this.save_y + 6;
     }
 
     public boolean is_open() {
@@ -252,7 +252,7 @@ public class WurstplusModuleButton {
         int bd_b = SexHack.click_gui.theme_widget_border_b;
 
         if (this.module.is_active()) {
-            WurstplusDraw.draw_rect(this.x, this.save_y, this.x + this.width - separe, this.save_y + this.height, bg_r, bg_g, bg_b, bg_a);
+            WurstplusDraw.draw_rect(this.x - 2, this.save_y - 3, this.x + this.width, this.save_y + this.height + 4, bg_r, bg_g, bg_b, bg_a);
 
             WurstplusDraw.draw_string(this.module_name, this.x + separe, this.save_y, nm_r, nm_g, nm_b, nm_a);
         } else {

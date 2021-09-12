@@ -4,6 +4,7 @@ import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
+import me.noat.sexhack.client.util.WurstplusRenderUtil;
 import net.minecraft.client.Minecraft;
 
 import java.awt.*;
@@ -273,12 +274,12 @@ public class WurstplusFrame {
 
         this.frame_name = this.category.get_name();
         this.width_name = font.get_string_width(this.category.get_name());
-
-        WurstplusDraw.draw_rect(this.x, this.y, this.x + this.width, this.y + this.height, bg_r, bg_g, bg_b, bg_a);
+        WurstplusRenderUtil.drawRectangleCorrectly(x, y - 6, width, mc.fontRenderer.FONT_HEIGHT + 6, new Color(SexHack.click_gui.theme_widget_background_r, SexHack.click_gui.theme_widget_background_g, SexHack.click_gui.theme_widget_background_b, SexHack.click_gui.theme_widget_background_a).hashCode());
+        WurstplusRenderUtil.drawRectangleCorrectly(x, y + 7, width, 2, new Color(255, 255, 255, 255).hashCode());
+        mc.fontRenderer.drawString(frame_name, x + 3, y - 3, new Color(255, 255, 255, 125).hashCode(), true);
+        WurstplusDraw.draw_rect(this.x, this.y + mc.fontRenderer.FONT_HEIGHT, this.x + this.width, this.y + this.height, bg_r, bg_g, bg_b, bg_a);
         int border_size = 1;
-        WurstplusDraw.draw_rect(this.x - 1, this.y, this.width + 1, this.height, bd_r, bd_g, bd_b, bd_a, border_size, "left-right");
-
-        WurstplusDraw.draw_string(this.frame_name, this.x + 4, this.y + 4, nc_r, nc_g, nc_b, nc_a);
+        WurstplusDraw.draw_rect(this.x - 1, this.y + mc.fontRenderer.FONT_HEIGHT, this.width + 1, this.height - mc.fontRenderer.FONT_HEIGHT, bd_r, bd_g, bd_b, bd_a, border_size, "left-right");
 
         if (is_moving()) {
             crush(mx, my);

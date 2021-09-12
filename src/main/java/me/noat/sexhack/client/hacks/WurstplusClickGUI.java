@@ -9,10 +9,10 @@ public class WurstplusClickGUI extends Module {
     Setting name_frame_r = create("Name R", "ClickGUINameFrameR", 255, 0, 255);
     Setting name_frame_g = create("Name G", "ClickGUINameFrameG", 255, 0, 255);
     Setting name_frame_b = create("Name B", "ClickGUINameFrameB", 255, 0, 255);
-    Setting background_frame_r = create("Background R", "ClickGUIBackgroundFrameR", 230, 0, 255);
-    Setting background_frame_g = create("Background G", "ClickGUIBackgroundFrameG", 100, 0, 255);
-    Setting background_frame_b = create("Background B", "ClickGUIBackgroundFrameB", 50, 0, 255);
-    Setting background_frame_a = create("Background A", "ClickGUIBackgroundFrameA", 210, 0, 255);
+    Setting background_frame_r = create("Background R", "ClickGUIBackgroundFrameR", 0, 0, 255);
+    Setting background_frame_g = create("Background G", "ClickGUIBackgroundFrameG", 0, 0, 255);
+    Setting background_frame_b = create("Background B", "ClickGUIBackgroundFrameB", 0, 0, 255);
+    Setting background_frame_a = create("Background A", "ClickGUIBackgroundFrameA", 151, 0, 255);
     Setting border_frame_r = create("Border R", "ClickGUIBorderFrameR", 255, 0, 255);
     Setting border_frame_g = create("Border G", "ClickGUIBorderFrameG", 255, 0, 255);
     Setting border_frame_b = create("Border B", "ClickGUIBorderFrameB", 255, 0, 255);

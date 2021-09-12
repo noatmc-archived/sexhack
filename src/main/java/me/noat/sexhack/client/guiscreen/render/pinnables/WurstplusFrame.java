@@ -207,7 +207,7 @@ public class WurstplusFrame {
         bd_a = color;
         bdw_a = 255;
 
-        WurstplusDraw.draw_rect(this.x, this.y, this.x + this.width, this.y + this.height, bg_r, bg_g, bg_b, bg_a);
+        WurstplusDraw.draw_rect(this.x, this.y, this.x + this.width, this.y + this.height, 255, 255, 255, 120);
         WurstplusDraw.draw_rect(this.x - 1, this.y, this.width + 1, this.height, bd_r, bd_g, bd_b, bd_a, this.border_size, "left-right");
 
         WurstplusDraw.draw_string(this.name, this.x + 4, this.y + 4, nc_r, nc_g, nc_b, nc_a);

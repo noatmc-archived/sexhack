@@ -19,7 +19,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.Objects;
 
 public class SexAura extends Module {
@@ -129,23 +128,20 @@ public class SexAura extends Module {
 
     // get target for autocrystal (nearest entity tbh)
     public EntityPlayer getTarget() {
-        List<Entity> a = mc.world.getLoadedEntityList();
-        for (Entity entity : a) {
+        for (Entity entity : mc.world.getLoadedEntityList()) {
             if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
             if (entity == mc.player) continue; // check if the player was you
             if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
             e = (EntityPlayer) entity; // set player as the target
         }
-        a.clear();
         return e;
     }
 
     public BlockPos getPos() {
         EntityPlayer target = getTarget(); // pull data from getting target function
-        List<BlockPos> blockPositions = WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), false, nomultiplace.get_value(false));
         if (target != null) {
-            for (BlockPos blocks : blockPositions) {
+            for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), false, nomultiplace.get_value(false))) {
                 double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, target); // set variable for target dmg
                 double damageToSelf = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, mc.player); // set variable for self dmg
                 if (damageToSelf > selfDmg.get_value(1)) continue; // check self dmg
@@ -155,7 +151,6 @@ public class SexAura extends Module {
                 crystalPt2 = blocks; // set the variable
             }
         }
-        blockPositions.clear();
         return crystalPt2;
     }
 
