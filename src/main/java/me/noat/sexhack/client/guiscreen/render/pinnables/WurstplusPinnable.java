@@ -7,6 +7,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
 
+import java.awt.*;
+
 // Travis.
 
 
@@ -208,6 +210,15 @@ public class WurstplusPinnable {
     protected void create_line(String string, int pos_x, int pos_y, int r, int g, int b, int a) {
         WurstplusDraw.draw_string(string, this.x + pos_x, this.y + pos_y, r, g, b, a);
     }
+
+    protected void createLineWithShadow(String string, int pos_x, int pos_y, Color color) {
+        Minecraft.getMinecraft().fontRenderer.drawStringWithShadow(string, this.x + pos_x, this.y + pos_y, color.hashCode());
+    }
+
+    protected void createLine(String string, int pos_x, int pos_y, int color) {
+        Minecraft.getMinecraft().fontRenderer.drawString(string, this.x + pos_x, this.y + pos_y, color);
+    }
+
 
     protected void create_rect(int pos_x, int pos_y, int width, int height, int r, int g, int b, int a) {
         WurstplusDraw.draw_rect(this.x + pos_x, this.y + pos_y, this.x + width, this.y + height, r, g, b, a);

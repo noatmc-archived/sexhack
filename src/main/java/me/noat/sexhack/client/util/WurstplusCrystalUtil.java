@@ -108,23 +108,21 @@ public class WurstplusCrystalUtil {
     }
 
     public static float calculateDamage(double posX, double posY, double posZ, Entity entity) {
-        if (entity == mc.player) {
-            if (mc.player.capabilities.isCreativeMode)
-                return 0.0f;
-        }
-        final float doubleExplosionSize = 12.0f;
-        final double distancedsize = entity.getDistance(posX, posY, posZ) / doubleExplosionSize;
-        final Vec3d vec3d = new Vec3d(posX, posY, posZ);
+        float doubleExplosionSize = 12.0f;
+        double distancedsize = entity.getDistance(posX, posY, posZ) / (double) doubleExplosionSize;
+        Vec3d vec3d = new Vec3d(posX, posY, posZ);
         double blockDensity = 0.0;
         try {
             blockDensity = entity.world.getBlockDensity(vec3d, entity.getEntityBoundingBox());
-        } catch (Exception ignore) {
+        } catch (Exception exception) {
+            // empty catch block
         }
-        final double v = (1.0 - distancedsize) * blockDensity;
-        final float damage = (float) (int) ((v * v + v) / 2.0 * 7.0 * doubleExplosionSize + 1.0);
+        double v = (1.0 - distancedsize) * blockDensity;
+        float damage = (int) ((v * v + v) / 2.0 * 7.0 * (double) doubleExplosionSize + 1.0);
         double finald = 1.0;
         if (entity instanceof EntityLivingBase) {
-            finald = getBlastReduction((EntityLivingBase) entity, getDamageMultiplied(damage), new Explosion(mc.world, null, posX, posY, posZ, 6.0f, false, true));
+            finald = getBlastReduction((EntityLivingBase) entity, getDamageMultiplied(damage), new Explosion(
+                    mc.world, null, posX, posY, posZ, 6.0f, false, true));
         }
         return (float) finald;
     }

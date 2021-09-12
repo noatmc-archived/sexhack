@@ -28,8 +28,12 @@ public class PacketPredict extends Module {
     public PacketPredict() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
-        this.name = "PacketPredict";
+        this.name = "Packet Predict";
         this.tag = "PacketPredict";
         this.description = "mojang spaghetti code abuser 2.0";
+    }
+
+    private void packetAttack(int entityId) {
+
     }
 }

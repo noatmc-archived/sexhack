@@ -2,12 +2,12 @@ package me.noat.sexhack.client.guiscreen.hud;
 
 import com.google.common.collect.Lists;
 import me.noat.sexhack.SexHack;
-import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
 import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusDrawnUtil;
 import net.minecraft.util.math.MathHelper;
 
+import java.awt.*;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,22 +15,36 @@ import java.util.stream.Collectors;
 
 public class WurstplusArrayList extends WurstplusPinnable {
     boolean flag = true;
+    private int count;
     private int scaled_width;
     private int scaled_height;
     private int scale_factor;
+    private int nl_r;
+    private int nl_g;
+    private int nl_b;
+    private int nl_a;
+
     public WurstplusArrayList() {
         super("Array List", "ArrayList", 1, 0, 0);
     }
 
+    public static Color alphaStep(Color color, int index, int count) {
+        float[] hsb = new float[3];
+        Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsb);
+        float brightness = Math.abs(((float) (System.currentTimeMillis() % 2000L) / 1000.0F + (float) index / (float) count * 2.0F) % 2.0F - 1.0F);
+        brightness = 0.5F + 0.5F * brightness;
+        hsb[2] = brightness % 2.0F;
+        return new Color(Color.HSBtoRGB(hsb[0], hsb[1], hsb[2]));
+    }
+
     @Override
     public void render() {
+        nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
+        nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
+        nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
+        nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").get_value(1);
         updateResolution();
         int position_update_y = 2;
-
-        int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
-        int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
-        int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
-        int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").get_value(1);
 
         List<Module> pretty_modules = SexHack.get_hack_manager().get_array_active_hacks().stream()
                 .sorted(Comparator.comparing(modules -> get(modules.array_detail() == null ? modules.get_tag() : modules.get_tag() + SexHack.g + " [" + SexHack.r + modules.array_detail() + SexHack.g + "]" + SexHack.r, "width")))
@@ -65,7 +79,7 @@ public class WurstplusArrayList extends WurstplusPinnable {
                 );
 
                 if (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDArrayList").in("Free")) {
-                    create_line(module_name, this.docking(2, module_name), position_update_y, nl_r, nl_g, nl_b, nl_a);
+                    createLine(module_name, this.docking(2, module_name), position_update_y, generateColor(modules));
 
                     position_update_y += get(module_name, "height") + 2;
 
@@ -76,19 +90,19 @@ public class WurstplusArrayList extends WurstplusPinnable {
                     this.set_height(position_update_y);
                 } else {
                     if (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDArrayList").in("Top R")) {
-                        mc.fontRenderer.drawStringWithShadow(module_name, scaled_width - 2 - mc.fontRenderer.getStringWidth(module_name), 3 + count * 10, new WurstplusDraw.TravisColor(nl_r, nl_g, nl_b, nl_a).hex());
+                        mc.fontRenderer.drawStringWithShadow(module_name, scaled_width - 2 - mc.fontRenderer.getStringWidth(module_name), 3 + count * 10, generateColor(modules));
                         count++;
                     }
                     if (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDArrayList").in("Top L")) {
-                        mc.fontRenderer.drawStringWithShadow(module_name, 2, 3 + count * 10, new WurstplusDraw.TravisColor(nl_r, nl_g, nl_b, nl_a).hex());
+                        mc.fontRenderer.drawStringWithShadow(module_name, 2, 3 + count * 10, generateColor(modules));
                         count++;
                     }
                     if (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDArrayList").in("Bottom R")) {
-                        mc.fontRenderer.drawStringWithShadow(module_name, scaled_width - 2 - mc.fontRenderer.getStringWidth(module_name), scaled_height - (count * 10), new WurstplusDraw.TravisColor(nl_r, nl_g, nl_b, nl_a).hex());
+                        mc.fontRenderer.drawStringWithShadow(module_name, scaled_width - 2 - mc.fontRenderer.getStringWidth(module_name), scaled_height - (count * 10), generateColor(modules));
                         count++;
                     }
                     if (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDArrayList").in("Bottom L")) {
-                        mc.fontRenderer.drawStringWithShadow(module_name, 2, scaled_height - (count * 10), new WurstplusDraw.TravisColor(nl_r, nl_g, nl_b, nl_a).hex());
+                        mc.fontRenderer.drawStringWithShadow(module_name, 2, scaled_height - (count * 10), generateColor(modules));
                         count++;
                     }
                 }
@@ -96,6 +110,10 @@ public class WurstplusArrayList extends WurstplusPinnable {
 
             }
         }
+    }
+
+    public int generateColor(Module mod) {
+        return alphaStep(new Color(nl_r, nl_g, nl_b), 50, (count * 2) + 10).getRGB();
     }
 
     public void updateResolution() {
