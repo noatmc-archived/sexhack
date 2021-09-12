@@ -6,7 +6,9 @@ import me.noat.sexhack.client.hacks.WurstplusCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 // Hacks.
@@ -99,6 +101,21 @@ public class WurstplusGUI extends GuiScreen {
             }
 
         }
+    }
+
+    public void handleMouseInput() throws IOException {
+        if (Mouse.getEventDWheel() > 0) {
+            for (WurstplusFrame frames : this.frame) {
+                frames.set_y(frames.get_y() + 10);
+            }
+        }
+        if (Mouse.getEventDWheel() < 0) {
+            for (WurstplusFrame frames : this.frame) {
+                frames.set_y(frames.get_y() - 10);
+            }
+        }
+
+        super.handleMouseInput();
     }
 
     @Override

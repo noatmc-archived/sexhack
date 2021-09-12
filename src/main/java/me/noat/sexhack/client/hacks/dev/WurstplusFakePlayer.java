@@ -2,8 +2,6 @@ package me.noat.sexhack.client.hacks.dev;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.realmsclient.gui.ChatFormatting;
-import java.util.UUID;
-
 import me.noat.sexhack.client.event.events.WurstplusEventPacket;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.Module;
@@ -21,6 +19,8 @@ import net.minecraft.network.play.server.SPacketExplosion;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.UUID;
 
 public class WurstplusFakePlayer
         extends Module {
@@ -71,8 +71,8 @@ public class WurstplusFakePlayer
         if (this.fakePlayer == null) {
             return;
         }
-        if (event.get_packet() instanceof SPacketExplosion && this.fakePlayer.getDistance((explosion = (SPacketExplosion)((Object)event.get_packet())).getX(), explosion.getY(), explosion.getZ()) <= 15.0 && (damage = (double) WurstplusCrystalUtil.calculateDamage(explosion.getX(), explosion.getY(), explosion.getZ(), this.fakePlayer)) > 0.0 && this.pops.get_value(true)) {
-            this.fakePlayer.setHealth((float)((double)this.fakePlayer.getHealth() - MathHelper.clamp((double)damage, (double)0.0, (double)999.0)));
+        if (event.get_packet() instanceof SPacketExplosion && this.fakePlayer.getDistance((explosion = (SPacketExplosion) event.get_packet()).getX(), explosion.getY(), explosion.getZ()) <= 15.0 && (damage = WurstplusCrystalUtil.calculateDamage(explosion.getX(), explosion.getY(), explosion.getZ(), this.fakePlayer)) > 0.0 && this.pops.get_value(true)) {
+            this.fakePlayer.setHealth((float) ((double) this.fakePlayer.getHealth() - MathHelper.clamp(damage, 0.0, 999.0)));
         }
     });
 

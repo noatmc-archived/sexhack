@@ -20,7 +20,7 @@ import org.lwjgl.opengl.Display;
 public class SexHack {
 
     public static final String WURSTPLUS_NAME = "SexHack";
-    public static final String WURSTPLUS_VERSION = "1.0.4.1";
+    public static final String WURSTPLUS_VERSION = "1.0.4.2";
     public static final String WURSTPLUS_SIGN = " ";
     public static final int WURSTPLUS_KEY_GUI = Keyboard.KEY_RSHIFT;
     public static final int WURSTPLUS_KEY_DELETE = Keyboard.KEY_DELETE;

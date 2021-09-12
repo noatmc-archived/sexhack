@@ -62,6 +62,7 @@ public class SexAura extends Module {
     private EntityPlayer e;
     private BlockPos crystalPt2;
     Setting nomultiplace = create("No Multiplace", "asmultiplace", true);
+    Setting faceplaceHp = create("Faceplace HP", "asFaceplace", 8, 0, 36);
 
     public SexAura() {
         super(WurstplusCategory.WURSTPLUS_BETA);
@@ -96,21 +97,17 @@ public class SexAura extends Module {
         if (logic.in("BRPL")) { // if logic was break place
             if (breakCrystal.get_value(true)) {
                 breakCrystal();
-                if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("breaking crystal");
             }
             if (place.get_value(true)) {
                 placeCrystal();
-                if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("placing crystal");
             }
         }
         if (logic.in("PLBR")) { // if logic was place break
             if (place.get_value(true)) {
                 placeCrystal();
-                if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("placing crystal");
             }
             if (breakCrystal.get_value(true)) {
                 breakCrystal();
-                if (debug.get_value(true)) WurstplusMessageUtil.send_client_message("breaking crystal");
             }
         }
     }
@@ -142,10 +139,14 @@ public class SexAura extends Module {
         EntityPlayer target = getTarget(); // pull data from getting target function
         if (target != null) {
             for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), false, nomultiplace.get_value(false))) {
+                int minimum_damage = minDmg.get_value(1);
                 double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, target); // set variable for target dmg
                 double damageToSelf = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, mc.player); // set variable for self dmg
+                //if (isFaceplacable(target, faceplaceHp.get_value(1))) {
+                //  minimum_damage = 2;
+                //}
                 if (damageToSelf > selfDmg.get_value(1)) continue; // check self dmg
-                if (damageToTarget < minDmg.get_value(1)) continue; // check min dmg
+                if (damageToTarget < minimum_damage) continue; // check min dmg
                 if (target.isDead || target.getHealth() <= 0) continue; // check if target is dead
                 damage = damageToTarget;
                 crystalPt2 = blocks; // set the variable
@@ -166,6 +167,10 @@ public class SexAura extends Module {
         if (debug.get_value(true)) {
             WurstplusMessageUtil.send_client_message("placing crystal");
         }
+    }
+
+    public boolean isFaceplacable(EntityPlayer e, int hp) {
+        return e.getHealth() + e.getAbsorptionAmount() <= hp;
     }
 
     public void breakCrystal() {
