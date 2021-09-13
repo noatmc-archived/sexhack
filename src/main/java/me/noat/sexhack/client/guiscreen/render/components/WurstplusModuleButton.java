@@ -254,9 +254,9 @@ public class WurstplusModuleButton {
         if (this.module.is_active()) {
             WurstplusDraw.draw_rect(this.x - 2, this.save_y - 3, this.x + this.width, this.save_y + this.height + 4, bg_r, bg_g, bg_b, bg_a);
 
-            WurstplusDraw.draw_string(this.module_name, this.x + separe, this.save_y, nm_r, nm_g, nm_b, nm_a);
+            WurstplusDraw.draw_string(this.module_name, this.x + separe, this.save_y, 255, 255, 255, 255);
         } else {
-            WurstplusDraw.draw_string(this.module_name, this.x + separe, this.save_y, nm_r, nm_g, nm_b, nm_a);
+            WurstplusDraw.draw_string(this.module_name, this.x + separe, this.save_y, 177, 177, 177, 255);
         }
 
         for (WurstplusAbstractWidget widgets : this.widget) {

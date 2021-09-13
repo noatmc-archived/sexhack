@@ -37,7 +37,6 @@ public class SexHack {
     private static WurstplusConfigManager config_manager;
     private static WurstplusModuleManager module_manager;
     private static WurstplusHUDManager hud_manager;
-    private static HWID hwid;
 
     public static void send_minecraft_log(String log) {
         wurstplus_register_log.info(log);
@@ -95,7 +94,6 @@ public class SexHack {
         config_manager = new WurstplusConfigManager();
         module_manager = new WurstplusModuleManager();
         hud_manager = new WurstplusHUDManager();
-        hwid = new HWID();
 
         WurstplusEventManager event_manager = new WurstplusEventManager();
         WurstplusCommandManager command_manager = new WurstplusCommandManager(); // hack
@@ -129,7 +127,6 @@ public class SexHack {
         config_manager.load_settings();
 
         send_minecraft_log("done");
-        HWID.hwidCheck();
         if (module_manager.get_module_with_tag("GUI").is_active()) {
             module_manager.get_module_with_tag("GUI").set_active(false);
         }

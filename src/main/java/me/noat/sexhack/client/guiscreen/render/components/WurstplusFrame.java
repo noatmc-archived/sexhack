@@ -274,13 +274,11 @@ public class WurstplusFrame {
 
         this.frame_name = this.category.get_name();
         this.width_name = font.get_string_width(this.category.get_name());
-        WurstplusRenderUtil.drawRectangleCorrectly(x, y - 6, width, mc.fontRenderer.FONT_HEIGHT + 6, new Color(SexHack.click_gui.theme_widget_background_r, SexHack.click_gui.theme_widget_background_g, SexHack.click_gui.theme_widget_background_b, SexHack.click_gui.theme_widget_background_a).hashCode());
-        WurstplusRenderUtil.drawRectangleCorrectly(x, y + 7, width, 2, new Color(255, 255, 255, 255).hashCode());
+        WurstplusDraw.draw_rect(this.x - 5, this.y - mc.fontRenderer.FONT_HEIGHT - 1, this.x + this.width + 6, this.y + this.height + 4, 96, 40, 236, 255);
+        WurstplusDraw.draw_rect(this.x - 4, this.y - mc.fontRenderer.FONT_HEIGHT, this.x + this.width + 4, this.y + this.height + 3, 30, 30, 30, 255);
+        WurstplusRenderUtil.drawRectangleCorrectly(x, y - 6, width, mc.fontRenderer.FONT_HEIGHT + 6, new Color(30, 30, 30, 255).hashCode());
         mc.fontRenderer.drawString(frame_name, x + 3, y - 3, new Color(255, 255, 255, 125).hashCode(), true);
-        WurstplusDraw.draw_rect(this.x, this.y + mc.fontRenderer.FONT_HEIGHT, this.x + this.width, this.y + this.height, bg_r, bg_g, bg_b, bg_a);
-        int border_size = 1;
-        WurstplusDraw.draw_rect(this.x - 1, this.y + mc.fontRenderer.FONT_HEIGHT, this.width + 1, this.height - mc.fontRenderer.FONT_HEIGHT, bd_r, bd_g, bd_b, bd_a, border_size, "left-right");
-
+        WurstplusDraw.draw_rect(this.x, this.y + mc.fontRenderer.FONT_HEIGHT, this.x + this.width, this.y + this.height, 44, 44, 44, 255);
         if (is_moving()) {
             crush(mx, my);
         }
