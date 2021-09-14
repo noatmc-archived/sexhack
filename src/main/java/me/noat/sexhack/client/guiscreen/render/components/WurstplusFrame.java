@@ -73,35 +73,8 @@ public class WurstplusFrame {
         this.can = true;
     }
 
-    public void refresh_frame(WurstplusModuleButton button, int combo_height) {
-
-        this.height = 25;
-
-        int size = SexHack.get_hack_manager().get_modules_with_category(this.category).size();
-        int count = 0;
-
-        for (WurstplusModuleButton buttons : this.module_button) {
-            buttons.set_y(this.height);
-
-            count++;
-
-            int compare;
-            if (count >= size) {
-                compare = 10;
-            } else {
-                compare = 17;
-            }
-
-            if (buttons.is_open()) {
-                if (compare == 10) {
-                    this.height += buttons.get_settings_height() - compare;
-                } else {
-                    this.height += buttons.get_settings_height();
-                }
-            } else {
-                this.height += compare;
-            }
-        }
+    private static Color getRainbow() {
+        return Color.getHSBColor((float) (System.currentTimeMillis() % 7500L) / 7500f, 0.85f, 0.85f);
     }
 
     public void does_can(boolean value) {
@@ -245,6 +218,37 @@ public class WurstplusFrame {
         }
     }
 
+    public void refresh_frame(WurstplusModuleButton button, int combo_height) {
+
+        this.height = 25;
+
+        int size = SexHack.get_hack_manager().get_modules_with_category(this.category).size();
+        int count = 0;
+
+        for (WurstplusModuleButton buttons : this.module_button) {
+            buttons.set_y(this.height);
+
+            count++;
+
+            int compare;
+            if (count >= size) {
+                compare = 10;
+            } else {
+                compare = 17;
+            }
+
+            if (buttons.is_open()) {
+                if (compare == 10) {
+                    this.height += buttons.get_settings_height() - compare;
+                } else {
+                    this.height += buttons.get_settings_height();
+                }
+            } else {
+                this.height += compare;
+            }
+        }
+    }
+
     public void render(int mx, int my) {
         float[] tick_color = {
                 (System.currentTimeMillis() % (360 * 32)) / (360f * 32)
@@ -274,7 +278,7 @@ public class WurstplusFrame {
 
         this.frame_name = this.category.get_name();
         this.width_name = font.get_string_width(this.category.get_name());
-        WurstplusDraw.draw_rect(this.x - 5, this.y - mc.fontRenderer.FONT_HEIGHT - 1, this.x + this.width + 6, this.y + this.height + 4, 96, 40, 236, 255);
+        WurstplusDraw.draw_rect(this.x - 5, this.y - mc.fontRenderer.FONT_HEIGHT - 1, this.x + this.width + 6, this.y + this.height + 4, getRainbow().getRed(), getRainbow().getGreen(), getRainbow().getBlue(), getRainbow().getAlpha());
         WurstplusDraw.draw_rect(this.x - 4, this.y - mc.fontRenderer.FONT_HEIGHT, this.x + this.width + 4, this.y + this.height + 3, 30, 30, 30, 255);
         WurstplusRenderUtil.drawRectangleCorrectly(x, y - 6, width, mc.fontRenderer.FONT_HEIGHT + 6, new Color(30, 30, 30, 255).hashCode());
         mc.fontRenderer.drawString(frame_name, x + 3, y - 3, new Color(255, 255, 255, 125).hashCode(), true);

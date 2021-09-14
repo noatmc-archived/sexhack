@@ -208,8 +208,6 @@ public class WurstplusFrame {
         bdw_a = 255;
 
         WurstplusDraw.draw_rect(this.x, this.y, this.x + this.width, this.y + this.height, 255, 255, 255, 120);
-        WurstplusDraw.draw_rect(this.x - 1, this.y, this.width + 1, this.height, bd_r, bd_g, bd_b, bd_a, this.border_size, "left-right");
-
         WurstplusDraw.draw_string(this.name, this.x + 4, this.y + 4, nc_r, nc_g, nc_b, nc_a);
 
         if (is_moving()) {
@@ -220,10 +218,6 @@ public class WurstplusFrame {
             pinnables_buttons.set_x(this.x + separate);
 
             pinnables_buttons.render(mx, my, separate);
-
-            if (pinnables_buttons.motion(mx, my)) {
-                WurstplusDraw.draw_rect(get_x() - 1, pinnables_buttons.get_save_y(), get_width() + 1, pinnables_buttons.get_height(), bdw_r, bdw_g, bdw_b, bdw_a, this.border_size, "right-left");
-            }
         }
     }
 }

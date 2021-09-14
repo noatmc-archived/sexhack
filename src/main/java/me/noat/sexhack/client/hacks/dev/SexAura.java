@@ -125,30 +125,39 @@ public class SexAura extends Module {
 
     // get target for autocrystal (nearest entity tbh)
     public EntityPlayer getTarget() {
-        for (Entity entity : mc.world.getLoadedEntityList()) {
+        for (Entity entity : mc.world.playerEntities) {
             if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
             if (entity == mc.player) continue; // check if the player was you
-            if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
+            if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
             e = (EntityPlayer) entity; // set player as the target
         }
         return e;
     }
 
     public BlockPos getPos() {
-        EntityPlayer target = getTarget(); // pull data from getting target function
-        if (target != null) {
+        damage = 0;
+        for (Entity entity : mc.world.playerEntities) {
+            if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
+            if (entity == mc.player) continue; // check if the player was you
+            if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
+            if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
+            e = (EntityPlayer) entity; // set player as the target
             for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), false, nomultiplace.get_value(false))) {
                 int minimum_damage = minDmg.get_value(1);
-                double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, target); // set variable for target dmg
+                double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, entity); // set variable for target dmg
                 double damageToSelf = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, mc.player); // set variable for self dmg
                 //if (isFaceplacable(target, faceplaceHp.get_value(1))) {
                 //  minimum_damage = 2;
                 //}
+                if (!WurstplusCrystalUtil.canPlaceCrystal(blocks)) continue;
+                if (!(damage <= damageToTarget)) continue;
                 if (damageToSelf > selfDmg.get_value(1)) continue; // check self dmg
                 if (damageToTarget < minimum_damage) continue; // check min dmg
-                if (target.isDead || target.getHealth() <= 0) continue; // check if target is dead
-                damage = damageToTarget;
+                if (entity.isDead) continue; // check if target is dead
+                if (damageToTarget > damage) {
+                    damage = damageToTarget;
+                }
                 crystalPt2 = blocks; // set the variable
             }
         }
