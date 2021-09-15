@@ -146,7 +146,7 @@ public class WurstplusButton extends WurstplusAbstractWidget {
         int bd_b = SexHack.click_gui.theme_widget_border_b;
 
         if (this.setting.get_value(true)) { // filling in the button box if button is enabled
-            WurstplusDraw.draw_rect(get_x(), this.save_y, get_x() + this.width, this.save_y + this.height, bg_r, bg_g, bg_b, bg_a);
+            WurstplusDraw.draw_rect(get_x(), this.save_y - 2, get_x() + this.width, this.save_y + this.height + 2, bg_r, bg_g, bg_b, bg_a);
         }
         WurstplusDraw.draw_string(this.button_name, this.x + 2, this.save_y, ns_r, ns_g, ns_b, ns_a);
     }

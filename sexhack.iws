@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="355da0d5-426a-4324-a668-3a3d1e795bc4" name="Default Changelist" comment="cool gui and stuff">
+    <list default="true" id="355da0d5-426a-4324-a668-3a3d1e795bc4" name="Default Changelist" comment="improved placements">
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sexhack.iml" beforeDir="false" afterPath="$PROJECT_DIR$/sexhack.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sexhack.iws" beforeDir="false" afterPath="$PROJECT_DIR$/sexhack.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/guiscreen/render/components/WurstplusFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/guiscreen/render/components/WurstplusFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/guiscreen/render/pinnables/WurstplusFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/guiscreen/render/pinnables/WurstplusFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/guiscreen/render/components/widgets/WurstplusButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/guiscreen/render/components/widgets/WurstplusButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/combat/WurstplusBedAura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/combat/WurstplusBedAura.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/dev/SexAura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/dev/SexAura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/dev/WurstplusFakePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/noat/sexhack/client/hacks/dev/WurstplusFakePlayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +104,11 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="me.noat.sexhack.hwids.util" />
+      <recent name="me.noat.sexhack.hwids.verificator.impl" />
+      <recent name="me.noat.sexhack" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="me.noat.sexhack.client.guiscreen.hud" />
     </key>
@@ -197,6 +205,36 @@
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
     </configuration>
+    <configuration default="false" factoryName="Application" name="Minecraft Client" type="Application">
+      <extension enabled="false" name="coverage" runner="idea" sample_coverage="true" />
+      <option name="MAIN_CLASS_NAME" value="GradleStart" />
+      <option name="VM_PARAMETERS" value="-Dfml.coreMods.load=me.noat.sexhack.mixins.WurstplusMixinLoader" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/../sexhack\run" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="sexhack_main" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+    </configuration>
+    <configuration default="false" factoryName="Application" name="Minecraft Client" type="Application">
+      <extension enabled="false" name="coverage" runner="idea" sample_coverage="true" />
+      <option name="MAIN_CLASS_NAME" value="GradleStart" />
+      <option name="VM_PARAMETERS" value="-Dfml.coreMods.load=me.noat.sexhack.mixins.WurstplusMixinLoader" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/../sexhack\run" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="sexhack_main" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+    </configuration>
     <configuration name="Minecraft Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="GradleStartServer" />
       <module name="sexhack_main" />
@@ -207,6 +245,36 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="false" factoryName="Application" name="Minecraft Server" type="Application">
+      <extension enabled="false" name="coverage" runner="idea" sample_coverage="true" />
+      <option name="MAIN_CLASS_NAME" value="GradleStartServer" />
+      <option name="VM_PARAMETERS" value="-Dfml.coreMods.load=me.noat.sexhack.mixins.WurstplusMixinLoader" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/../sexhack\run" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="sexhack_main" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+    </configuration>
+    <configuration default="false" factoryName="Application" name="Minecraft Server" type="Application">
+      <extension enabled="false" name="coverage" runner="idea" sample_coverage="true" />
+      <option name="MAIN_CLASS_NAME" value="GradleStartServer" />
+      <option name="VM_PARAMETERS" value="-Dfml.coreMods.load=me.noat.sexhack.mixins.WurstplusMixinLoader" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/../sexhack\run" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="sexhack_main" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
     </configuration>
     <configuration default="false" factoryName="Application" name="Minecraft Server" type="Application">
       <extension enabled="false" name="coverage" runner="idea" sample_coverage="true" />
@@ -413,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631501537964</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="improved placements">
+      <created>1631596523271</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1631596523271</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -444,7 +519,8 @@
     <MESSAGE value="somewhat better gui" />
     <MESSAGE value="alphastep :shrug:" />
     <MESSAGE value="cool gui and stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="cool gui and stuff" />
+    <MESSAGE value="improved placements" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved placements" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />

@@ -147,10 +147,9 @@ public class SexAura extends Module {
                 int minimum_damage = minDmg.get_value(1);
                 double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, entity); // set variable for target dmg
                 double damageToSelf = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, mc.player); // set variable for self dmg
-                //if (isFaceplacable(target, faceplaceHp.get_value(1))) {
-                //  minimum_damage = 2;
-                //}
-                if (!WurstplusCrystalUtil.canPlaceCrystal(blocks)) continue;
+                if (isFaceplacable((EntityPlayer) entity, faceplaceHp.get_value(1))) {
+                    minimum_damage = 2;
+                }
                 if (!(damage <= damageToTarget)) continue;
                 if (damageToSelf > selfDmg.get_value(1)) continue; // check self dmg
                 if (damageToTarget < minimum_damage) continue; // check min dmg

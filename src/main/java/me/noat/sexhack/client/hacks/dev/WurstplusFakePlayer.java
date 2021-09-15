@@ -45,6 +45,7 @@ public class WurstplusFakePlayer
             this.fakePlayer = new EntityOtherPlayerMP(WurstplusFakePlayer.mc.world, new GameProfile(UUID.fromString(playerUUID.toString()), "noatmc"));
             this.fakePlayer.copyLocationAndAnglesFrom(WurstplusFakePlayer.mc.player);
             this.fakePlayer.inventory.copyInventory(WurstplusFakePlayer.mc.player.inventory);
+            fakePlayer.hurtTime = 5;
             WurstplusFakePlayer.mc.world.addEntityToWorld(-7777, this.fakePlayer);
             WurstplusMessageUtil.send_client_message("Added a " + ChatFormatting.GREEN + "fake player" + ChatFormatting.RESET + " to your world.");
         }

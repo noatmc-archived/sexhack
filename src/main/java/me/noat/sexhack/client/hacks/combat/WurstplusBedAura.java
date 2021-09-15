@@ -116,9 +116,9 @@ public class WurstplusBedAura extends Module {
             boolean face_place = true;
 
             BlockPos pos = get_pos_floor(player).down();
-            BlockPos pos2 = check_side_block(pos);
+            BlockPos pos2 = pos;
 
-            if (pos2 != null) {
+            if (pos2 != null && mc.world.getBlockState(new BlockPos(pos2.up().getX(), pos2.up().getY() - 1, pos2.up().getZ())).getBlock() != Blocks.AIR && mc.world.getBlockState(new BlockPos(pos2.up().getX(), pos2.up().getY() - 1, pos2.up().getZ())).getBlock() != Blocks.FIRE) {
                 best_pos = pos2.up();
                 best_target = player;
                 best_distance = mc.player.getDistance(player);
