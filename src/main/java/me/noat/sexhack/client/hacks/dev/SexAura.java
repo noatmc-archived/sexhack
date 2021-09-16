@@ -141,19 +141,16 @@ public class SexAura extends Module {
             if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
             if (entity == mc.player) continue; // check if the player was you
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
-            if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
             e = (EntityPlayer) entity; // set player as the target
             for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), false, nomultiplace.get_value(false))) {
+                if (e.getDistance(mc.player) >= 20) continue; // check if the player distance
+                if (e.isDead || e.getHealth() <= 0) continue; // check if target is dead
                 int minimum_damage = minDmg.get_value(1);
-                double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, entity); // set variable for target dmg
+                double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, e); // set variable for target dmg
                 double damageToSelf = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, mc.player); // set variable for self dmg
-                if (isFaceplacable((EntityPlayer) entity, faceplaceHp.get_value(1))) {
-                    minimum_damage = 2;
-                }
                 if (!(damage <= damageToTarget)) continue;
                 if (damageToSelf > selfDmg.get_value(1)) continue; // check self dmg
                 if (damageToTarget < minimum_damage) continue; // check min dmg
-                if (entity.isDead) continue; // check if target is dead
                 if (damageToTarget > damage) {
                     damage = damageToTarget;
                 }
