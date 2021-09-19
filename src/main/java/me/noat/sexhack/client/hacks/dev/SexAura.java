@@ -138,11 +138,10 @@ public class SexAura extends Module {
     public BlockPos getPos() {
         damage = 0;
         for (Entity entity : mc.world.playerEntities) {
-            if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
-            if (entity == mc.player) continue; // check if the player was you
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
-            e = (EntityPlayer) entity; // set player as the target
             for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.get_value(1), false, nomultiplace.get_value(false))) {
+                final EntityPlayer e = (EntityPlayer) entity;
+                if (e == mc.player) continue; // check if the player was you
                 if (e.getDistance(mc.player) >= 20) continue; // check if the player distance
                 if (e.isDead || e.getHealth() <= 0) continue; // check if target is dead
                 int minimum_damage = minDmg.get_value(1);
@@ -172,6 +171,7 @@ public class SexAura extends Module {
         if (debug.get_value(true)) {
             WurstplusMessageUtil.send_client_message("placing crystal");
         }
+        placePos = null;
     }
 
     public boolean isFaceplacable(EntityPlayer e, int hp) {

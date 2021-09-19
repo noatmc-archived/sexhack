@@ -65,7 +65,7 @@ public class WurstplusModuleButton {
             if (settings.get_type().equals("button")) {
                 this.widget.add(new WurstplusButton(master, this, settings.get_tag(), this.settings_height));
 
-                this.settings_height += 10;
+                this.settings_height += 13;
 
                 this.count++;
             }
@@ -73,7 +73,7 @@ public class WurstplusModuleButton {
             if (settings.get_type().equals("combobox")) {
                 this.widget.add(new WurstplusCombobox(master, this, settings.get_tag(), this.settings_height));
 
-                this.settings_height += 10;
+                this.settings_height += 13;
 
                 this.count++;
             }
@@ -81,7 +81,7 @@ public class WurstplusModuleButton {
             if (settings.get_type().equals("label")) {
                 this.widget.add(new WurstplusLabel(master, this, settings.get_tag(), this.settings_height));
 
-                this.settings_height += 10;
+                this.settings_height += 13;
 
                 this.count++;
             }
@@ -89,7 +89,7 @@ public class WurstplusModuleButton {
             if (settings.get_type().equals("doubleslider") || settings.get_type().equals("integerslider")) {
                 this.widget.add(new WurstplusSlider(master, this, settings.get_tag(), this.settings_height));
 
-                this.settings_height += 10;
+                this.settings_height += 13;
 
                 this.count++;
             }
@@ -100,7 +100,7 @@ public class WurstplusModuleButton {
         if (this.count >= size) {
             this.widget.add(new WurstplusButtonBind(master, this, "bind", this.settings_height));
 
-            this.settings_height += 10;
+            this.settings_height += 13;
         }
     }
 

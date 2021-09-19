@@ -6,6 +6,8 @@ import me.noat.sexhack.client.command.WurstplusCommand;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import me.noat.sexhack.client.util.WurstplusWatermarkUtil;
 
+import static me.noat.sexhack.client.util.WurstplusMessageUtil.r;
+
 public class WurstplusWatermarkChat extends WurstplusCommand {
 
     public WurstplusWatermarkChat() {
@@ -31,6 +33,7 @@ public class WurstplusWatermarkChat extends WurstplusCommand {
             }
             WurstplusWatermarkUtil.set_message(watermark.toString());
             WurstplusMessageUtil.send_client_message("chat's watermark change to " + ChatFormatting.BOLD + watermark);
+            WurstplusMessageUtil.opener = WurstplusMessageUtil.g + watermark.toString() + ChatFormatting.GRAY + " > " + r;
             SexHack.get_config_manager().save_settings();
             return true;
         }

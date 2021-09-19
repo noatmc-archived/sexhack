@@ -118,7 +118,6 @@ public class WurstplusModuleManager {
         // Dev
         add_hack(new WurstplusFakePlayer());
         add_hack(new SexAura());
-        // add_hack(new AuscBurrow());
 
         array_hacks.sort(Comparator.comparing(Module::get_name));
     }
