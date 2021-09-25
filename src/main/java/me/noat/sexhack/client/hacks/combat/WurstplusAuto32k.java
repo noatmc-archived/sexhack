@@ -97,7 +97,7 @@ public class WurstplusAuto32k extends Module {
             if (WurstplusBlockUtil.canPlaceBlock(this.pos) && WurstplusBlockUtil.isBlockEmpty(this.pos) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(this.rot[0], 0, this.rot[1])) &&
                     WurstplusBlockUtil.isBlockEmpty(this.pos.add(0, 1, 0)) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(0, 2, 0)) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(this.rot[0], 1, this.rot[1]))) {
 
-                WurstplusBlockUtil.placeBlock(pos, block_slot, rotate.get_value(true), false, swing);
+                WurstplusBlockUtil.placeBlock(pos, block_slot, rotate.getValue(true), false, swing);
                 WurstplusBlockUtil.rotatePacket((double) this.pos.add(-this.rot[0], 1, -this.rot[1]).getX() + 0.5D, this.pos.getY() + 1, (double) this.pos.add(-this.rot[0], 1, -this.rot[1]).getZ() + 0.5D);
                 WurstplusBlockUtil.placeBlock(this.pos.up(), dispenser_slot, false, false, swing);
                 WurstplusBlockUtil.openBlock(this.pos.up());
@@ -117,7 +117,7 @@ public class WurstplusAuto32k extends Module {
                         this.pos = mc.player.getPosition().add(x, y, z);
 
                         if (mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add(x - rot[0] / 2f, (double) y + 0.5D, z + rot[1] / 2)) <= 4.5D && mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add((double) x + 0.5D, (double) y + 2.5D, (double) z + 0.5D)) <= 4.5D && WurstplusBlockUtil.canPlaceBlock(this.pos) && WurstplusBlockUtil.isBlockEmpty(this.pos) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(this.rot[0], 0, this.rot[1])) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(0, 1, 0)) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(0, 2, 0)) && WurstplusBlockUtil.isBlockEmpty(this.pos.add(this.rot[0], 1, this.rot[1]))) {
-                            WurstplusBlockUtil.placeBlock(this.pos, block_slot, rotate.get_value(true), false, swing);
+                            WurstplusBlockUtil.placeBlock(this.pos, block_slot, rotate.getValue(true), false, swing);
                             WurstplusBlockUtil.rotatePacket((double) this.pos.add(-this.rot[0], 1, -this.rot[1]).getX() + 0.5D, this.pos.getY() + 1, (double) this.pos.add(-this.rot[0], 1, -this.rot[1]).getZ() + 0.5D);
                             WurstplusBlockUtil.placeBlock(this.pos.up(), dispenser_slot, false, false, swing);
                             WurstplusBlockUtil.openBlock(this.pos.up());
@@ -138,8 +138,8 @@ public class WurstplusAuto32k extends Module {
                     for (int x = -2; x <= 2; x++) {
                         if ((z != 0 || y != 0 || x != 0) && (z != 0 || y != 1 || x != 0) && WurstplusBlockUtil.isBlockEmpty(mc.player.getPosition().add(z, y, x)) && mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add((double) z + 0.5D, (double) y + 0.5D, (double) x + 0.5D)) < 4.5D && WurstplusBlockUtil.isBlockEmpty(mc.player.getPosition().add(z, y + 1, x)) && mc.player.getPositionEyes(mc.getRenderPartialTicks()).distanceTo(mc.player.getPositionVector().add((double) z + 0.5D, (double) y + 1.5D, (double) x + 0.5D)) < 4.5D) {
 
-                            WurstplusBlockUtil.placeBlock(mc.player.getPosition().add(z, y, x), hopper_slot, rotate.get_value(true), false, swing);
-                            WurstplusBlockUtil.placeBlock(mc.player.getPosition().add(z, y + 1, x), shulker_slot, rotate.get_value(true), false, swing);
+                            WurstplusBlockUtil.placeBlock(mc.player.getPosition().add(z, y, x), hopper_slot, rotate.getValue(true), false, swing);
+                            WurstplusBlockUtil.placeBlock(mc.player.getPosition().add(z, y + 1, x), shulker_slot, rotate.getValue(true), false, swing);
                             WurstplusBlockUtil.openBlock(mc.player.getPosition().add(z, y, x));
 
                             pos = mc.player.getPosition().add(z, y, x);
@@ -166,13 +166,13 @@ public class WurstplusAuto32k extends Module {
             return;
         }
 
-        if (setup && ticks_past > this.delay.get_value(1)) {
+        if (setup && ticks_past > this.delay.getValue(1)) {
 
             if (!dispenser_done) { // ching chong
                 try {
                     mc.playerController.windowClick(mc.player.openContainer.windowId, 36 + shulker_slot, 0, ClickType.QUICK_MOVE, mc.player);
                     dispenser_done = true;
-                    if (debug.get_value(true)) {
+                    if (debug.getValue(true)) {
                         WurstplusMessageUtil.send_client_message("sent item");
                     }
                 } catch (Exception ignored) {
@@ -181,8 +181,8 @@ public class WurstplusAuto32k extends Module {
             }
 
             if (!place_redstone) {
-                WurstplusBlockUtil.placeBlock(pos.add(0, 2, 0), redstone_slot, rotate.get_value(true), false, swing);
-                if (debug.get_value(true)) {
+                WurstplusBlockUtil.placeBlock(pos.add(0, 2, 0), redstone_slot, rotate.getValue(true), false, swing);
+                if (debug.getValue(true)) {
                     WurstplusMessageUtil.send_client_message("placed redstone");
                 }
                 place_redstone = true;
@@ -192,9 +192,9 @@ public class WurstplusAuto32k extends Module {
             if (!place_mode.in("Hopper") && mc.world.getBlockState(this.pos.add(this.rot[0], 1, this.rot[1])).getBlock() instanceof BlockShulkerBox
                     && mc.world.getBlockState(this.pos.add(this.rot[0], 0, this.rot[1])).getBlock() != Blocks.HOPPER
                     && place_redstone && dispenser_done && !(mc.currentScreen instanceof GuiInventory)) {
-                WurstplusBlockUtil.placeBlock(this.pos.add(this.rot[0], 0, this.rot[1]), hopper_slot, rotate.get_value(true), false, swing);
+                WurstplusBlockUtil.placeBlock(this.pos.add(this.rot[0], 0, this.rot[1]), hopper_slot, rotate.getValue(true), false, swing);
                 WurstplusBlockUtil.openBlock(this.pos.add(this.rot[0], 0, this.rot[1]));
-                if (debug.get_value(true)) {
+                if (debug.getValue(true)) {
                     WurstplusMessageUtil.send_client_message("in the hopper");
                 }
             }

@@ -50,7 +50,7 @@ public class WurstplusWebfill extends Module {
 
         if (holes.isEmpty()) {
 
-            if (!web_toggle.get_value(true)) {
+            if (!web_toggle.getValue(true)) {
 
                 this.set_disable();
                 WurstplusMessageUtil.toggle_message(this);
@@ -104,7 +104,7 @@ public class WurstplusWebfill extends Module {
 
         holes.clear();
 
-        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(WurstplusPlayerUtil.GetLocalPlayerPosFloored(), web_range.get_value(1), web_range.get_value(1), false, true, 0)) {
+        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(WurstplusPlayerUtil.GetLocalPlayerPosFloored(), web_range.getValue(1), web_range.getValue(1), false, true, 0)) {
 
             if (!mc.world.getBlockState(pos).getBlock().equals(Blocks.AIR)) {
                 continue;
@@ -184,7 +184,7 @@ public class WurstplusWebfill extends Module {
 
             Vec3d hitVec = new Vec3d(neighbor).add(0.5, 0.5, 0.5).add(new Vec3d(side2.getDirectionVec()).scale(0.5));
 
-            if (web_rotate.get_value(true)) {
+            if (web_rotate.getValue(true)) {
                 WurstplusBlockInteractHelper.faceVectorPacketInstant(hitVec);
             }
 

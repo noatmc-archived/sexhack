@@ -41,7 +41,7 @@ public class WurstplusOffhand extends Module {
 
             float hp = mc.player.getHealth() + mc.player.getAbsorptionAmount();
 
-            if (hp > totem_switch.get_value(1)) {
+            if (hp > totem_switch.getValue(1)) {
                 if (switch_mode.in("Crystal") && SexHack.get_hack_manager().get_module_with_tag("AutoCrystal").is_active()) {
                     swap_items(get_item_slot(Items.END_CRYSTAL), 0);
                     return;
@@ -50,16 +50,16 @@ public class WurstplusOffhand extends Module {
                     swap_items(get_item_slot(Items.END_CRYSTAL), 0);
                     return;
                 }
-                if (gapple_in_hole.get_value(true) && hp > gapple_hole_hp.get_value(1) && is_in_hole()) {
-                    swap_items(get_item_slot(Items.GOLDEN_APPLE), delay.get_value(true) ? 1 : 0);
+                if (gapple_in_hole.getValue(true) && hp > gapple_hole_hp.getValue(1) && is_in_hole()) {
+                    swap_items(get_item_slot(Items.GOLDEN_APPLE), delay.getValue(true) ? 1 : 0);
                     return;
                 }
                 if (switch_mode.in("Totem")) {
-                    swap_items(get_item_slot(Items.TOTEM_OF_UNDYING), delay.get_value(true) ? 1 : 0);
+                    swap_items(get_item_slot(Items.TOTEM_OF_UNDYING), delay.getValue(true) ? 1 : 0);
                     return;
                 }
                 if (switch_mode.in("Gapple")) {
-                    swap_items(get_item_slot(Items.GOLDEN_APPLE), delay.get_value(true) ? 1 : 0);
+                    swap_items(get_item_slot(Items.GOLDEN_APPLE), delay.getValue(true) ? 1 : 0);
                     return;
                 }
                 if (switch_mode.in("Crystal") && !SexHack.get_hack_manager().get_module_with_tag("AutoCrystal").is_active()) {
@@ -71,12 +71,12 @@ public class WurstplusOffhand extends Module {
                     return;
                 }
             } else {
-                swap_items(get_item_slot(Items.TOTEM_OF_UNDYING), delay.get_value(true) ? 1 : 0);
+                swap_items(get_item_slot(Items.TOTEM_OF_UNDYING), delay.getValue(true) ? 1 : 0);
                 return;
             }
 
             if (mc.player.getHeldItemOffhand().getItem() == Items.AIR) {
-                swap_items(get_item_slot(Items.TOTEM_OF_UNDYING), delay.get_value(true) ? 1 : 0);
+                swap_items(get_item_slot(Items.TOTEM_OF_UNDYING), delay.getValue(true) ? 1 : 0);
             }
 
         }

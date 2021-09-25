@@ -15,7 +15,7 @@ public class PacketPredict extends Module {
     private final Listener<WurstplusEventPacket.ReceivePacket> receive = new Listener<>(event -> {
         SPacketSpawnObject packet2;
         if (event.get_packet() instanceof SPacketSpawnObject && (packet2 = (SPacketSpawnObject) event.get_packet()).getType() == 51) {
-            for (int i = 0; i <= this.packets.get_value(1); ) {
+            for (int i = 0; i <= this.packets.getValue(1); ) {
                 CPacketUseEntity predict = new CPacketUseEntity();
                 predict.entityId = packet2.getEntityID();
                 predict.action = CPacketUseEntity.Action.ATTACK;

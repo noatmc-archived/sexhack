@@ -59,10 +59,10 @@ public class WurstplusEntityList extends WurstplusPinnable {
 
         int counter = 12;
 
-        int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
-        int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
-        int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
-        int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").get_value(1);
+        int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
+        int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
+        int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
+        int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").getValue(1);
 
         final List<Entity> entity_list = new ArrayList<>(mc.world.loadedEntityList);
 
@@ -70,9 +70,9 @@ public class WurstplusEntityList extends WurstplusPinnable {
 
         final Map<String, Integer> entity_counts = entity_list.stream().filter(Objects::nonNull).filter(e -> !(e instanceof EntityPlayer))
                 .collect(Collectors.groupingBy(WurstplusEntityList::get_entity_name, Collectors.reducing(0, ent -> {
-                            if (ent instanceof EntityItem)
-                                return ((EntityItem) ent).getItem().getCount();
-                            return 1;
+                    if (ent instanceof EntityItem)
+                        return ((EntityItem) ent).getItem().getCount();
+                    return 1;
                         }, Integer::sum)
 
                 ));

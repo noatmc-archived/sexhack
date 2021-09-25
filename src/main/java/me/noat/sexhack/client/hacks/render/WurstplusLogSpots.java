@@ -117,7 +117,7 @@
 //        if (!logged_spots.isEmpty()) {
 //            // i fucking hate this
 //            try {
-//                logged_spots.removeIf(spot -> mc.player.getDistance(spot.get_entity()) >= range.get_value(1));
+//                logged_spots.removeIf(spot -> mc.player.getDistance(spot.get_entity()) >= range.getValue(1));
 //            } catch (Exception ignored) {}
 //        }
 //
@@ -218,9 +218,9 @@
 //
 //    @Override
 //    protected void enable() {
-//        r = Wurstplus.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
-//        g = Wurstplus.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
-//        b = Wurstplus.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
+//        r = Wurstplus.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
+//        g = Wurstplus.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
+//        b = Wurstplus.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
 //        logged_spots.clear();
 //        halt = false;
 //    }

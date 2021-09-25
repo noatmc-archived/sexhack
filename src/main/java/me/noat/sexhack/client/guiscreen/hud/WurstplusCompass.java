@@ -20,10 +20,10 @@ public class WurstplusCompass extends WurstplusPinnable {
     @Override
     public void render() {
 
-        int r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
-        int g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
-        int b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
-        int a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").get_value(1);
+        int r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
+        int g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
+        int b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
+        int a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").getValue(1);
 
         for (Direction dir : Direction.values()) {
 
@@ -50,14 +50,14 @@ public class WurstplusCompass extends WurstplusPinnable {
     }
 
     private double get_x(double rad) {
-        return Math.sin(rad) * (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDCompassScale").get_value(1));
+        return Math.sin(rad) * (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDCompassScale").getValue(1));
     }
 
     private double get_y(double rad) {
 
         final double epic_pitch = WurstplusMathUtil.clamp2( Objects.requireNonNull ( mc.getRenderViewEntity ( ) ).rotationPitch + 30f, -90f, 90f);
         final double pitch_radians = Math.toRadians(epic_pitch);
-        return Math.cos(rad) * Math.sin(pitch_radians) * (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDCompassScale").get_value(1));
+        return Math.cos(rad) * Math.sin(pitch_radians) * (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDCompassScale").getValue(1));
 
     }
 

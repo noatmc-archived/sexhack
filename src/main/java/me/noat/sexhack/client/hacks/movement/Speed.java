@@ -36,7 +36,7 @@ public class Speed extends Module {
         if (speed_mode.in("On Ground")) return;
 
         if (mc.player.isInWater() || mc.player.isInLava()) {
-            if (!speed_mode.get_value(true)) return;
+            if (!speed_mode.getValue(true)) return;
         }
 
         if (mc.player.isSneaking() || mc.player.isOnLadder() || mc.player.isInWeb || mc.player.isInLava() || mc.player.isInWater() || mc.player.capabilities.isFlying)
@@ -52,7 +52,7 @@ public class Speed extends Module {
             player_speed *= (1.2f * (amp + 1));
         }
 
-        if (!bypass.get_value(true)) {
+        if (!bypass.getValue(true)) {
             player_speed *= 1.0064f;
         }
 
@@ -97,20 +97,20 @@ public class Speed extends Module {
         if (mc.player.isRiding()) return;
 
         if (mc.player.isInWater() || mc.player.isInLava()) {
-            if (!on_water.get_value(true)) return;
+            if (!on_water.getValue(true)) return;
         }
 
         if (mc.player.moveForward != 0 || mc.player.moveStrafing != 0) {
 
-            if (mc.player.moveForward < 0 && !backward.get_value(true)) return;
+            if (mc.player.moveForward < 0 && !backward.getValue(true)) return;
 
-            if (auto_sprint.get_value(true)) {
+            if (auto_sprint.getValue(true)) {
                 mc.player.setSprinting(true);
             }
 
             if (mc.player.onGround && speed_mode.in("Strafe")) {
 
-                if (auto_jump.get_value(true)) {
+                if (auto_jump.getValue(true)) {
                     mc.player.motionY = 0.405f;
                 }
 

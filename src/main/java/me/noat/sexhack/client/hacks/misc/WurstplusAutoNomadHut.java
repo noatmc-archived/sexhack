@@ -91,7 +91,7 @@ public class WurstplusAutoNomadHut extends Module {
 
             blocks_placed = 0;
 
-            while (blocks_placed < this.tick_for_place.get_value(1)) {
+            while (blocks_placed < this.tick_for_place.getValue(1)) {
 
                 if (this.offset_step >= this.targets.length) {
                     this.offset_step = 0;
@@ -153,7 +153,7 @@ public class WurstplusAutoNomadHut extends Module {
 
             Vec3d hitVec = new Vec3d(neighbor).add(0.5, 0.5, 0.5).add(new Vec3d(side2.getDirectionVec()).scale(0.5));
 
-            if (this.rotate.get_value(true)) {
+            if (this.rotate.getValue(true)) {
                 WurstplusBlockInteractHelper.faceVectorPacketInstant(hitVec);
             }
 

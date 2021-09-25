@@ -62,7 +62,7 @@ public class WurstplusBedAura extends Module {
 
         if (mc.player == null) return;
 
-        if (counter > delay.get_value(1)) {
+        if (counter > delay.getValue(1)) {
             counter = 0;
             place_bed();
             break_bed();
@@ -105,7 +105,7 @@ public class WurstplusBedAura extends Module {
 
         BlockPos best_pos = null;
         EntityPlayer best_target = null;
-        float best_distance = (float) range.get_value(1);
+        float best_distance = (float) range.getValue(1);
 
         for (EntityPlayer player : mc.world.playerEntities.stream().filter(entityPlayer -> !WurstplusFriendUtil.isFriend(entityPlayer.getName())).collect(Collectors.toList())) {
 
@@ -144,22 +144,22 @@ public class WurstplusBedAura extends Module {
         render_pos = best_pos;
 
         if (spoof_looking == spoof_face.NORTH) {
-            if (hard.get_value(true)) {
+            if (hard.getValue(true)) {
                 mc.player.rotationYaw = 180;
             }
             mc.player.connection.sendPacket(new CPacketPlayer.Rotation(180, 0, mc.player.onGround));
         } else if (spoof_looking == spoof_face.SOUTH) {
-            if (hard.get_value(true)) {
+            if (hard.getValue(true)) {
                 mc.player.rotationYaw = 0;
             }
             mc.player.connection.sendPacket(new CPacketPlayer.Rotation(0, 0, mc.player.onGround));
         } else if (spoof_looking == spoof_face.WEST) {
-            if (hard.get_value(true)) {
+            if (hard.getValue(true)) {
                 mc.player.rotationYaw = 90;
             }
             mc.player.connection.sendPacket(new CPacketPlayer.Rotation(90, 0, mc.player.onGround));
         } else if (spoof_looking == spoof_face.EAST) {
-            if (hard.get_value(true)) {
+            if (hard.getValue(true)) {
                 mc.player.rotationYaw = -90;
             }
             mc.player.connection.sendPacket(new CPacketPlayer.Rotation(-90, 0, mc.player.onGround));
@@ -171,7 +171,7 @@ public class WurstplusBedAura extends Module {
 
     public void break_bed() {
 
-        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(get_pos_floor(mc.player), range.get_value(1), range.get_value(1), false, true, 0)
+        for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(get_pos_floor(mc.player), range.getValue(1), range.getValue(1), false, true, 0)
                 .stream().filter(WurstplusBedAura::is_bed).collect(Collectors.toList())) {
 
             if (mc.player.isSneaking()) {

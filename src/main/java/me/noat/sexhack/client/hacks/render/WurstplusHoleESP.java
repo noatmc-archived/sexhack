@@ -127,7 +127,7 @@ public class WurstplusHoleESP extends Module {
         // int color_rgb_o = Color.HSBtoRGB(tick_color[0], 1, 1);
         // int color_rgb_b = Color.HSBtoRGB(tick_color[0], 1, 1);
 
-        // if (rgb_o.get_value(true)) {
+        // if (rgb_o.getValue(true)) {
         // 	color_r_o = ((color_rgb_o >> 16) & 0xFF);
         // 	color_g_o = ((color_rgb_o >> 8) & 0xFF);
         // 	color_b_o = (color_rgb_o & 0xFF);
@@ -136,12 +136,12 @@ public class WurstplusHoleESP extends Module {
         // 	g_o.set_value(color_g_o);
         // 	b_o.set_value(color_b_o);
         // } else {
-        // 	color_r_o = r_o.get_value(1);
-        // 	color_g_o = g_o.get_value(2);
-        // 	color_b_o = b_o.get_value(3);
+        // 	color_r_o = r_o.getValue(1);
+        // 	color_g_o = g_o.getValue(2);
+        // 	color_b_o = b_o.getValue(3);
         // }
 
-        // if (rgb_b.get_value(true)) {
+        // if (rgb_b.getValue(true)) {
         // 	color_r_b = ((color_rgb_b >> 16) & 0xFF);
         // 	color_g_b = ((color_rgb_b >> 8) & 0xFF);
         // 	color_b_b = (color_rgb_b & 0xFF);
@@ -150,18 +150,18 @@ public class WurstplusHoleESP extends Module {
         // 	g_b.set_value(color_g_b);
         // 	b_b.set_value(color_b_b);
         // } else {
-        // 	color_r_b = r_b.get_value(1);
-        // 	color_g_b = g_b.get_value(2);
-        // 	color_b_b = b_b.get_value(3);
+        // 	color_r_b = r_b.getValue(1);
+        // 	color_g_b = g_b.getValue(2);
+        // 	color_b_b = b_b.getValue(3);
         // }
 
-        color_r_b = rb.get_value(1);
-        color_g_b = gb.get_value(1);
-        color_b_b = bb.get_value(1);
+        color_r_b = rb.getValue(1);
+        color_g_b = gb.getValue(1);
+        color_b_b = bb.getValue(1);
 
-        color_r_o = ro.get_value(1);
-        color_g_o = go.get_value(1);
-        color_b_o = bo.get_value(1);
+        color_r_o = ro.getValue(1);
+        color_g_o = go.getValue(1);
+        color_b_o = bo.getValue(1);
 
         holes.clear();
 
@@ -181,7 +181,7 @@ public class WurstplusHoleESP extends Module {
                 solid = false;
             }
 
-            int colapso_range = (int) Math.ceil(range.get_value(1));
+            int colapso_range = (int) Math.ceil(range.getValue(1));
 
             List<BlockPos> spheres = sphere(player_as_blockpos(), colapso_range, colapso_range);
 
@@ -240,16 +240,16 @@ public class WurstplusHoleESP extends Module {
 
                 if (possible) {
                     if (safe_sides == 5) {
-                        if (!this.bedrock_enable.get_value(true)) continue;
+                        if (!this.bedrock_enable.getValue(true)) continue;
                         holes.add( new WurstplusPair <> ( pos , true ));
                     } else {
-                        if (!this.obsidian_enable.get_value(true)) continue;
+                        if (!this.obsidian_enable.getValue(true)) continue;
                         holes.add( new WurstplusPair <> ( pos , false ));
                     }
                     continue;
                 }
 
-                if (!this.dual_enable.get_value(true) || air_orient < 0) continue;
+                if (!this.dual_enable.getValue(true) || air_orient < 0) continue;
                 BlockPos second_pos = pos.add(orientConv(air_orient));
                 if (checkDual(second_pos, air_orient)) {
 
@@ -314,22 +314,22 @@ public class WurstplusHoleESP extends Module {
         float off_set_h;
 
         if (!holes.isEmpty()) {
-            off_set_h = (float) off_set.get_value(1.0);
+            off_set_h = (float) off_set.getValue(1.0);
 
             for (WurstplusPair<BlockPos, Boolean> hole : holes) {
                 if (hole.getValue()) {
                     color_r = color_r_b;
                     color_g = color_g_b;
                     color_b = color_b_b;
-                    color_a = ab.get_value(1);
+                    color_a = ab.getValue(1);
                 } else if (!hole.getValue()) {
                     color_r = color_r_o;
                     color_g = color_g_o;
                     color_b = color_b_o;
-                    color_a = ao.get_value(1);
+                    color_a = ao.getValue(1);
                 } else continue;
 
-                if (hide_own.get_value(true) && hole.getKey().equals(new BlockPos(mc.player.posX, mc.player.posY, mc.player.posZ))) {
+                if (hide_own.getValue(true) && hole.getKey().equals(new BlockPos(mc.player.posX, mc.player.posY, mc.player.posZ))) {
                     continue;
                 }
 
@@ -350,7 +350,7 @@ public class WurstplusHoleESP extends Module {
                     RenderHelp.draw_cube_line(RenderHelp.get_buffer_build(),
                             hole.getKey().getX(), hole.getKey().getY(), hole.getKey().getZ(),
                             1, off_set_h, 1,
-                            color_r, color_g, color_b, line_a.get_value(1),
+                            color_r, color_g, color_b, line_a.getValue(1),
                             "all"
                     );
 

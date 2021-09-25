@@ -27,9 +27,9 @@ public class WurstplusAutoMine extends Module {
         BlockPos target_block = null;
 
         for (EntityPlayer player : mc.world.playerEntities) {
-            if (mc.player.getDistance(player) > range.get_value(1)) continue;
+            if (mc.player.getDistance(player) > range.getValue(1)) continue;
 
-            BlockPos p = WurstplusEntityUtil.is_cityable(player, end_crystal.get_value(true));
+            BlockPos p = WurstplusEntityUtil.is_cityable(player, end_crystal.getValue(true));
 
             if (p != null) {
                 target_block = p;

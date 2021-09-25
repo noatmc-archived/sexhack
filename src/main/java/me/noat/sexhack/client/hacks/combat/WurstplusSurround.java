@@ -78,7 +78,7 @@ public class WurstplusSurround extends Module {
 
             center_block = get_center(mc.player.posX, mc.player.posY, mc.player.posZ);
 
-            if (center.get_value(true)) {
+            if (center.getValue(true)) {
                 mc.player.motionX = 0;
                 mc.player.motionZ = 0;
             }
@@ -90,7 +90,7 @@ public class WurstplusSurround extends Module {
 
         if (mc.player != null) {
 
-            if (center_block != Vec3d.ZERO && center.get_value(true)) {
+            if (center_block != Vec3d.ZERO && center.getValue(true)) {
 
                 double x_diff = Math.abs(center_block.x - mc.player.posX);
                 double z_diff = Math.abs(center_block.z - mc.player.posZ);
@@ -107,12 +107,12 @@ public class WurstplusSurround extends Module {
 
             }
 
-            if ((int) Math.round(mc.player.posY) != y_level && this.hybrid.get_value(true)) {
+            if ((int) Math.round(mc.player.posY) != y_level && this.hybrid.getValue(true)) {
                 this.set_disable();
                 return;
             }
 
-            if (!this.triggerable.get_value(true) && this.tick_runs >= this.tick_timeout.get_value(1)) { // timeout time
+            if (!this.triggerable.getValue(true) && this.tick_runs >= this.tick_timeout.getValue(1)) { // timeout time
                 this.tick_runs = 0;
                 this.set_disable();
                 return;
@@ -120,14 +120,14 @@ public class WurstplusSurround extends Module {
 
             int blocks_placed = 0;
 
-            while (blocks_placed < this.tick_for_place.get_value(1)) {
+            while (blocks_placed < this.tick_for_place.getValue(1)) {
 
-                if (this.offset_step >= (block_head.get_value(true) ? this.surround_targets_face.length : this.surround_targets.length)) {
+                if (this.offset_step >= (block_head.getValue(true) ? this.surround_targets_face.length : this.surround_targets.length)) {
                     this.offset_step = 0;
                     break;
                 }
 
-                BlockPos offsetPos = new BlockPos(block_head.get_value(true) ? this.surround_targets_face[offset_step] : this.surround_targets[offset_step]);
+                BlockPos offsetPos = new BlockPos(block_head.getValue(true) ? this.surround_targets_face[offset_step] : this.surround_targets[offset_step]);
                 BlockPos targetPos = new BlockPos(mc.player.getPositionVector()).add(offsetPos.getX(), offsetPos.getY(), offsetPos.getZ());
 
                 boolean try_to_place = mc.world.getBlockState(targetPos).getMaterial().isReplaceable();
@@ -138,7 +138,7 @@ public class WurstplusSurround extends Module {
                     break;
                 }
 
-                if (try_to_place && WurstplusBlockUtil.placeBlock(targetPos, find_in_hotbar(), rotate.get_value(true), rotate.get_value(true), swing)) {
+                if (try_to_place && WurstplusBlockUtil.placeBlock(targetPos, find_in_hotbar(), rotate.getValue(true), rotate.getValue(true), swing)) {
                     blocks_placed++;
                 }
 

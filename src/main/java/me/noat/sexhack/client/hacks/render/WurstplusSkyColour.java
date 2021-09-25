@@ -25,9 +25,9 @@ public class WurstplusSkyColour extends Module {
 
     @SubscribeEvent
     public void fog_colour(final EntityViewRenderEvent.FogColors event) {
-        event.setRed(r.get_value(1) / 255f);
-        event.setGreen(g.get_value(1) / 255f);
-        event.setBlue(b.get_value(1) / 255f);
+        event.setRed(r.getValue(1) / 255f);
+        event.setGreen(g.getValue(1) / 255f);
+        event.setBlue(b.getValue(1) / 255f);
     }
 
     @SubscribeEvent
@@ -48,7 +48,7 @@ public class WurstplusSkyColour extends Module {
 
     @Override
     public void update() {
-        if (rainbow_mode.get_value(true)) {
+        if (rainbow_mode.getValue(true)) {
             cycle_rainbow();
         }
     }

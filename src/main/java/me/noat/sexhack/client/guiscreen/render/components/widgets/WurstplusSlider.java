@@ -59,9 +59,9 @@ public class WurstplusSlider extends WurstplusAbstractWidget {
         this.intenger = 8192;
 
         if (this.setting.get_type().equals("doubleslider")) {
-            this.double_ = this.setting.get_value(1.0);
+            this.double_ = this.setting.getValue(1.0);
         } else if (this.setting.get_type().equals("integerslider")) {
-            this.intenger = this.setting.get_value(1);
+            this.intenger = this.setting.getValue(1);
         }
     }
 
@@ -186,9 +186,9 @@ public class WurstplusSlider extends WurstplusAbstractWidget {
             }
         }
 
-        String slider_value = !this.compare ? java.lang.Double.toString(this.setting.get_value(this.double_)) : Integer.toString(this.setting.get_value(this.intenger));
+        String slider_value = !this.compare ? java.lang.Double.toString(this.setting.getValue(this.double_)) : Integer.toString(this.setting.getValue(this.intenger));
 
-        WurstplusDraw.draw_rect(this.x, this.save_y, this.x + (this.width) * (this.setting.get_value(1) - this.setting.get_min(1)) / (this.setting.get_max(1) - this.setting.get_min(1)), this.save_y + this.height, bg_r, bg_g, bg_b, bg_a);
+        WurstplusDraw.draw_rect(this.x, this.save_y, this.x + (this.width) * (this.setting.getValue(1) - this.setting.get_min(1)) / (this.setting.get_max(1) - this.setting.get_min(1)), this.save_y + this.height, bg_r, bg_g, bg_b, bg_a);
 
         WurstplusDraw.draw_string(this.slider_name, this.x + 2, this.save_y, ns_r, ns_g, ns_b, ns_a);
         WurstplusDraw.draw_string(slider_value, this.x + this.width - separe - font.get_string_width(slider_value) + 2, this.save_y, ns_r, ns_g, ns_b, ns_a);

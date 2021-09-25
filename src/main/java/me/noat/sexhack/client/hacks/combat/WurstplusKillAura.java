@@ -60,11 +60,11 @@ public class WurstplusKillAura extends Module {
             }
 
             if (mode.in("Normal")) {
-                if (!(mc.player.getHeldItemMainhand().getItem() instanceof ItemSword) && sword.get_value(true)) {
+                if (!(mc.player.getHeldItemMainhand().getItem() instanceof ItemSword) && sword.getValue(true)) {
                     start_verify = false;
-                } else if ((mc.player.getHeldItemMainhand().getItem() instanceof ItemSword) && sword.get_value(true)) {
+                } else if ((mc.player.getHeldItemMainhand().getItem() instanceof ItemSword) && sword.getValue(true)) {
                     start_verify = true;
-                } else if (!sword.get_value(true)) {
+                } else if (!sword.getValue(true)) {
                     start_verify = true;
                 }
 
@@ -75,7 +75,7 @@ public class WurstplusKillAura extends Module {
                     float tick_to_hit = 20.0f - SexHack.get_event_handler().get_tick_rate();
 
                     // If possible hit or no.
-                    boolean is_possible_attack = mc.player.getCooledAttackStrength(sync_tps.get_value(true) ? -tick_to_hit : 0.0f) >= 1;
+                    boolean is_possible_attack = mc.player.getCooledAttackStrength(sync_tps.getValue(true) ? -tick_to_hit : 0.0f) >= 1;
 
                     // To hit if able.
                     if (is_possible_attack) {
@@ -86,7 +86,7 @@ public class WurstplusKillAura extends Module {
 
                 if (!(mc.player.getHeldItemMainhand().getItem() instanceof ItemSword)) return;
 
-                if (tick < delay.get_value(1)) return;
+                if (tick < delay.getValue(1)) return;
 
                 tick = 0;
 
@@ -149,7 +149,7 @@ public class WurstplusKillAura extends Module {
                 // If is compatible.
                 if (is_compatible(player)) {
                     // If is possible to get.
-                    if (mc.player.getDistance(player) <= range.get_value(1.0)) {
+                    if (mc.player.getDistance(player) <= range.getValue(1.0)) {
                         // Atribute the entity into entity_requested.
                         entity_requested = player;
                     }
@@ -164,14 +164,14 @@ public class WurstplusKillAura extends Module {
     // Compatible or no.
     public boolean is_compatible(Entity entity) {
         // Instend entity with some type entity to continue or no.
-        if (player.get_value(true) && entity instanceof EntityPlayer) {
+        if (player.getValue(true) && entity instanceof EntityPlayer) {
             if (entity != mc.player && !(entity.getName().equals(mc.player.getName())) /* && WurstplusFriendManager.is_friend(entity) == false */) {
                 return true;
             }
         }
 
         // If is hostile.
-        if (hostile.get_value(true) && entity instanceof IMob) {
+        if (hostile.getValue(true) && entity instanceof IMob) {
             return true;
         }
 

@@ -5,6 +5,7 @@ import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusAbstractWidget;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusFrame;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusModuleButton;
+import net.minecraft.client.Minecraft;
 
 import java.awt.*;
 
@@ -219,7 +220,8 @@ public class WurstplusButtonBind extends WurstplusAbstractWidget {
 
             WurstplusDraw.draw_string("Listening " + this.points, this.x + 2, this.save_y, ns_r, ns_g, ns_b, ns_a);
         } else {
-            WurstplusDraw.draw_string("Bind <" + this.master.get_module().get_bind("string") + ">", this.x + 2, this.save_y, ns_r, ns_g, ns_b, ns_a);
+            WurstplusDraw.draw_string("Bind ", this.x + 2, this.save_y, ns_r, ns_g, ns_b, ns_a);
+            WurstplusDraw.draw_string(this.master.get_module().get_bind("string"), this.x + this.width - Minecraft.getMinecraft().fontRenderer.getStringWidth(this.master.get_module().get_bind("string")), this.save_y, 117, 117, 117, 255);
         }
 
         tick_color[0] += 5;

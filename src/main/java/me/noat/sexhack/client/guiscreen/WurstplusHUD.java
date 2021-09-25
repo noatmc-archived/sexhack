@@ -31,37 +31,37 @@ public class WurstplusHUD extends GuiScreen {
     public void initGui() {
         this.on_gui = true;
 
-        WurstplusFrame.nc_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameR").get_value(1);
-        WurstplusFrame.nc_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameG").get_value(1);
-        WurstplusFrame.nc_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameB").get_value(1);
+        WurstplusFrame.nc_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameR").getValue(1);
+        WurstplusFrame.nc_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameG").getValue(1);
+        WurstplusFrame.nc_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameB").getValue(1);
 
-        WurstplusFrame.bg_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameR").get_value(1);
-        WurstplusFrame.bg_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameG").get_value(1);
-        WurstplusFrame.bg_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameB").get_value(1);
-        WurstplusFrame.bg_a = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameA").get_value(1);
+        WurstplusFrame.bg_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameR").getValue(1);
+        WurstplusFrame.bg_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameG").getValue(1);
+        WurstplusFrame.bg_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameB").getValue(1);
+        WurstplusFrame.bg_a = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundFrameA").getValue(1);
 
-        WurstplusFrame.bd_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameR").get_value(1);
-        WurstplusFrame.bd_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameG").get_value(1);
-        WurstplusFrame.bd_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameB").get_value(1);
+        WurstplusFrame.bd_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameR").getValue(1);
+        WurstplusFrame.bd_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameG").getValue(1);
+        WurstplusFrame.bd_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderFrameB").getValue(1);
         WurstplusFrame.bd_a = 0;
 
-        WurstplusFrame.bdw_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetR").get_value(1);
-        WurstplusFrame.bdw_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetG").get_value(1);
-        WurstplusFrame.bdw_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetB").get_value(1);
+        WurstplusFrame.bdw_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetR").getValue(1);
+        WurstplusFrame.bdw_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetG").getValue(1);
+        WurstplusFrame.bdw_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetB").getValue(1);
         WurstplusFrame.bdw_a = 255;
 
-        WurstplusPinnableButton.nc_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetR").get_value(1);
-        WurstplusPinnableButton.nc_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetG").get_value(1);
-        WurstplusPinnableButton.nc_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetB").get_value(1);
+        WurstplusPinnableButton.nc_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetR").getValue(1);
+        WurstplusPinnableButton.nc_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetG").getValue(1);
+        WurstplusPinnableButton.nc_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameWidgetB").getValue(1);
 
-        WurstplusPinnableButton.bg_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetR").get_value(1);
-        WurstplusPinnableButton.bg_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetG").get_value(1);
-        WurstplusPinnableButton.bg_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetB").get_value(1);
-        WurstplusPinnableButton.bg_a = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetA").get_value(1);
+        WurstplusPinnableButton.bg_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetR").getValue(1);
+        WurstplusPinnableButton.bg_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetG").getValue(1);
+        WurstplusPinnableButton.bg_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetB").getValue(1);
+        WurstplusPinnableButton.bg_a = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBackgroundWidgetA").getValue(1);
 
-        WurstplusPinnableButton.bd_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetR").get_value(1);
-        WurstplusPinnableButton.bd_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetG").get_value(1);
-        WurstplusPinnableButton.bd_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetB").get_value(1);
+        WurstplusPinnableButton.bd_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetR").getValue(1);
+        WurstplusPinnableButton.bd_g = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetG").getValue(1);
+        WurstplusPinnableButton.bd_b = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUIBorderWidgetB").getValue(1);
     }
 
     @Override

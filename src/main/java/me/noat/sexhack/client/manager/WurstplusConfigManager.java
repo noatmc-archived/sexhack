@@ -206,19 +206,19 @@ public class WurstplusConfigManager {
             for (Setting setting : SexHack.get_setting_manager().get_settings_with_hack(hack)) {
                 switch (setting.get_type()) {
                     case "button":
-                        br.write(setting.get_tag() + ":" + setting.get_value(true) + "\r\n");
+                        br.write(setting.get_tag() + ":" + setting.getValue(true) + "\r\n");
                         break;
                     case "combobox":
                         br.write(setting.get_tag() + ":" + setting.get_current_value() + "\r\n");
                         break;
                     case "label":
-                        br.write(setting.get_tag() + ":" + setting.get_value("") + "\r\n");
+                        br.write(setting.get_tag() + ":" + setting.getValue("") + "\r\n");
                         break;
                     case "doubleslider":
-                        br.write(setting.get_tag() + ":" + setting.get_value(1.0) + "\r\n");
+                        br.write(setting.get_tag() + ":" + setting.getValue(1.0) + "\r\n");
                         break;
                     case "integerslider":
-                        br.write(setting.get_tag() + ":" + setting.get_value(1) + "\r\n");
+                        br.write(setting.get_tag() + ":" + setting.getValue(1) + "\r\n");
                         break;
                 }
             }

@@ -46,7 +46,7 @@ public class WurstplusAntiRacist extends Module {
             return;
         }
 
-        if (anti_nword.get_value(true)) {
+        if (anti_nword.getValue(true)) {
 
             String message = ((CPacketChatMessage) event.get_packet()).getMessage().toLowerCase();
 
@@ -94,11 +94,11 @@ public class WurstplusAntiRacist extends Module {
     @Override
     public void update() {
 
-        if (chanter.get_value(true)) {
+        if (chanter.getValue(true)) {
 
             tick_delay++;
 
-            if (tick_delay < delay.get_value(1) * 10) return;
+            if (tick_delay < delay.getValue(1) * 10) return;
 
             String s = chants.get(r.nextInt(chants.size()));
             String name = get_random_name();

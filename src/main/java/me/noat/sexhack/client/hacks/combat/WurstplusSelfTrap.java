@@ -46,7 +46,7 @@ public class WurstplusSelfTrap extends Module {
         trap_pos = new BlockPos(pos.x, pos.y + 2, pos.z);
         if (is_trapped()) {
 
-            if (!toggle.get_value(true)) {
+            if (!toggle.getValue(true)) {
                 toggle();
                 return;
             }
@@ -76,7 +76,7 @@ public class WurstplusSelfTrap extends Module {
 
                 if (result_ == ValidResult.NoNeighbors || result_ == ValidResult.NoEntityCollision) continue;
 
-                if (WurstplusBlockUtil.placeBlock(pos_, find_in_hotbar(), rotate.get_value(true), rotate.get_value(true), swing)) {
+                if (WurstplusBlockUtil.placeBlock(pos_, find_in_hotbar(), rotate.getValue(true), rotate.getValue(true), swing)) {
                     return;
                 }
 
@@ -86,7 +86,7 @@ public class WurstplusSelfTrap extends Module {
 
         }
 
-        WurstplusBlockUtil.placeBlock(trap_pos, find_in_hotbar(), rotate.get_value(true), rotate.get_value(true), swing);
+        WurstplusBlockUtil.placeBlock(trap_pos, find_in_hotbar(), rotate.getValue(true), rotate.getValue(true), swing);
 
     }
 

@@ -34,7 +34,7 @@ public class WurstplusAutoReplenish extends Module {
 
         if (mc.currentScreen instanceof GuiContainer) return;
 
-        if (delay_step < tickdelay.get_value(1)) {
+        if (delay_step < tickdelay.getValue(1)) {
             delay_step++;
             return;
         }
@@ -67,7 +67,7 @@ public class WurstplusAutoReplenish extends Module {
                 if (stack.stackSize >= stack.getMaxStackSize()) {
                     continue;
                 }
-                if (stack.stackSize > this.threshold.get_value(1)) {
+                if (stack.stackSize > this.threshold.getValue(1)) {
                     continue;
                 }
                 final int inventorySlot = this.findCompatibleInventorySlot(stack);

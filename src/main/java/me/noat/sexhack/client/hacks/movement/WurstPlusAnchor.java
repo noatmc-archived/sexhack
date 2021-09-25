@@ -24,13 +24,13 @@ public class WurstPlusAnchor extends Module {
     private Vec3d Center = Vec3d.ZERO;
     @EventHandler
     private final Listener<WurstplusEventMotionUpdate> OnClientTick = new Listener<>(event -> {
-        if (mc.player.rotationPitch >= Pitch.get_value(60)) {
+        if (mc.player.rotationPitch >= Pitch.getValue(60)) {
 
             if (isBlockHole(getPlayerPos().down(1)) || isBlockHole(getPlayerPos().down(2)) ||
                     isBlockHole(getPlayerPos().down(3)) || isBlockHole(getPlayerPos().down(4))) {
                 AnchorING = true;
 
-                if (!Pull.get_value(true)) {
+                if (!Pull.getValue(true)) {
                     mc.player.motionX = 0.0;
                     mc.player.motionZ = 0.0;
                 } else {

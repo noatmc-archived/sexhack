@@ -51,20 +51,6 @@ public class WurstplusFakePlayer
         }
     }
 
-    @SubscribeEvent
-    public void update() {
-        if (this.pops.get_value(true) && this.fakePlayer != null) {
-            this.fakePlayer.inventory.offHandInventory.set(0, new ItemStack(Items.TOTEM_OF_UNDYING));
-            if (this.fakePlayer.getHealth() <= 0.0f) {
-                this.fakePop(this.fakePlayer);
-                this.fakePlayer.setHealth(20.0f);
-                WurstplusMessageUtil.send_client_message("You have popped noatmc " + i + " times!");
-                i++;
-                fakePlayer.hurtTime = 5 ;
-            }
-        }
-    }
-
     @EventHandler
     private final Listener<WurstplusEventPacket.ReceivePacket> receivePacketListener = new Listener<>(event -> {
         double damage;
@@ -72,10 +58,24 @@ public class WurstplusFakePlayer
         if (this.fakePlayer == null) {
             return;
         }
-        if (event.get_packet() instanceof SPacketExplosion && this.fakePlayer.getDistance((explosion = (SPacketExplosion) event.get_packet()).getX(), explosion.getY(), explosion.getZ()) <= 15.0 && (damage = WurstplusCrystalUtil.calculateDamage(explosion.getX(), explosion.getY(), explosion.getZ(), this.fakePlayer)) > 0.0 && this.pops.get_value(true)) {
+        if (event.get_packet() instanceof SPacketExplosion && this.fakePlayer.getDistance((explosion = (SPacketExplosion) event.get_packet()).getX(), explosion.getY(), explosion.getZ()) <= 15.0 && (damage = WurstplusCrystalUtil.calculateDamage(explosion.getX(), explosion.getY(), explosion.getZ(), this.fakePlayer)) > 0.0 && this.pops.getValue(true)) {
             this.fakePlayer.setHealth((float) ((double) this.fakePlayer.getHealth() - MathHelper.clamp(damage, 0.0, 999.0)));
         }
     });
+
+    @SubscribeEvent
+    public void update() {
+        if (this.pops.getValue(true) && this.fakePlayer != null) {
+            this.fakePlayer.inventory.offHandInventory.set(0, new ItemStack(Items.TOTEM_OF_UNDYING));
+            if (this.fakePlayer.getHealth() <= 0.0f) {
+                this.fakePop(this.fakePlayer);
+                this.fakePlayer.setHealth(20.0f);
+                WurstplusMessageUtil.send_client_message("You have popped noatmc " + i + " times!");
+                i++;
+                fakePlayer.hurtTime = 5;
+            }
+        }
+    }
 
     @Override
     public void disable() {

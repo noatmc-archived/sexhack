@@ -34,13 +34,13 @@ public abstract class WurstplusMixinItemRenderer {
             this.injection = false;
             if (hand == EnumHand.MAIN_HAND) {
                 if (SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active()) {
-                    xOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainX").get_value(1);
-                    yOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainY").get_value(1);
+                    xOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainX").getValue(1);
+                    yOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainY").getValue(1);
                 }
-            } else if (SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVOffset").get_value(true) &&
+            } else if (SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVOffset").getValue(true) &&
                     SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active()) {
-                xOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVOffsetX").get_value(1);
-                yOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVOffsetY").get_value(1);
+                xOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVOffsetX").getValue(1);
+                yOffset = SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVOffsetY").getValue(1);
             }
             this.renderItemInFirstPerson(player, p_187457_2_, p_187457_3_, hand, p_187457_5_ + xOffset, stack, p_187457_7_ + yOffset);
             this.injection = true;
@@ -49,8 +49,8 @@ public abstract class WurstplusMixinItemRenderer {
 
     @Redirect(method = {"renderArmFirstPerson"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;translate(FFF)V", ordinal = 0))
     public void translateHook(final float x, final float y, final float z) {
-        GlStateManager.translate(x + (SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active() ? SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainX").get_value(1) : 0.0f),
-                y + (SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active() ? SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainX").get_value(1) : 0.0f), z);
+        GlStateManager.translate(x + (SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active() ? SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainX").getValue(1) : 0.0f),
+                y + (SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active() ? SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainX").getValue(1) : 0.0f), z);
     }
 
 }

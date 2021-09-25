@@ -41,10 +41,10 @@ public class WurstplusEffectHud extends WurstplusPinnable {
 
         int counter = 12;
 
-        int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
-        int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
-        int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
-        int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").get_value(1);
+        int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
+        int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
+        int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
+        int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").getValue(1);
 
         final List<PotionEffect> effects = new ArrayList<>(mc.player.getActivePotionEffects());
 
@@ -76,7 +76,7 @@ public class WurstplusEffectHud extends WurstplusPinnable {
                 final String e = ChatFormatting.GREEN + get_friendly_potion_name(effect) + " " + ChatFormatting.RESET + Potion.getPotionDurationString(effect, 1.0f);
                 create_line(e, this.docking(1, e), counter, nl_r, nl_g, nl_b, nl_a);
                 counter += 12;
-            } else if (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDAllPotions").get_value(true)) {
+            } else if (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDAllPotions").getValue(true)) {
                 final String e = get_friendly_potion_name(effect) + " " + Potion.getPotionDurationString(effect, 1.0f);
                 create_line(e, this.docking(1, e), counter, nl_r, nl_g, nl_b, nl_a);
                 counter += 12;

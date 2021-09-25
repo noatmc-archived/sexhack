@@ -4,13 +4,17 @@ import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.command.WurstplusCommand;
 import me.noat.sexhack.client.command.WurstplusCommands;
 import me.noat.sexhack.client.event.WurstplusEventBus;
+import me.noat.sexhack.client.event.events.TotemPopEvent;
 import me.noat.sexhack.client.event.events.WurstplusEventGameOverlay;
+import me.noat.sexhack.client.event.events.WurstplusPacket;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import me.noat.turok.draw.RenderHelp;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.passive.AbstractHorse;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.play.server.SPacketEntityStatus;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -53,6 +57,17 @@ public class WurstplusEventManager {
         }
 
         SexHack.get_hack_manager().render(event);
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public void onPacketReceive(WurstplusPacket.Receive event) {
+        if (event.getPacket() instanceof SPacketEntityStatus) {
+            SPacketEntityStatus packet = event.getPacket();
+            if (packet.getOpCode() == 35 && packet.getEntity(mc.world) instanceof EntityPlayer) {
+                EntityPlayer player = (EntityPlayer) packet.getEntity(mc.world);
+                WurstplusEventBus.EVENT_BUS.post(new TotemPopEvent(player));
+            }
+        }
     }
 
     @SubscribeEvent

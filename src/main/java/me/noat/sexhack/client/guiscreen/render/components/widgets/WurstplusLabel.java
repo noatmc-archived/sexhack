@@ -166,9 +166,9 @@ public class WurstplusLabel extends WurstplusAbstractWidget {
         }
 
         if (this.info) {
-            WurstplusDraw.draw_string(this.setting.get_value(s), this.x + 2, this.save_y, ns_r, ns_g, ns_b, ns_a);
+            WurstplusDraw.draw_string(this.setting.getValue(s), this.x + 2, this.save_y, ns_r, ns_g, ns_b, ns_a);
         } else {
-            WurstplusDraw.draw_string(this.label_name + " \"" + this.setting.get_value(s) + "\"", this.x + 2, this.save_y, ns_r, ns_g, ns_b, ns_a);
+            WurstplusDraw.draw_string(this.label_name + " \"" + this.setting.getValue(s) + "\"", this.x + 2, this.save_y, ns_r, ns_g, ns_b, ns_a);
         }
     }
 }

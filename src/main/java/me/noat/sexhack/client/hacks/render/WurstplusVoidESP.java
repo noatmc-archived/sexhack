@@ -42,9 +42,9 @@ public class WurstplusVoidESP extends Module {
 
         final Vec3i player_pos = new Vec3i(mc.player.posX, mc.player.posY, mc.player.posZ);
 
-        for (int x = player_pos.getX() - void_radius.get_value(1); x < player_pos.getX() + void_radius.get_value(1); x++) {
-            for (int z = player_pos.getZ() - void_radius.get_value(1); z < player_pos.getZ() + void_radius.get_value(1); z++) {
-                for (int y = player_pos.getY() + void_radius.get_value(1); y > player_pos.getY() - void_radius.get_value(1); y--) {
+        for (int x = player_pos.getX() - void_radius.getValue(1); x < player_pos.getX() + void_radius.getValue(1); x++) {
+            for (int z = player_pos.getZ() - void_radius.getValue(1); z < player_pos.getZ() + void_radius.getValue(1); z++) {
+                for (int y = player_pos.getY() + void_radius.getValue(1); y > player_pos.getY() - void_radius.getValue(1); y--) {
                     final BlockPos blockPos = new BlockPos(x, y, z);
 
                     if (is_void_hole(blockPos))
@@ -66,9 +66,9 @@ public class WurstplusVoidESP extends Module {
     @Override
     public void render(WurstplusEventRender event) {
 
-        int r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
-        int g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
-        int b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
+        int r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
+        int g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
+        int b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
 
         new ArrayList<>(void_blocks).forEach(pos -> {
 
@@ -76,7 +76,7 @@ public class WurstplusVoidESP extends Module {
                     pos.getZ() - mc.getRenderManager().viewerPosZ, pos.getX() + 1 - mc.getRenderManager().viewerPosX, pos.getY() + 1 - mc.getRenderManager().viewerPosY,
                     pos.getZ() + 1 - mc.getRenderManager().viewerPosZ);
 
-            camera.setPosition( Objects.requireNonNull ( mc.getRenderViewEntity ( ) ).posX, mc.getRenderViewEntity().posY, mc.getRenderViewEntity().posZ);
+            camera.setPosition(Objects.requireNonNull(mc.getRenderViewEntity()).posX, mc.getRenderViewEntity().posY, mc.getRenderViewEntity().posZ);
 
             if (camera.isBoundingBoxInFrustum(new AxisAlignedBB(bb.minX + mc.getRenderManager().viewerPosX, bb.minY + mc.getRenderManager().viewerPosY, bb.minZ + mc.getRenderManager().viewerPosZ,
                     bb.maxX + mc.getRenderManager().viewerPosX, bb.maxY + mc.getRenderManager().viewerPosY, bb.maxZ + mc.getRenderManager().viewerPosZ))) {

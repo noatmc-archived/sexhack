@@ -108,12 +108,12 @@ public class WurstplusAutoEz extends Module {
         delay_count = 0;
         targeted_players.remove(name);
         String message = "";
-        if (custom.get_value(true)) {
+        if (custom.getValue(true)) {
             message += WurstplusEzMessageUtil.get_message().replace("[", "").replace("]", "");
         } else {
             message += "you just got nae nae'd by wurst+2";
         }
-        if (discord.get_value(true)) {
+        if (discord.getValue(true)) {
             message += " - discord.gg/wurst";
         }
         mc.player.connection.sendPacket(new CPacketChatMessage(message));

@@ -91,7 +91,7 @@ public class WurstplusSocks extends Module {
 
         }
 
-        WurstplusBlockUtil.placeBlock(pos_to_fill, find_in_hotbar(), rotate.get_value(true), rotate.get_value(true), swing);
+        WurstplusBlockUtil.placeBlock(pos_to_fill, find_in_hotbar(), rotate.getValue(true), rotate.getValue(true), swing);
 
     }
 

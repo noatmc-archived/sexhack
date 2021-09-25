@@ -53,7 +53,7 @@ public class WurstplusChams extends Module {
 
     @Override
     public void update() {
-        if (rainbow_mode.get_value(true)) {
+        if (rainbow_mode.getValue(true)) {
             cycle_rainbow();
         }
     }
@@ -64,7 +64,7 @@ public class WurstplusChams extends Module {
                 (System.currentTimeMillis() % (360 * 32)) / (360f * 32)
         };
 
-        int color_rgb_o = Color.HSBtoRGB(tick_color[0], sat.get_value(1), brightness.get_value(1));
+        int color_rgb_o = Color.HSBtoRGB(tick_color[0], sat.getValue(1), brightness.getValue(1));
 
         r.set_value((color_rgb_o >> 16) & 0xFF);
         g.set_value((color_rgb_o >> 8) & 0xFF);
@@ -74,7 +74,7 @@ public class WurstplusChams extends Module {
 
     @Override
     public void render(WurstplusEventRender event) {
-        if (items.get_value(true)) {
+        if (items.getValue(true)) {
             int i = 0;
             for (final Entity entity : mc.world.loadedEntityList) {
                 if (entity instanceof EntityItem && mc.player.getDistanceSq(entity) < 2500.0) {
@@ -89,14 +89,14 @@ public class WurstplusChams extends Module {
                     GL11.glEnable(2848);
                     GL11.glHint(3154, 4354);
                     GL11.glLineWidth(1.0f);
-                    RenderGlobal.renderFilledBox(bb.grow(scale.get_value(1)), r.get_value(1) / 255.0f, g.get_value(1) / 255.0f, b.get_value(1) / 255.0f, box_a.get_value(1) / 255.0f);
+                    RenderGlobal.renderFilledBox(bb.grow(scale.getValue(1)), r.getValue(1) / 255.0f, g.getValue(1) / 255.0f, b.getValue(1) / 255.0f, box_a.getValue(1) / 255.0f);
                     GL11.glDisable(2848);
                     GlStateManager.depthMask(true);
                     GlStateManager.enableDepth();
                     GlStateManager.enableTexture2D();
                     GlStateManager.disableBlend();
                     GlStateManager.popMatrix();
-                    WurstplusRenderUtil.drawBlockOutline(bb.grow(scale.get_value(1)), new Color(r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1)), 1);
+                    WurstplusRenderUtil.drawBlockOutline(bb.grow(scale.getValue(1)), new Color(r.getValue(1), g.getValue(1), b.getValue(1), a.getValue(1)), 1);
                     if (++i >= 50) {
                         break;
                     }
@@ -104,7 +104,7 @@ public class WurstplusChams extends Module {
             }
         }
 
-        if (xporbs.get_value(true)) {
+        if (xporbs.getValue(true)) {
             int i = 0;
             for (final Entity entity : mc.world.loadedEntityList) {
                 if (entity instanceof EntityXPOrb && mc.player.getDistanceSq(entity) < 2500.0) {
@@ -119,14 +119,14 @@ public class WurstplusChams extends Module {
                     GL11.glEnable(2848);
                     GL11.glHint(3154, 4354);
                     GL11.glLineWidth(1.0f);
-                    RenderGlobal.renderFilledBox(bb.grow(scale.get_value(1)), r.get_value(1) / 255.0f, g.get_value(1) / 255.0f, b.get_value(1) / 255.0f, box_a.get_value(1) / 255.0f);
+                    RenderGlobal.renderFilledBox(bb.grow(scale.getValue(1)), r.getValue(1) / 255.0f, g.getValue(1) / 255.0f, b.getValue(1) / 255.0f, box_a.getValue(1) / 255.0f);
                     GL11.glDisable(2848);
                     GlStateManager.depthMask(true);
                     GlStateManager.enableDepth();
                     GlStateManager.enableTexture2D();
                     GlStateManager.disableBlend();
                     GlStateManager.popMatrix();
-                    WurstplusRenderUtil.drawBlockOutline(bb.grow(scale.get_value(1)), new Color(r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1)), 1);
+                    WurstplusRenderUtil.drawBlockOutline(bb.grow(scale.getValue(1)), new Color(r.getValue(1), g.getValue(1), b.getValue(1), a.getValue(1)), 1);
                     if (++i >= 50) {
                         break;
                     }
@@ -134,7 +134,7 @@ public class WurstplusChams extends Module {
             }
         }
 
-        if (pearl.get_value(true)) {
+        if (pearl.getValue(true)) {
             int i = 0;
             for (final Entity entity : mc.world.loadedEntityList) {
                 if (entity instanceof EntityEnderPearl && mc.player.getDistanceSq(entity) < 2500.0) {
@@ -149,14 +149,14 @@ public class WurstplusChams extends Module {
                     GL11.glEnable(2848);
                     GL11.glHint(3154, 4354);
                     GL11.glLineWidth(1.0f);
-                    RenderGlobal.renderFilledBox(bb.grow(scale.get_value(1)), r.get_value(1) / 255.0f, g.get_value(1) / 255.0f, b.get_value(1) / 255.0f, box_a.get_value(1) / 255.0f);
+                    RenderGlobal.renderFilledBox(bb.grow(scale.getValue(1)), r.getValue(1) / 255.0f, g.getValue(1) / 255.0f, b.getValue(1) / 255.0f, box_a.getValue(1) / 255.0f);
                     GL11.glDisable(2848);
                     GlStateManager.depthMask(true);
                     GlStateManager.enableDepth();
                     GlStateManager.enableTexture2D();
                     GlStateManager.disableBlend();
                     GlStateManager.popMatrix();
-                    WurstplusRenderUtil.drawBlockOutline(bb.grow(scale.get_value(1)), new Color(r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1)), 1);
+                    WurstplusRenderUtil.drawBlockOutline(bb.grow(scale.getValue(1)), new Color(r.getValue(1), g.getValue(1), b.getValue(1), a.getValue(1)), 1);
                     if (++i >= 50) {
                         break;
                     }
@@ -164,7 +164,7 @@ public class WurstplusChams extends Module {
             }
         }
 
-        if (xpbottles.get_value(true)) {
+        if (xpbottles.getValue(true)) {
             int i = 0;
             for (final Entity entity : mc.world.loadedEntityList) {
                 if (entity instanceof EntityExpBottle && mc.player.getDistanceSq(entity) < 2500.0) {
@@ -179,14 +179,14 @@ public class WurstplusChams extends Module {
                     GL11.glEnable(2848);
                     GL11.glHint(3154, 4354);
                     GL11.glLineWidth(1.0f);
-                    RenderGlobal.renderFilledBox(bb.grow(scale.get_value(1)), r.get_value(1) / 255.0f, g.get_value(1) / 255.0f, b.get_value(1) / 255.0f, box_a.get_value(1) / 255.0f);
+                    RenderGlobal.renderFilledBox(bb.grow(scale.getValue(1)), r.getValue(1) / 255.0f, g.getValue(1) / 255.0f, b.getValue(1) / 255.0f, box_a.getValue(1) / 255.0f);
                     GL11.glDisable(2848);
                     GlStateManager.depthMask(true);
                     GlStateManager.enableDepth();
                     GlStateManager.enableTexture2D();
                     GlStateManager.disableBlend();
                     GlStateManager.popMatrix();
-                    WurstplusRenderUtil.drawBlockOutline(bb.grow(scale.get_value(1)), new Color(r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1)), 1);
+                    WurstplusRenderUtil.drawBlockOutline(bb.grow(scale.getValue(1)), new Color(r.getValue(1), g.getValue(1), b.getValue(1), a.getValue(1)), 1);
                     if (++i >= 50) {
                         break;
                     }
@@ -198,28 +198,28 @@ public class WurstplusChams extends Module {
 
     @Override
     public void on_render_model(final WurstplusEventRenderEntityModel event) {
-        if (event.stage != 0 || event.entity == null || !self.get_value(true) && event.entity.equals(mc.player) || !players.get_value(true) && event.entity instanceof EntityPlayer || !mobs.get_value(true) && event.entity instanceof EntityMob) {
+        if (event.stage != 0 || event.entity == null || !self.getValue(true) && event.entity.equals(mc.player) || !players.getValue(true) && event.entity instanceof EntityPlayer || !mobs.getValue(true) && event.entity instanceof EntityMob) {
             return;
         }
-        final Color color = new Color(r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1));
+        final Color color = new Color(r.getValue(1), g.getValue(1), b.getValue(1), a.getValue(1));
         final boolean fancyGraphics = mc.gameSettings.fancyGraphics;
         mc.gameSettings.fancyGraphics = false;
         final float gamma = mc.gameSettings.gammaSetting;
         mc.gameSettings.gammaSetting = 10000.0f;
-        if (top.get_value(true)) {
+        if (top.getValue(true)) {
             event.modelBase.render(event.entity, event.limbSwing, event.limbSwingAmount, event.age, event.headYaw, event.headPitch, event.scale);
         }
         if (mode.in("outline")) {
-            WurstplusRenderUtil.renderOne(width.get_value(1));
+            WurstplusRenderUtil.renderOne(width.getValue(1));
             event.modelBase.render(event.entity, event.limbSwing, event.limbSwingAmount, event.age, event.headYaw, event.headPitch, event.scale);
-            GlStateManager.glLineWidth((float) width.get_value(1));
+            GlStateManager.glLineWidth((float) width.getValue(1));
             WurstplusRenderUtil.renderTwo();
             event.modelBase.render(event.entity, event.limbSwing, event.limbSwingAmount, event.age, event.headYaw, event.headPitch, event.scale);
-            GlStateManager.glLineWidth((float) width.get_value(1));
+            GlStateManager.glLineWidth((float) width.getValue(1));
             WurstplusRenderUtil.renderThree();
             WurstplusRenderUtil.renderFour(color);
             event.modelBase.render(event.entity, event.limbSwing, event.limbSwingAmount, event.age, event.headYaw, event.headPitch, event.scale);
-            GlStateManager.glLineWidth((float) width.get_value(1));
+            GlStateManager.glLineWidth((float) width.getValue(1));
             WurstplusRenderUtil.renderFive();
         } else {
             GL11.glPushMatrix();
@@ -232,12 +232,12 @@ public class WurstplusChams extends Module {
             GL11.glEnable(3042);
             GlStateManager.blendFunc(770, 771);
             GlStateManager.color((float) color.getRed(), (float) color.getGreen(), (float) color.getBlue(), (float) color.getAlpha());
-            GlStateManager.glLineWidth((float) width.get_value(1));
+            GlStateManager.glLineWidth((float) width.getValue(1));
             event.modelBase.render(event.entity, event.limbSwing, event.limbSwingAmount, event.age, event.headYaw, event.headPitch, event.scale);
             GL11.glPopAttrib();
             GL11.glPopMatrix();
         }
-        if (!top.get_value(true)) {
+        if (!top.getValue(true)) {
             event.modelBase.render(event.entity, event.limbSwing, event.limbSwingAmount, event.age, event.headYaw, event.headPitch, event.scale);
         }
         try {

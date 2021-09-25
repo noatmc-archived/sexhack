@@ -50,7 +50,7 @@ public class WurstplusStopEXP extends Module {
             double percent = (dam_left / max_dam) * 100;
 
             if (counter == 1 || counter == 4) {
-                if (percent >= helmet_boot_percent.get_value(1)) {
+                if (percent >= helmet_boot_percent.getValue(1)) {
                     should_cancel = is_holding_exp();
                 } else {
                     should_cancel = false;
@@ -58,7 +58,7 @@ public class WurstplusStopEXP extends Module {
             }
 
             if (counter == 2 || counter == 3) {
-                if (percent >= chest_leggings_percent.get_value(1)) {
+                if (percent >= chest_leggings_percent.getValue(1)) {
                     should_cancel = is_holding_exp();
                 } else {
                     should_cancel = false;

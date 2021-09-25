@@ -35,10 +35,10 @@ public class WurstplusPlayerList extends WurstplusPinnable {
 
         int counter = 12;
 
-        int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").get_value(1);
-        int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").get_value(1);
-        int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").get_value(1);
-        int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").get_value(1);
+        int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
+        int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
+        int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
+        int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").getValue(1);
 
         df_health.setRoundingMode(RoundingMode.HALF_UP);
 
@@ -77,7 +77,7 @@ public class WurstplusPlayerList extends WurstplusPinnable {
 
         players = sortByValue(players);
 
-        int max = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDMaxPlayers").get_value(1);
+        int max = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDMaxPlayers").getValue(1);
         int count = 0;
 
         for (Map.Entry<String, Integer> player : players.entrySet()) {

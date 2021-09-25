@@ -60,8 +60,8 @@ public class WurstplusFuckedDetector extends Module {
 
             if (is_fucked(player)) {
 
-                if (WurstplusFriendUtil.isFriend(player.getName()) && !draw_friends.get_value(true)) continue;
-                if (player == mc.player && !draw_own.get_value(true)) continue;
+                if (WurstplusFriendUtil.isFriend(player.getName()) && !draw_friends.getValue(true)) continue;
+                if (player == mc.player && !draw_own.getValue(true)) continue;
 
                 fucked_players.add(new BlockPos(player.posX, player.posY, player.posZ));
 
@@ -118,7 +118,7 @@ public class WurstplusFuckedDetector extends Module {
                 RenderHelp.draw_cube(RenderHelp.get_buffer_build(),
                         render_block.getX(), render_block.getY(), render_block.getZ(),
                         1, 1, 1,
-                        r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1),
+                        r.getValue(1), g.getValue(1), b.getValue(1), a.getValue(1),
                         "all"
                 );
                 RenderHelp.release();
@@ -129,7 +129,7 @@ public class WurstplusFuckedDetector extends Module {
                 RenderHelp.draw_cube_line(RenderHelp.get_buffer_build(),
                         render_block.getX(), render_block.getY(), render_block.getZ(),
                         1, 1, 1,
-                        r.get_value(1), g.get_value(1), b.get_value(1), a.get_value(1),
+                        r.getValue(1), g.getValue(1), b.getValue(1), a.getValue(1),
                         "all"
                 );
                 RenderHelp.release();

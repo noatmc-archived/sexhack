@@ -7,6 +7,7 @@ import me.noat.sexhack.client.hacks.WurstplusClickGUI;
 import me.noat.sexhack.client.hacks.WurstplusClickHUD;
 import me.noat.sexhack.client.hacks.chat.*;
 import me.noat.sexhack.client.hacks.combat.*;
+import me.noat.sexhack.client.hacks.dev.PoopChams;
 import me.noat.sexhack.client.hacks.dev.SexAura;
 import me.noat.sexhack.client.hacks.dev.WurstplusFakePlayer;
 import me.noat.sexhack.client.hacks.exploit.*;
@@ -78,8 +79,6 @@ public class WurstplusModuleManager {
         add_hack(new WurstplusEntityMine());
         add_hack(new WurstplusBuildHeight());
         add_hack(new WurstplusCoordExploit());
-        add_hack(new WurstplusNoHandshake());
-        add_hack(new Burrow());
         add_hack(new PacketPredict());
 
         // Movement.
@@ -118,6 +117,7 @@ public class WurstplusModuleManager {
         // Dev
         add_hack(new WurstplusFakePlayer());
         add_hack(new SexAura());
+        add_hack(new PoopChams());
 
         array_hacks.sort(Comparator.comparing(Module::get_name));
     }

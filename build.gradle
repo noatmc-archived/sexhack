@@ -16,8 +16,8 @@ buildscript {
 		classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
 		classpath "com.github.jengelman.gradle.plugins:shadow:1.2.3"
 		classpath "org.spongepowered:mixingradle:0.4-SNAPSHOT"
-		}
 	}
+}
 
 
 apply plugin: "net.minecraftforge.gradle.forge"
@@ -115,13 +115,13 @@ processResources {
 jar {
 	manifest {
 		attributes (
-			"FMLCorePluginContainsFMLMod" : "true",
-			"ForceLoadAsMod"              : "true",
-			"FMLCorePlugin"               : "me.noat.sexhack.mixins.WurstplusMixinLoader",
-			"MixinConfigs"                : "mixins.wurstplus.json",
-			"tweakClass"                  : "org.spongepowered.asm.launch.MixinTweaker",
-			"TweakOrder"                  : 0,
-			"FMLAT"                       : "wurstplus_at.cfg"
+				"FMLCorePluginContainsFMLMod" : "true",
+				"ForceLoadAsMod"              : "true",
+				"FMLCorePlugin"               : "me.noat.sexhack.mixins.WurstplusMixinLoader",
+				"MixinConfigs"                : "mixins.wurstplus.json",
+				"tweakClass"                  : "org.spongepowered.asm.launch.MixinTweaker",
+				"TweakOrder"                  : 0,
+				"FMLAT"                       : "wurstplus_at.cfg"
 		)
 	}
 }

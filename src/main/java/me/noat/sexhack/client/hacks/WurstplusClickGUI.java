@@ -40,32 +40,32 @@ public class WurstplusClickGUI extends Module {
     @Override
     public void update() {
         // Update frame colors.
-        SexHack.click_gui.theme_frame_name_r = name_frame_r.get_value(1);
-        SexHack.click_gui.theme_frame_name_g = name_frame_g.get_value(1);
-        SexHack.click_gui.theme_frame_name_b = name_frame_b.get_value(1);
+        SexHack.click_gui.theme_frame_name_r = name_frame_r.getValue(1);
+        SexHack.click_gui.theme_frame_name_g = name_frame_g.getValue(1);
+        SexHack.click_gui.theme_frame_name_b = name_frame_b.getValue(1);
 
-        SexHack.click_gui.theme_frame_background_r = background_frame_r.get_value(1);
-        SexHack.click_gui.theme_frame_background_g = background_frame_g.get_value(1);
-        SexHack.click_gui.theme_frame_background_b = background_frame_b.get_value(1);
-        SexHack.click_gui.theme_frame_background_a = background_frame_a.get_value(1);
+        SexHack.click_gui.theme_frame_background_r = background_frame_r.getValue(1);
+        SexHack.click_gui.theme_frame_background_g = background_frame_g.getValue(1);
+        SexHack.click_gui.theme_frame_background_b = background_frame_b.getValue(1);
+        SexHack.click_gui.theme_frame_background_a = background_frame_a.getValue(1);
 
-        SexHack.click_gui.theme_frame_border_r = border_frame_r.get_value(1);
-        SexHack.click_gui.theme_frame_border_g = border_frame_g.get_value(1);
-        SexHack.click_gui.theme_frame_border_b = border_frame_b.get_value(1);
+        SexHack.click_gui.theme_frame_border_r = border_frame_r.getValue(1);
+        SexHack.click_gui.theme_frame_border_g = border_frame_g.getValue(1);
+        SexHack.click_gui.theme_frame_border_b = border_frame_b.getValue(1);
 
         // Update widget colors.
-        SexHack.click_gui.theme_widget_name_r = name_widget_r.get_value(1);
-        SexHack.click_gui.theme_widget_name_g = name_widget_g.get_value(1);
-        SexHack.click_gui.theme_widget_name_b = name_widget_b.get_value(1);
+        SexHack.click_gui.theme_widget_name_r = name_widget_r.getValue(1);
+        SexHack.click_gui.theme_widget_name_g = name_widget_g.getValue(1);
+        SexHack.click_gui.theme_widget_name_b = name_widget_b.getValue(1);
 
-        SexHack.click_gui.theme_widget_background_r = background_widget_r.get_value(1);
-        SexHack.click_gui.theme_widget_background_g = background_widget_g.get_value(1);
-        SexHack.click_gui.theme_widget_background_b = background_widget_b.get_value(1);
-        SexHack.click_gui.theme_widget_background_a = background_widget_a.get_value(1);
+        SexHack.click_gui.theme_widget_background_r = background_widget_r.getValue(1);
+        SexHack.click_gui.theme_widget_background_g = background_widget_g.getValue(1);
+        SexHack.click_gui.theme_widget_background_b = background_widget_b.getValue(1);
+        SexHack.click_gui.theme_widget_background_a = background_widget_a.getValue(1);
 
-        SexHack.click_gui.theme_widget_border_r = border_widget_r.get_value(1);
-        SexHack.click_gui.theme_widget_border_g = border_widget_g.get_value(1);
-        SexHack.click_gui.theme_widget_border_b = border_widget_b.get_value(1);
+        SexHack.click_gui.theme_widget_border_r = border_widget_r.getValue(1);
+        SexHack.click_gui.theme_widget_border_g = border_widget_g.getValue(1);
+        SexHack.click_gui.theme_widget_border_b = border_widget_b.getValue(1);
     }
 
     @Override
