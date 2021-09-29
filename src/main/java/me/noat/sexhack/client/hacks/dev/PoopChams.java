@@ -1,13 +1,8 @@
 package me.noat.sexhack.client.hacks.dev;
 
-import me.noat.sexhack.client.event.events.TotemPopEvent;
 import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
-import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
 
 import java.util.HashMap;
@@ -21,26 +16,6 @@ public class PoopChams extends Module {
         this.name = "PoopChams";
         this.tag = "PoopChams";
         this.description = "eh";
-    }
-
-    @SubscribeEvent
-    public void onTotemPop(TotemPopEvent event) {
-        Entity entity = event.getEntity();
-        if (mc.world.getEntityByID(entity.getEntityId()) != null && (entity = mc.world.getEntityByID(entity.getEntityId())) instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) entity;
-            EntityOtherPlayerMP fakeEntity = new EntityOtherPlayerMP(mc.world, player.getGameProfile());
-            fakeEntity.copyLocationAndAnglesFrom(player);
-            fakeEntity.rotationYawHead = player.rotationYawHead;
-            fakeEntity.prevRotationYawHead = player.rotationYawHead;
-            fakeEntity.rotationYaw = player.rotationYaw;
-            fakeEntity.prevRotationYaw = player.rotationYaw;
-            fakeEntity.rotationPitch = player.rotationPitch;
-            fakeEntity.prevRotationPitch = player.rotationPitch;
-            fakeEntity.cameraYaw = fakeEntity.rotationYaw;
-            fakeEntity.cameraPitch = fakeEntity.rotationPitch;
-            this.popFakePlayerMap.put(fakeEntity, System.currentTimeMillis());
-        }
-        WurstplusMessageUtil.send_client_message("event registered");
     }
 
     @Override

@@ -17,7 +17,7 @@ public class WurstplusEventHandler implements Listenable {
 
     @EventHandler
     private final Listener<WurstplusEventPacket.ReceivePacket> receive_event_packet = new Listener<>(event -> {
-        if (event.get_packet() instanceof SPacketTimeUpdate) {
+        if (event.getPacket() instanceof SPacketTimeUpdate) {
             INSTANCE.update_time();
         }
     });

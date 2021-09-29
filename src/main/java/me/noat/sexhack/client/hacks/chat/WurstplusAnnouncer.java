@@ -54,7 +54,7 @@ public class WurstplusAnnouncer extends Module {
     private final Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
         if (mc.world == null) return;
 
-        if (event.get_packet() instanceof SPacketUseBed) {
+        if (event.getPacket() instanceof SPacketUseBed) {
             queue_message("I am going to bed now, goodnight");
         }
     });
@@ -62,8 +62,8 @@ public class WurstplusAnnouncer extends Module {
     private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
         if (mc.world == null) return;
 
-        if (event.get_packet() instanceof CPacketPlayerDigging) {
-            CPacketPlayerDigging packet = (CPacketPlayerDigging) event.get_packet();
+        if (event.getPacket() instanceof CPacketPlayerDigging) {
+            CPacketPlayerDigging packet = (CPacketPlayerDigging) event.getPacket();
 
             if (mc.player.getHeldItemMainhand().getItem() != Items.AIR && (packet.getAction().equals(CPacketPlayerDigging.Action.DROP_ITEM) || packet.getAction().equals(CPacketPlayerDigging.Action.DROP_ALL_ITEMS))) {
                 final String name = mc.player.inventory.getCurrentItem().getDisplayName();
@@ -86,11 +86,11 @@ public class WurstplusAnnouncer extends Module {
 
         } else {
 
-            if (event.get_packet() instanceof CPacketUpdateSign) {
+            if (event.getPacket() instanceof CPacketUpdateSign) {
                 queue_message("I just updated a sign with some epic text");
             }
 
-            if (event.get_packet() instanceof CPacketPlayerTryUseItemOnBlock) {
+            if (event.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) {
                 ItemStack stack = mc.player.inventory.getCurrentItem();
                 if (stack.isEmpty()) return;
                 if (stack.getItem() instanceof ItemBlock) {

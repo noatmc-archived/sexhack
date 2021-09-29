@@ -58,7 +58,7 @@ public class WurstplusFakePlayer
         if (this.fakePlayer == null) {
             return;
         }
-        if (event.get_packet() instanceof SPacketExplosion && this.fakePlayer.getDistance((explosion = (SPacketExplosion) event.get_packet()).getX(), explosion.getY(), explosion.getZ()) <= 15.0 && (damage = WurstplusCrystalUtil.calculateDamage(explosion.getX(), explosion.getY(), explosion.getZ(), this.fakePlayer)) > 0.0 && this.pops.getValue(true)) {
+        if (event.getPacket() instanceof SPacketExplosion && this.fakePlayer.getDistance((explosion = (SPacketExplosion) event.getPacket()).getX(), explosion.getY(), explosion.getZ()) <= 15.0 && (damage = WurstplusCrystalUtil.calculateDamage(explosion.getX(), explosion.getY(), explosion.getZ(), this.fakePlayer)) > 0.0 && this.pops.getValue(true)) {
             this.fakePlayer.setHealth((float) ((double) this.fakePlayer.getHealth() - MathHelper.clamp(damage, 0.0, 999.0)));
         }
     });

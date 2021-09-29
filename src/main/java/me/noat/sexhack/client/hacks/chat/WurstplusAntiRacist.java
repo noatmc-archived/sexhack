@@ -42,13 +42,13 @@ public class WurstplusAntiRacist extends Module {
     @EventHandler
     private final Listener<WurstplusEventPacket.SendPacket> listener = new Listener<>(event -> {
 
-        if (!(event.get_packet() instanceof CPacketChatMessage)) {
+        if (!(event.getPacket() instanceof CPacketChatMessage)) {
             return;
         }
 
         if (anti_nword.getValue(true)) {
 
-            String message = ((CPacketChatMessage) event.get_packet()).getMessage().toLowerCase();
+            String message = ((CPacketChatMessage) event.getPacket()).getMessage().toLowerCase();
 
             if (message.contains(nigger) || message.contains(nigga)) {
 
@@ -62,7 +62,7 @@ public class WurstplusAntiRacist extends Module {
 
             }
 
-            ((CPacketChatMessage) event.get_packet()).message = message;
+            ((CPacketChatMessage) event.getPacket()).message = message;
         }
     });
     public WurstplusAntiRacist() {

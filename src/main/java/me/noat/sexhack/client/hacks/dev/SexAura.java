@@ -36,30 +36,24 @@ public class SexAura extends Module {
     Setting place = create("Place", "asplace", true);
     Setting cancel = create("Cancel Crystal", "ascancel", true);
     private static EntityPlayer a;
-    private final int abc = 0;
-    private final int axckx = 0;
-    Setting breakRange = create("Break Range", "asbrange", 6.0f, 0.0f, 6.0f);
-    Setting placeRange = create("Place Range", "asrange", 6.0f, 0.0f, 6.0f);
     // cancel crystal system
     @EventHandler
     private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
         CPacketUseEntity packet;
         if (cancel.getValue(true)) {
-            if (event.getStage() == 0 && event.get_packet() instanceof CPacketUseEntity && (packet = (CPacketUseEntity) event.get_packet()).getAction() == CPacketUseEntity.Action.ATTACK && packet.getEntityFromWorld(mc.world) instanceof EntityEnderCrystal) {
+            if (event.getStage() == 0 && event.getPacket() instanceof CPacketUseEntity && (packet = (CPacketUseEntity) event.getPacket()).getAction() == CPacketUseEntity.Action.ATTACK && packet.getEntityFromWorld(mc.world) instanceof EntityEnderCrystal) {
                 Objects.requireNonNull(packet.getEntityFromWorld(mc.world)).setDead();
                 mc.world.removeEntityFromWorld(packet.entityId);
             }
         }
     });
-    Setting instant = create("Instant", "asinstant", true);
-    Setting sequential = create("Sequential", "asSequential", true);
-    Setting minDmg = create("Minimum Dmg", "asmindmg", 6, 0, 36);
-    Setting selfDmg = create("Max Self Dmg", "asmaxselfdmg", 8, 0, 36);
+    Setting breakRange = create("Break Range", "asbrange", 6.0f, 0.0f, 6.0f);
+    Setting placeRange = create("Place Range", "asrange", 6.0f, 0.0f, 6.0f);
     @EventHandler
     private final Listener<WurstplusEventPacket.ReceivePacket> receive = new Listener<>(event -> {
         if (instant.getValue(true)) {
             SPacketSpawnObject packet2;
-            if (event.get_packet() instanceof SPacketSpawnObject && (packet2 = (SPacketSpawnObject) event.get_packet()).getType() == 51) {
+            if (event.getPacket() instanceof SPacketSpawnObject && (packet2 = (SPacketSpawnObject) event.getPacket()).getType() == 51) {
                 CPacketUseEntity predict = new CPacketUseEntity();
                 predict.entityId = packet2.getEntityID();
                 predict.action = CPacketUseEntity.Action.ATTACK;
@@ -67,8 +61,8 @@ public class SexAura extends Module {
             }
         }
         if (sequential.getValue(true)) {
-            if (event.get_packet() instanceof SPacketDestroyEntities) {
-                final SPacketDestroyEntities sPacket = (SPacketDestroyEntities) event.get_packet();
+            if (event.getPacket() instanceof SPacketDestroyEntities) {
+                final SPacketDestroyEntities sPacket = (SPacketDestroyEntities) event.getPacket();
                 for (int id : sPacket.getEntityIDs()) {
                     Entity entity = SexAura.mc.world.getEntityByID(id);
                     if (!(entity instanceof EntityEnderCrystal)) continue;
@@ -77,6 +71,11 @@ public class SexAura extends Module {
             }
         }
     });
+    Setting instant = create("Instant", "asinstant", true);
+    Setting sequential = create("Sequential", "asSequential", true);
+    Setting minDmg = create("Minimum Dmg", "asmindmg", 6, 0, 36);
+    Setting selfDmg = create("Max Self Dmg", "asmaxselfdmg", 8, 0, 36);
+    EntityEnderCrystal friendCrystal;
     Setting ignoreSelfDmg = create("Ignore Self Damage", "asIgnoreSelfDmg", true);
     Setting silent = create("Silent Switch", "asSilent", true);
     Setting thirteen = create("1.13", "asThirteen", false);
@@ -84,9 +83,13 @@ public class SexAura extends Module {
     private double damage;
     private BlockPos placePos;
     private EntityPlayer e;
-    private BlockPos crystalPt2;
+    BlockPos crystalPt2;
     Setting nomultiplace = create("No Multiplace", "asmultiplace", true);
     Setting faceplaceHp = create("Faceplace HP", "asFaceplace", 8, 0, 36);
+    // FRIEND SUPPORT SETTINGS
+    Setting friendSupport = create("Friend Support", "asFriendSupport", true);
+    Setting friendMinHp = create("Min Friend Hp", "asMinFriendHp", 6, 0, 36);
+    Setting friendDistance = create("Friend Distance", "asFriendDistance", 3.5, 0, 6);
 
     public SexAura() {
         super(WurstplusCategory.WURSTPLUS_BETA);
@@ -131,6 +134,24 @@ public class SexAura extends Module {
             mc.player.connection.sendPacket(new CPacketAnimation(exactHand ? hand : EnumHand.MAIN_HAND));
     }
 
+    public void friendBreak() {
+        for (EntityPlayer entity : mc.world.playerEntities) {
+            if (!WurstplusFriendUtil.isFriend(entity.getName())) continue;
+            if (entity.getHealth() >= friendMinHp.getValue(1)) continue;
+            for (Entity ent : mc.world.getLoadedEntityList()) {
+                if (!(ent instanceof EntityEnderCrystal)) continue;
+                if (entity.getDistance(ent) >= friendDistance.getValue(1)) continue;
+                friendCrystal = (EntityEnderCrystal) ent;
+            }
+        }
+        if (friendCrystal != null) {
+            mc.player.connection.sendPacket(new CPacketUseEntity(friendCrystal));
+            if (debug.getValue(true)) {
+                WurstplusMessageUtil.send_client_message("breaking friend's crystal.");
+            }
+        }
+    }
+
     public static EntityPlayer staticGetTarget() {
         for (Entity entity : mc.world.getLoadedEntityList()) {
             if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
@@ -144,12 +165,11 @@ public class SexAura extends Module {
 
     // get target for autocrystal (nearest entity tbh)
     public EntityPlayer getTarget() {
-        for (Entity entity : mc.world.playerEntities) {
-            if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
+        for (EntityPlayer entity : mc.world.playerEntities) {
             if (entity == mc.player) continue; // check if the player was you
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
             if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
-            e = (EntityPlayer) entity; // set player as the target
+            e = entity; // set player as the target
         }
         return e;
     }
@@ -172,16 +192,19 @@ public class SexAura extends Module {
                 breakCrystal();
             }
         }
+        if (friendSupport.getValue(true)) {
+            friendBreak();
+        }
     }
 
     public BlockPos getPos() {
         long bcs = System.currentTimeMillis();
         crystalPt2 = null;
         damage = 0;
-        for (Entity entity : mc.world.playerEntities) {
+        for (EntityPlayer entity : mc.world.playerEntities) {
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
             for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.getValue(1), thirteen.getValue(true), nomultiplace.getValue(false))) {
-                final EntityPlayer e = (EntityPlayer) entity;
+                EntityPlayer e = entity;
                 if (e == mc.player) continue; // check if the player was you
                 if (e.getDistance(mc.player) >= 20) continue; // check if the player distance
                 if (e.isDead || e.getHealth() <= 0) continue; // check if target is dead

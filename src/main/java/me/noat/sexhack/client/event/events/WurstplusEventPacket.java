@@ -17,7 +17,7 @@ public class WurstplusEventPacket extends WurstplusEventCancellable {
         this.stage = stage;
     }
 
-    public Packet get_packet() {
+    public Packet getPacket() {
         return this.packet;
     }
 

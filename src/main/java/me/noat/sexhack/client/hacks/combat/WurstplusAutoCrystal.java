@@ -63,10 +63,10 @@ public class WurstplusAutoCrystal extends Module {
     @EventHandler
     private final Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
         if (this.sequential.getValue(true)) {
-            if (event.get_packet() instanceof SPacketSoundEffect) {
-                final SPacketSoundEffect packet = (SPacketSoundEffect) event.get_packet();
+            if (event.getPacket() instanceof SPacketSoundEffect) {
+                final SPacketSoundEffect packet = (SPacketSoundEffect) event.getPacket();
 
-                final SPacketSoundEffect packet2 = (SPacketSoundEffect) event.get_packet();
+                final SPacketSoundEffect packet2 = (SPacketSoundEffect) event.getPacket();
                 if (packet2.getCategory() == SoundCategory.BLOCKS && packet2.getSound() == SoundEvents.ENTITY_GENERIC_EXPLODE) {
                     final List<Entity> entities = new ArrayList<>(mc.world.loadedEntityList);
                     for (int size = entities.size(), i = 0; i < size; ++i) {
@@ -143,20 +143,20 @@ public class WurstplusAutoCrystal extends Module {
 
     @EventHandler
     private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
-        if (event.get_packet() instanceof CPacketPlayer && is_rotating && rotate_mode.in("Old")) {
+        if (event.getPacket() instanceof CPacketPlayer && is_rotating && rotate_mode.in("Old")) {
             if (debug.getValue(true)) {
                 WurstplusMessageUtil.send_client_message("Rotating");
             }
-            final CPacketPlayer p = (CPacketPlayer) event.get_packet();
+            final CPacketPlayer p = (CPacketPlayer) event.getPacket();
             p.yaw = yaw;
             p.pitch = pitch;
             is_rotating = false;
         }
-        if (event.get_packet() instanceof CPacketPlayerTryUseItemOnBlock && is_rotating && rotate_mode.in("Old")) {
+        if (event.getPacket() instanceof CPacketPlayerTryUseItemOnBlock && is_rotating && rotate_mode.in("Old")) {
             if (debug.getValue(true)) {
                 WurstplusMessageUtil.send_client_message("Rotating");
             }
-            final CPacketPlayerTryUseItemOnBlock p = (CPacketPlayerTryUseItemOnBlock) event.get_packet();
+            final CPacketPlayerTryUseItemOnBlock p = (CPacketPlayerTryUseItemOnBlock) event.getPacket();
             p.facingX = render_block_init.getX();
             p.facingY = render_block_init.getY();
             p.facingZ = render_block_init.getZ();

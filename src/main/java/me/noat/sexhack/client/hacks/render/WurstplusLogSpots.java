@@ -61,9 +61,9 @@
 //
 //    @EventHandler
 //    private Listener<WurstplusEventPacket.ReceivePacket> listener = new Listener<>(event -> {
-//        if (event.get_packet() instanceof SPacketPlayerListItem) {
+//        if (event.getPacket() instanceof SPacketPlayerListItem) {
 //
-//            final SPacketPlayerListItem packet = (SPacketPlayerListItem) event.get_packet();
+//            final SPacketPlayerListItem packet = (SPacketPlayerListItem) event.getPacket();
 //
 //            if(!Action.ADD_PLAYER.equals(packet.getAction()) && !Action.REMOVE_PLAYER.equals(packet.getAction())) return;
 //

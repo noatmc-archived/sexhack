@@ -300,19 +300,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-artifact/3.5.3/7dc72b6d6d8a6dced3d294ed54c2cc3515ade9f4/maven-artifact-3.5.3.jar!/"/>
-        </CLASSES>
-        <JAVADOC>
-          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-artifact/3.5.3/780bee612c1c60b05f5668456404ea37a37fc1ef/maven-artifact-3.5.3-javadoc.jar!/"/>
-        </JAVADOC>
-        <SOURCES>
-          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-artifact/3.5.3/25c6b5e0103ae09bc1cac02ee6dff968bacbdba9/maven-artifact-3.5.3-sources.jar!/"/>
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.5/6c6c702c89bfff3cd9e80b04d668c5e190d588c6/commons-lang3-3.5.jar!/"/>
         </CLASSES>
         <JAVADOC>
@@ -528,13 +515,13 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.jline/jline/3.5.1/51800e9d7a13608894a5a28eed0f5c7fa2f300fb/jline-3.5.1.jar!/"/>
+          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/jline/jline/2.13/2d9530d0a25daffaffda7c35037b046b627bb171/jline-2.13.jar!/"/>
         </CLASSES>
         <JAVADOC>
-          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.jline/jline/3.5.1/87d558277046b5a35a59ea1f152328442d51967c/jline-3.5.1-javadoc.jar!/"/>
+          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/jline/jline/2.13/77f395bce7cad8f3da6f6f3526d1923e8ea35942/jline-2.13-javadoc.jar!/"/>
         </JAVADOC>
         <SOURCES>
-          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.jline/jline/3.5.1/11c92210c8ad3c9610334d66c4d8662cad8d26a2/jline-3.5.1-sources.jar!/"/>
+          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/jline/jline/2.13/e290282bf7683ae3307e85bdc5d5e08424dfb893/jline-2.13-sources.jar!/"/>
         </SOURCES>
       </library>
     </orderEntry>
@@ -787,13 +774,13 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-utils/3.1.0/60eecb6f15abdb1c653ad80abaac6fe188b3feaa/plexus-utils-3.1.0.jar!/"/>
+          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.fusesource.jansi/jansi/1.11/655c643309c2f45a56a747fda70e3fadf57e9f11/jansi-1.11.jar!/"/>
         </CLASSES>
         <JAVADOC>
-          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-utils/3.1.0/7b0ace32907e27d3b5d1d41c9c51a488d42742c5/plexus-utils-3.1.0-javadoc.jar!/"/>
+          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.fusesource.jansi/jansi/1.11/b27814181cfd1b1c22ea6a287aeace376c53ffa7/jansi-1.11-javadoc.jar!/"/>
         </JAVADOC>
         <SOURCES>
-          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-utils/3.1.0/d4062783613c4c6cf909c939d15fd1f2b584db03/plexus-utils-3.1.0-sources.jar!/"/>
+          <root url="jar://C:/Users/autty/.gradle/caches/modules-2/files-2.1/org.fusesource.jansi/jansi/1.11/2f0e4b53b6b0eec426dad7118bf54b3deb58000b/jansi-1.11-sources.jar!/"/>
         </SOURCES>
       </library>
     </orderEntry>
@@ -854,18 +841,18 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.5.2768-PROJECT(sexhack).jar!/"/>
+          <root url="jar://$MODULE_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.0.2531-PROJECT(sexhack).jar!/"/>
         </CLASSES>
         <JAVADOC/>
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.5.2768-PROJECT(sexhack)-sources.jar!/"/>
+          <root url="jar://$MODULE_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.0.2531-PROJECT(sexhack)-sources.jar!/"/>
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="RUNTIME">
       <library>
         <CLASSES>
-          <root url="file://C:/Users/autty/.gradle/caches/minecraft/net/minecraftforge/forge/1.12.2-14.23.5.2768/start"/>
+          <root url="file://C:/Users/autty/.gradle/caches/minecraft/net/minecraftforge/forge/1.12.2-14.23.0.2531/start"/>
         </CLASSES>
         <JAVADOC/>
         <SOURCES/>

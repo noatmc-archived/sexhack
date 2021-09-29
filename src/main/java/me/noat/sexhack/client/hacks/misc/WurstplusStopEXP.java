@@ -20,7 +20,7 @@ public class WurstplusStopEXP extends Module {
     private boolean should_cancel = false;
     @EventHandler
     private final Listener<WurstplusEventPacket.SendPacket> packet_event = new Listener<>(event -> {
-        if (event.get_packet() instanceof CPacketPlayerTryUseItem && should_cancel) {
+        if (event.getPacket() instanceof CPacketPlayerTryUseItem && should_cancel) {
             event.cancel();
         }
     });
