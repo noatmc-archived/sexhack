@@ -49,28 +49,6 @@ public class SexAura extends Module {
     });
     Setting breakRange = create("Break Range", "asbrange", 6.0f, 0.0f, 6.0f);
     Setting placeRange = create("Place Range", "asrange", 6.0f, 0.0f, 6.0f);
-    @EventHandler
-    private final Listener<WurstplusEventPacket.ReceivePacket> receive = new Listener<>(event -> {
-        if (instant.getValue(true)) {
-            SPacketSpawnObject packet2;
-            if (event.getPacket() instanceof SPacketSpawnObject && (packet2 = (SPacketSpawnObject) event.getPacket()).getType() == 51) {
-                CPacketUseEntity predict = new CPacketUseEntity();
-                predict.entityId = packet2.getEntityID();
-                predict.action = CPacketUseEntity.Action.ATTACK;
-                mc.player.connection.sendPacket(predict);
-            }
-        }
-        if (sequential.getValue(true)) {
-            if (event.getPacket() instanceof SPacketDestroyEntities) {
-                final SPacketDestroyEntities sPacket = (SPacketDestroyEntities) event.getPacket();
-                for (int id : sPacket.getEntityIDs()) {
-                    Entity entity = SexAura.mc.world.getEntityByID(id);
-                    if (!(entity instanceof EntityEnderCrystal)) continue;
-                    entity.setDead();
-                }
-            }
-        }
-    });
     Setting instant = create("Instant", "asinstant", true);
     Setting sequential = create("Sequential", "asSequential", true);
     Setting minDmg = create("Minimum Dmg", "asmindmg", 6, 0, 36);
@@ -105,6 +83,29 @@ public class SexAura extends Module {
         placePos = null;
         e = null;
     }
+
+    @EventHandler
+    private final Listener<WurstplusEventPacket.ReceivePacket> receive = new Listener<>(event -> {
+        if (instant.getValue(true)) {
+            SPacketSpawnObject packet2;
+            if (event.getPacket() instanceof SPacketSpawnObject && (packet2 = (SPacketSpawnObject) event.getPacket()).getType() == 51) {
+                CPacketUseEntity predict = new CPacketUseEntity();
+                predict.entityId = packet2.getEntityID();
+                predict.action = CPacketUseEntity.Action.ATTACK;
+                mc.player.connection.sendPacket(predict);
+            }
+        }
+        if (sequential.getValue(true)) {
+            if (event.getPacket() instanceof SPacketDestroyEntities) {
+                final SPacketDestroyEntities sPacket = (SPacketDestroyEntities) event.getPacket();
+                for (int id : sPacket.getEntityIDs()) {
+                    Entity entity = SexAura.mc.world.getEntityByID(id);
+                    if (!(entity instanceof EntityEnderCrystal)) continue;
+                    entity.setDead();
+                }
+            }
+        }
+    });
 
     // make every update do Auto Crystal!
     @Override
