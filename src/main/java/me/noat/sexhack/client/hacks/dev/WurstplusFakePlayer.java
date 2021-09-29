@@ -42,7 +42,7 @@ public class WurstplusFakePlayer
             this.disable();
         } else {
             UUID playerUUID = WurstplusFakePlayer.mc.player.getUniqueID();
-            this.fakePlayer = new EntityOtherPlayerMP(WurstplusFakePlayer.mc.world, new GameProfile(UUID.fromString(playerUUID.toString()), "noatmc"));
+            this.fakePlayer = new EntityOtherPlayerMP(WurstplusFakePlayer.mc.world, new GameProfile(UUID.fromString(playerUUID.toString()), "Bambootorture"));
             this.fakePlayer.copyLocationAndAnglesFrom(WurstplusFakePlayer.mc.player);
             this.fakePlayer.inventory.copyInventory(WurstplusFakePlayer.mc.player.inventory);
             fakePlayer.hurtTime = 5;
