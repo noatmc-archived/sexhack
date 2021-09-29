@@ -157,7 +157,7 @@ public class SexAura extends Module {
         for (Entity entity : mc.world.getLoadedEntityList()) {
             if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
             if (entity == mc.player) continue; // check if the player was you
-            if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
+            if (entity.getDistance(mc.player) >= 11) continue; // check if the player distance, according to trvsf's autocrystal changing distance to 11 fix the lag
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
             a = (EntityPlayer) entity; // set player as the target
         }
@@ -169,7 +169,7 @@ public class SexAura extends Module {
         for (EntityPlayer entity : mc.world.playerEntities) {
             if (entity == mc.player) continue; // check if the player was you
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
-            if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
+            if (entity.getDistance(mc.player) >= 11) continue; // check if the player distance
             e = entity; // set player as the target
         }
         return e;
@@ -207,7 +207,7 @@ public class SexAura extends Module {
             for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.getValue(1), thirteen.getValue(true), nomultiplace.getValue(false))) {
                 EntityPlayer e = entity;
                 if (e == mc.player) continue; // check if the player was you
-                if (e.getDistance(mc.player) >= 20) continue; // check if the player distance
+                if (e.getDistance(mc.player) >= 11) continue; // check if the player distance
                 if (e.isDead || e.getHealth() <= 0) continue; // check if target is dead
                 int minimum_damage = minDmg.getValue(1);
                 if (isFaceplacable(e, faceplaceHp.getValue(1)) || WP3CrystalUtil.getArmourFucker(e, 17)) {
