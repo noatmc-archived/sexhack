@@ -62,7 +62,7 @@ public class WurstplusTotempop extends Module {
     public WurstplusTotempop() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
 
-        this.name = "Totem Pop Counter";
+        this.name = "Pop Counter";
         this.tag = "TotemPopCounter";
         this.description = "dude idk wurst+ is just outdated";
     }

@@ -7,6 +7,9 @@ import me.noat.sexhack.client.guiscreen.render.components.WurstplusAbstractWidge
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusFrame;
 import me.noat.sexhack.client.guiscreen.render.components.WurstplusModuleButton;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
+import me.noat.sexhack.client.util.WurstplusRenderUtil;
+
+import java.awt.*;
 
 
 public class WurstplusButton extends WurstplusAbstractWidget {
@@ -145,8 +148,12 @@ public class WurstplusButton extends WurstplusAbstractWidget {
         int bd_g = SexHack.click_gui.theme_widget_border_g;
         int bd_b = SexHack.click_gui.theme_widget_border_b;
 
-        if (this.setting.getValue(true)) { // filling in the button box if button is enabled
-            WurstplusDraw.draw_rect(get_x(), this.save_y - 2, get_x() + this.width, this.save_y + this.height + 2, bg_r, bg_g, bg_b, bg_a);
+        if (this.setting.getValue(true)) { // filling in the button box if button is enabledw
+            WurstplusRenderUtil.drawRectangleCorrectly(this.get_x() + this.get_width() - 10, this.save_y, 8, 8, new Color(0, 0, 0, 255).hashCode());
+            WurstplusRenderUtil.drawRectangleCorrectly(this.get_x() + this.get_width() - 9, this.save_y + 1, 6, 6, new Color(0, 255, 0, 255).hashCode());
+        } else {
+            WurstplusRenderUtil.drawRectangleCorrectly(this.get_x() + this.get_width() - 10, this.save_y, 8, 8, new Color(0, 0, 0, 255).hashCode());
+            WurstplusRenderUtil.drawRectangleCorrectly(this.get_x() + this.get_width() - 9, this.save_y + 1, 6, 6, new Color(46, 46, 46, 255).hashCode());
         }
         WurstplusDraw.draw_string(this.button_name, this.x + 2, this.save_y, ns_r, ns_g, ns_b, ns_a);
     }

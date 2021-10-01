@@ -51,6 +51,7 @@ public class SexAura extends Module {
     Setting placeRange = create("Place Range", "asrange", 6.0f, 0.0f, 6.0f);
     Setting instant = create("Instant", "asinstant", true);
     Setting sequential = create("Sequential", "asSequential", true);
+    Setting dead = create("Dead Place", "asDeadPlacec", true);
     Setting minDmg = create("Minimum Dmg", "asmindmg", 6, 0, 36);
     Setting selfDmg = create("Max Self Dmg", "asmaxselfdmg", 8, 0, 36);
     EntityEnderCrystal friendCrystal;
@@ -205,15 +206,14 @@ public class SexAura extends Module {
         for (EntityPlayer entity : mc.world.playerEntities) {
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
             for (BlockPos blocks : WurstplusCrystalUtil.possiblePlacePositions(placeRange.getValue(1), thirteen.getValue(true), nomultiplace.getValue(false))) {
-                EntityPlayer e = entity;
-                if (e == mc.player) continue; // check if the player was you
-                if (e.getDistance(mc.player) >= 20) continue; // check if the player distance
-                if (e.isDead || e.getHealth() <= 0) continue; // check if target is dead
+                if (entity == mc.player) continue; // check if the player was you
+                if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
+                if (entity.isDead || entity.getHealth() <= 0) continue; // check if target is dead
                 int minimum_damage = minDmg.getValue(1);
-                if (isFaceplacable(e, faceplaceHp.getValue(1)) || WP3CrystalUtil.getArmourFucker(e, 17)) {
+                if (isFaceplacable(entity, faceplaceHp.getValue(1)) || WP3CrystalUtil.getArmourFucker(entity, 17)) {
                     minimum_damage = 2;
                 }
-                double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, e); // set variable for target dmg
+                double damageToTarget = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, entity); // set variable for target dmg
                 double damageToSelf = WurstplusCrystalUtil.calculateDamage(blocks.getX() + 0.5, blocks.getY() + 1, blocks.getZ() + 0.5, mc.player); // set variable for self dmg
                 if (!(damage <= damageToTarget)) continue;
                 if (!ignoreSelfDmg.getValue(true)) {
@@ -262,6 +262,12 @@ public class SexAura extends Module {
                 .min(Comparator.comparing(c -> mc.player.getDistance(c) < breakRange.getValue(1)))
                 .orElse(null);
         if (crystals != null) {
+            if (cancel.getValue(true)) {
+                crystals.setDead();
+                if (dead.getValue(true)) {
+                    placeCrystal();
+                }
+            }
             // attack crystal
             mc.player.connection.sendPacket(new CPacketUseEntity(crystals));
         }

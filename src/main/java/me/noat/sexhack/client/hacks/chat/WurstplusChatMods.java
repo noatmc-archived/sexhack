@@ -55,7 +55,7 @@ public final class WurstplusChatMods extends Module {
 
                 if (name_highlight.getValue(true) && mc.player != null) {
 
-                    if (text.toLowerCase().contains(mc.player.getName().toLowerCase())) {
+                    if (text.toLowerCase().equalsIgnoreCase(mc.player.getName())) {
 
                         text = text.replaceAll("(?i)" + mc.player.getName(), ChatFormatting.GOLD + mc.player.getName() + ChatFormatting.RESET);
 
@@ -74,7 +74,7 @@ public final class WurstplusChatMods extends Module {
     public WurstplusChatMods() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
 
-        this.name = "Chat Modifications";
+        this.name = "Chat Modify";
         this.tag = "ChatModifications";
         this.description = "this breaks things";
     }

@@ -5,7 +5,9 @@ import me.noat.sexhack.client.guiscreen.render.WurstplusDraw;
 import me.noat.sexhack.client.guiscreen.render.components.widgets.*;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.Module;
+import net.minecraft.client.Minecraft;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 // Hacks.
@@ -268,7 +270,12 @@ public class WurstplusModuleButton {
                 WurstplusDraw.draw_rect(this.master.get_x() - 1, this.save_y, this.master.get_width() + 1, this.opened_height, bd_r, bd_g, bd_b, border_a, this.border_size, "right-left");
             }
 
+            if (!opened) {
+                Minecraft.getMinecraft().fontRenderer.drawString("+", this.get_x() + this.get_width() - 10, this.save_y, new Color(255, 255, 255, 255).hashCode());
+            }
+
             if (this.opened) {
+                Minecraft.getMinecraft().fontRenderer.drawString("-", this.get_x() + this.get_width() - 10, this.save_y, new Color(255, 255, 255, 255).hashCode());
                 this.opened_height = this.height + this.settings_height - 10;
 
                 widgets.render(get_save_y(), separe, mx, my);
