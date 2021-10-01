@@ -260,6 +260,9 @@ public class WurstplusModuleButton {
         } else {
             WurstplusDraw.draw_string(this.module_name, this.x + separe, this.save_y, 177, 177, 177, 255);
         }
+        if (motion(mx, my)) {
+            Minecraft.getMinecraft().fontRenderer.drawString(get_module().get_description(), 0, 490, new Color(255, 255, 255, 255).hashCode());
+        }
 
         for (WurstplusAbstractWidget widgets : this.widget) {
             widgets.set_x(get_x());
