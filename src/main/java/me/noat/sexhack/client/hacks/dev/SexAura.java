@@ -25,6 +25,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -35,6 +38,7 @@ public class SexAura extends Module {
     Setting breakCrystal = create("Break", "asbreak", true);
     Setting place = create("Place", "asplace", true);
     Setting cancel = create("Cancel Crystal", "ascancel", true);
+    Setting multiThread = create("Multi Thread", "asMultiThread", true);
     private static EntityPlayer a;
     // cancel crystal system
     @EventHandler
@@ -119,6 +123,38 @@ public class SexAura extends Module {
     public void enable() {
         placePos = null;
         e = null;
+        if (multiThread.getValue(true)) {
+            Thread thread = new Thread(MultiThreader.getInstance(this));
+            if (thread != null && (thread.isInterrupted() || !thread.isAlive())) {
+                thread = new Thread(MultiThreader.getInstance(this));
+            }
+            if (thread != null && thread.getState() == Thread.State.NEW) {
+                try {
+                    thread.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void onTickLowest(TickEvent.ClientTickEvent event) {
+        if (event.phase == TickEvent.Phase.END) {
+            if (multiThread.getValue(true)) {
+                Thread thread = new Thread(MultiThreader.getInstance(this));
+                if (thread != null && (thread.isInterrupted() || !thread.isAlive())) {
+                    thread = new Thread(MultiThreader.getInstance(this));
+                }
+                if (thread != null && thread.getState() == Thread.State.NEW) {
+                    try {
+                        thread.start();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
 
     // pery bobo
@@ -298,5 +334,32 @@ public class SexAura extends Module {
     public String array_detail() {
         EntityPlayer a = getTarget();
         return (a != null) ? a.getName() + " | " + mc.player.getDistance(a) : "None";
+    }
+
+    static class MultiThreader implements Runnable {
+        private static MultiThreader instance;
+        private SexAura autoCrystal;
+
+        private MultiThreader() {
+        }
+
+        public static MultiThreader getInstance(SexAura autoCrystal) {
+            if (instance == null) {
+                instance = new MultiThreader();
+                MultiThreader.instance.autoCrystal = autoCrystal;
+            }
+            return instance;
+        }
+
+        @Override
+        public void run() {
+            for (int i = 2; i > 0; i--) {
+                try {
+                    this.autoCrystal.doAutoCrystal();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }
