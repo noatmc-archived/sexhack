@@ -353,7 +353,7 @@ public class SexAura extends Module {
 
         @Override
         public void run() {
-            for (int i = 2; i > 0; i--) {
+            for (int i = 4; i > 0; i--) {
                 try {
                     this.autoCrystal.doAutoCrystal();
                 } catch (Exception e) {
