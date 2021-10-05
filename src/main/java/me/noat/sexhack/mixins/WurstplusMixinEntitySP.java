@@ -15,11 +15,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 // External.
 
 
-@Mixin(value = EntityPlayerSP.class)
-public class WurstplusMixinEntitySP extends WurstplusMixinEntity {
+@Mixin (value = EntityPlayerSP.class)
+public
+class WurstplusMixinEntitySP extends WurstplusMixinEntity {
 
-    @Inject(method = "move", at = @At("HEAD"), cancellable = true)
-    private void move(MoverType type, double x, double y, double z, CallbackInfo info) {
+    @Inject (method = "move", at = @At ("HEAD"), cancellable = true)
+    private
+    void move(MoverType type, double x, double y, double z, CallbackInfo info) {
 
         WurstplusEventMove event = new WurstplusEventMove(type, x, y, z);
         WurstplusEventBus.EVENT_BUS.post(event);
@@ -30,8 +32,9 @@ public class WurstplusMixinEntitySP extends WurstplusMixinEntity {
         }
     }
 
-    @Inject(method = "onUpdateWalkingPlayer", at = @At("HEAD"), cancellable = true)
-    public void OnPreUpdateWalkingPlayer(CallbackInfo p_Info) {
+    @Inject (method = "onUpdateWalkingPlayer", at = @At ("HEAD"), cancellable = true)
+    public
+    void OnPreUpdateWalkingPlayer(CallbackInfo p_Info) {
 
         WurstplusEventMotionUpdate l_Event = new WurstplusEventMotionUpdate(0);
         WurstplusEventBus.EVENT_BUS.post(l_Event);
@@ -40,8 +43,9 @@ public class WurstplusMixinEntitySP extends WurstplusMixinEntity {
 
     }
 
-    @Inject(method = "onUpdateWalkingPlayer", at = @At("RETURN"), cancellable = true)
-    public void OnPostUpdateWalkingPlayer(CallbackInfo p_Info) {
+    @Inject (method = "onUpdateWalkingPlayer", at = @At ("RETURN"), cancellable = true)
+    public
+    void OnPostUpdateWalkingPlayer(CallbackInfo p_Info) {
 
         WurstplusEventMotionUpdate l_Event = new WurstplusEventMotionUpdate(1);
         WurstplusEventBus.EVENT_BUS.post(l_Event);
@@ -50,8 +54,9 @@ public class WurstplusMixinEntitySP extends WurstplusMixinEntity {
 
     }
 
-    @Inject(method = "swingArm", at = @At("RETURN"), cancellable = true)
-    public void swingArm(EnumHand p_Hand, CallbackInfo p_Info) {
+    @Inject (method = "swingArm", at = @At ("RETURN"), cancellable = true)
+    public
+    void swingArm(EnumHand p_Hand, CallbackInfo p_Info) {
 
         WurstplusEventSwing l_Event = new WurstplusEventSwing(p_Hand);
         WurstplusEventBus.EVENT_BUS.post(l_Event);

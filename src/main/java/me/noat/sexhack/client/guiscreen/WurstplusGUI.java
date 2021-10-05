@@ -14,13 +14,16 @@ import java.util.ArrayList;
 // Hacks.
 // TO DO: use witchcraft to make click gui scrollable.
 
-public class WurstplusGUI extends GuiScreen {
+public
+class WurstplusGUI extends GuiScreen {
+    public final int theme_frame_name_a = 0;
+    public final int theme_widget_name_a = 0;
     private final Minecraft mc = Minecraft.getMinecraft();
+    private final ArrayList <WurstplusFrame> frame;
     // Frame.
     public int theme_frame_name_r = 0;
     public int theme_frame_name_g = 0;
     public int theme_frame_name_b = 0;
-    public int theme_frame_name_a = 0;
     public int theme_frame_background_r = 0;
     public int theme_frame_background_g = 0;
     public int theme_frame_background_b = 0;
@@ -32,7 +35,6 @@ public class WurstplusGUI extends GuiScreen {
     public int theme_widget_name_r = 0;
     public int theme_widget_name_g = 0;
     public int theme_widget_name_b = 0;
-    public int theme_widget_name_a = 0;
     public int theme_widget_background_r = 0;
     public int theme_widget_background_g = 0;
     public int theme_widget_background_b = 0;
@@ -40,18 +42,15 @@ public class WurstplusGUI extends GuiScreen {
     public int theme_widget_border_r = 0;
     public int theme_widget_border_g = 0;
     public int theme_widget_border_b = 0;
-    private final ArrayList<WurstplusFrame> frame;
-    private int frame_x;
     private WurstplusFrame current;
-    private final boolean event_start;
-    private final boolean event_finish;
 
-    public WurstplusGUI() {
-        this.frame = new ArrayList<>();
-        this.frame_x = 10;
+    public
+    WurstplusGUI() {
+        this.frame = new ArrayList <>();
+        int frame_x = 10;
 
-        this.event_start = true;
-        this.event_finish = false;
+        boolean event_start = true;
+        boolean event_finish = false;
 
         for (WurstplusCategory categorys : WurstplusCategory.values()) {
             if (categorys.is_hidden()) {
@@ -60,31 +59,34 @@ public class WurstplusGUI extends GuiScreen {
 
             WurstplusFrame frames = new WurstplusFrame(categorys);
 
-            frames.set_x(this.frame_x);
+            frames.set_x(frame_x);
 
             this.frame.add(frames);
 
-            this.frame_x += frames.get_width() + 5;
+            frame_x += frames.get_width() + 5;
 
             this.current = frames;
         }
     }
 
     @Override
-    public boolean doesGuiPauseGame() {
+    public
+    boolean doesGuiPauseGame() {
         return false;
     }
 
 
     @Override
-    public void onGuiClosed() {
+    public
+    void onGuiClosed() {
         SexHack.get_hack_manager().get_module_with_tag("GUI").set_active(false);
 
         SexHack.get_config_manager().save_settings();
     }
 
     @Override
-    protected void keyTyped(char char_, int key) {
+    protected
+    void keyTyped(char char_, int key) {
         for (WurstplusFrame frame : this.frame) {
             frame.bind(char_, key);
 
@@ -103,7 +105,8 @@ public class WurstplusGUI extends GuiScreen {
         }
     }
 
-    public void handleMouseInput() throws IOException {
+    public
+    void handleMouseInput() throws IOException {
         if (Mouse.getEventDWheel() > 0) {
             for (WurstplusFrame frames : this.frame) {
                 frames.set_y(frames.get_y() + 10);
@@ -119,7 +122,8 @@ public class WurstplusGUI extends GuiScreen {
     }
 
     @Override
-    protected void mouseClicked(int mx, int my, int mouse) {
+    protected
+    void mouseClicked(int mx, int my, int mouse) {
         for (WurstplusFrame frames : this.frame) {
             frames.mouse(mx, my, mouse);
 
@@ -140,7 +144,8 @@ public class WurstplusGUI extends GuiScreen {
     }
 
     @Override
-    protected void mouseReleased(int mx, int my, int state) {
+    protected
+    void mouseReleased(int mx, int my, int state) {
         for (WurstplusFrame frames : this.frame) {
             frames.does_button_for_do_widgets_can(true);
             frames.mouse_release(mx, my, state);
@@ -151,7 +156,8 @@ public class WurstplusGUI extends GuiScreen {
     }
 
     @Override
-    public void drawScreen(int mx, int my, float tick) {
+    public
+    void drawScreen(int mx, int my, float tick) {
         this.drawDefaultBackground();
 
         for (WurstplusFrame frames : this.frame) {
@@ -159,20 +165,24 @@ public class WurstplusGUI extends GuiScreen {
         }
     }
 
-    public WurstplusFrame get_current() {
+    public
+    WurstplusFrame get_current() {
         return this.current;
     }
 
-    public void set_current(WurstplusFrame current) {
+    public
+    void set_current(WurstplusFrame current) {
         this.frame.remove(current);
         this.frame.add(current);
     }
 
-    public ArrayList<WurstplusFrame> get_array_frames() {
+    public
+    ArrayList <WurstplusFrame> get_array_frames() {
         return this.frame;
     }
 
-    public WurstplusFrame get_frame_with_tag(String tag) {
+    public
+    WurstplusFrame get_frame_with_tag(String tag) {
         WurstplusFrame frame_requested = null;
 
         for (WurstplusFrame frames : get_array_frames()) {

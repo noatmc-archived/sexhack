@@ -13,14 +13,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import javax.annotation.Nullable;
 
-@Mixin(value = {AbstractClientPlayer.class})
-public abstract class WurstplusMixinAbstractClientPlayer {
+@Mixin (value = {AbstractClientPlayer.class})
+public abstract
+class WurstplusMixinAbstractClientPlayer {
     @Shadow
     @Nullable
-    protected abstract NetworkPlayerInfo getPlayerInfo();
+    protected abstract
+    NetworkPlayerInfo getPlayerInfo();
 
-    @Inject(method = {"getLocationCape"}, at = {@At(value = "HEAD")}, cancellable = true)
-    public void getLocationCape(CallbackInfoReturnable<ResourceLocation> callbackInfoReturnable) {
+    @Inject (method = {"getLocationCape"}, at = {@At (value = "HEAD")}, cancellable = true)
+    public
+    void getLocationCape(CallbackInfoReturnable <ResourceLocation> callbackInfoReturnable) {
 
         if (SexHack.get_hack_manager().get_module_with_tag("Capes").is_active()) {
             NetworkPlayerInfo info = this.getPlayerInfo();

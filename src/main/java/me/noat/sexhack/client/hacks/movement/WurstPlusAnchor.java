@@ -12,18 +12,18 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.ArrayList;
 
-public class WurstPlusAnchor extends Module {
+public
+class WurstPlusAnchor extends Module {
 
     // Written by NathanW, thanks to my friend Ian for some hole shit.
 
     public static boolean AnchorING;
-    private final ArrayList<BlockPos> holes = new ArrayList <> ( );
-    Setting Pitch = create("Pitch", "AnchorPitch", 60, 0, 90);
-    Setting Pull = create("Pull", "AnchorPull", true);
+    final Setting Pitch = create("Pitch", "AnchorPitch", 60, 0, 90);
+    final Setting Pull = create("Pull", "AnchorPull", true);
+    private final ArrayList <BlockPos> holes = new ArrayList <>();
     int holeblocks;
-    private Vec3d Center = Vec3d.ZERO;
     @EventHandler
-    private final Listener<WurstplusEventMotionUpdate> OnClientTick = new Listener<>(event -> {
+    private final Listener <WurstplusEventMotionUpdate> OnClientTick = new Listener <>(event -> {
         if (mc.player.rotationPitch >= Pitch.getValue(60)) {
 
             if (isBlockHole(getPlayerPos().down(1)) || isBlockHole(getPlayerPos().down(2)) ||
@@ -34,15 +34,15 @@ public class WurstPlusAnchor extends Module {
                     mc.player.motionX = 0.0;
                     mc.player.motionZ = 0.0;
                 } else {
-                    Center = GetCenter(mc.player.posX, mc.player.posY, mc.player.posZ);
-                    double XDiff = Math.abs(Center.x - mc.player.posX);
-                    double ZDiff = Math.abs(Center.z - mc.player.posZ);
+                    Vec3d center = GetCenter(mc.player.posX, mc.player.posY, mc.player.posZ);
+                    double XDiff = Math.abs(center.x - mc.player.posX);
+                    double ZDiff = Math.abs(center.z - mc.player.posZ);
 
                     if (XDiff <= 0.1 && ZDiff <= 0.1) {
-                        Center = Vec3d.ZERO;
+                        center = Vec3d.ZERO;
                     } else {
-                        double MotionX = Center.x - mc.player.posX;
-                        double MotionZ = Center.z - mc.player.posZ;
+                        double MotionX = center.x - mc.player.posX;
+                        double MotionZ = center.z - mc.player.posZ;
 
                         mc.player.motionX = MotionX / 2;
                         mc.player.motionZ = MotionZ / 2;
@@ -52,7 +52,8 @@ public class WurstPlusAnchor extends Module {
         }
     });
 
-    public WurstPlusAnchor() {
+    public
+    WurstPlusAnchor() {
         super(WurstplusCategory.WURSTPLUS_MOVEMENT);
 
         this.name = "Anchor";
@@ -60,7 +61,8 @@ public class WurstPlusAnchor extends Module {
         this.description = "Stops all movement if player is above a hole";
     }
 
-    public boolean isBlockHole(BlockPos blockpos) {
+    public
+    boolean isBlockHole(BlockPos blockpos) {
         holeblocks = 0;
         if (mc.world.getBlockState(blockpos.add(0, 3, 0)).getBlock() == Blocks.AIR) ++holeblocks;
 
@@ -88,7 +90,8 @@ public class WurstPlusAnchor extends Module {
         return holeblocks >= 9;
     }
 
-    public Vec3d GetCenter(double posX, double posY, double posZ) {
+    public
+    Vec3d GetCenter(double posX, double posY, double posZ) {
         double x = Math.floor(posX) + 0.5D;
         double y = Math.floor(posY);
         double z = Math.floor(posZ) + 0.5D;
@@ -96,12 +99,14 @@ public class WurstPlusAnchor extends Module {
         return new Vec3d(x, y, z);
     }
 
-    public void onDisable() {
+    public
+    void onDisable() {
         AnchorING = false;
         holeblocks = 0;
     }
 
-    public BlockPos getPlayerPos() {
+    public
+    BlockPos getPlayerPos() {
         return new BlockPos(Math.floor(mc.player.posX), Math.floor(mc.player.posY), Math.floor(mc.player.posZ));
     }
 

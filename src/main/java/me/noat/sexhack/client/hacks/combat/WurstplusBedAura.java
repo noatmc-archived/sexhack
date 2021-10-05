@@ -20,16 +20,19 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.stream.Collectors;
 
-public class WurstplusBedAura extends Module {
+public
+class WurstplusBedAura extends Module {
 
-    Setting delay = create("Delay", "BedAuraDelay", 6, 0, 20);
-    Setting range = create("Range", "BedAuraRange", 5, 0, 6);
-    Setting hard = create("Hard Rotate", "BedAuraRotate", false);
-    Setting swing = create("Swing", "BedAuraSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    final Setting delay = create("Delay", "BedAuraDelay", 6, 0, 20);
+    final Setting range = create("Range", "BedAuraRange", 5, 0, 6);
+    final Setting hard = create("Hard Rotate", "BedAuraRotate", false);
+    final Setting swing = create("Swing", "BedAuraSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
     private BlockPos render_pos;
     private int counter;
     private spoof_face spoof_looking;
-    public WurstplusBedAura() {
+
+    public
+    WurstplusBedAura() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Bed Aura";
@@ -37,28 +40,33 @@ public class WurstplusBedAura extends Module {
         this.description = "fucking endcrystal.me";
     }
 
-    public static BlockPos get_pos_floor(EntityPlayer player) {
+    public static
+    BlockPos get_pos_floor(EntityPlayer player) {
         return new BlockPos(Math.floor(player.posX), Math.floor(player.posY), Math.floor(player.posZ));
     }
 
-    public static boolean is_bed(final BlockPos pos) {
+    public static
+    boolean is_bed(final BlockPos pos) {
         final Block block = mc.world.getBlockState(pos).getBlock();
         return block == Blocks.BED;
     }
 
     @Override
-    protected void enable() {
+    protected
+    void enable() {
         render_pos = null;
         counter = 0;
     }
 
     @Override
-    protected void disable() {
+    protected
+    void disable() {
         render_pos = null;
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (mc.player == null) return;
 
@@ -73,7 +81,8 @@ public class WurstplusBedAura extends Module {
 
     }
 
-    public void refill_bed() {
+    public
+    void refill_bed() {
         if (!(mc.currentScreen instanceof GuiContainer)) {
             if (is_space()) {
                 for (int i = 9; i < 35; ++i) {
@@ -86,7 +95,8 @@ public class WurstplusBedAura extends Module {
         }
     }
 
-    private boolean is_space() {
+    private
+    boolean is_space() {
         for (int i = 0; i < 9; i++) {
             if (mc.player.inventoryContainer.getSlot(i).getHasStack()) {
                 return true;
@@ -95,7 +105,8 @@ public class WurstplusBedAura extends Module {
         return false;
     }
 
-    public void place_bed() {
+    public
+    void place_bed() {
 
         if (find_bed() == -1) {
             return;
@@ -115,11 +126,8 @@ public class WurstplusBedAura extends Module {
 
             boolean face_place = true;
 
-            BlockPos pos = get_pos_floor(player).down();
-            BlockPos pos2 = pos;
-
-            if (pos2 != null && mc.world.getBlockState(new BlockPos(pos2.up().getX(), pos2.up().getY() - 1, pos2.up().getZ())).getBlock() != Blocks.AIR && mc.world.getBlockState(new BlockPos(pos2.up().getX(), pos2.up().getY() - 1, pos2.up().getZ())).getBlock() != Blocks.FIRE) {
-                best_pos = pos2.up();
+            if (get_pos_floor(player).down() != null && mc.world.getBlockState(new BlockPos(get_pos_floor(player).down().up().getX(), get_pos_floor(player).down().up().getY() - 1, get_pos_floor(player).down().up().getZ())).getBlock() != Blocks.AIR && mc.world.getBlockState(new BlockPos(get_pos_floor(player).down().up().getX(), get_pos_floor(player).down().up().getY() - 1, get_pos_floor(player).down().up().getZ())).getBlock() != Blocks.FIRE) {
+                best_pos = get_pos_floor(player).down().up();
                 best_target = player;
                 best_distance = mc.player.getDistance(player);
                 face_place = false;
@@ -169,7 +177,8 @@ public class WurstplusBedAura extends Module {
 
     }
 
-    public void break_bed() {
+    public
+    void break_bed() {
 
         for (BlockPos pos : WurstplusBlockInteractHelper.getSphere(get_pos_floor(mc.player), range.getValue(1), range.getValue(1), false, true, 0)
                 .stream().filter(WurstplusBedAura::is_bed).collect(Collectors.toList())) {
@@ -183,7 +192,8 @@ public class WurstplusBedAura extends Module {
 
     }
 
-    public int find_bed() {
+    public
+    int find_bed() {
 
         for (int i = 0; i < 9; i++) {
             if (mc.player.inventory.getStackInSlot(i).getItem() == Items.BED) {
@@ -193,7 +203,8 @@ public class WurstplusBedAura extends Module {
         return -1;
     }
 
-    public BlockPos check_side_block(BlockPos pos) {
+    public
+    BlockPos check_side_block(BlockPos pos) {
 
         if (mc.world.getBlockState(pos.east()).getBlock() != Blocks.AIR && mc.world.getBlockState(pos.east().up()).getBlock() == Blocks.AIR) {
             spoof_looking = spoof_face.WEST;
@@ -217,7 +228,8 @@ public class WurstplusBedAura extends Module {
     }
 
     @Override
-    public void render(WurstplusEventRender event) {
+    public
+    void render(WurstplusEventRender event) {
 
         if (render_pos == null) return;
 

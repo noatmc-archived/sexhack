@@ -19,15 +19,16 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.ArrayList;
 
-public class WurstplusWebfill extends Module {
+public
+class WurstplusWebfill extends Module {
 
-    private final ArrayList<BlockPos> holes = new ArrayList <> ( );
-    Setting web_toggle = create("Toggle", "WebFillToggle", true);
-    Setting web_rotate = create("Rotate", "WebFillRotate", true);
-    Setting web_range = create("Range", "WebFillRange", 4, 1, 6);
-    private boolean sneak;
+    final Setting web_toggle = create("Toggle", "WebFillToggle", true);
+    final Setting web_rotate = create("Rotate", "WebFillRotate", true);
+    final Setting web_range = create("Range", "WebFillRange", 4, 1, 6);
+    private final ArrayList <BlockPos> holes = new ArrayList <>();
 
-    public WurstplusWebfill() {
+    public
+    WurstplusWebfill() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Web Fill";
@@ -36,17 +37,20 @@ public class WurstplusWebfill extends Module {
     }
 
     @Override
-    public void enable() {
+    public
+    void enable() {
         find_new_holes();
     }
 
     @Override
-    public void disable() {
+    public
+    void disable() {
         holes.clear();
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (holes.isEmpty()) {
 
@@ -64,7 +68,7 @@ public class WurstplusWebfill extends Module {
 
         BlockPos pos_to_fill = null;
 
-        for (BlockPos pos : new ArrayList <> ( holes )) {
+        for (BlockPos pos : new ArrayList <>(holes)) {
 
             if (pos == null) continue;
 
@@ -100,7 +104,8 @@ public class WurstplusWebfill extends Module {
 
     }
 
-    public void find_new_holes() {
+    public
+    void find_new_holes() {
 
         holes.clear();
 
@@ -145,7 +150,8 @@ public class WurstplusWebfill extends Module {
 
     }
 
-    private int find_in_hotbar() {
+    private
+    int find_in_hotbar() {
 
         for (int i = 0; i < 9; ++i) {
 
@@ -159,13 +165,14 @@ public class WurstplusWebfill extends Module {
         return -1;
     }
 
-    private boolean place_blocks(BlockPos pos) {
+    private
+    boolean place_blocks(BlockPos pos) {
 
         if (!mc.world.getBlockState(pos).getMaterial().isReplaceable()) {
             return false;
         }
 
-        if (!WurstplusBlockInteractHelper.checkForNeighbours(pos)) {
+        if (WurstplusBlockInteractHelper.checkForNeighbours(pos)) {
             return false;
         }
 
@@ -175,11 +182,11 @@ public class WurstplusWebfill extends Module {
 
             EnumFacing side2 = side.getOpposite();
 
-            if (!WurstplusBlockInteractHelper.canBeClicked(neighbor)) continue;
+            if (WurstplusBlockInteractHelper.canBeClicked(neighbor)) continue;
 
-            if (WurstplusBlockInteractHelper.blackList.contains( mc.world.getBlockState(neighbor).getBlock() )) {
+            if (WurstplusBlockInteractHelper.blackList.contains(mc.world.getBlockState(neighbor).getBlock())) {
                 mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
-                sneak = true;
+                boolean sneak = true;
             }
 
             Vec3d hitVec = new Vec3d(neighbor).add(0.5, 0.5, 0.5).add(new Vec3d(side2.getDirectionVec()).scale(0.5));

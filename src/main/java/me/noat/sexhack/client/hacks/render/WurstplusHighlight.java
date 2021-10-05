@@ -13,21 +13,24 @@ import java.awt.*;
 // Travis.
 
 
-public class WurstplusHighlight extends Module {
+public
+class WurstplusHighlight extends Module {
 
-    Setting mode = create("Mode", "HighlightMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
-    Setting rgb = create("RGB Effect", "HighlightRGBEffect", true);
-    Setting r = create("R", "HighlightR", 255, 0, 255);
-    Setting g = create("G", "HighlightG", 255, 0, 255);
-    Setting b = create("B", "HighlightB", 255, 0, 255);
-    Setting a = create("A", "HighlightA", 100, 0, 255);
-    Setting l_a = create("Outline A", "HighlightLineA", 255, 0, 255);
+    final Setting mode = create("Mode", "HighlightMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
+    final Setting rgb = create("RGB Effect", "HighlightRGBEffect", true);
+    final Setting r = create("R", "HighlightR", 255, 0, 255);
+    final Setting g = create("G", "HighlightG", 255, 0, 255);
+    final Setting b = create("B", "HighlightB", 255, 0, 255);
+    final Setting a = create("A", "HighlightA", 100, 0, 255);
+    final Setting l_a = create("Outline A", "HighlightLineA", 255, 0, 255);
     int color_r;
     int color_g;
     int color_b;
     boolean outline = false;
     boolean solid = false;
-    public WurstplusHighlight() {
+
+    public
+    WurstplusHighlight() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
         this.name = "Block Highlight";
@@ -36,13 +39,15 @@ public class WurstplusHighlight extends Module {
     }
 
     @Override
-    public void disable() {
+    public
+    void disable() {
         outline = false;
         solid = false;
     }
 
     @Override
-    public void render(WurstplusEventRender event) {
+    public
+    void render(WurstplusEventRender event) {
         if (mc.player != null && mc.world != null) {
             float[] tick_color = {
                     (System.currentTimeMillis() % (360 * 32)) / (360f * 32)

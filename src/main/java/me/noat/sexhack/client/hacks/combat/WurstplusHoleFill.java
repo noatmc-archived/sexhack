@@ -18,16 +18,18 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.ArrayList;
 
-public class WurstplusHoleFill extends Module {
+public
+class WurstplusHoleFill extends Module {
 
-    private final ArrayList<BlockPos> holes = new ArrayList<>();
-    Setting hole_toggle = create("Toggle", "HoleFillToggle", true);
-    Setting hole_rotate = create("Rotate", "HoleFillRotate", true);
-    Setting hole_range = create("Range", "HoleFillRange", 4, 1, 6);
-    Setting swing = create("Swing", "HoleFillSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    final Setting hole_toggle = create("Toggle", "HoleFillToggle", true);
+    final Setting hole_rotate = create("Rotate", "HoleFillRotate", true);
+    final Setting hole_range = create("Range", "HoleFillRange", 4, 1, 6);
+    final Setting swing = create("Swing", "HoleFillSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    private final ArrayList <BlockPos> holes = new ArrayList <>();
 
 
-    public WurstplusHoleFill() {
+    public
+    WurstplusHoleFill() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Hole Fill";
@@ -36,7 +38,8 @@ public class WurstplusHoleFill extends Module {
     }
 
     @Override
-    public void enable() {
+    public
+    void enable() {
         if (find_in_hotbar() == -1) {
             this.set_disable();
         }
@@ -44,12 +47,14 @@ public class WurstplusHoleFill extends Module {
     }
 
     @Override
-    public void disable() {
+    public
+    void disable() {
         holes.clear();
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (find_in_hotbar() == -1) {
             this.disable();
@@ -69,7 +74,7 @@ public class WurstplusHoleFill extends Module {
 
         BlockPos pos_to_fill = null;
 
-        for (BlockPos pos : new ArrayList<>(holes)) {
+        for (BlockPos pos : new ArrayList <>(holes)) {
 
             if (pos == null) continue;
 
@@ -96,7 +101,8 @@ public class WurstplusHoleFill extends Module {
 
     }
 
-    public void find_new_holes() {
+    public
+    void find_new_holes() {
 
         holes.clear();
 
@@ -137,7 +143,8 @@ public class WurstplusHoleFill extends Module {
         }
     }
 
-    private int find_in_hotbar() {
+    private
+    int find_in_hotbar() {
         for (int i = 0; i < 9; ++i) {
             final ItemStack stack = mc.player.inventory.getStackInSlot(i);
             if (stack != ItemStack.EMPTY && stack.getItem() instanceof ItemBlock) {

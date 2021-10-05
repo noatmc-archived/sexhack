@@ -6,29 +6,34 @@ import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnableButton
 import net.minecraft.client.gui.GuiScreen;
 
 
-public class WurstplusHUD extends GuiScreen {
+public
+class WurstplusHUD extends GuiScreen {
     private final WurstplusFrame frame;
     public boolean on_gui;
     public boolean back;
     private int frame_height;
 
-    public WurstplusHUD() {
+    public
+    WurstplusHUD() {
         this.frame = new WurstplusFrame("Wurst+2 HUD", "WurstplusHUD", 40, 40);
         this.back = false;
         this.on_gui = false;
     }
 
-    public WurstplusFrame get_frame_hud() {
+    public
+    WurstplusFrame get_frame_hud() {
         return this.frame;
     }
 
     @Override
-    public boolean doesGuiPauseGame() {
+    public
+    boolean doesGuiPauseGame() {
         return false;
     }
 
     @Override
-    public void initGui() {
+    public
+    void initGui() {
         this.on_gui = true;
 
         WurstplusFrame.nc_r = SexHack.get_setting_manager().get_setting_with_tag("GUI", "ClickGUINameFrameR").getValue(1);
@@ -65,7 +70,8 @@ public class WurstplusHUD extends GuiScreen {
     }
 
     @Override
-    public void onGuiClosed() {
+    public
+    void onGuiClosed() {
         if (this.back) {
             SexHack.get_hack_manager().get_module_with_tag("GUI").set_active(true);
             SexHack.get_hack_manager().get_module_with_tag("HUD").set_active(false);
@@ -80,7 +86,8 @@ public class WurstplusHUD extends GuiScreen {
     }
 
     @Override
-    protected void mouseClicked(int mx, int my, int mouse) {
+    protected
+    void mouseClicked(int mx, int my, int mouse) {
         this.frame.mouse(mx, my, mouse);
 
         if (mouse == 0) {
@@ -94,14 +101,16 @@ public class WurstplusHUD extends GuiScreen {
     }
 
     @Override
-    protected void mouseReleased(int mx, int my, int state) {
+    protected
+    void mouseReleased(int mx, int my, int state) {
         this.frame.release(mx, my, state);
 
         this.frame.set_move(false);
     }
 
     @Override
-    public void drawScreen(int mx, int my, float tick) {
+    public
+    void drawScreen(int mx, int my, float tick) {
         this.drawDefaultBackground();
 
         this.frame.render(mx, my, 2);

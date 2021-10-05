@@ -4,11 +4,13 @@ import me.noat.sexhack.client.guiscreen.settings.Setting;
 import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
 
-public class WurstplusSprint extends Module {
+public
+class WurstplusSprint extends Module {
 
-    Setting rage = create("Rage", "SprintRage", true);
+    final Setting rage = create("Rage", "SprintRage", true);
 
-    public WurstplusSprint() {
+    public
+    WurstplusSprint() {
         super(WurstplusCategory.WURSTPLUS_MOVEMENT);
 
         this.name = "Sprint";
@@ -17,7 +19,8 @@ public class WurstplusSprint extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (mc.player == null) return;
 

@@ -9,18 +9,21 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 
-public class WurstplusEXPCount extends WurstplusPinnable {
+public
+class WurstplusEXPCount extends WurstplusPinnable {
     ChatFormatting dg = ChatFormatting.DARK_GRAY;
     ChatFormatting db = ChatFormatting.DARK_BLUE;
 
     int exp = 0;
 
-    public WurstplusEXPCount() {
+    public
+    WurstplusEXPCount() {
         super("EXP Count", "EXPCount", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
         int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
         int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);

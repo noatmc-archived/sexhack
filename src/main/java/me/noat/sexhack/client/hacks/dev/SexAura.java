@@ -32,17 +32,35 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class SexAura extends Module {
-    // settings
-    Setting logic = create("Logic", "aslogic", "BRPL", combobox("PLBR", "BRPL"));
-    Setting breakCrystal = create("Break", "asbreak", true);
-    Setting place = create("Place", "asplace", true);
-    Setting cancel = create("Cancel Crystal", "ascancel", true);
-    Setting multiThread = create("Multi Thread", "asMultiThread", true);
+public
+class SexAura extends Module {
     private static EntityPlayer a;
+    // settings
+    final Setting logic = create("Logic", "aslogic", "BRPL", combobox("PLBR", "BRPL"));
+    final Setting breakCrystal = create("Break", "asbreak", true);
+    final Setting place = create("Place", "asplace", true);
+    final Setting cancel = create("Cancel Crystal", "ascancel", true);
+    final Setting multiThread = create("Multi Thread", "asMultiThread", true);
+    final Setting breakRange = create("Break Range", "asbrange", 6.0f, 0.0f, 6.0f);
+    final Setting placeRange = create("Place Range", "asrange", 6.0f, 0.0f, 6.0f);
+    final Setting instant = create("Instant", "asinstant", true);
+    final Setting sequential = create("Sequential", "asSequential", true);
+    final Setting dead = create("Dead Place", "asDeadPlacec", true);
+    final Setting minDmg = create("Minimum Dmg", "asmindmg", 6, 0, 36);
+    final Setting selfDmg = create("Max Self Dmg", "asmaxselfdmg", 8, 0, 36);
+    final Setting ignoreSelfDmg = create("Ignore Self Damage", "asIgnoreSelfDmg", true);
+    final Setting silent = create("Silent Switch", "asSilent", true);
+    final Setting thirteen = create("1.13", "asThirteen", false);
+    final Setting debug = create("Debug", "asdebug", false);
+    final Setting nomultiplace = create("No Multiplace", "asmultiplace", true);
+    final Setting faceplaceHp = create("Faceplace HP", "asFaceplace", 8, 0, 36);
+    // FRIEND SUPPORT SETTINGS
+    final Setting friendSupport = create("Friend Support", "asFriendSupport", true);
+    final Setting friendMinHp = create("Min Friend Hp", "asMinFriendHp", 6, 0, 36);
+    final Setting friendDistance = create("Friend Distance", "asFriendDistance", 3.5, 0, 6);
     // cancel crystal system
     @EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.SendPacket> send_listener = new Listener <>(event -> {
         CPacketUseEntity packet;
         if (cancel.getValue(true)) {
             if (event.getStage() == 0 && event.getPacket() instanceof CPacketUseEntity && (packet = (CPacketUseEntity) event.getPacket()).getAction() == CPacketUseEntity.Action.ATTACK && packet.getEntityFromWorld(mc.world) instanceof EntityEnderCrystal) {
@@ -51,46 +69,8 @@ public class SexAura extends Module {
             }
         }
     });
-    Setting breakRange = create("Break Range", "asbrange", 6.0f, 0.0f, 6.0f);
-    Setting placeRange = create("Place Range", "asrange", 6.0f, 0.0f, 6.0f);
-    Setting instant = create("Instant", "asinstant", true);
-    Setting sequential = create("Sequential", "asSequential", true);
-    Setting dead = create("Dead Place", "asDeadPlacec", true);
-    Setting minDmg = create("Minimum Dmg", "asmindmg", 6, 0, 36);
-    Setting selfDmg = create("Max Self Dmg", "asmaxselfdmg", 8, 0, 36);
-    EntityEnderCrystal friendCrystal;
-    Setting ignoreSelfDmg = create("Ignore Self Damage", "asIgnoreSelfDmg", true);
-    Setting silent = create("Silent Switch", "asSilent", true);
-    Setting thirteen = create("1.13", "asThirteen", false);
-    Setting debug = create("Debug", "asdebug", false);
-    private double damage;
-    private BlockPos placePos;
-    private EntityPlayer e;
-    BlockPos crystalPt2;
-    Setting nomultiplace = create("No Multiplace", "asmultiplace", true);
-    Setting faceplaceHp = create("Faceplace HP", "asFaceplace", 8, 0, 36);
-    // FRIEND SUPPORT SETTINGS
-    Setting friendSupport = create("Friend Support", "asFriendSupport", true);
-    Setting friendMinHp = create("Min Friend Hp", "asMinFriendHp", 6, 0, 36);
-    Setting friendDistance = create("Friend Distance", "asFriendDistance", 3.5, 0, 6);
-
-    public SexAura() {
-        super(WurstplusCategory.WURSTPLUS_BETA);
-
-        this.name = "!Auto Sex";
-        this.tag = "SexAura";
-        this.description = "kills people (if ur good)";
-    }
-
-    // disable and reset all the places and crystals
-    @Override
-    public void disable() {
-        placePos = null;
-        e = null;
-    }
-
     @EventHandler
-    private final Listener<WurstplusEventPacket.ReceivePacket> receive = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.ReceivePacket> receive = new Listener <>(event -> {
         if (instant.getValue(true)) {
             SPacketSpawnObject packet2;
             if (event.getPacket() instanceof SPacketSpawnObject && (packet2 = (SPacketSpawnObject) event.getPacket()).getType() == 51) {
@@ -111,16 +91,68 @@ public class SexAura extends Module {
             }
         }
     });
+    EntityEnderCrystal friendCrystal;
+    BlockPos crystalPt2;
+    private double damage;
+    private BlockPos placePos;
+    private EntityPlayer e;
+
+    public
+    SexAura() {
+        super(WurstplusCategory.WURSTPLUS_BETA);
+
+        this.name = "!Auto Sex";
+        this.tag = "SexAura";
+        this.description = "kills people (if ur good)";
+    }
+
+    // pery bobo
+    public static
+    void placeCrystalOnBlock(BlockPos pos, EnumHand hand, boolean swing, boolean exactHand, boolean silent) {
+        RayTraceResult result = mc.world.rayTraceBlocks(new Vec3d(mc.player.posX, mc.player.posY + (double) mc.player.getEyeHeight(), mc.player.posZ), new Vec3d((double) pos.getX() + 0.5, (double) pos.getY() - 0.5, (double) pos.getZ() + 0.5));
+        EnumFacing facing = result == null || result.sideHit == null ? EnumFacing.UP : result.sideHit;
+        int old = mc.player.inventory.currentItem;
+        int crystal = WurstplusPlayerUtil.findHotbarBlock(ItemEndCrystal.class);
+        if (hand == EnumHand.MAIN_HAND && silent && crystal != -1 && crystal != mc.player.inventory.currentItem)
+            mc.player.connection.sendPacket(new CPacketHeldItemChange(crystal));
+        mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(pos, facing, hand, 0.0f, 0.0f, 0.0f));
+        if (hand == EnumHand.MAIN_HAND && silent && crystal != -1 && crystal != mc.player.inventory.currentItem)
+            mc.player.connection.sendPacket(new CPacketHeldItemChange(old));
+        if (swing)
+            mc.player.connection.sendPacket(new CPacketAnimation(exactHand ? hand : EnumHand.MAIN_HAND));
+    }
+
+    public static
+    EntityPlayer staticGetTarget() {
+        for (Entity entity : mc.world.getLoadedEntityList()) {
+            if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
+            if (entity == mc.player) continue; // check if the player was you
+            if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
+            if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
+            a = (EntityPlayer) entity; // set player as the target
+        }
+        return a;
+    }
+
+    // disable and reset all the places and crystals
+    @Override
+    public
+    void disable() {
+        placePos = null;
+        e = null;
+    }
 
     // make every update do Auto Crystal!
     @Override
-    public void update() {
+    public
+    void update() {
         doAutoCrystal();
     }
 
     // enable and reset all the places and crystals
     @Override
-    public void enable() {
+    public
+    void enable() {
         placePos = null;
         e = null;
         if (multiThread.getValue(true)) {
@@ -138,8 +170,9 @@ public class SexAura extends Module {
         }
     }
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public void onTickLowest(TickEvent.ClientTickEvent event) {
+    @SubscribeEvent (priority = EventPriority.LOWEST)
+    public
+    void onTickLowest(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
             if (multiThread.getValue(true)) {
                 Thread thread = new Thread(MultiThreader.getInstance(this));
@@ -157,22 +190,8 @@ public class SexAura extends Module {
         }
     }
 
-    // pery bobo
-    public static void placeCrystalOnBlock(BlockPos pos, EnumHand hand, boolean swing, boolean exactHand, boolean silent) {
-        RayTraceResult result = mc.world.rayTraceBlocks(new Vec3d(mc.player.posX, mc.player.posY + (double) mc.player.getEyeHeight(), mc.player.posZ), new Vec3d((double) pos.getX() + 0.5, (double) pos.getY() - 0.5, (double) pos.getZ() + 0.5));
-        EnumFacing facing = result == null || result.sideHit == null ? EnumFacing.UP : result.sideHit;
-        int old = mc.player.inventory.currentItem;
-        int crystal = WurstplusPlayerUtil.findHotbarBlock(ItemEndCrystal.class);
-        if (hand == EnumHand.MAIN_HAND && silent && crystal != -1 && crystal != mc.player.inventory.currentItem)
-            mc.player.connection.sendPacket(new CPacketHeldItemChange(crystal));
-        mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(pos, facing, hand, 0.0f, 0.0f, 0.0f));
-        if (hand == EnumHand.MAIN_HAND && silent && crystal != -1 && crystal != mc.player.inventory.currentItem)
-            mc.player.connection.sendPacket(new CPacketHeldItemChange(old));
-        if (swing)
-            mc.player.connection.sendPacket(new CPacketAnimation(exactHand ? hand : EnumHand.MAIN_HAND));
-    }
-
-    public void friendBreak() {
+    public
+    void friendBreak() {
         for (EntityPlayer entity : mc.world.playerEntities) {
             if (!WurstplusFriendUtil.isFriend(entity.getName())) continue;
             if (entity.getHealth() >= friendMinHp.getValue(1)) continue;
@@ -190,19 +209,9 @@ public class SexAura extends Module {
         }
     }
 
-    public static EntityPlayer staticGetTarget() {
-        for (Entity entity : mc.world.getLoadedEntityList()) {
-            if (!(entity instanceof EntityPlayer)) continue; // check if entity is player
-            if (entity == mc.player) continue; // check if the player was you
-            if (entity.getDistance(mc.player) >= 20) continue; // check if the player distance
-            if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
-            a = (EntityPlayer) entity; // set player as the target
-        }
-        return a;
-    }
-
     // get target for autocrystal (nearest entity tbh)
-    public EntityPlayer getTarget() {
+    public
+    EntityPlayer getTarget() {
         for (EntityPlayer entity : mc.world.playerEntities) {
             if (entity == mc.player) continue; // check if the player was you
             if (WurstplusFriendUtil.isFriend(entity.getName())) continue; // check if the player was friend
@@ -213,7 +222,8 @@ public class SexAura extends Module {
     }
 
     // autocrystal logic
-    public void doAutoCrystal() {
+    public
+    void doAutoCrystal() {
         if (logic.in("BRPL")) { // if logic was break place
             if (breakCrystal.getValue(true)) {
                 breakCrystal();
@@ -235,7 +245,8 @@ public class SexAura extends Module {
         }
     }
 
-    public BlockPos getPos() {
+    public
+    BlockPos getPos() {
         long bcs = System.currentTimeMillis();
         crystalPt2 = null;
         damage = 0;
@@ -270,11 +281,13 @@ public class SexAura extends Module {
         return crystalPt2;
     }
 
-    public boolean isOffhandCrystal() {
+    public
+    boolean isOffhandCrystal() {
         return (mc.player.getHeldItemOffhand().item == Items.END_CRYSTAL);
     }
 
-    public void placeCrystal() {
+    public
+    void placeCrystal() {
         placePos = getPos(); // get position from getPos() function
         if (placePos != null) {
             // place crystal with offhand :3
@@ -285,11 +298,13 @@ public class SexAura extends Module {
         }
     }
 
-    public boolean isFaceplacable(EntityPlayer e, int hp) {
+    public
+    boolean isFaceplacable(EntityPlayer e, int hp) {
         return e.getHealth() + e.getAbsorptionAmount() <= hp;
     }
 
-    public void breakCrystal() {
+    public
+    void breakCrystal() {
         // check for good crystals!
         EntityEnderCrystal crystals = mc.world.getLoadedEntityList().stream()
                 .filter(entity -> entity instanceof EntityEnderCrystal)
@@ -315,7 +330,8 @@ public class SexAura extends Module {
 
     // render, pasted from wurst+ 2's ac!
     @Override
-    public void render(WurstplusEventRender e) {
+    public
+    void render(WurstplusEventRender e) {
         BlockPos render_block = getPos();
         if (render_block != null) {
             RenderHelp.prepare("quads");
@@ -331,19 +347,23 @@ public class SexAura extends Module {
     }
 
     @Override
-    public String array_detail() {
+    public
+    String array_detail() {
         EntityPlayer a = getTarget();
         return (a != null) ? a.getName() + " | " + mc.player.getDistance(a) : "None";
     }
 
-    static class MultiThreader implements Runnable {
+    static
+    class MultiThreader implements Runnable {
         private static MultiThreader instance;
         private SexAura autoCrystal;
 
-        private MultiThreader() {
+        private
+        MultiThreader() {
         }
 
-        public static MultiThreader getInstance(SexAura autoCrystal) {
+        public static
+        MultiThreader getInstance(SexAura autoCrystal) {
             if (instance == null) {
                 instance = new MultiThreader();
                 MultiThreader.instance.autoCrystal = autoCrystal;
@@ -352,7 +372,8 @@ public class SexAura extends Module {
         }
 
         @Override
-        public void run() {
+        public
+        void run() {
             for (int i = 4; i > 0; i--) {
                 try {
                     this.autoCrystal.doAutoCrystal();

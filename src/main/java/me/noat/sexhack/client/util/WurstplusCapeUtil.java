@@ -7,15 +7,17 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;
 
-public class WurstplusCapeUtil {
+public
+class WurstplusCapeUtil {
 
-    final static ArrayList<String> final_uuid_list = get_uuids();
+    final static ArrayList <String> final_uuid_list = get_uuids();
 
-    public static ArrayList<String> get_uuids() {
+    public static
+    ArrayList <String> get_uuids() {
         try {
             URL url = new URL("https://raw.githubusercontent.com/noatmc/noat-wurstplus-two-capes/main/uuids.txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-            final ArrayList<String> uuid_list = new ArrayList<>();
+            final ArrayList <String> uuid_list = new ArrayList <>();
 
             String s;
 
@@ -29,7 +31,8 @@ public class WurstplusCapeUtil {
         }
     }
 
-    public static boolean is_uuid_valid(UUID uuid) {
+    public static
+    boolean is_uuid_valid(UUID uuid) {
         for (String u : Objects.requireNonNull(final_uuid_list)) {
             if (u.equals(uuid.toString())) {
                 return true;

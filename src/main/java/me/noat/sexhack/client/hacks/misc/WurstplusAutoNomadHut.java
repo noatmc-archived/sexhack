@@ -21,12 +21,13 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-public class WurstplusAutoNomadHut extends Module {
+public
+class WurstplusAutoNomadHut extends Module {
 
-    Setting rotate = create("Rotate", "NomadSmoth", true);
+    final Setting rotate = create("Rotate", "NomadSmoth", true);
+    final Setting tick_for_place = create("Blocks per tick", "NomadTickToPlace", 2, 1, 8);
+    final Vec3d[] targets = new Vec3d[]{new Vec3d(0.0, 0.0, 0.0), new Vec3d(1.0, 0.0, 0.0), new Vec3d(0.0, 0.0, 1.0), new Vec3d(-1.0, 0.0, 0.0), new Vec3d(0.0, 0.0, -1.0), new Vec3d(1.0, 0.0, 1.0), new Vec3d(1.0, 0.0, -1.0), new Vec3d(-1.0, 0.0, 1.0), new Vec3d(-1.0, 0.0, -1.0), new Vec3d(2.0, 0.0, 0.0), new Vec3d(2.0, 0.0, 1.0), new Vec3d(2.0, 0.0, -1.0), new Vec3d(-2.0, 0.0, 0.0), new Vec3d(-2.0, 0.0, 1.0), new Vec3d(-2.0, 0.0, -1.0), new Vec3d(0.0, 0.0, 2.0), new Vec3d(1.0, 0.0, 2.0), new Vec3d(-1.0, 0.0, 2.0), new Vec3d(0.0, 0.0, -2.0), new Vec3d(-1.0, 0.0, -2.0), new Vec3d(1.0, 0.0, -2.0), new Vec3d(2.0, 1.0, -1.0), new Vec3d(2.0, 1.0, 1.0), new Vec3d(-2.0, 1.0, 0.0), new Vec3d(-2.0, 1.0, 1.0), new Vec3d(-2.0, 1.0, -1.0), new Vec3d(0.0, 1.0, 2.0), new Vec3d(1.0, 1.0, 2.0), new Vec3d(-1.0, 1.0, 2.0), new Vec3d(0.0, 1.0, -2.0), new Vec3d(1.0, 1.0, -2.0), new Vec3d(-1.0, 1.0, -2.0), new Vec3d(2.0, 2.0, -1.0), new Vec3d(2.0, 2.0, 1.0), new Vec3d(-2.0, 2.0, 1.0), new Vec3d(-2.0, 2.0, -1.0), new Vec3d(1.0, 2.0, 2.0), new Vec3d(-1.0, 2.0, 2.0), new Vec3d(1.0, 2.0, -2.0), new Vec3d(-1.0, 2.0, -2.0), new Vec3d(2.0, 3.0, 0.0), new Vec3d(2.0, 3.0, -1.0), new Vec3d(2.0, 3.0, 1.0), new Vec3d(-2.0, 3.0, 0.0), new Vec3d(-2.0, 3.0, 1.0), new Vec3d(-2.0, 3.0, -1.0), new Vec3d(0.0, 3.0, 2.0), new Vec3d(1.0, 3.0, 2.0), new Vec3d(-1.0, 3.0, 2.0), new Vec3d(0.0, 3.0, -2.0), new Vec3d(1.0, 3.0, -2.0), new Vec3d(-1.0, 3.0, -2.0), new Vec3d(0.0, 4.0, 0.0), new Vec3d(1.0, 4.0, 0.0), new Vec3d(-1.0, 4.0, 0.0), new Vec3d(0.0, 4.0, 1.0), new Vec3d(0.0, 4.0, -1.0), new Vec3d(1.0, 4.0, 1.0), new Vec3d(-1.0, 4.0, 1.0), new Vec3d(-1.0, 4.0, -1.0), new Vec3d(1.0, 4.0, -1.0), new Vec3d(2.0, 4.0, 0.0), new Vec3d(2.0, 4.0, 1.0), new Vec3d(2.0, 4.0, -1.0)};
     Setting triggerable = create("Toggle", "NomadToggle", true);
-    Setting tick_for_place = create("Blocks per tick", "NomadTickToPlace", 2, 1, 8);
-    Vec3d[] targets = new Vec3d[]{new Vec3d(0.0, 0.0, 0.0), new Vec3d(1.0, 0.0, 0.0), new Vec3d(0.0, 0.0, 1.0), new Vec3d(-1.0, 0.0, 0.0), new Vec3d(0.0, 0.0, -1.0), new Vec3d(1.0, 0.0, 1.0), new Vec3d(1.0, 0.0, -1.0), new Vec3d(-1.0, 0.0, 1.0), new Vec3d(-1.0, 0.0, -1.0), new Vec3d(2.0, 0.0, 0.0), new Vec3d(2.0, 0.0, 1.0), new Vec3d(2.0, 0.0, -1.0), new Vec3d(-2.0, 0.0, 0.0), new Vec3d(-2.0, 0.0, 1.0), new Vec3d(-2.0, 0.0, -1.0), new Vec3d(0.0, 0.0, 2.0), new Vec3d(1.0, 0.0, 2.0), new Vec3d(-1.0, 0.0, 2.0), new Vec3d(0.0, 0.0, -2.0), new Vec3d(-1.0, 0.0, -2.0), new Vec3d(1.0, 0.0, -2.0), new Vec3d(2.0, 1.0, -1.0), new Vec3d(2.0, 1.0, 1.0), new Vec3d(-2.0, 1.0, 0.0), new Vec3d(-2.0, 1.0, 1.0), new Vec3d(-2.0, 1.0, -1.0), new Vec3d(0.0, 1.0, 2.0), new Vec3d(1.0, 1.0, 2.0), new Vec3d(-1.0, 1.0, 2.0), new Vec3d(0.0, 1.0, -2.0), new Vec3d(1.0, 1.0, -2.0), new Vec3d(-1.0, 1.0, -2.0), new Vec3d(2.0, 2.0, -1.0), new Vec3d(2.0, 2.0, 1.0), new Vec3d(-2.0, 2.0, 1.0), new Vec3d(-2.0, 2.0, -1.0), new Vec3d(1.0, 2.0, 2.0), new Vec3d(-1.0, 2.0, 2.0), new Vec3d(1.0, 2.0, -2.0), new Vec3d(-1.0, 2.0, -2.0), new Vec3d(2.0, 3.0, 0.0), new Vec3d(2.0, 3.0, -1.0), new Vec3d(2.0, 3.0, 1.0), new Vec3d(-2.0, 3.0, 0.0), new Vec3d(-2.0, 3.0, 1.0), new Vec3d(-2.0, 3.0, -1.0), new Vec3d(0.0, 3.0, 2.0), new Vec3d(1.0, 3.0, 2.0), new Vec3d(-1.0, 3.0, 2.0), new Vec3d(0.0, 3.0, -2.0), new Vec3d(1.0, 3.0, -2.0), new Vec3d(-1.0, 3.0, -2.0), new Vec3d(0.0, 4.0, 0.0), new Vec3d(1.0, 4.0, 0.0), new Vec3d(-1.0, 4.0, 0.0), new Vec3d(0.0, 4.0, 1.0), new Vec3d(0.0, 4.0, -1.0), new Vec3d(1.0, 4.0, 1.0), new Vec3d(-1.0, 4.0, 1.0), new Vec3d(-1.0, 4.0, -1.0), new Vec3d(1.0, 4.0, -1.0), new Vec3d(2.0, 4.0, 0.0), new Vec3d(2.0, 4.0, 1.0), new Vec3d(2.0, 4.0, -1.0)};
     int new_slot = 0;
     int old_slot = 0;
     int y_level = 0;
@@ -35,7 +36,8 @@ public class WurstplusAutoNomadHut extends Module {
     int offset_step = 0;
     boolean sneak = false;
 
-    public WurstplusAutoNomadHut() {
+    public
+    WurstplusAutoNomadHut() {
 
         super(WurstplusCategory.WURSTPLUS_MISC);
 
@@ -45,7 +47,8 @@ public class WurstplusAutoNomadHut extends Module {
     }
 
     @Override
-    public void enable() {
+    public
+    void enable() {
 
         if (mc.player != null) {
 
@@ -64,7 +67,8 @@ public class WurstplusAutoNomadHut extends Module {
     }
 
     @Override
-    public void disable() {
+    public
+    void disable() {
 
         if (mc.player != null) {
 
@@ -85,7 +89,8 @@ public class WurstplusAutoNomadHut extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (mc.player != null) {
 
@@ -126,13 +131,14 @@ public class WurstplusAutoNomadHut extends Module {
         }
     }
 
-    private boolean place_blocks(BlockPos pos) {
+    private
+    boolean place_blocks(BlockPos pos) {
 
         if (!mc.world.getBlockState(pos).getMaterial().isReplaceable()) {
             return false;
         }
 
-        if (!WurstplusBlockInteractHelper.checkForNeighbours(pos)) {
+        if (WurstplusBlockInteractHelper.checkForNeighbours(pos)) {
             return false;
         }
 
@@ -142,11 +148,11 @@ public class WurstplusAutoNomadHut extends Module {
 
             EnumFacing side2 = side.getOpposite();
 
-            if (!WurstplusBlockInteractHelper.canBeClicked(neighbor)) continue;
+            if (WurstplusBlockInteractHelper.canBeClicked(neighbor)) continue;
 
             mc.player.inventory.currentItem = new_slot;
 
-            if (WurstplusBlockInteractHelper.blackList.contains( mc.world.getBlockState(neighbor).getBlock() )) {
+            if (WurstplusBlockInteractHelper.blackList.contains(mc.world.getBlockState(neighbor).getBlock())) {
                 mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
                 this.sneak = true;
             }
@@ -167,7 +173,8 @@ public class WurstplusAutoNomadHut extends Module {
 
     }
 
-    private int find_in_hotbar() {
+    private
+    int find_in_hotbar() {
 
         for (int i = 0; i < 9; ++i) {
 

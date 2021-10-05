@@ -11,22 +11,26 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 
-public class WurstplusBreakUtil {
+public
+class WurstplusBreakUtil {
 
     private final static Minecraft mc = Minecraft.getMinecraft();
 
     private static BlockPos current_block = null;
     private static boolean is_mining = false;
 
-    public static void set_current_block(BlockPos pos) {
+    public static
+    void set_current_block(BlockPos pos) {
         current_block = pos;
     }
 
-    private static boolean is_done(IBlockState state) {
+    private static
+    boolean is_done(IBlockState state) {
         return state.getBlock() == Blocks.BEDROCK || state.getBlock() == Blocks.AIR || state.getBlock() instanceof BlockLiquid;
     }
 
-    public static boolean update(float range, boolean ray_trace) {
+    public static
+    boolean update(float range, boolean ray_trace) {
         if (current_block == null) return false;
 
         IBlockState state = mc.world.getBlockState(current_block);

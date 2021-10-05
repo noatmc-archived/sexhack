@@ -23,20 +23,22 @@ import net.minecraft.util.math.BlockPos;
 import java.util.stream.Collectors;
 
 
-public class WurstplusKillAura extends Module {
+public
+class WurstplusKillAura extends Module {
 
-    Setting mode = create("Mode", "KillAuraMode", "A32k", combobox("A32k", "Normal"));
-    Setting player = create("Player", "KillAuraPlayer", true);
-    Setting hostile = create("Hostile", "KillAuraHostile", false);
-    Setting sword = create("Sword", "KillAuraSword", true);
-    Setting sync_tps = create("Sync TPS", "KillAuraSyncTps", true);
-    Setting range = create("Range", "KillAuraRange", 5.0, 0.5, 6.0);
-    Setting delay = create("Delay", "KillAuraDelay", 2, 0, 10);
+    final Setting mode = create("Mode", "KillAuraMode", "A32k", combobox("A32k", "Normal"));
+    final Setting player = create("Player", "KillAuraPlayer", true);
+    final Setting hostile = create("Hostile", "KillAuraHostile", false);
+    final Setting sword = create("Sword", "KillAuraSword", true);
+    final Setting sync_tps = create("Sync TPS", "KillAuraSyncTps", true);
+    final Setting range = create("Range", "KillAuraRange", 5.0, 0.5, 6.0);
+    final Setting delay = create("Delay", "KillAuraDelay", 2, 0, 10);
+    final EnumHand actual_hand = EnumHand.MAIN_HAND;
     boolean start_verify = true;
-    EnumHand actual_hand = EnumHand.MAIN_HAND;
     double tick = 0;
 
-    public WurstplusKillAura() {
+    public
+    WurstplusKillAura() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Kill Aura";
@@ -45,12 +47,14 @@ public class WurstplusKillAura extends Module {
     }
 
     @Override
-    protected void enable() {
+    protected
+    void enable() {
         tick = 0;
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
         if (mc.player != null && mc.world != null) {
 
             tick++;
@@ -100,7 +104,8 @@ public class WurstplusKillAura extends Module {
         }
     }
 
-    public void attack_entity(Entity entity) {
+    public
+    void attack_entity(Entity entity) {
 
         if (mode.in("A32k")) {
 
@@ -139,7 +144,8 @@ public class WurstplusKillAura extends Module {
     }
 
     // For find a entity.
-    public Entity find_entity() {
+    public
+    Entity find_entity() {
         // Create a request.
         Entity entity_requested = null;
 
@@ -162,7 +168,8 @@ public class WurstplusKillAura extends Module {
     }
 
     // Compatible or no.
-    public boolean is_compatible(Entity entity) {
+    public
+    boolean is_compatible(Entity entity) {
         // Instend entity with some type entity to continue or no.
         if (player.getValue(true) && entity instanceof EntityPlayer) {
             if (entity != mc.player && !(entity.getName().equals(mc.player.getName())) /* && WurstplusFriendManager.is_friend(entity) == false */) {
@@ -188,7 +195,8 @@ public class WurstplusKillAura extends Module {
         return false;
     }
 
-    private boolean checkSharpness(ItemStack stack) {
+    private
+    boolean checkSharpness(ItemStack stack) {
 
         if (stack.getTagCompound() == null) {
             return false;

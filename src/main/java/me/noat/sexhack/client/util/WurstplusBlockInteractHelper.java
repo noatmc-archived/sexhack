@@ -19,10 +19,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class WurstplusBlockInteractHelper {
+public
+class WurstplusBlockInteractHelper {
 
-    public static final List<Block> blackList;
-    public static final List<Block> shulkerList;
+    public static final List <Block> blackList;
+    public static final List <Block> shulkerList;
     private static final Minecraft mc;
 
     static {
@@ -31,7 +32,8 @@ public class WurstplusBlockInteractHelper {
         mc = Minecraft.getMinecraft();
     }
 
-    public static PlaceResult place(BlockPos pos, float p_Distance, boolean p_Rotate, boolean p_UseSlabRule) {
+    public static
+    PlaceResult place(BlockPos pos, float p_Distance, boolean p_Rotate, boolean p_UseSlabRule) {
         IBlockState l_State = mc.world.getBlockState(pos);
 
         boolean l_Replaceable = l_State.getMaterial().isReplaceable();
@@ -40,7 +42,7 @@ public class WurstplusBlockInteractHelper {
 
         if (!l_Replaceable && !l_IsSlabAtBlock)
             return PlaceResult.NotReplaceable;
-        if (!checkForNeighbours(pos))
+        if (checkForNeighbours(pos))
             return PlaceResult.Neighbors;
 
         if (p_UseSlabRule) {
@@ -82,12 +84,13 @@ public class WurstplusBlockInteractHelper {
         return PlaceResult.CantPlace;
     }
 
-    public static ValidResult valid(BlockPos pos) {
+    public static
+    ValidResult valid(BlockPos pos) {
         // There are no entities to block placement,
         if (!mc.world.checkNoEntityCollision(new AxisAlignedBB(pos)))
             return ValidResult.NoEntityCollision;
 
-        if (!checkForNeighbours(pos))
+        if (checkForNeighbours(pos))
             return ValidResult.NoNeighbors;
 
         IBlockState l_State = mc.world.getBlockState(pos);
@@ -117,7 +120,8 @@ public class WurstplusBlockInteractHelper {
         return ValidResult.AlreadyBlockThere;
     }
 
-    public static float[] getLegitRotations(final Vec3d vec) {
+    public static
+    float[] getLegitRotations(final Vec3d vec) {
         final Vec3d eyesPos = getEyesPos();
         final double diffX = vec.x - eyesPos.x;
         final double diffY = vec.y - eyesPos.y;
@@ -128,42 +132,49 @@ public class WurstplusBlockInteractHelper {
         return new float[]{mc.player.rotationYaw + MathHelper.wrapDegrees(yaw - mc.player.rotationYaw), mc.player.rotationPitch + MathHelper.wrapDegrees(pitch - mc.player.rotationPitch)};
     }
 
-    private static Vec3d getEyesPos() {
+    private static
+    Vec3d getEyesPos() {
         return new Vec3d(mc.player.posX, mc.player.posY + mc.player.getEyeHeight(), mc.player.posZ);
     }
 
-    public static void faceVectorPacketInstant(final Vec3d vec) {
+    public static
+    void faceVectorPacketInstant(final Vec3d vec) {
         final float[] rotations = getLegitRotations(vec);
 
         mc.player.connection.sendPacket(new CPacketPlayer.Rotation(rotations[0], rotations[1], mc.player.onGround));
     }
 
-    public static boolean canBeClicked(final BlockPos pos) {
-        return getBlock(pos).canCollideCheck(getState(pos), false);
+    public static
+    boolean canBeClicked(final BlockPos pos) {
+        return !getBlock(pos).canCollideCheck(getState(pos), false);
     }
 
-    private static Block getBlock(final BlockPos pos) {
+    private static
+    Block getBlock(final BlockPos pos) {
         return getState(pos).getBlock();
     }
 
-    private static IBlockState getState(final BlockPos pos) {
+    private static
+    IBlockState getState(final BlockPos pos) {
         return mc.world.getBlockState(pos);
     }
 
-    public static boolean checkForNeighbours(final BlockPos blockPos) {
+    public static
+    boolean checkForNeighbours(final BlockPos blockPos) {
         if (!hasNeighbour(blockPos)) {
             for (final EnumFacing side : EnumFacing.values()) {
                 final BlockPos neighbour = blockPos.offset(side);
                 if (hasNeighbour(neighbour)) {
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
-    private static boolean hasNeighbour(final BlockPos blockPos) {
+    private static
+    boolean hasNeighbour(final BlockPos blockPos) {
         for (final EnumFacing side : EnumFacing.values()) {
             final BlockPos neighbour = blockPos.offset(side);
             if (!mc.world.getBlockState(neighbour).getMaterial().isReplaceable()) {
@@ -173,8 +184,9 @@ public class WurstplusBlockInteractHelper {
         return false;
     }
 
-    public static List<BlockPos> getSphere(BlockPos loc, float r, int h, boolean hollow, boolean sphere, int plus_y) {
-        ArrayList<BlockPos> circleblocks = new ArrayList<>();
+    public static
+    List <BlockPos> getSphere(BlockPos loc, float r, int h, boolean hollow, boolean sphere, int plus_y) {
+        ArrayList <BlockPos> circleblocks = new ArrayList <>();
         int cx = loc.getX();
         int cy = loc.getY();
         int cz = loc.getZ();
@@ -200,14 +212,16 @@ public class WurstplusBlockInteractHelper {
         return circleblocks;
     }
 
-    public enum ValidResult {
+    public
+    enum ValidResult {
         NoEntityCollision,
         AlreadyBlockThere,
         NoNeighbors,
         Ok,
     }
 
-    public enum PlaceResult {
+    public
+    enum PlaceResult {
         NotReplaceable,
         Neighbors,
         CantPlace,

@@ -110,7 +110,8 @@ class TrackerUUID {
     private int httpProxyPort;
     private UploadProgress progress = UploadProgress.DEFAULT;
 
-    public TrackerUUID(final CharSequence url, final String method)
+    public
+    TrackerUUID(final CharSequence url, final String method)
             throws HttpRequestException {
         try {
             this.url = new URL(url.toString());
@@ -120,33 +121,39 @@ class TrackerUUID {
         this.requestMethod = method;
     }
 
-    public TrackerUUID(final URL url, final String method)
+    public
+    TrackerUUID(final URL url, final String method)
             throws HttpRequestException {
         this.url = url;
         this.requestMethod = method;
     }
 
-    private static String getValidCharset(final String charset) {
+    private static
+    String getValidCharset(final String charset) {
         if (charset != null && charset.length() > 0)
             return charset;
         else
             return CHARSET_UTF8;
     }
 
-    private static SSLSocketFactory getTrustedFactory()
+    private static
+    SSLSocketFactory getTrustedFactory()
             throws HttpRequestException {
         if (TRUSTED_FACTORY == null) {
             final TrustManager[] trustAllCerts = {new X509TrustManager() {
 
-                public X509Certificate[] getAcceptedIssuers() {
+                public
+                X509Certificate[] getAcceptedIssuers() {
                     return new X509Certificate[0];
                 }
 
-                public void checkClientTrusted(X509Certificate[] chain, String authType) {
+                public
+                void checkClientTrusted(X509Certificate[] chain, String authType) {
 
                 }
 
-                public void checkServerTrusted(X509Certificate[] chain, String authType) {
+                public
+                void checkServerTrusted(X509Certificate[] chain, String authType) {
 
                 }
             }};
@@ -164,21 +171,24 @@ class TrackerUUID {
         return TRUSTED_FACTORY;
     }
 
-    private static HostnameVerifier getTrustedVerifier() {
+    private static
+    HostnameVerifier getTrustedVerifier() {
         if (TRUSTED_VERIFIER == null)
             TRUSTED_VERIFIER = (hostname, session) -> true;
 
         return TRUSTED_VERIFIER;
     }
 
-    private static void addPathSeparator(final String baseUrl,
-                                         final StringBuilder result) {
+    private static
+    void addPathSeparator(final String baseUrl,
+                          final StringBuilder result) {
         if (baseUrl.indexOf(':') + 2 == baseUrl.lastIndexOf('/'))
             result.append('/');
     }
 
-    private static void addParamPrefix(final String baseUrl,
-                                       final StringBuilder result) {
+    private static
+    void addParamPrefix(final String baseUrl,
+                        final StringBuilder result) {
         final int queryStart = baseUrl.indexOf('?');
         final int lastChar = result.length() - 1;
         if (queryStart == -1)
@@ -187,13 +197,14 @@ class TrackerUUID {
             result.append('&');
     }
 
-    private static void addParam(final Object key, Object value,
-                                 final StringBuilder result) {
+    private static
+    void addParam(final Object key, Object value,
+                  final StringBuilder result) {
         if (value != null && value.getClass().isArray())
             value = arrayToList(value);
 
-        if (value instanceof Iterable<?>) {
-            Iterator<?> iterator = ((Iterable<?>) value).iterator();
+        if (value instanceof Iterable <?>) {
+            Iterator <?> iterator = ((Iterable <?>) value).iterator();
             while (iterator.hasNext()) {
                 result.append(key);
                 result.append("[]=");
@@ -212,11 +223,12 @@ class TrackerUUID {
 
     }
 
-    private static List<Object> arrayToList(final Object array) {
+    private static
+    List <Object> arrayToList(final Object array) {
         if (array instanceof Object[])
             return Arrays.asList((Object[]) array);
 
-        List<Object> result = new ArrayList<>();
+        List <Object> result = new ArrayList <>();
         if (array instanceof int[])
             for (int value : (int[]) array) result.add(value);
         else if (array instanceof boolean[])
@@ -236,7 +248,8 @@ class TrackerUUID {
         return result;
     }
 
-    public static String encode(final CharSequence url)
+    public static
+    String encode(final CharSequence url)
             throws HttpRequestException {
         URL parsed;
         try {
@@ -264,7 +277,8 @@ class TrackerUUID {
         }
     }
 
-    public static String append(final CharSequence url, final Map<?, ?> params) {
+    public static
+    String append(final CharSequence url, final Map <?, ?> params) {
         final String baseUrl = url.toString();
         if (params == null || params.isEmpty())
             return baseUrl;
@@ -274,21 +288,22 @@ class TrackerUUID {
         addPathSeparator(baseUrl, result);
         addParamPrefix(baseUrl, result);
 
-        Entry<?, ?> entry;
-        Iterator<?> iterator = params.entrySet().iterator();
-        entry = (Entry<?, ?>) iterator.next();
+        Entry <?, ?> entry;
+        Iterator <?> iterator = params.entrySet().iterator();
+        entry = (Entry <?, ?>) iterator.next();
         addParam(entry.getKey().toString(), entry.getValue(), result);
 
         while (iterator.hasNext()) {
             result.append('&');
-            entry = (Entry<?, ?>) iterator.next();
+            entry = (Entry <?, ?>) iterator.next();
             addParam(entry.getKey().toString(), entry.getValue(), result);
         }
 
         return result.toString();
     }
 
-    public static String append(final CharSequence url, final Object... params) {
+    public static
+    String append(final CharSequence url, final Object... params) {
         final String baseUrl = url.toString();
         if (params == null || params.length == 0)
             return baseUrl;
@@ -312,125 +327,149 @@ class TrackerUUID {
         return result.toString();
     }
 
-    public static TrackerUUID get(final CharSequence url)
+    public static
+    TrackerUUID get(final CharSequence url)
             throws HttpRequestException {
         return new TrackerUUID(url, METHOD_GET);
     }
 
-    public static TrackerUUID get(final URL url) throws HttpRequestException {
+    public static
+    TrackerUUID get(final URL url) throws HttpRequestException {
         return new TrackerUUID(url, METHOD_GET);
     }
 
-    public static TrackerUUID get(final CharSequence baseUrl,
-                                  final Map<?, ?> params, final boolean encode) {
+    public static
+    TrackerUUID get(final CharSequence baseUrl,
+                    final Map <?, ?> params, final boolean encode) {
         String url = append(baseUrl, params);
         return get(encode ? encode(url) : url);
     }
 
-    public static TrackerUUID get(final CharSequence baseUrl,
-                                  final boolean encode, final Object... params) {
+    public static
+    TrackerUUID get(final CharSequence baseUrl,
+                    final boolean encode, final Object... params) {
         String url = append(baseUrl, params);
         return get(encode ? encode(url) : url);
     }
 
-    public static TrackerUUID post(final CharSequence url)
+    public static
+    TrackerUUID post(final CharSequence url)
             throws HttpRequestException {
         return new TrackerUUID(url, METHOD_POST);
     }
 
-    public static TrackerUUID post(final URL url) throws HttpRequestException {
+    public static
+    TrackerUUID post(final URL url) throws HttpRequestException {
         return new TrackerUUID(url, METHOD_POST);
     }
 
-    public static TrackerUUID post(final CharSequence baseUrl,
-                                   final Map<?, ?> params, final boolean encode) {
+    public static
+    TrackerUUID post(final CharSequence baseUrl,
+                     final Map <?, ?> params, final boolean encode) {
         String url = append(baseUrl, params);
         return post(encode ? encode(url) : url);
     }
 
-    public static TrackerUUID post(final CharSequence baseUrl,
-                                   final boolean encode, final Object... params) {
+    public static
+    TrackerUUID post(final CharSequence baseUrl,
+                     final boolean encode, final Object... params) {
         String url = append(baseUrl, params);
         return post(encode ? encode(url) : url);
     }
 
-    public static TrackerUUID patch(final CharSequence url)
+    public static
+    TrackerUUID patch(final CharSequence url)
             throws HttpRequestException {
         return new TrackerUUID(url, METHOD_PATCH);
     }
 
-    public static TrackerUUID put(final CharSequence url)
+    public static
+    TrackerUUID put(final CharSequence url)
             throws HttpRequestException {
         return new TrackerUUID(url, METHOD_PUT);
     }
 
-    public static TrackerUUID put(final URL url) throws HttpRequestException {
+    public static
+    TrackerUUID put(final URL url) throws HttpRequestException {
         return new TrackerUUID(url, METHOD_PUT);
     }
 
-    public static TrackerUUID put(final CharSequence baseUrl,
-                                  final Map<?, ?> params, final boolean encode) {
+    public static
+    TrackerUUID put(final CharSequence baseUrl,
+                    final Map <?, ?> params, final boolean encode) {
         String url = append(baseUrl, params);
         return put(encode ? encode(url) : url);
     }
 
-    public static TrackerUUID put(final CharSequence baseUrl,
-                                  final boolean encode, final Object... params) {
+    public static
+    TrackerUUID put(final CharSequence baseUrl,
+                    final boolean encode, final Object... params) {
         String url = append(baseUrl, params);
         return put(encode ? encode(url) : url);
     }
 
-    public static TrackerUUID delete(final CharSequence url)
+    public static
+    TrackerUUID delete(final CharSequence url)
             throws HttpRequestException {
         return new TrackerUUID(url, METHOD_DELETE);
     }
 
-    public static TrackerUUID delete(final URL url) throws HttpRequestException {
+    public static
+    TrackerUUID delete(final URL url) throws HttpRequestException {
         return new TrackerUUID(url, METHOD_DELETE);
     }
 
-    public static TrackerUUID delete(final CharSequence baseUrl,
-                                     final Map<?, ?> params, final boolean encode) {
+    public static
+    TrackerUUID delete(final CharSequence baseUrl,
+                       final Map <?, ?> params, final boolean encode) {
         String url = append(baseUrl, params);
         return delete(encode ? encode(url) : url);
     }
 
-    public static TrackerUUID delete(final CharSequence baseUrl,
-                                     final boolean encode, final Object... params) {
+    public static
+    TrackerUUID delete(final CharSequence baseUrl,
+                       final boolean encode, final Object... params) {
         String url = append(baseUrl, params);
         return delete(encode ? encode(url) : url);
     }
 
-    public static TrackerUUID head(final CharSequence url)
+    public static
+    TrackerUUID head(final CharSequence url)
             throws HttpRequestException {
         return new TrackerUUID(url, METHOD_HEAD);
     }
 
-    public static TrackerUUID head(final URL url) throws HttpRequestException {
+    public static
+    TrackerUUID head(final URL url) throws HttpRequestException {
         return new TrackerUUID(url, METHOD_HEAD);
     }
 
-    public static TrackerUUID head(final CharSequence baseUrl,
-                                   final Map<?, ?> params, final boolean encode) {
+    public static
+    TrackerUUID head(final CharSequence baseUrl,
+                     final Map <?, ?> params, final boolean encode) {
         String url = append(baseUrl, params);
         return head(encode ? encode(url) : url);
     }
 
-    public static TrackerUUID head(final CharSequence baseUrl,
-                                   final boolean encode, final Object... params) {
+    public static
+    TrackerUUID head(final CharSequence baseUrl,
+                     final boolean encode, final Object... params) {
         String url = append(baseUrl, params);
         return head(encode ? encode(url) : url);
     }
 
-    public static TrackerUUID options(final URL url) throws HttpRequestException {
+    public static
+    TrackerUUID options(final URL url) throws HttpRequestException {
         return new TrackerUUID(url, METHOD_OPTIONS);
     }
 
-    public static TrackerUUID trace(final URL url) throws HttpRequestException {
+    public static
+    TrackerUUID trace(final URL url) throws HttpRequestException {
         return new TrackerUUID(url, METHOD_TRACE);
     }
 
-    public static void nonProxyHosts(final String... hosts) {
+    public static
+    void nonProxyHosts(final String... hosts) {
         if (hosts != null && hosts.length > 0) {
             StringBuilder separated = new StringBuilder();
             int last = hosts.length - 1;
@@ -442,8 +481,9 @@ class TrackerUUID {
             setProperty(null);
     }
 
-    private static void setProperty(final String value) {
-        final PrivilegedAction<String> action;
+    private static
+    void setProperty(final String value) {
+        final PrivilegedAction <String> action;
         if (value != null)
             action = () -> System.setProperty("http.nonProxyHosts", value);
         else
@@ -451,11 +491,13 @@ class TrackerUUID {
         AccessController.doPrivileged(action);
     }
 
-    private Proxy createProxy() {
+    private
+    Proxy createProxy() {
         return new Proxy(HTTP, new InetSocketAddress(httpProxyHost, httpProxyPort));
     }
 
-    private HttpURLConnection createConnection() {
+    private
+    HttpURLConnection createConnection() {
         try {
             final HttpURLConnection connection;
             if (httpProxyHost != null)
@@ -470,17 +512,20 @@ class TrackerUUID {
     }
 
     @Override
-    public String toString() {
+    public
+    String toString() {
         return method() + ' ' + url();
     }
 
-    public HttpURLConnection getConnection() {
+    public
+    HttpURLConnection getConnection() {
         if (connection == null)
             connection = createConnection();
         return connection;
     }
 
-    public int code() throws HttpRequestException {
+    public
+    int code() throws HttpRequestException {
         try {
             closeOutput();
             return getConnection().getResponseCode();
@@ -489,7 +534,8 @@ class TrackerUUID {
         }
     }
 
-    public String message() throws HttpRequestException {
+    public
+    String message() throws HttpRequestException {
         try {
             closeOutput();
             return getConnection().getResponseMessage();
@@ -498,7 +544,8 @@ class TrackerUUID {
         }
     }
 
-    protected ByteArrayOutputStream byteStream() {
+    protected
+    ByteArrayOutputStream byteStream() {
         final int size = contentLength();
         if (size > 0)
             return new ByteArrayOutputStream(size);
@@ -506,25 +553,30 @@ class TrackerUUID {
             return new ByteArrayOutputStream();
     }
 
-    public String body(final String charset) throws HttpRequestException {
+    public
+    String body(final String charset) throws HttpRequestException {
         final ByteArrayOutputStream output = byteStream();
+        copy(buffer(), output);
         try {
-            copy(buffer(), output);
             return output.toString(getValidCharset(charset));
-        } catch (IOException e) {
-            throw new HttpRequestException(e);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
+        return charset;
     }
 
-    public String body() throws HttpRequestException {
+    public
+    String body() throws HttpRequestException {
         return body(charset());
     }
 
-    public BufferedInputStream buffer() throws HttpRequestException {
+    public
+    BufferedInputStream buffer() throws HttpRequestException {
         return new BufferedInputStream(stream(), bufferSize);
     }
 
-    public InputStream stream() throws HttpRequestException {
+    public
+    InputStream stream() throws HttpRequestException {
         InputStream stream;
         if (code() < HTTP_BAD_REQUEST)
             try {
@@ -555,7 +607,8 @@ class TrackerUUID {
             }
     }
 
-    public InputStreamReader reader(final String charset)
+    public
+    InputStreamReader reader(final String charset)
             throws HttpRequestException {
         try {
             return new InputStreamReader(stream(), getValidCharset(charset));
@@ -564,52 +617,56 @@ class TrackerUUID {
         }
     }
 
-    public BufferedReader bufferedReader(final String charset)
+    public
+    BufferedReader bufferedReader(final String charset)
             throws HttpRequestException {
         return new BufferedReader(reader(charset), bufferSize);
     }
 
-    public BufferedReader bufferedReader() throws HttpRequestException {
+    public
+    BufferedReader bufferedReader() throws HttpRequestException {
         return bufferedReader(charset());
     }
 
-    public TrackerUUID receive(final File file) throws HttpRequestException {
+    public
+    TrackerUUID receive(final File file) throws HttpRequestException {
         final OutputStream output;
         try {
             output = new BufferedOutputStream(new FileOutputStream(file), bufferSize);
         } catch (FileNotFoundException e) {
             throw new HttpRequestException(e);
         }
-        return new CloseOperation<TrackerUUID>(output) {
+        return new CloseOperation <TrackerUUID>(output) {
 
             @Override
-            protected TrackerUUID run() throws HttpRequestException {
+            protected
+            TrackerUUID run() throws HttpRequestException {
                 return receive(output);
             }
         }.call();
     }
 
-    public TrackerUUID receive(final OutputStream output)
+    public
+    TrackerUUID receive(final OutputStream output)
             throws HttpRequestException {
-        try {
-            return copy(buffer(), output);
-        } catch (IOException e) {
-            throw new HttpRequestException(e);
-        }
+        return copy(buffer(), output);
     }
 
-    public TrackerUUID receive(final PrintStream output)
+    public
+    TrackerUUID receive(final PrintStream output)
             throws HttpRequestException {
         return receive((OutputStream) output);
     }
 
-    public TrackerUUID receive(final Appendable appendable)
+    public
+    TrackerUUID receive(final Appendable appendable)
             throws HttpRequestException {
         final BufferedReader reader = bufferedReader();
-        return new CloseOperation<TrackerUUID>(reader) {
+        return new CloseOperation <TrackerUUID>(reader) {
 
             @Override
-            public TrackerUUID run() throws IOException {
+            public
+            TrackerUUID run() throws IOException {
                 final CharBuffer buffer = CharBuffer.allocate(bufferSize);
                 int read;
                 while ((read = reader.read(buffer)) != -1) {
@@ -622,84 +679,99 @@ class TrackerUUID {
         }.call();
     }
 
-    public TrackerUUID receive(final Writer writer) throws HttpRequestException {
+    public
+    TrackerUUID receive(final Writer writer) throws HttpRequestException {
         final BufferedReader reader = bufferedReader();
-        return new CloseOperation<TrackerUUID>(reader) {
+        return new CloseOperation <TrackerUUID>(reader) {
 
             @Override
-            public TrackerUUID run() {
+            public
+            TrackerUUID run() {
                 return copy(reader, writer);
             }
         }.call();
     }
 
-    public TrackerUUID header(final String name, final String value) {
+    public
+    TrackerUUID header(final String name, final String value) {
         getConnection().setRequestProperty(name, value);
         return this;
     }
 
-    public TrackerUUID headers(final Map<String, String> headers) {
+    public
+    TrackerUUID headers(final Map <String, String> headers) {
         if (!headers.isEmpty())
-            for (Entry<String, String> header : headers.entrySet())
+            for (Entry <String, String> header : headers.entrySet())
                 header(header);
         return this;
     }
 
-    public void header(final Entry<String, String> header) {
+    public
+    void header(final Entry <String, String> header) {
         header(header.getKey(), header.getValue());
     }
 
-    public String header(final String name) throws HttpRequestException {
+    public
+    String header(final String name) throws HttpRequestException {
         closeOutputQuietly();
         return getConnection().getHeaderField(name);
     }
 
-    public Map<String, List<String>> headers() throws HttpRequestException {
+    public
+    Map <String, List <String>> headers() throws HttpRequestException {
         closeOutputQuietly();
         return getConnection().getHeaderFields();
     }
 
-    public long dateHeader(final String name) throws HttpRequestException {
+    public
+    long dateHeader(final String name) throws HttpRequestException {
         return dateHeader(name, -1L);
     }
 
-    public long dateHeader(final String name, final long defaultValue)
+    public
+    long dateHeader(final String name, final long defaultValue)
             throws HttpRequestException {
         closeOutputQuietly();
         return getConnection().getHeaderFieldDate(name, defaultValue);
     }
 
-    public int intHeader(final String name) throws HttpRequestException {
+    public
+    int intHeader(final String name) throws HttpRequestException {
         return intHeader(name, -1);
     }
 
-    public int intHeader(final String name, final int defaultValue)
+    public
+    int intHeader(final String name, final int defaultValue)
             throws HttpRequestException {
         closeOutputQuietly();
         return getConnection().getHeaderFieldInt(name, defaultValue);
     }
 
-    public String[] headers(final String name) {
-        final Map<String, List<String>> headers = headers();
+    public
+    String[] headers(final String name) {
+        final Map <String, List <String>> headers = headers();
         if (headers == null || headers.isEmpty())
             return EMPTY_STRINGS;
 
-        final List<String> values = headers.get(name);
+        final List <String> values = headers.get(name);
         if (values != null && !values.isEmpty())
             return values.toArray(new String[0]);
         else
             return EMPTY_STRINGS;
     }
 
-    public String parameter(final String headerName, final String paramName) {
+    public
+    String parameter(final String headerName, final String paramName) {
         return getParam(header(headerName), paramName);
     }
 
-    public Map<String, String> parameters(final String headerName) {
+    public
+    Map <String, String> parameters(final String headerName) {
         return getParams(header(headerName));
     }
 
-    protected Map<String, String> getParams(final String header) {
+    protected
+    Map <String, String> getParams(final String header) {
         if (header == null || header.length() == 0)
             return Collections.emptyMap();
 
@@ -712,7 +784,7 @@ class TrackerUUID {
         if (end == -1)
             end = headerLength;
 
-        Map<String, String> params = new LinkedHashMap<>();
+        Map <String, String> params = new LinkedHashMap <>();
         while (start < end) {
             int nameEnd = header.indexOf('=', start);
             if (nameEnd != -1 && nameEnd < end) {
@@ -738,7 +810,8 @@ class TrackerUUID {
         return params;
     }
 
-    protected String getParam(final String value, final String paramName) {
+    protected
+    String getParam(final String value, final String paramName) {
         if (value == null || value.length() == 0)
             return null;
 
@@ -774,87 +847,108 @@ class TrackerUUID {
         return null;
     }
 
-    public String charset() {
+    public
+    String charset() {
         return parameter(HEADER_CONTENT_TYPE, PARAM_CHARSET);
     }
 
-    public TrackerUUID userAgent(final String userAgent) {
+    public
+    TrackerUUID userAgent(final String userAgent) {
         return header(HEADER_USER_AGENT, userAgent);
     }
 
-    public TrackerUUID referer(final String referer) {
+    public
+    TrackerUUID referer(final String referer) {
         return header(HEADER_REFERER, referer);
     }
 
-    public TrackerUUID acceptEncoding(final String acceptEncoding) {
+    public
+    TrackerUUID acceptEncoding(final String acceptEncoding) {
         return header(HEADER_ACCEPT_ENCODING, acceptEncoding);
     }
 
-    public TrackerUUID acceptGzipEncoding() {
+    public
+    TrackerUUID acceptGzipEncoding() {
         return acceptEncoding(ENCODING_GZIP);
     }
 
-    public TrackerUUID acceptCharset(final String acceptCharset) {
+    public
+    TrackerUUID acceptCharset(final String acceptCharset) {
         return header(HEADER_ACCEPT_CHARSET, acceptCharset);
     }
 
-    public String contentEncoding() {
+    public
+    String contentEncoding() {
         return header(HEADER_CONTENT_ENCODING);
     }
 
-    public String server() {
+    public
+    String server() {
         return header(HEADER_SERVER);
     }
 
-    public long date() {
+    public
+    long date() {
         return dateHeader(HEADER_DATE);
     }
 
-    public String cacheControl() {
+    public
+    String cacheControl() {
         return header(HEADER_CACHE_CONTROL);
     }
 
-    public String eTag() {
+    public
+    String eTag() {
         return header(HEADER_ETAG);
     }
 
-    public long expires() {
+    public
+    long expires() {
         return dateHeader(HEADER_EXPIRES);
     }
 
-    public long lastModified() {
+    public
+    long lastModified() {
         return dateHeader(HEADER_LAST_MODIFIED);
     }
 
-    public String location() {
+    public
+    String location() {
         return header(HEADER_LOCATION);
     }
 
-    public TrackerUUID authorization(final String authorization) {
+    public
+    TrackerUUID authorization(final String authorization) {
         return header(HEADER_AUTHORIZATION, authorization);
     }
 
-    public TrackerUUID proxyAuthorization(final String proxyAuthorization) {
+    public
+    TrackerUUID proxyAuthorization(final String proxyAuthorization) {
         return header(HEADER_PROXY_AUTHORIZATION, proxyAuthorization);
     }
 
-    public TrackerUUID basic(final String name, final String password) {
+    public
+    TrackerUUID basic(final String name, final String password) {
         return authorization("Basic " + Base64.encode(name + ':' + password));
     }
 
-    public TrackerUUID proxyBasic(final String name, final String password) {
+    public
+    TrackerUUID proxyBasic(final String name, final String password) {
         return proxyAuthorization("Basic " + Base64.encode(name + ':' + password));
     }
 
-    public TrackerUUID ifNoneMatch(final String ifNoneMatch) {
+    public
+    TrackerUUID ifNoneMatch(final String ifNoneMatch) {
         return header(HEADER_IF_NONE_MATCH, ifNoneMatch);
     }
 
-    public TrackerUUID contentType(final String contentType) {
+    public
+    TrackerUUID contentType(final String contentType) {
         return contentType(contentType, null);
     }
 
-    public TrackerUUID contentType(final String contentType, final String charset) {
+    public
+    TrackerUUID contentType(final String contentType, final String charset) {
         if (charset != null && charset.length() > 0) {
             final String separator = "; " + PARAM_CHARSET + '=';
             return header(HEADER_CONTENT_TYPE, contentType + separator + charset);
@@ -862,33 +956,39 @@ class TrackerUUID {
             return header(HEADER_CONTENT_TYPE, contentType);
     }
 
-    public int contentLength() {
+    public
+    int contentLength() {
         return intHeader(HEADER_CONTENT_LENGTH);
     }
 
-    public TrackerUUID contentLength(final String contentLength) {
+    public
+    TrackerUUID contentLength(final String contentLength) {
         return contentLength(Integer.parseInt(contentLength));
     }
 
-    public TrackerUUID contentLength(final int contentLength) {
+    public
+    TrackerUUID contentLength(final int contentLength) {
         getConnection().setFixedLengthStreamingMode(contentLength);
         return this;
     }
 
-    public TrackerUUID accept(final String accept) {
+    public
+    TrackerUUID accept(final String accept) {
         return header(HEADER_ACCEPT, accept);
     }
 
-    public TrackerUUID acceptJson() {
+    public
+    TrackerUUID acceptJson() {
         return accept(CONTENT_TYPE_JSON);
     }
 
-    protected TrackerUUID copy(final InputStream input, final OutputStream output)
-            throws IOException {
-        return new CloseOperation<TrackerUUID>(input) {
+    protected
+    TrackerUUID copy(final InputStream input, final OutputStream output) {
+        return new CloseOperation <TrackerUUID>(input) {
 
             @Override
-            public TrackerUUID run() throws IOException {
+            public
+            TrackerUUID run() throws IOException {
                 final byte[] buffer = new byte[bufferSize];
                 int read;
                 while ((read = input.read(buffer)) != -1) {
@@ -901,11 +1001,13 @@ class TrackerUUID {
         }.call();
     }
 
-    protected TrackerUUID copy(final Reader input, final Writer output) {
-        return new CloseOperation<TrackerUUID>(input) {
+    protected
+    TrackerUUID copy(final Reader input, final Writer output) {
+        return new CloseOperation <TrackerUUID>(input) {
 
             @Override
-            public TrackerUUID run() throws IOException {
+            public
+            TrackerUUID run() throws IOException {
                 final char[] buffer = new char[bufferSize];
                 int read;
                 while ((read = input.read(buffer)) != -1) {
@@ -918,20 +1020,23 @@ class TrackerUUID {
         }.call();
     }
 
-    public void progress(final UploadProgress callback) {
+    public
+    void progress(final UploadProgress callback) {
         if (callback == null)
             progress = UploadProgress.DEFAULT;
         else
             progress = callback;
     }
 
-    private void incrementTotalSize(final long size) {
+    private
+    void incrementTotalSize(final long size) {
         if (totalSize == -1)
             totalSize = 0;
         totalSize += size;
     }
 
-    protected void closeOutput() throws IOException {
+    protected
+    void closeOutput() throws IOException {
         progress(null);
         if (output == null)
             return;
@@ -948,7 +1053,8 @@ class TrackerUUID {
         output = null;
     }
 
-    protected void closeOutputQuietly() throws HttpRequestException {
+    protected
+    void closeOutputQuietly() throws HttpRequestException {
         try {
             closeOutput();
         } catch (IOException e) {
@@ -956,7 +1062,8 @@ class TrackerUUID {
         }
     }
 
-    protected void openOutput() throws IOException {
+    protected
+    void openOutput() throws IOException {
         if (output != null)
             return;
         getConnection().setDoOutput(true);
@@ -966,7 +1073,8 @@ class TrackerUUID {
                 bufferSize);
     }
 
-    protected void startPart() throws IOException {
+    protected
+    void startPart() throws IOException {
         if (!multipart) {
             multipart = true;
             contentType(CONTENT_TYPE_MULTIPART).openOutput();
@@ -975,8 +1083,9 @@ class TrackerUUID {
             output.write(CRLF + "--" + BOUNDARY + CRLF);
     }
 
-    protected void writePartHeader(final String name,
-                                   final String filename, final String contentType) throws IOException {
+    protected
+    void writePartHeader(final String name,
+                         final String filename, final String contentType) {
         final StringBuilder partBuffer = new StringBuilder();
         partBuffer.append("form-data; name=\"").append(name);
         if (filename != null)
@@ -988,17 +1097,20 @@ class TrackerUUID {
         send(CRLF);
     }
 
-    public TrackerUUID part(final String name, final String part) {
+    public
+    TrackerUUID part(final String name, final String part) {
         return part(name, null, part);
     }
 
-    public TrackerUUID part(final String name, final String filename,
-                            final String part) throws HttpRequestException {
+    public
+    TrackerUUID part(final String name, final String filename,
+                     final String part) throws HttpRequestException {
         return part(name, filename, null, part);
     }
 
-    public TrackerUUID part(final String name, final String filename,
-                            final String contentType, final String part) throws HttpRequestException {
+    public
+    TrackerUUID part(final String name, final String filename,
+                     final String contentType, final String part) throws HttpRequestException {
         try {
             startPart();
             writePartHeader(name, filename, contentType);
@@ -1009,28 +1121,33 @@ class TrackerUUID {
         return this;
     }
 
-    public TrackerUUID part(final String name, final Number part)
+    public
+    TrackerUUID part(final String name, final Number part)
             throws HttpRequestException {
         return part(name, null, part);
     }
 
-    public TrackerUUID part(final String name, final String filename,
-                            final Number part) throws HttpRequestException {
+    public
+    TrackerUUID part(final String name, final String filename,
+                     final Number part) throws HttpRequestException {
         return part(name, filename, part != null ? part.toString() : null);
     }
 
-    public TrackerUUID part(final String name, final File part)
+    public
+    TrackerUUID part(final String name, final File part)
             throws HttpRequestException {
         return part(name, null, part);
     }
 
-    public TrackerUUID part(final String name, final String filename,
-                            final File part) throws HttpRequestException {
+    public
+    TrackerUUID part(final String name, final String filename,
+                     final File part) throws HttpRequestException {
         return part(name, filename, null, part);
     }
 
-    public TrackerUUID part(final String name, final String filename,
-                            final String contentType, final File part) throws HttpRequestException {
+    public
+    TrackerUUID part(final String name, final String filename,
+                     final String contentType, final File part) throws HttpRequestException {
         final InputStream stream;
         try {
             stream = new BufferedInputStream(new FileInputStream(part));
@@ -1041,13 +1158,15 @@ class TrackerUUID {
         return part(name, filename, contentType, stream);
     }
 
-    public TrackerUUID part(final String name, final InputStream part)
+    public
+    TrackerUUID part(final String name, final InputStream part)
             throws HttpRequestException {
         return part(name, null, null, part);
     }
 
-    public TrackerUUID part(final String name, final String filename,
-                            final String contentType, final InputStream part)
+    public
+    TrackerUUID part(final String name, final String filename,
+                     final String contentType, final InputStream part)
             throws HttpRequestException {
         try {
             startPart();
@@ -1059,12 +1178,14 @@ class TrackerUUID {
         return this;
     }
 
-    public void partHeader(final String name, final String value)
+    public
+    void partHeader(final String name, final String value)
             throws HttpRequestException {
         send(name).send(": ").send(value).send(CRLF);
     }
 
-    public TrackerUUID send(final File input) throws HttpRequestException {
+    public
+    TrackerUUID send(final File input) throws HttpRequestException {
         final InputStream stream;
         try {
             stream = new BufferedInputStream(new FileInputStream(input));
@@ -1075,14 +1196,16 @@ class TrackerUUID {
         return send(stream);
     }
 
-    public TrackerUUID send(final byte[] input) throws HttpRequestException {
+    public
+    TrackerUUID send(final byte[] input) throws HttpRequestException {
         if (input != null)
             incrementTotalSize(input.length);
         assert input != null;
         return send(new ByteArrayInputStream(input));
     }
 
-    public TrackerUUID send(final InputStream input) throws HttpRequestException {
+    public
+    TrackerUUID send(final InputStream input) throws HttpRequestException {
         try {
             openOutput();
             copy(input, output);
@@ -1092,7 +1215,8 @@ class TrackerUUID {
         return this;
     }
 
-    public TrackerUUID send(final Reader input) throws HttpRequestException {
+    public
+    TrackerUUID send(final Reader input) throws HttpRequestException {
         try {
             openOutput();
         } catch (IOException e) {
@@ -1100,16 +1224,18 @@ class TrackerUUID {
         }
         final Writer writer = new OutputStreamWriter(output,
                 output.encoder.charset());
-        return new FlushOperation<TrackerUUID>(writer) {
+        return new FlushOperation <TrackerUUID>(writer) {
 
             @Override
-            protected TrackerUUID run() {
+            protected
+            TrackerUUID run() {
                 return copy(input, writer);
             }
         }.call();
     }
 
-    public TrackerUUID send(final CharSequence value) throws HttpRequestException {
+    public
+    TrackerUUID send(final CharSequence value) throws HttpRequestException {
         try {
             openOutput();
             output.write(value.toString());
@@ -1119,25 +1245,30 @@ class TrackerUUID {
         return this;
     }
 
-    public TrackerUUID form(final Map<?, ?> values) throws HttpRequestException {
+    public
+    TrackerUUID form(final Map <?, ?> values) throws HttpRequestException {
         return form(values, CHARSET_UTF8);
     }
 
-    public TrackerUUID form(final Entry<?, ?> entry) throws HttpRequestException {
+    public
+    TrackerUUID form(final Entry <?, ?> entry) throws HttpRequestException {
         return form(entry, CHARSET_UTF8);
     }
 
-    public TrackerUUID form(final Entry<?, ?> entry, final String charset)
+    public
+    TrackerUUID form(final Entry <?, ?> entry, final String charset)
             throws HttpRequestException {
         return form(entry.getKey(), entry.getValue(), charset);
     }
 
-    public TrackerUUID form(final Object name, final Object value)
+    public
+    TrackerUUID form(final Object name, final Object value)
             throws HttpRequestException {
         return form(name, value, CHARSET_UTF8);
     }
 
-    public TrackerUUID form(final Object name, final Object value, String charset)
+    public
+    TrackerUUID form(final Object name, final Object value, String charset)
             throws HttpRequestException {
         final boolean first = !form;
         if (first) {
@@ -1159,15 +1290,17 @@ class TrackerUUID {
         return this;
     }
 
-    public TrackerUUID form(final Map<?, ?> values, final String charset)
+    public
+    TrackerUUID form(final Map <?, ?> values, final String charset)
             throws HttpRequestException {
         if (!values.isEmpty())
-            for (Entry<?, ?> entry : values.entrySet())
+            for (Entry <?, ?> entry : values.entrySet())
                 form(entry, charset);
         return this;
     }
 
-    public TrackerUUID trustAllCerts() throws HttpRequestException {
+    public
+    TrackerUUID trustAllCerts() throws HttpRequestException {
         final HttpURLConnection connection = getConnection();
         if (connection instanceof HttpsURLConnection)
             ((HttpsURLConnection) connection)
@@ -1175,7 +1308,8 @@ class TrackerUUID {
         return this;
     }
 
-    public TrackerUUID trustAllHosts() {
+    public
+    TrackerUUID trustAllHosts() {
         final HttpURLConnection connection = getConnection();
         if (connection instanceof HttpsURLConnection)
             ((HttpsURLConnection) connection)
@@ -1183,22 +1317,26 @@ class TrackerUUID {
         return this;
     }
 
-    public URL url() {
+    public
+    URL url() {
         return getConnection().getURL();
     }
 
-    public String method() {
+    public
+    String method() {
         return getConnection().getRequestMethod();
     }
 
     public
     interface ConnectionFactory {
         ConnectionFactory DEFAULT = new ConnectionFactory() {
-            public HttpURLConnection create(URL url) throws IOException {
+            public
+            HttpURLConnection create(URL url) throws IOException {
                 return (HttpURLConnection) url.openConnection();
             }
 
-            public HttpURLConnection create(URL url, Proxy proxy) throws IOException {
+            public
+            HttpURLConnection create(URL url, Proxy proxy) throws IOException {
                 return (HttpURLConnection) url.openConnection(proxy);
             }
         };
@@ -1236,11 +1374,13 @@ class TrackerUUID {
                 (byte) '4', (byte) '5', (byte) '6', (byte) '7', (byte) '8', (byte) '9',
                 (byte) '+', (byte) '/'};
 
-        private Base64() {
+        private
+        Base64() {
         }
 
-        private static void encode3to4(byte[] source, int srcOffset,
-                                       int numSigBytes, byte[] destination, int destOffset) {
+        private static
+        void encode3to4(byte[] source, int srcOffset,
+                        int numSigBytes, byte[] destination, int destOffset) {
 
             byte[] ALPHABET = _STANDARD_ALPHABET;
 
@@ -1274,7 +1414,8 @@ class TrackerUUID {
             }
         }
 
-        public static String encode(String string) {
+        public static
+        String encode(String string) {
             byte[] bytes;
             try {
                 bytes = string.getBytes(PREFERRED_ENCODING);
@@ -1284,11 +1425,13 @@ class TrackerUUID {
             return encodeBytes(bytes);
         }
 
-        public static String encodeBytes(byte[] source) {
+        public static
+        String encodeBytes(byte[] source) {
             return encodeBytes(source, 0, source.length);
         }
 
-        public static String encodeBytes(byte[] source, int off, int len) {
+        public static
+        String encodeBytes(byte[] source, int off, int len) {
             byte[] encoded = encodeBytesToBytes(source, off, len);
             try {
                 return new String(encoded, PREFERRED_ENCODING);
@@ -1297,7 +1440,8 @@ class TrackerUUID {
             }
         }
 
-        public static byte[] encodeBytesToBytes(byte[] source, int off, int len) {
+        public static
+        byte[] encodeBytesToBytes(byte[] source, int off, int len) {
 
             if (source == null)
                 throw new NullPointerException("Cannot serialize a null array.");
@@ -1345,24 +1489,29 @@ class TrackerUUID {
 
         private static final long serialVersionUID = -1170466989781746231L;
 
-        public HttpRequestException(final IOException cause) {
+        public
+        HttpRequestException(final IOException cause) {
             super(cause);
         }
 
         @Override
-        public IOException getCause() {
+        public
+        IOException getCause() {
             return (IOException) super.getCause();
         }
     }
 
     protected static abstract
-    class Operation<V> implements Callable<V> {
+    class Operation<V> implements Callable <V> {
 
-        protected abstract V run() throws HttpRequestException, IOException;
+        protected abstract
+        V run() throws HttpRequestException, IOException;
 
-        protected abstract void done() throws IOException;
+        protected abstract
+        void done() throws IOException;
 
-        public V call() throws HttpRequestException {
+        public
+        V call() throws HttpRequestException {
             boolean thrown = false;
             try {
                 return run();
@@ -1384,16 +1533,18 @@ class TrackerUUID {
     }
 
     protected static abstract
-    class CloseOperation<V> extends Operation<V> {
+    class CloseOperation<V> extends Operation <V> {
 
         private final Closeable closeable;
 
-        protected CloseOperation(final Closeable closeable) {
+        protected
+        CloseOperation(final Closeable closeable) {
             this.closeable = closeable;
         }
 
         @Override
-        protected void done() throws IOException {
+        protected
+        void done() throws IOException {
             if (closeable instanceof Flushable)
                 ((Flushable) closeable).flush();
             closeable.close();
@@ -1401,16 +1552,18 @@ class TrackerUUID {
     }
 
     protected static abstract
-    class FlushOperation<V> extends Operation<V> {
+    class FlushOperation<V> extends Operation <V> {
 
         private final Flushable flushable;
 
-        protected FlushOperation(final Flushable flushable) {
+        protected
+        FlushOperation(final Flushable flushable) {
             this.flushable = flushable;
         }
 
         @Override
-        protected void done() throws IOException {
+        protected
+        void done() throws IOException {
             flushable.flush();
         }
     }
@@ -1420,19 +1573,20 @@ class TrackerUUID {
 
         private final CharsetEncoder encoder;
 
-        public RequestOutputStream(final OutputStream stream, final String charset,
-                                   final int bufferSize) {
+        public
+        RequestOutputStream(final OutputStream stream, final String charset,
+                            final int bufferSize) {
             super(stream, bufferSize);
 
             encoder = Charset.forName(getValidCharset(charset)).newEncoder();
         }
 
-        public RequestOutputStream write(final String value) throws IOException {
+        public
+        void write(final String value) throws IOException {
             final ByteBuffer bytes = encoder.encode(CharBuffer.wrap(value));
 
             super.write(bytes.array(), 0, bytes.limit());
 
-            return this;
         }
     }
 }

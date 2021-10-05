@@ -19,21 +19,24 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /**
  * Created by 086 on 24/12/2017.
  */
-@Mixin(GuiScreen.class)
-public class WurstplusMixinGuiScreen {
+@Mixin (GuiScreen.class)
+public
+class WurstplusMixinGuiScreen {
 
-    RenderItem itemRender = Minecraft.getMinecraft().getRenderItem();
-    FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
+    final RenderItem itemRender = Minecraft.getMinecraft().getRenderItem();
+    final FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
 
-    @Inject(method = "drawWorldBackground", at = @At("HEAD"), cancellable = true)
-    public void drawWorldBackground(int tint, CallbackInfo info) {
+    @Inject (method = "drawWorldBackground", at = @At ("HEAD"), cancellable = true)
+    public
+    void drawWorldBackground(int tint, CallbackInfo info) {
         if (Minecraft.getMinecraft().player != null) {
             info.cancel();
         }
     }
 
-    @Inject(method = "renderToolTip", at = @At("HEAD"), cancellable = true)
-    public void renderToolTip(ItemStack stack, int x, int y, CallbackInfo info) {
+    @Inject (method = "renderToolTip", at = @At ("HEAD"), cancellable = true)
+    public
+    void renderToolTip(ItemStack stack, int x, int y, CallbackInfo info) {
         if (SexHack.get_hack_manager().get_module_with_tag("ShulkerPreview").is_active() && stack.getItem() instanceof ItemShulkerBox) {
             NBTTagCompound tagCompound = stack.getTagCompound();
             if (tagCompound != null && tagCompound.hasKey("BlockEntityTag", 10)) {
@@ -42,7 +45,7 @@ public class WurstplusMixinGuiScreen {
                     // We'll take over!
                     info.cancel();
 
-                    NonNullList<ItemStack> nonnulllist = NonNullList.withSize(27, ItemStack.EMPTY);
+                    NonNullList <ItemStack> nonnulllist = NonNullList.withSize(27, ItemStack.EMPTY);
                     ItemStackHelper.loadAllItems(blockEntityTag, nonnulllist);
 
                     GlStateManager.enableBlend();
@@ -97,7 +100,8 @@ public class WurstplusMixinGuiScreen {
         }
     }
 
-    private void drawGradientRectP(int left, int top, int right, int bottom, int startColor, int endColor) {
+    private
+    void drawGradientRectP(int left, int top, int right, int bottom, int startColor, int endColor) {
         float f = (float) (startColor >> 24 & 255) / 255.0F;
         float f1 = (float) (startColor >> 16 & 255) / 255.0F;
         float f2 = (float) (startColor >> 8 & 255) / 255.0F;

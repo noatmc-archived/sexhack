@@ -6,14 +6,17 @@ import net.minecraft.util.math.MathHelper;
 
 import java.text.DecimalFormat;
 
-public class WurstplusSpeedometer extends WurstplusPinnable {
+public
+class WurstplusSpeedometer extends WurstplusPinnable {
 
-    public WurstplusSpeedometer() {
+    public
+    WurstplusSpeedometer() {
         super("Speedometer", "Speedometer", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
 
         int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);

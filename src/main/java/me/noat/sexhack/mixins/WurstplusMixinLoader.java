@@ -9,8 +9,10 @@ import javax.annotation.Nullable;
 import java.util.Map;
 
 
-public class WurstplusMixinLoader implements IFMLLoadingPlugin {
-    public WurstplusMixinLoader() {
+public
+class WurstplusMixinLoader implements IFMLLoadingPlugin {
+    public
+    WurstplusMixinLoader() {
         MixinBootstrap.init();
 
         Mixins.addConfiguration("mixins.wurstplus.json");
@@ -19,27 +21,32 @@ public class WurstplusMixinLoader implements IFMLLoadingPlugin {
     }
 
     @Override
-    public String[] getASMTransformerClass() {
+    public
+    String[] getASMTransformerClass() {
         return new String[0];
     }
 
     @Override
-    public String getModContainerClass() {
+    public
+    String getModContainerClass() {
         return null;
     }
 
     @Nullable
     @Override
-    public String getSetupClass() {
+    public
+    String getSetupClass() {
         return null;
     }
 
     @Override
-    public void injectData(Map<String, Object> data) {
+    public
+    void injectData(Map <String, Object> data) {
     }
 
     @Override
-    public String getAccessTransformerClass() {
+    public
+    String getAccessTransformerClass() {
         return null;
     }
 }

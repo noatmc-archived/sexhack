@@ -17,14 +17,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-public class WurstplusSelfTrap extends Module {
+public
+class WurstplusSelfTrap extends Module {
 
-    Setting toggle = create("Toggle", "SelfTrapToggle", false);
-    Setting rotate = create("Rotate", "SelfTrapRotate", false);
-    Setting swing = create("Swing", "SelfTrapSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    final Setting toggle = create("Toggle", "SelfTrapToggle", false);
+    final Setting rotate = create("Rotate", "SelfTrapRotate", false);
+    final Setting swing = create("Swing", "SelfTrapSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
     private BlockPos trap_pos;
 
-    public WurstplusSelfTrap() {
+    public
+    WurstplusSelfTrap() {
 
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
@@ -34,14 +36,16 @@ public class WurstplusSelfTrap extends Module {
     }
 
     @Override
-    protected void enable() {
+    protected
+    void enable() {
         if (find_in_hotbar() == -1) {
             this.set_disable();
         }
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
         final Vec3d pos = WurstplusMathUtil.interpolateEntity(mc.player, mc.getRenderPartialTicks());
         trap_pos = new BlockPos(pos.x, pos.y + 2, pos.z);
         if (is_trapped()) {
@@ -90,7 +94,8 @@ public class WurstplusSelfTrap extends Module {
 
     }
 
-    public boolean is_trapped() {
+    public
+    boolean is_trapped() {
 
         if (trap_pos == null) return false;
 
@@ -100,7 +105,8 @@ public class WurstplusSelfTrap extends Module {
 
     }
 
-    private int find_in_hotbar() {
+    private
+    int find_in_hotbar() {
 
         for (int i = 0; i < 9; ++i) {
 

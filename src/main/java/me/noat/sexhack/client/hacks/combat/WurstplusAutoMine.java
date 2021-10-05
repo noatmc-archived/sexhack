@@ -9,11 +9,14 @@ import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 
-public class WurstplusAutoMine extends Module {
+public
+class WurstplusAutoMine extends Module {
 
-    Setting end_crystal = create("End Crystal", "MineEndCrystal", false);
-    Setting range = create("Range", "MineRange", 4, 0, 6);
-    public WurstplusAutoMine() {
+    final Setting end_crystal = create("End Crystal", "MineEndCrystal", false);
+    final Setting range = create("Range", "MineRange", 4, 0, 6);
+
+    public
+    WurstplusAutoMine() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Auto Mine";
@@ -22,7 +25,8 @@ public class WurstplusAutoMine extends Module {
     }
 
     @Override
-    protected void enable() {
+    protected
+    void enable() {
 
         BlockPos target_block = null;
 
@@ -46,7 +50,8 @@ public class WurstplusAutoMine extends Module {
     }
 
     @Override
-    protected void disable() {
+    protected
+    void disable() {
         WurstplusBreakUtil.set_current_block(null);
     }
 }

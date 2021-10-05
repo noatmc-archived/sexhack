@@ -8,13 +8,16 @@ import me.noat.sexhack.client.util.WurstplusWatermarkUtil;
 
 import static me.noat.sexhack.client.util.WurstplusMessageUtil.r;
 
-public class WurstplusWatermarkChat extends WurstplusCommand {
+public
+class WurstplusWatermarkChat extends WurstplusCommand {
 
-    public WurstplusWatermarkChat() {
+    public
+    WurstplusWatermarkChat() {
         super("watermarkchat", "le skid");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
 
         if (message.length == 1) {
             WurstplusMessageUtil.send_client_error_message("no watermark found, try putting a message");

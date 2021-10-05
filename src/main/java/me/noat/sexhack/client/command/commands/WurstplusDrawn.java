@@ -8,13 +8,16 @@ import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
 import java.util.List;
 
-public class WurstplusDrawn extends WurstplusCommand {
+public
+class WurstplusDrawn extends WurstplusCommand {
 
-    public WurstplusDrawn() {
+    public
+    WurstplusDrawn() {
         super("drawn", "Hide elements of the array list");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
 
         if (message.length == 1) {
             WurstplusMessageUtil.send_client_error_message("module name needed");
@@ -38,9 +41,10 @@ public class WurstplusDrawn extends WurstplusCommand {
 
     }
 
-    public boolean is_module(String s) {
+    public
+    boolean is_module(String s) {
 
-        List<Module> modules = SexHack.get_hack_manager().get_array_hacks();
+        List <Module> modules = SexHack.get_hack_manager().get_array_hacks();
 
         for (Module module : modules) {
             if (module.get_tag().equalsIgnoreCase(s)) {

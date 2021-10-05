@@ -15,15 +15,16 @@ import net.minecraft.util.text.TextComponentString;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public final class WurstplusChatMods extends Module {
+public final
+class WurstplusChatMods extends Module {
 
-    Setting timestamps = create("Timestamps", "ChatModsTimeStamps", true);
+    final Setting timestamps = create("Timestamps", "ChatModsTimeStamps", true);
 
     // GuiNewChat nc = new GuiNewChat(mc);
-    Setting dateformat = create("Date Format", "ChatModsDateFormat", "24HR", combobox("24HR", "12HR"));
-    Setting name_highlight = create("Name Highlight", "ChatModsNameHighlight", true);
+    final Setting dateformat = create("Date Format", "ChatModsDateFormat", "24HR", combobox("24HR", "12HR"));
+    final Setting name_highlight = create("Name Highlight", "ChatModsNameHighlight", true);
     @EventHandler
-    private final Listener<WurstplusEventPacket.ReceivePacket> PacketEvent = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.ReceivePacket> PacketEvent = new Listener <>(event -> {
 
         if (event.getPacket() instanceof SPacketChat) {
 
@@ -71,7 +72,8 @@ public final class WurstplusChatMods extends Module {
         }
     });
 
-    public WurstplusChatMods() {
+    public
+    WurstplusChatMods() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
 
         this.name = "Chat Modify";

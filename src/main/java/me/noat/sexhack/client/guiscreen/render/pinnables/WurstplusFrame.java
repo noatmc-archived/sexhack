@@ -8,11 +8,12 @@ import java.awt.*;
 import java.util.ArrayList;
 
 
-public class WurstplusFrame {
+public
+class WurstplusFrame {
+    public static final int nc_a = 0;
     public static int nc_r = 0;
     public static int nc_g = 0;
     public static int nc_b = 0;
-    public static int nc_a = 0;
     public static int bg_r = 0;
     public static int bg_g = 0;
     public static int bg_b = 0;
@@ -26,9 +27,11 @@ public class WurstplusFrame {
     public static int bdw_b = 0;
     public static int bdw_a = 255;
     public final Minecraft mc = Minecraft.getMinecraft();
-    private final ArrayList<WurstplusPinnableButton> pinnable_button;
+    private final ArrayList <WurstplusPinnableButton> pinnable_button;
     private final String name;
     private final String tag;
+    private final int border_size = 2;
+    private final WurstplusDraw font = new WurstplusDraw(1);
     private int x;
     private int y;
     private int move_x;
@@ -37,11 +40,10 @@ public class WurstplusFrame {
     private int height;
     private boolean move;
     private boolean can;
-    private final int border_size = 2;
-    private final WurstplusDraw font = new WurstplusDraw(1);
 
-    public WurstplusFrame(String name, String tag, int initial_x, int initial_y) {
-        this.pinnable_button = new ArrayList<>();
+    public
+    WurstplusFrame(String name, String tag, int initial_x, int initial_y) {
+        this.pinnable_button = new ArrayList <>();
 
         this.name = name;
         this.tag = tag;
@@ -77,75 +79,93 @@ public class WurstplusFrame {
         }
     }
 
-    public void set_move(boolean value) {
+    public
+    void set_move(boolean value) {
         this.move = value;
     }
 
-    public void does_can(boolean value) {
+    public
+    void does_can(boolean value) {
         this.can = value;
     }
 
-    public void set_move_x(int x) {
+    public
+    void set_move_x(int x) {
         this.move_x = x;
     }
 
-    public void set_move_y(int y) {
+    public
+    void set_move_y(int y) {
         this.move_y = y;
     }
 
-    public String get_name() {
+    public
+    String get_name() {
         return this.name;
     }
 
-    public String get_tag() {
+    public
+    String get_tag() {
         return this.tag;
     }
 
-    public boolean is_moving() {
+    public
+    boolean is_moving() {
         return this.move;
     }
 
-    public boolean can() {
+    public
+    boolean can() {
         return this.can;
     }
 
-    public int get_x() {
+    public
+    int get_x() {
         return this.x;
     }
 
-    public void set_x(int x) {
+    public
+    void set_x(int x) {
         this.x = x;
     }
 
-    public int get_y() {
+    public
+    int get_y() {
         return this.y;
     }
 
-    public void set_y(int y) {
+    public
+    void set_y(int y) {
         this.y = y;
     }
 
-    public int get_width() {
+    public
+    int get_width() {
         return this.width;
     }
 
-    public void set_width(int width) {
+    public
+    void set_width(int width) {
         this.width = width;
     }
 
-    public int get_height() {
+    public
+    int get_height() {
         return this.height;
     }
 
-    public void set_height(int height) {
+    public
+    void set_height(int height) {
         this.height = height;
     }
 
-    public boolean motion(int mx, int my) {
+    public
+    boolean motion(int mx, int my) {
         return mx >= get_x() && my >= get_y() && mx <= get_x() + get_width() && my <= get_y() + get_height();
     }
 
-    public void crush(int mx, int my) {
+    public
+    void crush(int mx, int my) {
         // Get current screen real length.
         int screen_x = (mc.displayWidth / 2);
         int screen_y = (mc.displayHeight / 2);
@@ -178,13 +198,15 @@ public class WurstplusFrame {
         }
     }
 
-    public void mouse(int mx, int my, int mouse) {
+    public
+    void mouse(int mx, int my, int mouse) {
         for (WurstplusPinnableButton pinnables_buttons : this.pinnable_button) {
             pinnables_buttons.click(mx, my, mouse);
         }
     }
 
-    public void release(int mx, int my, int mouse) {
+    public
+    void release(int mx, int my, int mouse) {
         for (WurstplusPinnableButton pinnables_buttons : this.pinnable_button) {
             pinnables_buttons.release(mx, my, mouse);
         }
@@ -192,7 +214,8 @@ public class WurstplusFrame {
         set_move(false);
     }
 
-    public void render(int mx, int my, int separate) {
+    public
+    void render(int mx, int my, int separate) {
         float[] tick_color = {
                 (System.currentTimeMillis() % (360 * 32)) / (360f * 32)
         };

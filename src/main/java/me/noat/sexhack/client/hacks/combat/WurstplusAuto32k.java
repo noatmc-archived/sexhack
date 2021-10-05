@@ -22,13 +22,14 @@ import net.minecraft.util.math.RayTraceResult;
 
 import java.util.Objects;
 
-public class WurstplusAuto32k extends Module {
+public
+class WurstplusAuto32k extends Module {
 
-    Setting place_mode = create("Place Mode", "AutotkPlaceMode", "Auto", combobox("Auto", "Looking", "Hopper"));
-    Setting swing = create("Swing", "AutotkSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
-    Setting delay = create("Delay", "AutotkDelay", 4, 0, 10);
-    Setting rotate = create("Rotate", "Autotkrotate", false);
-    Setting debug = create("Debug", "AutotkDebug", false);
+    final Setting place_mode = create("Place Mode", "AutotkPlaceMode", "Auto", combobox("Auto", "Looking", "Hopper"));
+    final Setting swing = create("Swing", "AutotkSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    final Setting delay = create("Delay", "AutotkDelay", 4, 0, 10);
+    final Setting rotate = create("Rotate", "Autotkrotate", false);
+    final Setting debug = create("Debug", "AutotkDebug", false);
     private BlockPos pos;
     private int hopper_slot;
     private int redstone_slot;
@@ -38,7 +39,9 @@ public class WurstplusAuto32k extends Module {
     private boolean setup;
     private boolean place_redstone;
     private boolean dispenser_done;
-    public WurstplusAuto32k() {
+
+    public
+    WurstplusAuto32k() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Auto 32k";
@@ -47,7 +50,8 @@ public class WurstplusAuto32k extends Module {
     }
 
     @Override
-    protected void enable() {
+    protected
+    void enable() {
 
         ticks_past = 0;
 
@@ -158,7 +162,8 @@ public class WurstplusAuto32k extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (ticks_past > 50 && !(mc.currentScreen instanceof GuiHopper)) {
             WurstplusMessageUtil.send_client_message("inactive too long, disabling");

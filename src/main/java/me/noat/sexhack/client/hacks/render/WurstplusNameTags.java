@@ -10,6 +10,7 @@ import me.noat.sexhack.client.util.WurstplusDamageUtil;
 import me.noat.sexhack.client.util.WurstplusEnemyUtil;
 import me.noat.sexhack.client.util.WurstplusFriendUtil;
 import me.noat.sexhack.client.util.WurstplusRenderUtil;
+import me.zero.alpine.fork.event.type.Cancellable;
 import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.client.renderer.GlStateManager;
@@ -28,31 +29,30 @@ import org.lwjgl.opengl.GL11;
 import java.awt.*;
 import java.util.Objects;
 
-public class WurstplusNameTags extends Module {
+public
+class WurstplusNameTags extends Module {
 
+    final Setting show_armor = create("Armor", "NametagArmor", true);
+    final Setting show_health = create("Health", "NametagHealth", true);
+    final Setting show_ping = create("Ping", "NametagPing", true);
+    final Setting show_totems = create("Totem Count", "NametagTotems", true);
+    final Setting show_invis = create("Invis", "NametagInvis", true);
+    final Setting reverse = create("Armour Reverse", "NametagReverse", true);
+    final Setting simplify = create("Simplify", "NametagSimp", false);
+    final Setting m_scale = create("Scale", "NametagScale", 4, 1, 15);
+    final Setting range = create("Range", "NametagRange", 75, 1, 250);
+    final Setting r = create("R", "NametagR", 255, 0, 255);
+    final Setting g = create("G", "NametagG", 255, 0, 255);
+    final Setting b = create("B", "NametagB", 255, 0, 255);
+    final Setting a = create("A", "NametagA", 0.7f, 0f, 1f);
+    final Setting rainbow_mode = create("Rainbow", "NametagRainbow", false);
+    final Setting sat = create("Saturation", "NametagSatiation", 0.8, 0, 1);
+    final Setting brightness = create("Brightness", "NametagBrightness", 0.8, 0, 1);
     @EventHandler
-    private final Listener<WurstplusEventRenderName> on_render_name = new Listener<>(event -> {
-        event.cancel();
-    });
-    Setting show_armor = create("Armor", "NametagArmor", true);
-    Setting show_health = create("Health", "NametagHealth", true);
-    Setting show_ping = create("Ping", "NametagPing", true);
-    Setting show_totems = create("Totem Count", "NametagTotems", true);
-    Setting show_invis = create("Invis", "NametagInvis", true);
-    Setting reverse = create("Armour Reverse", "NametagReverse", true);
-    Setting simplify = create("Simplify", "NametagSimp", false);
-    Setting m_scale = create("Scale", "NametagScale", 4, 1, 15);
-    Setting range = create("Range", "NametagRange", 75, 1, 250);
+    private final Listener <WurstplusEventRenderName> on_render_name = new Listener <>(Cancellable::cancel);
 
-    Setting r = create("R", "NametagR", 255, 0, 255);
-    Setting g = create("G", "NametagG", 255, 0, 255);
-    Setting b = create("B", "NametagB", 255, 0, 255);
-    Setting a = create("A", "NametagA", 0.7f, 0f, 1f);
-    Setting rainbow_mode = create("Rainbow", "NametagRainbow", false);
-    Setting sat = create("Saturation", "NametagSatiation", 0.8, 0, 1);
-    Setting brightness = create("Brightness", "NametagBrightness", 0.8, 0, 1);
-
-    public WurstplusNameTags() {
+    public
+    WurstplusNameTags() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
         this.name = "Name Tags";
@@ -60,8 +60,32 @@ public class WurstplusNameTags extends Module {
         this.description = "MORE DETAILED NAMESSSSS";
     }
 
+    public static
+    void renderStatic(final ItemStack stack, final int x) {
+        GlStateManager.pushMatrix();
+        GlStateManager.depthMask(true);
+        GlStateManager.clear(256);
+        RenderHelper.enableStandardItemLighting();
+        mc.getRenderItem().zLevel = -150.0f;
+        GlStateManager.disableAlpha();
+        GlStateManager.enableDepth();
+        GlStateManager.disableCull();
+        mc.getRenderItem().renderItemAndEffectIntoGUI(stack, x, -29);
+        mc.getRenderItem().renderItemOverlays(mc.fontRenderer, stack, x, -29);
+        mc.getRenderItem().zLevel = 0.0f;
+        RenderHelper.disableStandardItemLighting();
+        GlStateManager.enableCull();
+        GlStateManager.enableAlpha();
+        GlStateManager.scale(0.5f, 0.5f, 0.5f);
+        GlStateManager.disableDepth();
+        GlStateManager.enableDepth();
+        GlStateManager.scale(2.0f, 2.0f, 2.0f);
+        GlStateManager.popMatrix();
+    }
+
     @Override
-    public void render(WurstplusEventRender event) {
+    public
+    void render(WurstplusEventRender event) {
         for (final EntityPlayer player : mc.world.playerEntities) {
             if (player != null && !player.equals(mc.player) && player.isEntityAlive() && (!player.isInvisible() || show_invis.getValue(true)) && mc.player.getDistance(player) < range.getValue(1)) {
                 final double x = this.interpolate(player.lastTickPosX, player.posX, event.get_partial_ticks()) - mc.getRenderManager().renderPosX;
@@ -73,13 +97,15 @@ public class WurstplusNameTags extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
         if (rainbow_mode.getValue(true)) {
             cycle_rainbow();
         }
     }
 
-    public void cycle_rainbow() {
+    public
+    void cycle_rainbow() {
 
         float[] tick_color = {
                 (System.currentTimeMillis() % (360 * 32)) / (360f * 32)
@@ -93,7 +119,8 @@ public class WurstplusNameTags extends Module {
 
     }
 
-    private void renderNameTag(final EntityPlayer player, final double x, final double y, final double z, final float delta) {
+    private
+    void renderNameTag(final EntityPlayer player, final double x, final double y, final double z, final float delta) {
         double tempY = y;
         tempY += (player.isSneaking() ? 0.5 : 0.7);
         final Entity camera = mc.getRenderViewEntity();
@@ -206,29 +233,8 @@ public class WurstplusNameTags extends Module {
         GlStateManager.popMatrix();
     }
 
-    public static void renderStatic(final ItemStack stack, final int x) {
-        GlStateManager.pushMatrix();
-        GlStateManager.depthMask(true);
-        GlStateManager.clear(256);
-        RenderHelper.enableStandardItemLighting();
-        mc.getRenderItem().zLevel = -150.0f;
-        GlStateManager.disableAlpha();
-        GlStateManager.enableDepth();
-        GlStateManager.disableCull();
-        mc.getRenderItem().renderItemAndEffectIntoGUI(stack, x, -29);
-        mc.getRenderItem().renderItemOverlays(mc.fontRenderer, stack, x, -29);
-        mc.getRenderItem().zLevel = 0.0f;
-        RenderHelper.disableStandardItemLighting();
-        GlStateManager.enableCull();
-        GlStateManager.enableAlpha();
-        GlStateManager.scale(0.5f, 0.5f, 0.5f);
-        GlStateManager.disableDepth();
-        GlStateManager.enableDepth();
-        GlStateManager.scale(2.0f, 2.0f, 2.0f);
-        GlStateManager.popMatrix();
-    }
-
-    public void renderItemStack(final ItemStack stack, final int x) {
+    public
+    void renderItemStack(final ItemStack stack, final int x) {
         GlStateManager.pushMatrix();
         GlStateManager.depthMask(true);
         GlStateManager.clear(256);
@@ -251,7 +257,8 @@ public class WurstplusNameTags extends Module {
         GlStateManager.popMatrix();
     }
 
-    private void renderEnchantmentText(final ItemStack stack, final int x) {
+    private
+    void renderEnchantmentText(final ItemStack stack, final int x) {
         int enchantmentY = -37;
         final NBTTagList enchants = stack.getEnchantmentTagList();
         if (enchants.tagCount() > 2 && simplify.getValue(true)) {
@@ -284,7 +291,8 @@ public class WurstplusNameTags extends Module {
         }
     }
 
-    private float getBiggestArmorTag(final EntityPlayer player) {
+    private
+    float getBiggestArmorTag(final EntityPlayer player) {
         float enchantmentY = 0.0f;
         boolean arm = false;
         for (final ItemStack stack : player.inventory.armorInventory) {
@@ -339,7 +347,8 @@ public class WurstplusNameTags extends Module {
         return (arm ? 0 : 20) + enchantmentY;
     }
 
-    private String getDisplayTag(final EntityPlayer player) {
+    private
+    String getDisplayTag(final EntityPlayer player) {
         String name = player.getDisplayNameString();
         if (!show_health.getValue(true)) {
             return name;
@@ -392,7 +401,8 @@ public class WurstplusNameTags extends Module {
         return pingStr + section_sign() + "r" + name + section_sign() + "r" + popStr;
     }
 
-    private int getDisplayColour(final EntityPlayer player) {
+    private
+    int getDisplayColour(final EntityPlayer player) {
         int colour = -5592406;
         if (WurstplusFriendUtil.isFriend(player.getName())) {
             return -11157267;
@@ -403,11 +413,13 @@ public class WurstplusNameTags extends Module {
         return colour;
     }
 
-    private double interpolate(final double previous, final double current, final float delta) {
+    private
+    double interpolate(final double previous, final double current, final float delta) {
         return previous + (current - previous) * delta;
     }
 
-    public String section_sign() {
+    public
+    String section_sign() {
         return "\u00A7";
     }
 

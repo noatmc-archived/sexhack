@@ -12,11 +12,13 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-public class WurstplusEntityUtil {
+public
+class WurstplusEntityUtil {
 
     public static final Minecraft mc = Minecraft.getMinecraft();
 
-    public static void attackEntity(final Entity entity, final boolean packet, final Setting setting) {
+    public static
+    void attackEntity(final Entity entity, final boolean packet, final Setting setting) {
         if (packet) {
             mc.player.connection.sendPacket(new CPacketUseEntity(entity));
         } else {
@@ -30,31 +32,37 @@ public class WurstplusEntityUtil {
         }
     }
 
-    public static boolean isLiving(Entity e) {
-        return e instanceof EntityLivingBase;
+    public static
+    boolean isLiving(Entity e) {
+        return !(e instanceof EntityLivingBase);
     }
 
-    public static Vec3d getInterpolatedAmount(Entity entity, double x, double y, double z) {
+    public static
+    Vec3d getInterpolatedAmount(Entity entity, double x, double y, double z) {
         return new Vec3d((entity.posX - entity.lastTickPosX) * x, 0 * y,
                 (entity.posZ - entity.lastTickPosZ) * z);
     }
 
-    public static Vec3d getInterpolatedAmount(Entity entity, double ticks) {
+    public static
+    Vec3d getInterpolatedAmount(Entity entity, double ticks) {
         return getInterpolatedAmount(entity, ticks, ticks, ticks);
     }
 
-    public static Vec3d getInterpolatedPos(Entity entity, float ticks) {
+    public static
+    Vec3d getInterpolatedPos(Entity entity, float ticks) {
         return new Vec3d(entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ)
                 .add(getInterpolatedAmount(entity, ticks));
     }
 
-    public static Vec3d getInterpolatedRenderPos(Entity entity, float ticks) {
+    public static
+    Vec3d getInterpolatedRenderPos(Entity entity, float ticks) {
         return getInterpolatedPos(entity, ticks).subtract(mc.getRenderManager().renderPosX,
                 mc.getRenderManager().renderPosY,
                 mc.getRenderManager().renderPosZ);
     }
 
-    public static BlockPos is_cityable(final EntityPlayer player, final boolean end_crystal) {
+    public static
+    BlockPos is_cityable(final EntityPlayer player, final boolean end_crystal) {
 
         BlockPos pos = new BlockPos(player.posX, player.posY, player.posZ);
 

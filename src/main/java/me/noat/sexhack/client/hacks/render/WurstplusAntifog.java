@@ -7,10 +7,11 @@ import me.zero.alpine.fork.listener.EventHandler;
 import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.client.renderer.GlStateManager;
 
-public class WurstplusAntifog extends Module {
+public
+class WurstplusAntifog extends Module {
 
     @EventHandler
-    private final Listener<WurstplusEventSetupFog> setup_fog = new Listener<>(event -> {
+    private final Listener <WurstplusEventSetupFog> setup_fog = new Listener <>(event -> {
 
         event.cancel();
 
@@ -22,7 +23,8 @@ public class WurstplusAntifog extends Module {
 
     });
 
-    public WurstplusAntifog() {
+    public
+    WurstplusAntifog() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
         this.name = "Anti Fog";

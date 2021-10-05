@@ -10,31 +10,23 @@ import net.minecraft.client.Minecraft;
 import java.awt.*;
 
 
-public class WurstplusButtonBind extends WurstplusAbstractWidget {
+public
+class WurstplusButtonBind extends WurstplusAbstractWidget {
     private final WurstplusFrame frame;
     private final WurstplusModuleButton master;
-
-    private final String button_name;
+    private final int border_size = 0;
     private String points;
-
     private int x;
     private int y;
-
     private int width;
     private int height;
-
     private int save_y;
-
     private float tick;
-
     private boolean can;
     private boolean waiting;
 
-    private final WurstplusDraw font = new WurstplusDraw(1);
-
-    private final int border_size = 0;
-
-    public WurstplusButtonBind(WurstplusFrame frame, WurstplusModuleButton master, String tag, int update_postion) {
+    public
+    WurstplusButtonBind(WurstplusFrame frame, WurstplusModuleButton master, String tag, int update_postion) {
         this.frame = frame;
         this.master = master;
 
@@ -44,9 +36,8 @@ public class WurstplusButtonBind extends WurstplusAbstractWidget {
         this.save_y = this.y;
 
         this.width = master.get_width();
+        WurstplusDraw font = new WurstplusDraw(1);
         this.height = font.get_string_height();
-
-        this.button_name = tag;
 
         this.can = true;
         this.points = ".";
@@ -54,74 +45,89 @@ public class WurstplusButtonBind extends WurstplusAbstractWidget {
     }
 
     @Override
-    public void does_can(boolean value) {
+    public
+    void does_can(boolean value) {
         this.can = value;
     }
 
     @Override
-    public int get_x() {
+    public
+    int get_x() {
         return this.x;
     }
 
     @Override
-    public void set_x(int x) {
+    public
+    void set_x(int x) {
         this.x = x;
     }
 
     @Override
-    public int get_y() {
+    public
+    int get_y() {
         return this.y;
     }
 
     @Override
-    public void set_y(int y) {
+    public
+    void set_y(int y) {
         this.y = y;
     }
 
     @Override
-    public int get_width() {
+    public
+    int get_width() {
         return this.width;
     }
 
     @Override
-    public void set_width(int width) {
+    public
+    void set_width(int width) {
         this.width = width;
     }
 
     @Override
-    public int get_height() {
+    public
+    int get_height() {
         return this.height;
     }
 
     @Override
-    public void set_height(int height) {
+    public
+    void set_height(int height) {
         this.height = height;
     }
 
-    public int get_save_y() {
+    public
+    int get_save_y() {
         return this.save_y;
     }
 
     @Override
-    public boolean motion_pass(int mx, int my) {
+    public
+    boolean motion_pass(int mx, int my) {
         return motion(mx, my);
     }
 
-    public boolean motion(int mx, int my) {
+    public
+    boolean motion(int mx, int my) {
         return mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height();
     }
 
-    public boolean can() {
+    public
+    boolean can() {
         return this.can;
     }
 
     @Override
-    public boolean is_binding() {
+    public
+    boolean is_binding() {
         return this.waiting;
     }
 
     @Override
-    public void bind(char char_, int key) {
+    public
+    void bind(char char_, int key) {
         if (this.waiting) {
             switch (key) {
                 case SexHack.WURSTPLUS_KEY_GUI_ESCAPE: {
@@ -150,7 +156,8 @@ public class WurstplusButtonBind extends WurstplusAbstractWidget {
     }
 
     @Override
-    public void mouse(int mx, int my, int mouse) {
+    public
+    void mouse(int mx, int my, int mouse) {
         if (mouse == 0) {
             if (motion(mx, my) && this.master.is_open() && can()) {
                 this.frame.does_can(false);
@@ -161,24 +168,15 @@ public class WurstplusButtonBind extends WurstplusAbstractWidget {
     }
 
     @Override
-    public void render(int master_y, int separe, int absolute_x, int absolute_y) {
+    public
+    void render(int master_y, int separe, int absolute_x, int absolute_y) {
         set_width(this.master.get_width() - separe);
 
         float[] tick_color = {
                 (System.currentTimeMillis() % (360 * 32)) / (360f * 32)
         };
 
-        int color_a = Color.HSBtoRGB(tick_color[0], 1, 1);
-
-        int bd_a = (color_a);
-
-        if ((color_a) <= 100) {
-            bd_a = 100;
-        } else if ((color_a) >= 200) {
-            bd_a = 200;
-        } else {
-            bd_a = (color_a);
-        }
+        int bd_a = (Color.HSBtoRGB(tick_color[0], 1, 1));
 
         if (this.waiting) {
             if (this.tick >= 15) {

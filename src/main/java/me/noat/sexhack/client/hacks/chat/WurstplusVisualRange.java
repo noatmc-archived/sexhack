@@ -12,11 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class WurstplusVisualRange extends Module {
+public
+class WurstplusVisualRange extends Module {
 
-    private List<String> people;
+    private List <String> people;
 
-    public WurstplusVisualRange() {
+    public
+    WurstplusVisualRange() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
 
         this.name = "Visual Range";
@@ -25,16 +27,18 @@ public class WurstplusVisualRange extends Module {
     }
 
     @Override
-    public void enable() {
-        people = new ArrayList<>();
+    public
+    void enable() {
+        people = new ArrayList <>();
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
         if (mc.world == null | mc.player == null) return;
 
-        List<String> peoplenew = new ArrayList<>();
-        List<EntityPlayer> playerEntities = mc.world.playerEntities;
+        List <String> peoplenew = new ArrayList <>();
+        List <EntityPlayer> playerEntities = mc.world.playerEntities;
 
         for (Entity e : playerEntities) {
             if (e.getName().equals(mc.player.getName())) continue;

@@ -5,14 +5,17 @@ import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-public class WurstplusPvpHud extends WurstplusPinnable {
+public
+class WurstplusPvpHud extends WurstplusPinnable {
 
-    public WurstplusPvpHud() {
+    public
+    WurstplusPvpHud() {
         super("PVP Hud", "pvphud", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
         int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
         int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
@@ -38,7 +41,8 @@ public class WurstplusPvpHud extends WurstplusPinnable {
         this.set_height(this.get(surround, "height") * 5);
     }
 
-    public String selftrap_enabled() {
+    public
+    String selftrap_enabled() {
         try {
             if (SexHack.get_hack_manager().get_module_with_tag("SelfTrap").is_active()) {
                 return "\u00A7a 1";
@@ -49,7 +53,8 @@ public class WurstplusPvpHud extends WurstplusPinnable {
         }
     }
 
-    public String trap_enabled() {
+    public
+    String trap_enabled() {
         try {
             if (SexHack.get_hack_manager().get_module_with_tag("Trap").is_active()) {
                 return "\u00A7a 1";
@@ -61,7 +66,8 @@ public class WurstplusPvpHud extends WurstplusPinnable {
 
     }
 
-    public String aura_enabled() {
+    public
+    String aura_enabled() {
 
         try {
             if (SexHack.get_hack_manager().get_module_with_tag("AutoCrystal").is_active()) {
@@ -74,7 +80,8 @@ public class WurstplusPvpHud extends WurstplusPinnable {
 
     }
 
-    public String socks_enabled() {
+    public
+    String socks_enabled() {
         try {
             if (SexHack.get_hack_manager().get_module_with_tag("Socks").is_active()) {
                 return "\u00A7a 1";
@@ -86,7 +93,8 @@ public class WurstplusPvpHud extends WurstplusPinnable {
 
     }
 
-    public String surround_enabled() {
+    public
+    String surround_enabled() {
 
         try {
             if (SexHack.get_hack_manager().get_module_with_tag("Surround").is_active()) {
@@ -99,7 +107,8 @@ public class WurstplusPvpHud extends WurstplusPinnable {
 
     }
 
-    public String holefill_enabled() {
+    public
+    String holefill_enabled() {
 
         try {
             if (SexHack.get_hack_manager().get_module_with_tag("HoleFill").is_active()) {
@@ -112,7 +121,8 @@ public class WurstplusPvpHud extends WurstplusPinnable {
 
     }
 
-    public String get_totems() {
+    public
+    String get_totems() {
 
         try {
 
@@ -130,7 +140,8 @@ public class WurstplusPvpHud extends WurstplusPinnable {
 
     }
 
-    public int offhand() {
+    public
+    int offhand() {
         if (mc.player.getHeldItemOffhand().getItem() == Items.TOTEM_OF_UNDYING) {
             return 1;
         }

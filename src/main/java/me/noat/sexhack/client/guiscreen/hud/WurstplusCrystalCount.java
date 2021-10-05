@@ -8,15 +8,18 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 
-public class WurstplusCrystalCount extends WurstplusPinnable {
+public
+class WurstplusCrystalCount extends WurstplusPinnable {
     int crystals = 0;
 
-    public WurstplusCrystalCount() {
+    public
+    WurstplusCrystalCount() {
         super("Crystal Count", "CrystalCount", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
         int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
         int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);

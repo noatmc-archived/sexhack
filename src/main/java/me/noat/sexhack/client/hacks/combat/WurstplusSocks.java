@@ -16,13 +16,16 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.ArrayList;
 
-public class WurstplusSocks extends Module {
+public
+class WurstplusSocks extends Module {
 
     // if you use this ur actually bad
 
-    Setting rotate = create("Rotate", "SocksRotate", false);
-    Setting swing = create("Swing", "SocksSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
-    public WurstplusSocks() {
+    final Setting rotate = create("Rotate", "SocksRotate", false);
+    final Setting swing = create("Swing", "SocksSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+
+    public
+    WurstplusSocks() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Socks";
@@ -31,21 +34,23 @@ public class WurstplusSocks extends Module {
     }
 
     @Override
-    protected void enable() {
+    protected
+    void enable() {
         if (find_in_hotbar() == -1) {
             this.set_disable();
         }
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         final int slot = find_in_hotbar();
 
         if (slot == -1) return;
 
         BlockPos center_pos = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
-        ArrayList<BlockPos> blocks_to_fill = new ArrayList<>();
+        ArrayList <BlockPos> blocks_to_fill = new ArrayList <>();
 
         switch (WurstplusPlayerUtil.GetFacing()) {
             case East:
@@ -95,7 +100,8 @@ public class WurstplusSocks extends Module {
 
     }
 
-    private int find_in_hotbar() {
+    private
+    int find_in_hotbar() {
 
         for (int i = 0; i < 9; ++i) {
 

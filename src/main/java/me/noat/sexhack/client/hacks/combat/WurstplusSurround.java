@@ -18,18 +18,19 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-public class WurstplusSurround extends Module {
+public
+class WurstplusSurround extends Module {
 
-    Setting rotate = create("Rotate", "SurroundSmoth", true);
-    Setting hybrid = create("Hybrid", "SurroundHybrid", true);
-    Setting triggerable = create("Toggle", "SurroundToggle", true);
-    Setting center = create("Center", "SurroundCenter", false);
-    Setting antiStuck = create("Anti Stuck", "SurroundAntiStuck", false);
-    Setting block_head = create("Block Face", "SurroundBlockFace", false);
-    Setting tick_for_place = create("Blocks per tick", "SurroundTickToPlace", 2, 1, 8);
-    Setting tick_timeout = create("Ticks til timeout", "SurroundTicks", 20, 10, 50);
-    Setting swing = create("Swing", "SurroundSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
-    Vec3d[] surround_targets = {
+    final Setting rotate = create("Rotate", "SurroundSmoth", true);
+    final Setting hybrid = create("Hybrid", "SurroundHybrid", true);
+    final Setting triggerable = create("Toggle", "SurroundToggle", true);
+    final Setting center = create("Center", "SurroundCenter", false);
+    final Setting antiStuck = create("Anti Stuck", "SurroundAntiStuck", false);
+    final Setting block_head = create("Block Face", "SurroundBlockFace", false);
+    final Setting tick_for_place = create("Blocks per tick", "SurroundTickToPlace", 2, 1, 8);
+    final Setting tick_timeout = create("Ticks til timeout", "SurroundTicks", 20, 10, 50);
+    final Setting swing = create("Swing", "SurroundSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
+    final Vec3d[] surround_targets = {
             new Vec3d(1, 0, 0),
             new Vec3d(0, 0, 1),
             new Vec3d(-1, 0, 0),
@@ -40,7 +41,7 @@ public class WurstplusSurround extends Module {
             new Vec3d(0, -1, -1),
             new Vec3d(0, -1, 0)
     };
-    Vec3d[] surround_targets_face = {
+    final Vec3d[] surround_targets_face = {
             new Vec3d(1, 1, 0),
             new Vec3d(0, 1, 1),
             new Vec3d(-1, 1, 0),
@@ -60,7 +61,8 @@ public class WurstplusSurround extends Module {
     private int offset_step = 0;
     private Vec3d center_block = Vec3d.ZERO;
 
-    public WurstplusSurround() {
+    public
+    WurstplusSurround() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Surround";
@@ -69,7 +71,8 @@ public class WurstplusSurround extends Module {
     }
 
     @Override
-    public void enable() {
+    public
+    void enable() {
         if (find_in_hotbar() == -1) {
             this.set_disable();
             return;
@@ -89,7 +92,8 @@ public class WurstplusSurround extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (mc.player != null) {
 
@@ -158,7 +162,8 @@ public class WurstplusSurround extends Module {
         }
     }
 
-    private boolean intersectsWithEntity(final BlockPos pos) {
+    private
+    boolean intersectsWithEntity(final BlockPos pos) {
         for (final Entity entity : mc.world.loadedEntityList) {
             if (entity.equals(mc.player)) continue;
             if (entity instanceof EntityItem) continue;
@@ -177,7 +182,8 @@ public class WurstplusSurround extends Module {
         }
     }
 
-    private int find_in_hotbar() {
+    private
+    int find_in_hotbar() {
 
         for (int i = 0; i < 9; ++i) {
 
@@ -198,7 +204,8 @@ public class WurstplusSurround extends Module {
         return -1;
     }
 
-    public Vec3d get_center(double posX, double posY, double posZ) {
+    public
+    Vec3d get_center(double posX, double posY, double posZ) {
         double x = Math.floor(posX) + 0.5D;
         double y = Math.floor(posY);
         double z = Math.floor(posZ) + 0.5D;

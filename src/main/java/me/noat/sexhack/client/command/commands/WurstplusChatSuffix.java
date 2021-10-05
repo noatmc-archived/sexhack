@@ -6,13 +6,16 @@ import me.noat.sexhack.client.command.WurstplusCommand;
 import me.noat.sexhack.client.util.WurstplusChatSuffixUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
-public class WurstplusChatSuffix extends WurstplusCommand {
+public
+class WurstplusChatSuffix extends WurstplusCommand {
 
-    public WurstplusChatSuffix() {
+    public
+    WurstplusChatSuffix() {
         super("chatsuffix", "set chatsuffix");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
 
         if (message.length == 1) {
             WurstplusMessageUtil.send_client_error_message("no chat suffix found, try putting a message");

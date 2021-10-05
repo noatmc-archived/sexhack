@@ -7,12 +7,15 @@ import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
 
-public class WurstplusAlert extends WurstplusCommand {
-    public WurstplusAlert() {
+public
+class WurstplusAlert extends WurstplusCommand {
+    public
+    WurstplusAlert() {
         super("alert", "if the module should spam chat or not");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
         String module = "null";
         String state = "null";
 

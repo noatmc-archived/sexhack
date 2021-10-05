@@ -15,22 +15,24 @@ import net.minecraft.util.math.BlockPos;
 import java.util.HashSet;
 import java.util.Set;
 
-public class WurstplusFuckedDetector extends Module {
+public
+class WurstplusFuckedDetector extends Module {
 
-    public Set<BlockPos> fucked_players = new HashSet <> ( );
-    Setting draw_own = create("Draw Own", "FuckedDrawOwn", false);
-    Setting draw_friends = create("Draw Friends", "FuckedDrawFriends", false);
+    public final Set <BlockPos> fucked_players = new HashSet <>();
+    final Setting draw_own = create("Draw Own", "FuckedDrawOwn", false);
+    final Setting draw_friends = create("Draw Friends", "FuckedDrawFriends", false);
 
-    Setting render_mode = create("Render Mode", "FuckedRenderMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
-    Setting r = create("R", "FuckedR", 255, 0, 255);
-    Setting g = create("G", "FuckedG", 255, 0, 255);
-    Setting b = create("B", "FuckedB", 255, 0, 255);
-    Setting a = create("A", "FuckedA", 100, 0, 255);
+    final Setting render_mode = create("Render Mode", "FuckedRenderMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
+    final Setting r = create("R", "FuckedR", 255, 0, 255);
+    final Setting g = create("G", "FuckedG", 255, 0, 255);
+    final Setting b = create("B", "FuckedB", 255, 0, 255);
+    final Setting a = create("A", "FuckedA", 100, 0, 255);
 
     private boolean solid;
     private boolean outline;
 
-    public WurstplusFuckedDetector() {
+    public
+    WurstplusFuckedDetector() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
         this.name = "Fucked Detector";
@@ -39,23 +41,26 @@ public class WurstplusFuckedDetector extends Module {
     }
 
     @Override
-    protected void enable() {
+    protected
+    void enable() {
         fucked_players.clear();
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
         if (mc.world == null) return;
         set_fucked_players();
     }
 
-    public void set_fucked_players() {
+    public
+    void set_fucked_players() {
 
         fucked_players.clear();
 
         for (EntityPlayer player : mc.world.playerEntities) {
 
-            if (!WurstplusEntityUtil.isLiving(player) || player.getHealth() <= 0) continue;
+            if (WurstplusEntityUtil.isLiving(player) || player.getHealth() <= 0) continue;
             // if (!player.onGround) continue;
 
             if (is_fucked(player)) {
@@ -71,7 +76,8 @@ public class WurstplusFuckedDetector extends Module {
 
     }
 
-    public boolean is_fucked(EntityPlayer player) {
+    public
+    boolean is_fucked(EntityPlayer player) {
 
         BlockPos pos = new BlockPos(player.posX, player.posY - 1, player.posZ);
 
@@ -92,7 +98,8 @@ public class WurstplusFuckedDetector extends Module {
     }
 
     @Override
-    public void render(WurstplusEventRender event) {
+    public
+    void render(WurstplusEventRender event) {
 
         if (render_mode.in("Pretty")) {
             outline = true;

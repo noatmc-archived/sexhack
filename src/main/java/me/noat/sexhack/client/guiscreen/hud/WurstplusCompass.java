@@ -8,17 +8,20 @@ import me.noat.sexhack.client.util.WurstplusMathUtil;
 
 import java.util.Objects;
 
-public class WurstplusCompass extends WurstplusPinnable {
+public
+class WurstplusCompass extends WurstplusPinnable {
 
     private static final double half_pi = Math.PI / 2;
     public WurstplusDraw font = new WurstplusDraw(1);
 
-    public WurstplusCompass() {
+    public
+    WurstplusCompass() {
         super("Compass", "Compass", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
 
         int r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         int g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
@@ -41,27 +44,31 @@ public class WurstplusCompass extends WurstplusPinnable {
 
     }
 
-    private double get_pos_on_compass(Direction dir) {
+    private
+    double get_pos_on_compass(Direction dir) {
 
-        double yaw = Math.toRadians(WurstplusMathUtil.wrap( Objects.requireNonNull ( mc.getRenderViewEntity ( ) ).rotationYaw));
+        double yaw = Math.toRadians(WurstplusMathUtil.wrap(Objects.requireNonNull(mc.getRenderViewEntity()).rotationYaw));
         int index = dir.ordinal();
         return yaw + (index * half_pi);
 
     }
 
-    private double get_x(double rad) {
+    private
+    double get_x(double rad) {
         return Math.sin(rad) * (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDCompassScale").getValue(1));
     }
 
-    private double get_y(double rad) {
+    private
+    double get_y(double rad) {
 
-        final double epic_pitch = WurstplusMathUtil.clamp2( Objects.requireNonNull ( mc.getRenderViewEntity ( ) ).rotationPitch + 30f, -90f, 90f);
+        final double epic_pitch = WurstplusMathUtil.clamp2(Objects.requireNonNull(mc.getRenderViewEntity()).rotationPitch + 30f, -90f, 90f);
         final double pitch_radians = Math.toRadians(epic_pitch);
         return Math.cos(rad) * Math.sin(pitch_radians) * (SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDCompassScale").getValue(1));
 
     }
 
-    private enum Direction {
+    private
+    enum Direction {
         N,
         W,
         S,

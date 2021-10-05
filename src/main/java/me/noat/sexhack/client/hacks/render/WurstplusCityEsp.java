@@ -12,20 +12,23 @@ import net.minecraft.util.math.BlockPos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WurstplusCityEsp extends Module {
+public
+class WurstplusCityEsp extends Module {
 
-    Setting endcrystal_mode = create("EndCrystal", "CityEndCrystal", false);
-    Setting mode = create("Mode", "CityMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
-    Setting off_set = create("Height", "CityOffSetSide", 0.2, 0.0, 1.0);
-    Setting range = create("Range", "CityRange", 6, 1, 12);
-    Setting r = create("R", "CityR", 0, 0, 255);
-    Setting g = create("G", "CityG", 255, 0, 255);
-    Setting b = create("B", "CityB", 0, 0, 255);
-    Setting a = create("A", "CityA", 50, 0, 255);
-    List<BlockPos> blocks = new ArrayList<>();
+    final Setting endcrystal_mode = create("EndCrystal", "CityEndCrystal", false);
+    final Setting mode = create("Mode", "CityMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
+    final Setting off_set = create("Height", "CityOffSetSide", 0.2, 0.0, 1.0);
+    final Setting range = create("Range", "CityRange", 6, 1, 12);
+    final Setting r = create("R", "CityR", 0, 0, 255);
+    final Setting g = create("G", "CityG", 255, 0, 255);
+    final Setting b = create("B", "CityB", 0, 0, 255);
+    final Setting a = create("A", "CityA", 50, 0, 255);
+    final List <BlockPos> blocks = new ArrayList <>();
     boolean outline = false;
     boolean solid = false;
-    public WurstplusCityEsp() {
+
+    public
+    WurstplusCityEsp() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
         this.name = "CityESP";
@@ -35,7 +38,8 @@ public class WurstplusCityEsp extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
         blocks.clear();
         for (EntityPlayer player : mc.world.playerEntities) {
             if (mc.player.getDistance(player) > range.getValue(1) || mc.player == player) continue;
@@ -49,7 +53,8 @@ public class WurstplusCityEsp extends Module {
     }
 
     @Override
-    public void render(WurstplusEventRender event) {
+    public
+    void render(WurstplusEventRender event) {
 
         float off_set_h = (float) off_set.getValue(1.0);
 

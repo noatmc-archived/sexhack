@@ -5,16 +5,19 @@ import me.noat.sexhack.client.util.WurstplusTextureHelper;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class WurstplusLogo extends WurstplusPinnable {
+public
+class WurstplusLogo extends WurstplusPinnable {
 
-    ResourceLocation r = new ResourceLocation("custom/wurst.png");
+    final ResourceLocation r = new ResourceLocation("custom/wurst.png");
 
-    public WurstplusLogo() {
+    public
+    WurstplusLogo() {
         super("Logo", "Logo", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
 
         GL11.glPushMatrix();
         GL11.glTranslatef(this.get_x(), this.get_y(), 0.0F);

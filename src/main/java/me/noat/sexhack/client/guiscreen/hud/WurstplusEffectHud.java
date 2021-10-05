@@ -12,13 +12,16 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class WurstplusEffectHud extends WurstplusPinnable {
+public
+class WurstplusEffectHud extends WurstplusPinnable {
 
-    public WurstplusEffectHud() {
+    public
+    WurstplusEffectHud() {
         super("Effect Hud", "effecthud", 1, 0, 0);
     }
 
-    public static String get_friendly_potion_name(PotionEffect potionEffect) {
+    public static
+    String get_friendly_potion_name(PotionEffect potionEffect) {
 
         String effectName = I18n.format(potionEffect.getPotion().getName());
         if (potionEffect.getAmplifier() == 1) {
@@ -32,12 +35,14 @@ public class WurstplusEffectHud extends WurstplusPinnable {
         return effectName;
     }
 
-    public static String get_name_duration_string(PotionEffect potionEffect) {
+    public static
+    String get_name_duration_string(PotionEffect potionEffect) {
         return String.format("%s (%s)", get_friendly_potion_name(potionEffect), Potion.getPotionDurationString(potionEffect, 1.0F));
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
 
         int counter = 12;
 
@@ -46,9 +51,9 @@ public class WurstplusEffectHud extends WurstplusPinnable {
         int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
         int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").getValue(1);
 
-        final List<PotionEffect> effects = new ArrayList<>(mc.player.getActivePotionEffects());
+        final List <PotionEffect> effects = new ArrayList <>(mc.player.getActivePotionEffects());
 
-        final Comparator<PotionEffect> comparator = (first, second) -> {
+        final Comparator <PotionEffect> comparator = (first, second) -> {
 
             final String first_effect = get_friendly_potion_name(first) + " " + ChatFormatting.GRAY + Potion.getPotionDurationString(first, 1.0F);
             final String second_effect = get_friendly_potion_name(second) + " " + ChatFormatting.GRAY + Potion.getPotionDurationString(second, 1.0F);

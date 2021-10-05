@@ -16,16 +16,19 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;
 
-public class WurstplusEnemyUtil {
+public
+class WurstplusEnemyUtil {
 
-    public static ArrayList<Enemy> enemies = new ArrayList<>();
+    public static ArrayList <Enemy> enemies = new ArrayList <>();
 
-    public static boolean isEnemy(String name) {
+    public static
+    boolean isEnemy(String name) {
         return enemies.stream().anyMatch(enemy -> enemy.username.equalsIgnoreCase(name));
     }
 
-    public static Enemy get_enemy_object(String name) {
-        ArrayList<NetworkPlayerInfo> infoMap = new ArrayList<>( Objects.requireNonNull ( Minecraft.getMinecraft ( ).getConnection ( ) ).getPlayerInfoMap());
+    public static
+    Enemy get_enemy_object(String name) {
+        ArrayList <NetworkPlayerInfo> infoMap = new ArrayList <>(Objects.requireNonNull(Minecraft.getMinecraft().getConnection()).getPlayerInfoMap());
         NetworkPlayerInfo profile = infoMap.stream().filter(networkPlayerInfo -> networkPlayerInfo.getGameProfile().getName().equalsIgnoreCase(name)).findFirst().orElse(null);
         if (profile == null) {
             String s = request_ids("[\"" + name + "\"]");
@@ -48,7 +51,8 @@ public class WurstplusEnemyUtil {
         return new Enemy(profile.getGameProfile().getName(), profile.getGameProfile().getId());
     }
 
-    private static String request_ids(String data) {
+    private static
+    String request_ids(String data) {
         try {
             String query = "https://api.mojang.com/profiles/minecraft";
 
@@ -76,22 +80,25 @@ public class WurstplusEnemyUtil {
         }
     }
 
-    private static String convertStreamToString(InputStream is) {
+    private static
+    String convertStreamToString(InputStream is) {
         java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
-        String r = s.hasNext() ? s.next() : "/";
-        return r;
+        return s.hasNext() ? s.next() : "/";
     }
 
-    public static class Enemy {
-        String username;
-        UUID uuid;
+    public static
+    class Enemy {
+        final String username;
+        final UUID uuid;
 
-        public Enemy(String username, UUID uuid) {
+        public
+        Enemy(String username, UUID uuid) {
             this.username = username;
             this.uuid = uuid;
         }
 
-        public String getUsername() {
+        public
+        String getUsername() {
             return username;
         }
     }

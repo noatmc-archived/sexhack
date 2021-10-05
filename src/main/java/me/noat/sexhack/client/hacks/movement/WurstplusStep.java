@@ -6,11 +6,13 @@ import me.noat.sexhack.client.hacks.WurstplusCategory;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
 
-public class WurstplusStep extends Module {
+public
+class WurstplusStep extends Module {
 
-    Setting mode = create("Mode", "StepMode", "Normal", combobox("Normal", "Reverse"));
+    final Setting mode = create("Mode", "StepMode", "Normal", combobox("Normal", "Reverse"));
 
-    public WurstplusStep() {
+    public
+    WurstplusStep() {
         super(WurstplusCategory.WURSTPLUS_MOVEMENT);
 
         this.name = "Step";
@@ -19,7 +21,8 @@ public class WurstplusStep extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (!mc.player.collidedHorizontally && mode.in("Normal")) return;
         if (!mc.player.onGround || mc.player.isOnLadder() || mc.player.isInWater() || mc.player.isInLava() || mc.player.movementInput.jump || mc.player.noClip)
@@ -68,7 +71,8 @@ public class WurstplusStep extends Module {
 
     }
 
-    public double get_n_normal() {
+    public
+    double get_n_normal() {
 
         mc.player.stepHeight = 0.5f;
 

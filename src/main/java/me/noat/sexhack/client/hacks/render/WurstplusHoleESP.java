@@ -16,30 +16,31 @@ import java.util.List;
 // Travis.
 
 
-public class WurstplusHoleESP extends Module {
+public
+class WurstplusHoleESP extends Module {
 
-    Setting mode = create("Mode", "HoleESPMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
-    Setting off_set = create("Height", "HoleESPOffSetSide", 0.2, 0.0, 1.0);
-    Setting range = create("Range", "HoleESPRange", 6, 1, 12);
-    Setting hide_own = create("Hide Own", "HoleESPHideOwn", true);
-    Setting bedrock_view = create("info", "HoleESPbedrock", "Bedrock");
-    Setting bedrock_enable = create("Bedrock Holes", "HoleESPBedrockHoles", true);
+    final Setting mode = create("Mode", "HoleESPMode", "Pretty", combobox("Pretty", "Solid", "Outline"));
+    final Setting off_set = create("Height", "HoleESPOffSetSide", 0.2, 0.0, 1.0);
+    final Setting range = create("Range", "HoleESPRange", 6, 1, 12);
+    final Setting hide_own = create("Hide Own", "HoleESPHideOwn", true);
+    final Setting bedrock_enable = create("Bedrock Holes", "HoleESPBedrockHoles", true);
     // WurstplusSetting rgb_b 				= create("RGB Effect", "HoleColorRGBEffect", true);
-    Setting rb = create("R", "HoleESPRb", 0, 0, 255);
-    Setting gb = create("G", "HoleESPGb", 255, 0, 255);
-    Setting bb = create("B", "HoleESPBb", 0, 0, 255);
-    Setting ab = create("A", "HoleESPAb", 50, 0, 255);
-    Setting obsidian_view = create("info", "HoleESPObsidian", "Obsidian");
-    Setting obsidian_enable = create("Obsidian Holes", "HoleESPObsidianHoles", true);
+    final Setting rb = create("R", "HoleESPRb", 0, 0, 255);
+    final Setting gb = create("G", "HoleESPGb", 255, 0, 255);
+    final Setting bb = create("B", "HoleESPBb", 0, 0, 255);
+    final Setting ab = create("A", "HoleESPAb", 50, 0, 255);
+    final Setting obsidian_enable = create("Obsidian Holes", "HoleESPObsidianHoles", true);
     // WurstplusSetting rgb_o 				= create("RGB Effect", "HoleColorRGBEffect", true);
-    Setting ro = create("R", "HoleESPRo", 255, 0, 255);
-    Setting go = create("G", "HoleESPGo", 0, 0, 255);
-    Setting bo = create("B", "HoleESPBo", 0, 0, 255);
-    Setting ao = create("A", "HoleESPAo", 50, 0, 255);
+    final Setting ro = create("R", "HoleESPRo", 255, 0, 255);
+    final Setting go = create("G", "HoleESPGo", 0, 0, 255);
+    final Setting bo = create("B", "HoleESPBo", 0, 0, 255);
+    final Setting ao = create("A", "HoleESPAo", 50, 0, 255);
+    final Setting dual_enable = create("Dual Holes", "HoleESPTwoHoles", false);
+    final Setting line_a = create("Outline A", "HoleESPLineOutlineA", 255, 0, 255);
+    final ArrayList <WurstplusPair <BlockPos, Boolean>> holes = new ArrayList <>();
+    Setting bedrock_view = create("info", "HoleESPbedrock", "Bedrock");
+    Setting obsidian_view = create("info", "HoleESPObsidian", "Obsidian");
     Setting dual_view = create("info", "HoleESPDual", "Double");
-    Setting dual_enable = create("Dual Holes", "HoleESPTwoHoles", false);
-    Setting line_a = create("Outline A", "HoleESPLineOutlineA", 255, 0, 255);
-    ArrayList<WurstplusPair<BlockPos, Boolean>> holes = new ArrayList<>();
     boolean outline = false;
     boolean solid = false;
     boolean docking = false;
@@ -55,7 +56,8 @@ public class WurstplusHoleESP extends Module {
     int color_a;
     int safe_sides;
 
-    public WurstplusHoleESP() {
+    public
+    WurstplusHoleESP() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
         this.name = "Hole ESP";
@@ -63,7 +65,8 @@ public class WurstplusHoleESP extends Module {
         this.description = "lets you know where holes are";
     }
 
-    private static BlockPos orientConv(int orient_count) {
+    private static
+    BlockPos orientConv(int orient_count) {
         BlockPos converted = null;
 
         switch (orient_count) {
@@ -94,7 +97,8 @@ public class WurstplusHoleESP extends Module {
         return converted;
     }
 
-    private static int oppositeIntOrient(int orient_count) {
+    private static
+    int oppositeIntOrient(int orient_count) {
 
         int opposite = 0;
 
@@ -119,41 +123,8 @@ public class WurstplusHoleESP extends Module {
     }
 
     @Override
-    public void update() {
-        // float[] tick_color = {
-        // 	(System.currentTimeMillis() % (360 * 32)) / (360f * 32)
-        // };
-
-        // int color_rgb_o = Color.HSBtoRGB(tick_color[0], 1, 1);
-        // int color_rgb_b = Color.HSBtoRGB(tick_color[0], 1, 1);
-
-        // if (rgb_o.getValue(true)) {
-        // 	color_r_o = ((color_rgb_o >> 16) & 0xFF);
-        // 	color_g_o = ((color_rgb_o >> 8) & 0xFF);
-        // 	color_b_o = (color_rgb_o & 0xFF);
-
-        // 	r_o.set_value(color_r_o);
-        // 	g_o.set_value(color_g_o);
-        // 	b_o.set_value(color_b_o);
-        // } else {
-        // 	color_r_o = r_o.getValue(1);
-        // 	color_g_o = g_o.getValue(2);
-        // 	color_b_o = b_o.getValue(3);
-        // }
-
-        // if (rgb_b.getValue(true)) {
-        // 	color_r_b = ((color_rgb_b >> 16) & 0xFF);
-        // 	color_g_b = ((color_rgb_b >> 8) & 0xFF);
-        // 	color_b_b = (color_rgb_b & 0xFF);
-
-        // 	r_b.set_value(color_r_b);
-        // 	g_b.set_value(color_g_b);
-        // 	b_b.set_value(color_b_b);
-        // } else {
-        // 	color_r_b = r_b.getValue(1);
-        // 	color_g_b = g_b.getValue(2);
-        // 	color_b_b = b_b.getValue(3);
-        // }
+    public
+    void update() {
 
         color_r_b = rb.getValue(1);
         color_g_b = gb.getValue(1);
@@ -183,7 +154,7 @@ public class WurstplusHoleESP extends Module {
 
             int colapso_range = (int) Math.ceil(range.getValue(1));
 
-            List<BlockPos> spheres = sphere(player_as_blockpos(), colapso_range, colapso_range);
+            List <BlockPos> spheres = sphere(player_as_blockpos(), colapso_range, colapso_range);
 
             for (BlockPos pos : spheres) {
                 if (!mc.world.getBlockState(pos).getBlock().equals(Blocks.AIR)) {
@@ -241,10 +212,10 @@ public class WurstplusHoleESP extends Module {
                 if (possible) {
                     if (safe_sides == 5) {
                         if (!this.bedrock_enable.getValue(true)) continue;
-                        holes.add( new WurstplusPair <> ( pos , true ));
+                        holes.add(new WurstplusPair <>(pos, true));
                     } else {
                         if (!this.obsidian_enable.getValue(true)) continue;
-                        holes.add( new WurstplusPair <> ( pos , false ));
+                        holes.add(new WurstplusPair <>(pos, false));
                     }
                     continue;
                 }
@@ -259,11 +230,11 @@ public class WurstplusHoleESP extends Module {
                     // to avoid rendering the same hole twice
 
                     if (safe_sides == 8) {
-                        holes.add( new WurstplusPair <> ( pos , true ));
-                        if (low_ceiling_hole) holes.add( new WurstplusPair <> ( second_pos , true ));
+                        holes.add(new WurstplusPair <>(pos, true));
+                        if (low_ceiling_hole) holes.add(new WurstplusPair <>(second_pos, true));
                     } else {
-                        holes.add( new WurstplusPair <> ( pos , false ));
-                        if (low_ceiling_hole) holes.add( new WurstplusPair <> ( second_pos , false ));
+                        holes.add(new WurstplusPair <>(pos, false));
+                        if (low_ceiling_hole) holes.add(new WurstplusPair <>(second_pos, false));
                     }
 
                 }
@@ -272,7 +243,8 @@ public class WurstplusHoleESP extends Module {
         }
     }
 
-    private boolean checkDual(BlockPos second_block, int counter) {
+    private
+    boolean checkDual(BlockPos second_block, int counter) {
         int i = -1;
 
 		/*
@@ -310,13 +282,14 @@ public class WurstplusHoleESP extends Module {
     }
 
     @Override
-    public void render(WurstplusEventRender event) {
+    public
+    void render(WurstplusEventRender event) {
         float off_set_h;
 
         if (!holes.isEmpty()) {
             off_set_h = (float) off_set.getValue(1.0);
 
-            for (WurstplusPair<BlockPos, Boolean> hole : holes) {
+            for (WurstplusPair <BlockPos, Boolean> hole : holes) {
                 if (hole.getValue()) {
                     color_r = color_r_b;
                     color_g = color_g_b;
@@ -360,13 +333,14 @@ public class WurstplusHoleESP extends Module {
         }
     }
 
-    public List<BlockPos> sphere(BlockPos pos, float r, int h) {
+    public
+    List <BlockPos> sphere(BlockPos pos, float r, int h) {
         boolean hollow = false;
         boolean sphere = true;
 
         int plus_y = 0;
 
-        List<BlockPos> sphere_block = new ArrayList <> ( );
+        List <BlockPos> sphere_block = new ArrayList <>();
 
         int cx = pos.getX();
         int cy = pos.getY();
@@ -388,7 +362,8 @@ public class WurstplusHoleESP extends Module {
         return sphere_block;
     }
 
-    public BlockPos player_as_blockpos() {
+    public
+    BlockPos player_as_blockpos() {
         return new BlockPos(Math.floor(mc.player.posX), Math.floor(mc.player.posY), Math.floor(mc.player.posZ));
     }
 }

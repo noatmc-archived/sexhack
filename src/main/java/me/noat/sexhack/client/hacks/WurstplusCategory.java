@@ -1,6 +1,7 @@
 package me.noat.sexhack.client.hacks;
 
-public enum WurstplusCategory {
+public
+enum WurstplusCategory {
     WURSTPLUS_CHAT("Chat", "WurstplusChat", false),
     WURSTPLUS_COMBAT("Combat", "WurstplusCombat", false),
     WURSTPLUS_MOVEMENT("Movement", "WurstplusMovement", false),
@@ -11,9 +12,9 @@ public enum WurstplusCategory {
     WURSTPLUS_BETA("Beta", "WurstplusBeta", false),
     WURSTPLUS_HIDDEN("Hidden", "WurstplusHidden", true);
 
-    String name;
-    String tag;
-    boolean hidden;
+    final String name;
+    final String tag;
+    final boolean hidden;
 
     WurstplusCategory(String name, String tag, boolean hidden) {
         this.name = name;
@@ -21,15 +22,18 @@ public enum WurstplusCategory {
         this.hidden = hidden;
     }
 
-    public boolean is_hidden() {
+    public
+    boolean is_hidden() {
         return this.hidden;
     }
 
-    public String get_name() {
+    public
+    String get_name() {
         return this.name;
     }
 
-    public String get_tag() {
+    public
+    String get_tag() {
         return this.tag;
     }
 }

@@ -13,19 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class WurstplusAntiRacist extends Module {
+public
+class WurstplusAntiRacist extends Module {
 
     /*
      *    Updated by NathanW because we need to end racism on anarchy servers
      */
 
-    Setting delay = create("Delay", "AntiRacistDelay", 10, 0, 100);
-    Setting anti_nword = create("AntiNword", "AntiRacismAntiNword", true);
-    Setting chanter = create("Chanter", "AntiRacismChanter", false);
-    List<String> chants = new ArrayList<>();
-    Random r = new Random();
-    int tick_delay;
-    String[] random_correction = {
+    final Setting delay = create("Delay", "AntiRacistDelay", 10, 0, 100);
+    final Setting anti_nword = create("AntiNword", "AntiRacismAntiNword", true);
+    final Setting chanter = create("Chanter", "AntiRacismChanter", false);
+    final List <String> chants = new ArrayList <>();
+    final Random r = new Random();
+    final String[] random_correction = {
             "Yuo jstu got nea nae'd by worst+2",
             "Wurst+2 just stopped me from saying something racially incorrect!",
             "<Insert nword word here>",
@@ -37,10 +37,10 @@ public class WurstplusAntiRacist extends Module {
             "How do you open the impact GUI?",
             "What time does FitMC do his basehunting livestreams?"
     };
-    CharSequence nigger = "nigger";
-    CharSequence nigga = "nigga";
+    final CharSequence nigger = "nigger";
+    final CharSequence nigga = "nigga";
     @EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> listener = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.SendPacket> listener = new Listener <>(event -> {
 
         if (!(event.getPacket() instanceof CPacketChatMessage)) {
             return;
@@ -65,7 +65,10 @@ public class WurstplusAntiRacist extends Module {
             ((CPacketChatMessage) event.getPacket()).message = message;
         }
     });
-    public WurstplusAntiRacist() {
+    int tick_delay;
+
+    public
+    WurstplusAntiRacist() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
 
         this.name = "Anti Racist";
@@ -74,7 +77,8 @@ public class WurstplusAntiRacist extends Module {
     }
 
     @Override
-    protected void enable() {
+    protected
+    void enable() {
         tick_delay = 0;
 
         chants.add("<player> you fucking racist");
@@ -92,7 +96,8 @@ public class WurstplusAntiRacist extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (chanter.getValue(true)) {
 
@@ -111,15 +116,17 @@ public class WurstplusAntiRacist extends Module {
         }
     }
 
-    public String get_random_name() {
+    public
+    String get_random_name() {
 
-        List<EntityPlayer> players = mc.world.playerEntities;
+        List <EntityPlayer> players = mc.world.playerEntities;
         return players.get(r.nextInt(players.size())).getName();
     }
 
     // Anti n-word
 
-    public String random_string(String[] list) {
+    public
+    String random_string(String[] list) {
         return list[r.nextInt(list.length)];
     }
 

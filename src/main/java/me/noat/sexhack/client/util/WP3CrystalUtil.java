@@ -29,11 +29,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WP3CrystalUtil {
+public
+class WP3CrystalUtil {
 
     private static final Minecraft mc = Minecraft.getMinecraft();
 
-    public static Boolean getArmourFucker(EntityPlayer player, float percent) {
+    public static
+    Boolean getArmourFucker(EntityPlayer player, float percent) {
         for (ItemStack stack : player.getArmorInventoryList()) {
             if (stack == null || stack.getItem() == Items.AIR) return true;
 
@@ -45,7 +47,8 @@ public class WP3CrystalUtil {
         return false;
     }
 
-    public static boolean rayTraceSolidCheck(Vec3d start, Vec3d end, boolean shouldIgnore) {
+    public static
+    boolean rayTraceSolidCheck(Vec3d start, Vec3d end, boolean shouldIgnore) {
         if (!Double.isNaN(start.x) && !Double.isNaN(start.y) && !Double.isNaN(start.z)) {
             if (!Double.isNaN(end.x) && !Double.isNaN(end.y) && !Double.isNaN(end.z)) {
                 int currX = MathHelper.floor(start.x);
@@ -149,7 +152,8 @@ public class WP3CrystalUtil {
         return false;
     }
 
-    public static float getDamageFromDifficulty(float damage) {
+    public static
+    float getDamageFromDifficulty(float damage) {
         switch (mc.world.getDifficulty()) {
             case PEACEFUL:
                 return 0;
@@ -162,15 +166,18 @@ public class WP3CrystalUtil {
         }
     }
 
-    public static float calculateDamage(BlockPos pos, Entity target, boolean shouldIgnore) {
+    public static
+    float calculateDamage(BlockPos pos, Entity target, boolean shouldIgnore) {
         return getExplosionDamage(target, new Vec3d(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5), 6.0f, shouldIgnore);
     }
 
-    public static float calculateDamage(Entity crystal, Entity target, boolean shouldIgnore) {
+    public static
+    float calculateDamage(Entity crystal, Entity target, boolean shouldIgnore) {
         return getExplosionDamage(target, new Vec3d(crystal.posX, crystal.posY, crystal.posZ), 6.0f, shouldIgnore);
     }
 
-    public static float getExplosionDamage(Entity targetEntity, Vec3d explosionPosition, float explosionPower, boolean shouldIgnore) {
+    public static
+    float getExplosionDamage(Entity targetEntity, Vec3d explosionPosition, float explosionPower, boolean shouldIgnore) {
         Vec3d entityPosition = new Vec3d(targetEntity.posX, targetEntity.posY, targetEntity.posZ);
         if (targetEntity.isImmuneToExplosions()) return 0.0f;
         explosionPower *= 2.0f;
@@ -225,13 +232,15 @@ public class WP3CrystalUtil {
     }
 
 
-    public static List<Block> getBlocks() {
+    public static
+    List <Block> getBlocks() {
         return Arrays.asList(
                 Blocks.OBSIDIAN, Blocks.BEDROCK, Blocks.COMMAND_BLOCK, Blocks.BARRIER, Blocks.ENCHANTING_TABLE, Blocks.ENDER_CHEST, Blocks.END_PORTAL_FRAME, Blocks.BEACON, Blocks.ANVIL
         );
     }
 
-    public static float getBlastReduction(EntityLivingBase entity, float damage, Explosion explosion) {
+    public static
+    float getBlastReduction(EntityLivingBase entity, float damage, Explosion explosion) {
         damage = CombatRules.getDamageAfterAbsorb(damage, entity.getTotalArmorValue(),
                 (float) entity.getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).getAttributeValue());
 
@@ -253,28 +262,33 @@ public class WP3CrystalUtil {
         return damage;
     }
 
-    public static float getDamageMultiplied(float damage) {
+    public static
+    float getDamageMultiplied(float damage) {
         int diff = mc.world.getDifficulty().getId();
         return damage * (diff == 0 ? 0.0f : (diff == 2 ? 1.0f : (diff == 1 ? 0.5f : 1.5f)));
     }
 
-    public static List<BlockPos> possiblePlacePositions(float placeRange, boolean specialEntityCheck, boolean oneDot15) {
-        NonNullList<BlockPos> positions = NonNullList.create();
+    public static
+    List <BlockPos> possiblePlacePositions(float placeRange, boolean specialEntityCheck, boolean oneDot15) {
+        NonNullList <BlockPos> positions = NonNullList.create();
         positions.addAll(getSphere(getPlayerPos(), placeRange, (int) placeRange, false, true, 0).stream().filter(pos -> mc.world.getBlockState(pos).getBlock() != Blocks.AIR).filter(pos -> canPlaceCrystal(pos, specialEntityCheck, oneDot15)).collect(Collectors.toList()));
         return positions;
     }
 
-    public static BlockPos getPlayerPos() {
+    public static
+    BlockPos getPlayerPos() {
         return new BlockPos(Math.floor(mc.player.posX), Math.floor(mc.player.posY), Math.floor(mc.player.posZ));
     }
 
-    public static BlockPos getPlayerPos(double pY) {
+    public static
+    BlockPos getPlayerPos(double pY) {
         return new BlockPos(Math.floor(mc.player.posX), Math.floor(mc.player.posY + pY), Math.floor(mc.player.posZ));
     }
 
 
-    public static List<BlockPos> getSphere(BlockPos pos, float r, int h, boolean hollow, boolean sphere, int plus_y) {
-        ArrayList<BlockPos> circleblocks = new ArrayList<>();
+    public static
+    List <BlockPos> getSphere(BlockPos pos, float r, int h, boolean hollow, boolean sphere, int plus_y) {
+        ArrayList <BlockPos> circleblocks = new ArrayList <>();
         int cx = pos.getX();
         int cy = pos.getY();
         int cz = pos.getZ();
@@ -301,19 +315,23 @@ public class WP3CrystalUtil {
         return circleblocks;
     }
 
-    public static boolean canSeePos(BlockPos pos) {
+    public static
+    boolean canSeePos(BlockPos pos) {
         return mc.world.rayTraceBlocks(new Vec3d(mc.player.posX, mc.player.posY + (double) mc.player.getEyeHeight(), mc.player.posZ), new Vec3d(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5), false, true, false) == null;
     }
 
-    public static boolean isClose(int input1, int input2, double deviation) {
+    public static
+    boolean isClose(int input1, int input2, double deviation) {
         return ((input2 + deviation) < (input1 - deviation)) && ((input1 - deviation) < input2);
     }
 
-    public static boolean isClose(BlockPos pos1, BlockPos pos2, double d) {
+    public static
+    boolean isClose(BlockPos pos1, BlockPos pos2, double d) {
         return isClose(pos1.getX(), pos2.getX(), d) && isClose(pos1.getY(), pos2.getY(), d) && isClose(pos1.getZ(), pos2.getZ(), d);
     }
 
-    public static EntityEnderCrystal isCrystalStuck(BlockPos crystalPos) {
+    public static
+    EntityEnderCrystal isCrystalStuck(BlockPos crystalPos) {
         for (Entity e : mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(crystalPos))) {
             // TODO : figure out how to make this work with minecraft shitty code
             if (isClose(crystalPos, e.getPosition(), 0.5)) {
@@ -327,7 +345,8 @@ public class WP3CrystalUtil {
         return null;
     }
 
-    public static boolean canPlaceCrystal(BlockPos blockPos, boolean specialEntityCheck, boolean onepointThirteen) {
+    public static
+    boolean canPlaceCrystal(BlockPos blockPos, boolean specialEntityCheck, boolean onepointThirteen) {
         BlockPos boost = blockPos.add(0, 1, 0);
         BlockPos boost2 = blockPos.add(0, 2, 0);
         try {
@@ -374,7 +393,8 @@ public class WP3CrystalUtil {
 
     // target gubbins
 
-    public static Entity getPredictedPosition(Entity entity, double x) {
+    public static
+    Entity getPredictedPosition(Entity entity, double x) {
         if (x == 0) return entity;
         EntityPlayer e = null;
         double motionX = entity.posX - entity.lastTickPosX;
@@ -414,10 +434,11 @@ public class WP3CrystalUtil {
         return e;
     }
 
-    public static boolean isOnGround(double x, double y, double z, Entity entity) {
+    public static
+    boolean isOnGround(double x, double y, double z, Entity entity) {
         try {
             double d3 = y;
-            List<AxisAlignedBB> list1 = mc.world.getCollisionBoxes(entity, entity.getEntityBoundingBox().expand(x, y, z));
+            List <AxisAlignedBB> list1 = mc.world.getCollisionBoxes(entity, entity.getEntityBoundingBox().expand(x, y, z));
             if (y != 0.0D) {
                 int k = 0;
                 for (int l = list1.size(); k < l; ++k) {
@@ -430,8 +451,9 @@ public class WP3CrystalUtil {
         }
     }
 
-    public static EntityPlayer placeValue(double x, double y, double z, EntityPlayer entity) {
-        List<AxisAlignedBB> list1 = mc.world.getCollisionBoxes(entity, entity.getEntityBoundingBox().expand(x, y, z));
+    public static
+    EntityPlayer placeValue(double x, double y, double z, EntityPlayer entity) {
+        List <AxisAlignedBB> list1 = mc.world.getCollisionBoxes(entity, entity.getEntityBoundingBox().expand(x, y, z));
 
         if (y != 0.0D) {
             int k = 0;
@@ -465,7 +487,8 @@ public class WP3CrystalUtil {
         return entity;
     }
 
-    public static double calculateXOffset(AxisAlignedBB other, double offsetX, AxisAlignedBB this1) {
+    public static
+    double calculateXOffset(AxisAlignedBB other, double offsetX, AxisAlignedBB this1) {
         if (other.maxY > this1.minY && other.minY < this1.maxY && other.maxZ > this1.minZ && other.minZ < this1.maxZ) {
             if (offsetX > 0.0D && other.maxX <= this1.minX) {
                 double d1 = (this1.minX - 0.3) - other.maxX;
@@ -484,7 +507,8 @@ public class WP3CrystalUtil {
         return offsetX;
     }
 
-    public static double calculateZOffset(AxisAlignedBB other, double offsetZ, AxisAlignedBB this1) {
+    public static
+    double calculateZOffset(AxisAlignedBB other, double offsetZ, AxisAlignedBB this1) {
         if (other.maxX > this1.minX && other.minX < this1.maxX && other.maxY > this1.minY && other.minY < this1.maxY) {
             if (offsetZ > 0.0D && other.maxZ <= this1.minZ) {
                 double d1 = (this1.minZ - 0.3) - other.maxZ;

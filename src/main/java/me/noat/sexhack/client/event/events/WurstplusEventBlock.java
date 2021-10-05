@@ -4,24 +4,28 @@ import me.noat.sexhack.client.event.WurstplusEventCancellable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
-public class WurstplusEventBlock extends WurstplusEventCancellable {
+public
+class WurstplusEventBlock extends WurstplusEventCancellable {
 
-    public BlockPos pos;
-    public EnumFacing facing;
+    public final BlockPos pos;
+    public final EnumFacing facing;
 
     private int stage;
 
-    public WurstplusEventBlock(final int stage, final BlockPos pos, final EnumFacing facing) {
+    public
+    WurstplusEventBlock(final int stage, final BlockPos pos, final EnumFacing facing) {
         this.pos = pos;
         this.facing = facing;
         this.stage = stage;
     }
 
-    public int get_stage() {
+    public
+    int get_stage() {
         return this.stage;
     }
 
-    public void set_stage(int stage) {
+    public
+    void set_stage(int stage) {
         this.stage = stage;
     }
 

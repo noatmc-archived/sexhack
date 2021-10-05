@@ -4,8 +4,10 @@ package me.noat.sexhack.client.hacks.chat;
 import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
 
-public class WurstplusClearChat extends Module {
-    public WurstplusClearChat() {
+public
+class WurstplusClearChat extends Module {
+    public
+    WurstplusClearChat() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
 
         this.name = "Clear Chatbox";

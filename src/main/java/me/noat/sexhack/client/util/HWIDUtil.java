@@ -9,12 +9,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HWIDUtil {
+public
+class HWIDUtil {
     public static ArrayList s;
     public static String hwid;
 
     // from kambing leak of perry phobos because i have no idea on how to get hwid :^)
-    public static String getHWID() {
+    public static
+    String getHWID() {
         return DigestUtils.sha256Hex(DigestUtils.sha256Hex(System.getenv("os")
                 + System.getProperty("os.name")
                 + System.getProperty("os.arch")
@@ -30,8 +32,9 @@ public class HWIDUtil {
         ));
     }
 
-    public static List<String> checkHWIDUrl() {
-        List<String> s = new ArrayList<>();
+    public static
+    List <String> checkHWIDUrl() {
+        List <String> s = new ArrayList <>();
         try {
             final URL url = new URL(HWID.coolLink);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -39,12 +42,13 @@ public class HWIDUtil {
             while ((hwid = bufferedReader.readLine()) != null) {
                 s.add(hwid);
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         return s;
     }
 
-    public static boolean isHwidThere() {
+    public static
+    boolean isHwidThere() {
         List yes = checkHWIDUrl();
         return yes.contains(getHWID());
     }

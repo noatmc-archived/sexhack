@@ -5,17 +5,21 @@ import me.noat.sexhack.client.command.WurstplusCommand;
 import me.noat.sexhack.client.util.WurstplusEnemyUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
-public class WurstplusEnemy extends WurstplusCommand {
+public
+class WurstplusEnemy extends WurstplusCommand {
 
-    public static ChatFormatting red = ChatFormatting.GREEN;
-    public static ChatFormatting green = ChatFormatting.RED;
-    public static ChatFormatting bold = ChatFormatting.BOLD;
-    public static ChatFormatting reset = ChatFormatting.RESET;
-    public WurstplusEnemy() {
+    public static final ChatFormatting red = ChatFormatting.GREEN;
+    public static final ChatFormatting green = ChatFormatting.RED;
+    public static final ChatFormatting bold = ChatFormatting.BOLD;
+    public static final ChatFormatting reset = ChatFormatting.RESET;
+
+    public
+    WurstplusEnemy() {
         super("enemy", "To add enemy");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
 
         if (message.length == 1) {
             WurstplusMessageUtil.send_client_message("Add - add enemy");

@@ -8,14 +8,17 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 
-public class WurstplusSurroundBlocks extends WurstplusPinnable {
+public
+class WurstplusSurroundBlocks extends WurstplusPinnable {
 
-    public WurstplusSurroundBlocks() {
+    public
+    WurstplusSurroundBlocks() {
         super("Surround Blocks", "SurroundBlocks", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
 
         GlStateManager.pushMatrix();
         RenderHelper.enableGUIStandardItemLighting();
@@ -68,27 +71,27 @@ public class WurstplusSurroundBlocks extends WurstplusPinnable {
         this.set_height(25);
     }
 
-    public Block get_neg_x() {
+    public
+    Block get_neg_x() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
-        Block b = mc.world.getBlockState(player_block.west()).getBlock();
-        return b;
+        return mc.world.getBlockState(player_block.west()).getBlock();
     }
 
-    public Block get_pos_x() {
+    public
+    Block get_pos_x() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
-        Block b = mc.world.getBlockState(player_block.east()).getBlock();
-        return b;
+        return mc.world.getBlockState(player_block.east()).getBlock();
     }
 
-    public Block get_pos_z() {
+    public
+    Block get_pos_z() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
-        Block b = mc.world.getBlockState(player_block.south()).getBlock();
-        return b;
+        return mc.world.getBlockState(player_block.south()).getBlock();
     }
 
-    public Block get_neg_z() {
+    public
+    Block get_neg_z() {
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
-        Block b = mc.world.getBlockState(player_block.north()).getBlock();
-        return b;
+        return mc.world.getBlockState(player_block.north()).getBlock();
     }
 }

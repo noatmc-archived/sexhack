@@ -22,28 +22,31 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
-public class WurstplusChams extends Module {
+public
+class WurstplusChams extends Module {
 
-    Setting mode = create("Mode", "ChamsMode", "Outline", combobox("Outline", "Wireframe"));
-    Setting players = create("Players", "ChamsPlayers", true);
-    Setting mobs = create("Mobs", "ChamsMobs", true);
-    Setting self = create("Self", "ChamsSelf", true);
-    Setting items = create("Items", "ChamsItems", true);
-    Setting xporbs = create("Xp Orbs", "ChamsXPO", true);
-    Setting xpbottles = create("Xp Bottles", "ChamsBottles", true);
-    Setting pearl = create("Pearls", "ChamsPearls", true);
-    Setting top = create("Top", "ChamsTop", true);
-    Setting scale = create("Factor", "ChamsFactor", 0, -1f, 1f);
-    Setting r = create("R", "ChamsR", 255, 0, 255);
-    Setting g = create("G", "ChamsG", 255, 0, 255);
-    Setting b = create("B", "ChamsB", 255, 0, 255);
-    Setting a = create("A", "ChamsA", 100, 0, 255);
-    Setting box_a = create("Box A", "ChamsABox", 100, 0, 255);
-    Setting width = create("Width", "ChamsWdith", 2, 0.5, 5);
-    Setting rainbow_mode = create("Rainbow", "ChamsRainbow", false);
-    Setting sat = create("Satiation", "ChamsSatiation", 0.8, 0, 1);
-    Setting brightness = create("Brightness", "ChamsBrightness", 0.8, 0, 1);
-    public WurstplusChams() {
+    final Setting mode = create("Mode", "ChamsMode", "Outline", combobox("Outline", "Wireframe"));
+    final Setting players = create("Players", "ChamsPlayers", true);
+    final Setting mobs = create("Mobs", "ChamsMobs", true);
+    final Setting self = create("Self", "ChamsSelf", true);
+    final Setting items = create("Items", "ChamsItems", true);
+    final Setting xporbs = create("Xp Orbs", "ChamsXPO", true);
+    final Setting xpbottles = create("Xp Bottles", "ChamsBottles", true);
+    final Setting pearl = create("Pearls", "ChamsPearls", true);
+    final Setting top = create("Top", "ChamsTop", true);
+    final Setting scale = create("Factor", "ChamsFactor", 0, -1f, 1f);
+    final Setting r = create("R", "ChamsR", 255, 0, 255);
+    final Setting g = create("G", "ChamsG", 255, 0, 255);
+    final Setting b = create("B", "ChamsB", 255, 0, 255);
+    final Setting a = create("A", "ChamsA", 100, 0, 255);
+    final Setting box_a = create("Box A", "ChamsABox", 100, 0, 255);
+    final Setting width = create("Width", "ChamsWdith", 2, 0.5, 5);
+    final Setting rainbow_mode = create("Rainbow", "ChamsRainbow", false);
+    final Setting sat = create("Satiation", "ChamsSatiation", 0.8, 0, 1);
+    final Setting brightness = create("Brightness", "ChamsBrightness", 0.8, 0, 1);
+
+    public
+    WurstplusChams() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
         this.name = "Chams";
@@ -52,13 +55,15 @@ public class WurstplusChams extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
         if (rainbow_mode.getValue(true)) {
             cycle_rainbow();
         }
     }
 
-    public void cycle_rainbow() {
+    public
+    void cycle_rainbow() {
 
         float[] tick_color = {
                 (System.currentTimeMillis() % (360 * 32)) / (360f * 32)
@@ -73,7 +78,8 @@ public class WurstplusChams extends Module {
     }
 
     @Override
-    public void render(WurstplusEventRender event) {
+    public
+    void render(WurstplusEventRender event) {
         if (items.getValue(true)) {
             int i = 0;
             for (final Entity entity : mc.world.loadedEntityList) {
@@ -197,7 +203,8 @@ public class WurstplusChams extends Module {
     }
 
     @Override
-    public void on_render_model(final WurstplusEventRenderEntityModel event) {
+    public
+    void on_render_model(final WurstplusEventRenderEntityModel event) {
         if (event.stage != 0 || event.entity == null || !self.getValue(true) && event.entity.equals(mc.player) || !players.getValue(true) && event.entity instanceof EntityPlayer || !mobs.getValue(true) && event.entity instanceof EntityMob) {
             return;
         }

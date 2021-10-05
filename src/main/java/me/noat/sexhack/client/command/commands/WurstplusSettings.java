@@ -6,12 +6,15 @@ import me.noat.sexhack.client.command.WurstplusCommand;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
 
-public class WurstplusSettings extends WurstplusCommand {
-    public WurstplusSettings() {
+public
+class WurstplusSettings extends WurstplusCommand {
+    public
+    WurstplusSettings() {
         super("settings", "To save/load settings.");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
         String msg = "null";
 
         if (message.length > 1) {

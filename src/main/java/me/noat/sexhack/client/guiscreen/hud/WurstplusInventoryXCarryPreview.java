@@ -7,13 +7,16 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
 
 
-public class WurstplusInventoryXCarryPreview extends WurstplusPinnable {
-    public WurstplusInventoryXCarryPreview() {
+public
+class WurstplusInventoryXCarryPreview extends WurstplusPinnable {
+    public
+    WurstplusInventoryXCarryPreview() {
         super("Inventory XCarry", "InventoryXPreview", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
         if (mc.player != null) {
             GlStateManager.pushMatrix();
             RenderHelper.enableGUIStandardItemLighting();

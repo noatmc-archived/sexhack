@@ -19,11 +19,16 @@ import java.util.List;
 
 import static me.noat.sexhack.SexHack.send_minecraft_log;
 
-public class WurstplusConfigManager {
+public
+class WurstplusConfigManager {
 
     // FOLDERS
     private final String MAIN_FOLDER = "SexHack/";
     private final String CONFIGS_FOLDER = MAIN_FOLDER + "configs/";
+    private final Path CONFIGS_FOLDER_PATH = Paths.get(CONFIGS_FOLDER);
+    private String ACTIVE_CONFIG_FOLDER = CONFIGS_FOLDER + "default/";
+    private String CURRENT_CONFIG_DIR = MAIN_FOLDER + CONFIGS_FOLDER + ACTIVE_CONFIG_FOLDER;
+    private Path ACTIVE_CONFIG_FOLDER_PATH = Paths.get(ACTIVE_CONFIG_FOLDER);
     // STATIC FILES
     private final String CLIENT_FILE = "client.json";
     private final String CONFIG_FILE = "config.txt";
@@ -36,33 +41,27 @@ public class WurstplusConfigManager {
     private final String BINDS_FILE = "binds.txt";
     // DIRS
     private final String CLIENT_DIR = MAIN_FOLDER + CLIENT_FILE;
-    private final String CONFIG_DIR = MAIN_FOLDER + CONFIG_FILE;
-    private final String DRAWN_DIR = MAIN_FOLDER + DRAWN_FILE;
-    private final String EZ_DIR = MAIN_FOLDER + EZ_FILE;
-    private final String CHATSUFFIX_DIR = MAIN_FOLDER + CHATSUFFIX_FILE;
-    private final String ENEMIES_DIR = MAIN_FOLDER + ENEMIES_FILE;
-    private final String FRIENDS_DIR = MAIN_FOLDER + FRIENDS_FILE;
-    private final String HUD_DIR = MAIN_FOLDER + HUD_FILE;
-    // FOLDER PATHS
-    private final Path MAIN_FOLDER_PATH = Paths.get(MAIN_FOLDER);
-    private final Path CONFIGS_FOLDER_PATH = Paths.get(CONFIGS_FOLDER);
     // FILE PATHS
     private final Path CLIENT_PATH = Paths.get(CLIENT_DIR);
-    private final Path CHATSUFFIX_PATH = Paths.get(CHATSUFFIX_DIR);
+    private final String CONFIG_DIR = MAIN_FOLDER + CONFIG_FILE;
     private final Path CONFIG_PATH = Paths.get(CONFIG_DIR);
+    private final String DRAWN_DIR = MAIN_FOLDER + DRAWN_FILE;
     private final Path DRAWN_PATH = Paths.get(DRAWN_DIR);
+    private final String EZ_DIR = MAIN_FOLDER + EZ_FILE;
     private final Path EZ_PATH = Paths.get(EZ_DIR);
+    private final String CHATSUFFIX_DIR = MAIN_FOLDER + CHATSUFFIX_FILE;
+    private final Path CHATSUFFIX_PATH = Paths.get(CHATSUFFIX_DIR);
+    private final String ENEMIES_DIR = MAIN_FOLDER + ENEMIES_FILE;
     private final Path ENEMIES_PATH = Paths.get(ENEMIES_DIR);
+    private final String FRIENDS_DIR = MAIN_FOLDER + FRIENDS_FILE;
     private final Path FRIENDS_PATH = Paths.get(FRIENDS_DIR);
+    private final String HUD_DIR = MAIN_FOLDER + HUD_FILE;
     private final Path HUD_PATH = Paths.get(HUD_DIR);
-    private String ACTIVE_CONFIG_FOLDER = CONFIGS_FOLDER + "default/";
-    private String CURRENT_CONFIG_DIR = MAIN_FOLDER + CONFIGS_FOLDER + ACTIVE_CONFIG_FOLDER;
-    private String BINDS_DIR = CURRENT_CONFIG_DIR + BINDS_FILE;
-    private Path ACTIVE_CONFIG_FOLDER_PATH = Paths.get(ACTIVE_CONFIG_FOLDER);
-    private Path BINDS_PATH = Paths.get(BINDS_DIR);
-    private Path CURRENT_CONFIG_PATH = Paths.get(CURRENT_CONFIG_DIR);
+    // FOLDER PATHS
+    private final Path MAIN_FOLDER_PATH = Paths.get(MAIN_FOLDER);
 
-    public boolean set_active_config_folder(String folder) {
+    public
+    boolean set_active_config_folder(String folder) {
         if (folder.equals(this.ACTIVE_CONFIG_FOLDER)) {
             return false;
         }
@@ -71,10 +70,10 @@ public class WurstplusConfigManager {
         this.ACTIVE_CONFIG_FOLDER_PATH = Paths.get(ACTIVE_CONFIG_FOLDER);
 
         this.CURRENT_CONFIG_DIR = MAIN_FOLDER + CONFIGS_FOLDER + ACTIVE_CONFIG_FOLDER;
-        this.CURRENT_CONFIG_PATH = Paths.get(CURRENT_CONFIG_DIR);
+        Path CURRENT_CONFIG_PATH = Paths.get(CURRENT_CONFIG_DIR);
 
-        this.BINDS_DIR = CURRENT_CONFIG_DIR + BINDS_FILE;
-        this.BINDS_PATH = Paths.get(BINDS_DIR);
+        String BINDS_DIR = CURRENT_CONFIG_DIR + BINDS_FILE;
+        Path BINDS_PATH = Paths.get(BINDS_DIR);
 
         load_settings();
         return true;
@@ -82,7 +81,8 @@ public class WurstplusConfigManager {
 
     // LOAD & SAVE EZ MESSAGE
 
-    private void save_ezmessage() throws IOException {
+    private
+    void save_ezmessage() throws IOException {
 
         FileWriter writer = new FileWriter(EZ_DIR);
 
@@ -96,7 +96,8 @@ public class WurstplusConfigManager {
 
     }
 
-    private void load_ezmessage() throws IOException {
+    private
+    void load_ezmessage() throws IOException {
         StringBuilder sb = new StringBuilder();
         for (String s : Files.readAllLines(EZ_PATH)) {
             sb.append(s);
@@ -106,7 +107,8 @@ public class WurstplusConfigManager {
 
     // LOAD & SAVE CHATSUFFIX MESSAGE
 
-    private void save_chatsuffixmessage() throws IOException {
+    private
+    void save_chatsuffixmessage() throws IOException {
 
         FileWriter writer = new FileWriter(CHATSUFFIX_DIR);
 
@@ -120,7 +122,8 @@ public class WurstplusConfigManager {
 
     }
 
-    private void load_chatsuffixmessage() throws IOException {
+    private
+    void load_chatsuffixmessage() throws IOException {
         StringBuilder cs = new StringBuilder();
         for (String csm : Files.readAllLines(CHATSUFFIX_PATH)) {
             cs.append(csm);
@@ -130,7 +133,8 @@ public class WurstplusConfigManager {
 
     // LOAD & SAVE DRAWN
 
-    private void save_drawn() throws IOException {
+    private
+    void save_drawn() throws IOException {
         FileWriter writer = new FileWriter(DRAWN_DIR);
 
         for (String s : WurstplusDrawnUtil.hidden_tags) {
@@ -140,13 +144,15 @@ public class WurstplusConfigManager {
         writer.close();
     }
 
-    private void load_drawn() throws IOException {
+    private
+    void load_drawn() throws IOException {
         WurstplusDrawnUtil.hidden_tags = Files.readAllLines(DRAWN_PATH);
     }
 
     // LOAD & SAVE PALS
 
-    private void save_friends() throws IOException {
+    private
+    void save_friends() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(WurstplusFriendUtil.friends);
         OutputStreamWriter file;
@@ -156,11 +162,12 @@ public class WurstplusConfigManager {
         file.close();
     }
 
-    private void load_friends() throws IOException {
+    private
+    void load_friends() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get(FRIENDS_DIR));
 
-        WurstplusFriendUtil.friends = gson.fromJson(reader, new TypeToken<ArrayList<WurstplusFriendUtil.Friend>>() {
+        WurstplusFriendUtil.friends = gson.fromJson(reader, new TypeToken <ArrayList <WurstplusFriendUtil.Friend>>() {
         }.getType());
 
         reader.close();
@@ -168,7 +175,8 @@ public class WurstplusConfigManager {
 
     // LOAD & SAVE ENEMIES
 
-    private void save_enemies() throws IOException {
+    private
+    void save_enemies() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(WurstplusEnemyUtil.enemies);
 
@@ -179,11 +187,12 @@ public class WurstplusConfigManager {
         file.close();
     }
 
-    private void load_enemies() throws IOException {
+    private
+    void load_enemies() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get(ENEMIES_DIR));
 
-        WurstplusEnemyUtil.enemies = gson.fromJson(reader, new TypeToken<ArrayList<WurstplusEnemyUtil.Enemy>>() {
+        WurstplusEnemyUtil.enemies = gson.fromJson(reader, new TypeToken <ArrayList <WurstplusEnemyUtil.Enemy>>() {
         }.getType());
 
         reader.close();
@@ -191,7 +200,8 @@ public class WurstplusConfigManager {
 
     // LOAD & SAVE HACKS
 
-    private void save_hacks() throws IOException {
+    private
+    void save_hacks() throws IOException {
 
         for (Module hack : SexHack.get_hack_manager().get_array_hacks()) {
 
@@ -228,7 +238,8 @@ public class WurstplusConfigManager {
         }
     }
 
-    private void load_hacks() throws IOException {
+    private
+    void load_hacks() throws IOException {
 
         for (Module hack : SexHack.get_hack_manager().get_array_hacks()) {
 
@@ -238,7 +249,7 @@ public class WurstplusConfigManager {
             final DataInputStream di_stream = new DataInputStream(fi_stream);
             final BufferedReader br = new BufferedReader(new InputStreamReader(di_stream));
 
-            final List<String> bugged_lines = new ArrayList<>();
+            final List <String> bugged_lines = new ArrayList <>();
 
             String line;
             while ((line = br.readLine()) != null) {
@@ -290,7 +301,8 @@ public class WurstplusConfigManager {
 
     // LOAD & SAVE client/gui
 
-    private void save_client() throws IOException {
+    private
+    void save_client() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonParser parser = new JsonParser();
 
@@ -330,7 +342,8 @@ public class WurstplusConfigManager {
         file.close();
     }
 
-    private void load_client() throws IOException {
+    private
+    void load_client() throws IOException {
         InputStream stream = Files.newInputStream(CLIENT_PATH);
         JsonObject json_client = new JsonParser().parse(new InputStreamReader(stream)).getAsJsonObject();
         JsonObject json_config = json_client.get("configuration").getAsJsonObject();
@@ -352,7 +365,8 @@ public class WurstplusConfigManager {
 
     // LOAD & SAVE HUD
 
-    private void save_hud() throws IOException {
+    private
+    void save_hud() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonParser parser = new JsonParser();
 
@@ -397,7 +411,8 @@ public class WurstplusConfigManager {
         file.close();
     }
 
-    private void load_hud() throws IOException {
+    private
+    void load_hud() throws IOException {
         InputStream input_stream = Files.newInputStream(HUD_PATH);
         JsonObject main_hud = new JsonParser().parse(new InputStreamReader(input_stream)).getAsJsonObject();
         JsonObject main_frame = main_hud.get("frame").getAsJsonObject();
@@ -423,7 +438,8 @@ public class WurstplusConfigManager {
 
     // LOAD & SAVE BINDS
 
-    private void save_binds() throws IOException {
+    private
+    void save_binds() throws IOException {
         final String file_name = ACTIVE_CONFIG_FOLDER + "BINDS.txt";
         final Path file_path = Paths.get(file_name);
 
@@ -437,7 +453,8 @@ public class WurstplusConfigManager {
         br.close();
     }
 
-    private void load_binds() throws IOException {
+    private
+    void load_binds() throws IOException {
 
         final String file_name = ACTIVE_CONFIG_FOLDER + "BINDS.txt";
         final File file = new File(file_name);
@@ -463,7 +480,8 @@ public class WurstplusConfigManager {
 
     // LOAD & SAVE SETTINGS
 
-    public void save_settings() {
+    public
+    void save_settings() {
         try {
             verify_dir(MAIN_FOLDER_PATH);
             verify_dir(CONFIGS_FOLDER_PATH);
@@ -483,7 +501,8 @@ public class WurstplusConfigManager {
         }
     }
 
-    public void load_settings() {
+    public
+    void load_settings() {
 
         try {
             load_binds();
@@ -503,18 +522,21 @@ public class WurstplusConfigManager {
 
     // GENERAL UTIL
 
-    public boolean delete_file(final String path) throws IOException {
+    public
+    void delete_file(final String path) {
         final File f = new File(path);
-        return f.delete();
+        f.delete();
     }
 
-    public void verify_file(final Path path) throws IOException {
+    public
+    void verify_file(final Path path) throws IOException {
         if (!Files.exists(path)) {
             Files.createFile(path);
         }
     }
 
-    public void verify_dir(final Path path) throws IOException {
+    public
+    void verify_dir(final Path path) throws IOException {
         if (!Files.exists(path)) {
             Files.createDirectory(path);
         }

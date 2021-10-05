@@ -1,23 +1,23 @@
 {
-	"required"           : true,
-	"compatibilityLevel" : "JAVA_8",
-	"package"            : "me.noat.sexhack.mixins",
-	"refmap"             : "mixins.wurstplus.refmap.json",
-	"mixins"             : [
-      "WurstplusMixinAbstractClientPlayer",
-      "WurstplusMixinEntity",
-      "WurstplusMixinEntityRenderer",
-      "WurstplusMixinEntitySP",
-      "WurstplusMixinGuiNewChat",
-      "WurstplusMixinGuiPlayerTabOverlay",
-      "WurstplusMixinGuiScreen",
-      "WurstplusMixinItemRenderer",
-      "WurstplusMixinMinecraft",
-      "WurstplusMixinNetworkManager",
-      "WurstplusMixinPlayer",
-      "WurstplusMixinPlayerControllerMP",
-      "WurstplusMixinRenderLivingBase",
-      "WurstplusMixinRenderPlayer",
-      "WurstplusMixinWorld"
-    ]
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "me.noat.sexhack.mixins",
+  "refmap": "mixins.wurstplus.refmap.json",
+  "mixins": [
+    "WurstplusMixinAbstractClientPlayer",
+    "WurstplusMixinEntity",
+    "WurstplusMixinEntityRenderer",
+    "WurstplusMixinEntitySP",
+    "WurstplusMixinGuiNewChat",
+    "WurstplusMixinGuiPlayerTabOverlay",
+    "WurstplusMixinGuiScreen",
+    "WurstplusMixinItemRenderer",
+    "WurstplusMixinMinecraft",
+    "WurstplusMixinNetworkManager",
+    "WurstplusMixinPlayer",
+    "WurstplusMixinPlayerControllerMP",
+    "WurstplusMixinRenderLivingBase",
+    "WurstplusMixinRenderPlayer",
+    "WurstplusMixinWorld"
+  ]
 }

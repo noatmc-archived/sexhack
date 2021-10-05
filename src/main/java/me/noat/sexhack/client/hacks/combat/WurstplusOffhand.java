@@ -12,16 +12,19 @@ import net.minecraft.inventory.ClickType;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 
-public class WurstplusOffhand extends Module {
+public
+class WurstplusOffhand extends Module {
 
-    Setting switch_mode = create("Offhand", "OffhandOffhand", "Totem", combobox("Totem", "Crystal", "Gapple"));
-    Setting totem_switch = create("Totem HP", "OffhandTotemHP", 16, 0, 36);
-    Setting gapple_in_hole = create("Gapple In Hole", "OffhandGapple", false);
-    Setting gapple_hole_hp = create("Gapple Hole HP", "OffhandGappleHP", 8, 0, 36);
-    Setting delay = create("Delay", "OffhandDelay", false);
+    final Setting switch_mode = create("Offhand", "OffhandOffhand", "Totem", combobox("Totem", "Crystal", "Gapple"));
+    final Setting totem_switch = create("Totem HP", "OffhandTotemHP", 16, 0, 36);
+    final Setting gapple_in_hole = create("Gapple In Hole", "OffhandGapple", false);
+    final Setting gapple_hole_hp = create("Gapple Hole HP", "OffhandGappleHP", 8, 0, 36);
+    final Setting delay = create("Delay", "OffhandDelay", false);
     private boolean switching = false;
     private int last_slot;
-    public WurstplusOffhand() {
+
+    public
+    WurstplusOffhand() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Offhand";
@@ -30,7 +33,8 @@ public class WurstplusOffhand extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (mc.currentScreen == null || mc.currentScreen instanceof GuiInventory) {
 
@@ -83,7 +87,8 @@ public class WurstplusOffhand extends Module {
 
     }
 
-    public void swap_items(int slot, int step) {
+    public
+    void swap_items(int slot, int step) {
         if (slot == -1) return;
         if (step == 0) {
             mc.playerController.windowClick(0, slot, 0, ClickType.PICKUP, mc.player);
@@ -104,7 +109,8 @@ public class WurstplusOffhand extends Module {
         mc.playerController.updateController();
     }
 
-    private boolean is_in_hole() {
+    private
+    boolean is_in_hole() {
 
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
 
@@ -115,7 +121,8 @@ public class WurstplusOffhand extends Module {
     }
 
 
-    private int get_item_slot(Item input) {
+    private
+    int get_item_slot(Item input) {
         if (input == mc.player.getHeldItemOffhand().getItem()) return -1;
         for (int i = 36; i >= 0; i--) {
             final Item item = mc.player.inventory.getStackInSlot(i).getItem();

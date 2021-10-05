@@ -6,12 +6,15 @@ import me.noat.sexhack.client.manager.WurstplusCommandManager;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
 
-public class WurstplusPrefix extends WurstplusCommand {
-    public WurstplusPrefix() {
+public
+class WurstplusPrefix extends WurstplusCommand {
+    public
+    WurstplusPrefix() {
         super("prefix", "Change prefix.");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
         String prefix = "null";
 
         if (message.length > 1) {

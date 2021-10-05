@@ -16,8 +16,9 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
-@Mod(modid = "sexhack", version = SexHack.WURSTPLUS_VERSION)
-public class SexHack {
+@Mod (modid = "sexhack", version = SexHack.WURSTPLUS_VERSION)
+public
+class SexHack {
 
     public static final String WURSTPLUS_NAME = "SexHack";
     public static final String WURSTPLUS_VERSION = "1.0.4.2";
@@ -25,12 +26,12 @@ public class SexHack {
     public static final int WURSTPLUS_KEY_GUI = Keyboard.KEY_RSHIFT;
     public static final int WURSTPLUS_KEY_DELETE = Keyboard.KEY_DELETE;
     public static final int WURSTPLUS_KEY_GUI_ESCAPE = Keyboard.KEY_ESCAPE;
+    public static final ChatFormatting g = ChatFormatting.DARK_GRAY;
+    public static final ChatFormatting r = ChatFormatting.RESET;
     public static Logger wurstplus_register_log;
     public static WurstplusGUI click_gui;
     public static WurstplusHUD click_hud;
     public static Turok turok;
-    public static ChatFormatting g = ChatFormatting.DARK_GRAY;
-    public static ChatFormatting r = ChatFormatting.RESET;
     @Mod.Instance
     private static SexHack MASTER;
     private static WurstplusSettingManager setting_manager;
@@ -38,52 +39,64 @@ public class SexHack {
     private static WurstplusModuleManager module_manager;
     private static WurstplusHUDManager hud_manager;
 
-    public static void send_minecraft_log(String log) {
+    public static
+    void send_minecraft_log(String log) {
         wurstplus_register_log.info(log);
     }
 
-    public static String get_name() {
+    public static
+    String get_name() {
         return WURSTPLUS_NAME;
     }
 
-    public static String get_version() {
+    public static
+    String get_version() {
         return WURSTPLUS_VERSION;
     }
 
-    public static String get_actual_user() {
+    public static
+    String get_actual_user() {
         return Minecraft.getMinecraft().getSession().getUsername();
     }
 
-    public static WurstplusConfigManager get_config_manager() {
+    public static
+    WurstplusConfigManager get_config_manager() {
         return config_manager;
     }
 
-    public static WurstplusModuleManager get_hack_manager() {
+    public static
+    WurstplusModuleManager get_hack_manager() {
         return module_manager;
     }
 
-    public static WurstplusSettingManager get_setting_manager() {
+    public static
+    WurstplusSettingManager get_setting_manager() {
         return setting_manager;
     }
 
-    public static WurstplusHUDManager get_hud_manager() {
+    public static
+    WurstplusHUDManager get_hud_manager() {
         return hud_manager;
     }
 
-    public static WurstplusModuleManager get_module_manager() {
+    public static
+    WurstplusModuleManager get_module_manager() {
         return module_manager;
     }
 
-    public static WurstplusEventHandler get_event_handler() {
+    public static
+    WurstplusEventHandler get_event_handler() {
         return WurstplusEventHandler.INSTANCE;
     }
 
-    public static String smoth(String base) {
+    public static
+    String smoth(String base) {
         return Font.smoth(base);
     }
 
     @Mod.EventHandler
-    public void WurstplusStarting(FMLInitializationEvent event) {
+    public
+    void WurstplusStarting(FMLInitializationEvent event) {
         init_log(WURSTPLUS_NAME);
 
         WurstplusEventHandler.INSTANCE = new WurstplusEventHandler();
@@ -139,7 +152,8 @@ public class SexHack {
 
     }
 
-    public void init_log(String name) {
+    public
+    void init_log(String name) {
         wurstplus_register_log = LogManager.getLogger(name);
 
         send_minecraft_log("starting wurstplustwo");

@@ -15,15 +15,11 @@ import java.util.Random;
 // Zero alpine manager.
 
 
-public class WurstplusChatSuffix extends Module {
-    Setting ignore = create("Ignore", "ChatSuffixIgnore", true);
-    Setting type = create("Type", "ChatSuffixType", "Default", combobox("Default", "Random", "Custom"));
-    boolean accept_suffix;
-    boolean suffix_default;
-    boolean suffix_random;
-    boolean suffix_custom;
-    StringBuilder suffix;
-    String[] random_client_name = {
+public
+class WurstplusChatSuffix extends Module {
+    final Setting ignore = create("Ignore", "ChatSuffixIgnore", true);
+    final Setting type = create("Type", "ChatSuffixType", "Default", combobox("Default", "Random", "Custom"));
+    final String[] random_client_name = {
             "chad",
             "tabott",
             "travis",
@@ -38,7 +34,7 @@ public class WurstplusChatSuffix extends Module {
             "wurst",
             "buttfuhk"
     };
-    String[] random_client_finish = {
+    final String[] random_client_finish = {
             " plus",
             " epic",
             "god",
@@ -49,8 +45,12 @@ public class WurstplusChatSuffix extends Module {
             "plus",
             ""
     };
+    boolean accept_suffix;
+    boolean suffix_default;
+    boolean suffix_random;
+    boolean suffix_custom;
     @EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> listener = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.SendPacket> listener = new Listener <>(event -> {
         // If not be the CPacketChatMessage return.
         if (!(event.getPacket() instanceof CPacketChatMessage)) {
             return;
@@ -109,11 +109,10 @@ public class WurstplusChatSuffix extends Module {
 
             if (suffix_random) {
                 // Create first the string builder.
-                StringBuilder suffix_with_randoms = new StringBuilder();
 
                 // Convert the base using the TravisFont.
-                suffix_with_randoms.append(convert_base(random_string(random_client_name)));
-                suffix_with_randoms.append(convert_base(random_string(random_client_finish)));
+                String suffix_with_randoms = convert_base(random_string(random_client_name)) +
+                        convert_base(random_string(random_client_finish));
 
                 message += SexHack.WURSTPLUS_SIGN + suffix_with_randoms;
             }
@@ -127,8 +126,10 @@ public class WurstplusChatSuffix extends Module {
         // Send the message.
         ((CPacketChatMessage) event.getPacket()).message = message;
     });
+    StringBuilder suffix;
 
-    public WurstplusChatSuffix() {
+    public
+    WurstplusChatSuffix() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
 
         this.name = "Chat Suffix";
@@ -137,17 +138,20 @@ public class WurstplusChatSuffix extends Module {
     }
 
     // Get the random values string.
-    public String random_string(String[] list) {
+    public
+    String random_string(String[] list) {
         return list[new Random().nextInt(list.length)];
     }
 
     // Convert the base using the TravisFont.
-    public String convert_base(String base) {
+    public
+    String convert_base(String base) {
         return SexHack.smoth(base);
     }
 
     @Override
-    public String array_detail() {
+    public
+    String array_detail() {
         // Update the detail.
         return this.type.get_current_value();
     }

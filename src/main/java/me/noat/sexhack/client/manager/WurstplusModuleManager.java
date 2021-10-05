@@ -25,13 +25,15 @@ import org.lwjgl.opengl.GL11;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class WurstplusModuleManager {
+public
+class WurstplusModuleManager {
 
-    public static ArrayList<Module> array_hacks = new ArrayList<>();
+    public static final ArrayList <Module> array_hacks = new ArrayList <>();
 
-    public static Minecraft mc = Minecraft.getMinecraft();
+    public static final Minecraft mc = Minecraft.getMinecraft();
 
-    public WurstplusModuleManager() {
+    public
+    WurstplusModuleManager() {
 
         // CLick GUI and HUD.
         add_hack(new WurstplusClickGUI());
@@ -122,16 +124,19 @@ public class WurstplusModuleManager {
         array_hacks.sort(Comparator.comparing(Module::get_name));
     }
 
-    public void add_hack(Module module) {
+    public
+    void add_hack(Module module) {
         array_hacks.add(module);
     }
 
-    public ArrayList<Module> get_array_hacks() {
+    public
+    ArrayList <Module> get_array_hacks() {
         return array_hacks;
     }
 
-    public ArrayList<Module> get_array_active_hacks() {
-        ArrayList<Module> actived_modules = new ArrayList<>();
+    public
+    ArrayList <Module> get_array_active_hacks() {
+        ArrayList <Module> actived_modules = new ArrayList <>();
 
         for (Module modules : get_array_hacks()) {
             if (modules.is_active()) {
@@ -142,18 +147,21 @@ public class WurstplusModuleManager {
         return actived_modules;
     }
 
-    public Vec3d process(Entity entity, double x, double y, double z) {
+    public
+    Vec3d process(Entity entity, double x, double y, double z) {
         return new Vec3d(
                 (entity.posX - entity.lastTickPosX) * x,
                 (entity.posY - entity.lastTickPosY) * y,
                 (entity.posZ - entity.lastTickPosZ) * z);
     }
 
-    public Vec3d get_interpolated_pos(Entity entity, double ticks) {
+    public
+    Vec3d get_interpolated_pos(Entity entity, double ticks) {
         return new Vec3d(entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ).add(process(entity, ticks, ticks, ticks)); // x, y, z.
     }
 
-    public void render(RenderWorldLastEvent event) {
+    public
+    void render(RenderWorldLastEvent event) {
         mc.profiler.startSection("wurstplus");
         mc.profiler.startSection("setup");
 
@@ -201,7 +209,8 @@ public class WurstplusModuleManager {
         mc.profiler.endSection();
     }
 
-    public void update() {
+    public
+    void update() {
         for (Module modules : get_array_hacks()) {
             if (modules.is_active()) {
                 modules.update();
@@ -209,7 +218,8 @@ public class WurstplusModuleManager {
         }
     }
 
-    public void render() {
+    public
+    void render() {
         for (Module modules : get_array_hacks()) {
             if (modules.is_active()) {
                 modules.render();
@@ -217,7 +227,8 @@ public class WurstplusModuleManager {
         }
     }
 
-    public void bind(int event_key) {
+    public
+    void bind(int event_key) {
         if (event_key == 0) {
             return;
         }
@@ -229,7 +240,8 @@ public class WurstplusModuleManager {
         }
     }
 
-    public Module get_module_with_tag(String tag) {
+    public
+    Module get_module_with_tag(String tag) {
         Module module_requested = null;
 
         for (Module module : get_array_hacks()) {
@@ -241,8 +253,9 @@ public class WurstplusModuleManager {
         return module_requested;
     }
 
-    public ArrayList<Module> get_modules_with_category(WurstplusCategory category) {
-        ArrayList<Module> module_requesteds = new ArrayList<>();
+    public
+    ArrayList <Module> get_modules_with_category(WurstplusCategory category) {
+        ArrayList <Module> module_requesteds = new ArrayList <>();
 
         for (Module modules : get_array_hacks()) {
             if (modules.get_category().equals(category)) {

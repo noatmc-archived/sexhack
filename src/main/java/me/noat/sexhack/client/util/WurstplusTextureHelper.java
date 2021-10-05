@@ -7,11 +7,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class WurstplusTextureHelper {
+public
+class WurstplusTextureHelper {
 
     final static Minecraft mc = Minecraft.getMinecraft();
 
-    public static void drawTexture(final ResourceLocation resourceLocation, final float x, final float y, final float width, final float height) {
+    public static
+    void drawTexture(final ResourceLocation resourceLocation, final float x, final float y, final float width, final float height) {
         GL11.glPushMatrix();
         final float size = width / 2.0f;
         GL11.glEnable(3042);
@@ -36,7 +38,8 @@ public class WurstplusTextureHelper {
         mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(Items.DIAMOND_HELMET), 999999, 999999); // this NEEDS to be here or everything gets fucked (don't ask me why)
     }
 
-    public static void bindTexture(final ResourceLocation resourceLocation) {
+    public static
+    void bindTexture(final ResourceLocation resourceLocation) {
         try {
             ITextureObject texture = mc.getTextureManager().getTexture(resourceLocation);
             GL11.glBindTexture(3553, texture.getGlTextureId());

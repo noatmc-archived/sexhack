@@ -4,14 +4,17 @@ import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.event.WurstplusEventHandler;
 import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
 
-public class WurstplusTPS extends WurstplusPinnable {
+public
+class WurstplusTPS extends WurstplusPinnable {
 
-    public WurstplusTPS() {
+    public
+    WurstplusTPS() {
         super("TPS", "TPS", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
         int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
         int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
@@ -25,7 +28,8 @@ public class WurstplusTPS extends WurstplusPinnable {
         this.set_height(this.get(line, "height") + 2);
     }
 
-    public String getTPS() {
+    public
+    String getTPS() {
         try {
             int tps = Math.round(WurstplusEventHandler.INSTANCE.get_tick_rate());
             if (tps >= 16) {

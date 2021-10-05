@@ -5,14 +5,17 @@ import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
 import net.minecraft.client.Minecraft;
 
-public class WurstplusFPS extends WurstplusPinnable {
+public
+class WurstplusFPS extends WurstplusPinnable {
 
-    public WurstplusFPS() {
+    public
+    WurstplusFPS() {
         super("Fps", "Fps", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
         int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
         int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
@@ -26,7 +29,8 @@ public class WurstplusFPS extends WurstplusPinnable {
         this.set_height(this.get(line, "height") + 2);
     }
 
-    public String get_fps() {
+    public
+    String get_fps() {
         int fps = Minecraft.getDebugFPS();
         if (fps >= 60) {
             return "\u00A7a" + fps;

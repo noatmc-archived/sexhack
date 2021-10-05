@@ -23,22 +23,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WurstplusCrystalUtil {
+public
+class WurstplusCrystalUtil {
 
     final static Minecraft mc = Minecraft.getMinecraft();
 
-    public static List<BlockPos> possiblePlacePositions(final float placeRange, final boolean thirteen, final boolean specialEntityCheck) {
-        NonNullList<BlockPos> positions = NonNullList.create();
+    public static
+    List <BlockPos> possiblePlacePositions(final float placeRange, final boolean thirteen, final boolean specialEntityCheck) {
+        NonNullList <BlockPos> positions = NonNullList.create();
         positions.addAll(getSphere(getPlayerPos(mc.player), placeRange, (int) placeRange, false, true, 0).stream().filter(pos -> canPlaceCrystal(pos, thirteen, specialEntityCheck)).collect(Collectors.toList()));
         return positions;
     }
 
-    public static BlockPos getPlayerPos(final EntityPlayer player) {
+    public static
+    BlockPos getPlayerPos(final EntityPlayer player) {
         return new BlockPos(Math.floor(player.posX), Math.floor(player.posY), Math.floor(player.posZ));
     }
 
-    public static List<BlockPos> getSphere(final BlockPos pos, final float r, final int h, final boolean hollow, final boolean sphere, final int plus_y) {
-        final List<BlockPos> circleblocks = new ArrayList<>();
+    public static
+    List <BlockPos> getSphere(final BlockPos pos, final float r, final int h, final boolean hollow, final boolean sphere, final int plus_y) {
+        final List <BlockPos> circleblocks = new ArrayList <>();
         final int cx = pos.getX();
         final int cy = pos.getY();
         final int cz = pos.getZ();
@@ -56,7 +60,8 @@ public class WurstplusCrystalUtil {
         return circleblocks;
     }
 
-    public static boolean canPlaceCrystal(final BlockPos blockPos, final boolean thirteen, final boolean specialEntityCheck) {
+    public static
+    boolean canPlaceCrystal(final BlockPos blockPos, final boolean thirteen, final boolean specialEntityCheck) {
         final BlockPos boost = blockPos.add(0, 1, 0);
         final BlockPos boost2 = blockPos.add(0, 2, 0);
         final BlockPos final_boost = blockPos.add(0, 3, 0);
@@ -91,7 +96,8 @@ public class WurstplusCrystalUtil {
         return true;
     }
 
-    public static boolean canPlaceCrystal(final BlockPos pos) {
+    public static
+    boolean canPlaceCrystal(final BlockPos pos) {
 
         final Block block = mc.world.getBlockState(pos).getBlock();
 
@@ -107,7 +113,8 @@ public class WurstplusCrystalUtil {
         return false;
     }
 
-    public static float calculateDamage(double posX, double posY, double posZ, Entity entity) {
+    public static
+    float calculateDamage(double posX, double posY, double posZ, Entity entity) {
         float doubleExplosionSize = 12.0f;
         double distancedsize = entity.getDistance(posX, posY, posZ) / (double) doubleExplosionSize;
         Vec3d vec3d = new Vec3d(posX, posY, posZ);
@@ -127,7 +134,8 @@ public class WurstplusCrystalUtil {
         return (float) finald;
     }
 
-    public static float getBlastReduction(final EntityLivingBase entity, final float damageI, final Explosion explosion) {
+    public static
+    float getBlastReduction(final EntityLivingBase entity, final float damageI, final Explosion explosion) {
         float damage = damageI;
         if (entity instanceof EntityPlayer) {
             final EntityPlayer ep = (EntityPlayer) entity;
@@ -150,13 +158,15 @@ public class WurstplusCrystalUtil {
         return damage;
     }
 
-    public static float getDamageMultiplied(final float damage) {
+    public static
+    float getDamageMultiplied(final float damage) {
         final int diff = mc.world.getDifficulty().getId();
         return damage * ((diff == 0) ? 0.0f : ((diff == 2) ? 1.0f : ((diff == 1) ? 0.5f : 1.5f)));
     }
 
 
-    public static float calculateDamage(EntityEnderCrystal crystal, Entity entity) {
+    public static
+    float calculateDamage(EntityEnderCrystal crystal, Entity entity) {
         return calculateDamage(crystal.posX, crystal.posY, crystal.posZ, entity);
     }
 

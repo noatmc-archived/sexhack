@@ -11,26 +11,27 @@ import java.awt.*;
 import java.util.ArrayList;
 
 
-public class WurstplusFrame {
+public
+class WurstplusFrame {
     private final Minecraft mc = Minecraft.getMinecraft();
     private final WurstplusCategory category;
-    private final ArrayList<WurstplusModuleButton> module_button;
+    private final ArrayList <WurstplusModuleButton> module_button;
+    private final String frame_tag;
+    private final WurstplusDraw font = new WurstplusDraw(1);
+    private final boolean first = false;
     private int x;
     private int y;
     private int width;
     private int height;
     private int width_name;
-    private final int width_abs;
     private String frame_name;
-    private final String frame_tag;
-    private final WurstplusDraw font = new WurstplusDraw(1);
-    private final boolean first = false;
     private boolean move;
     private int move_x;
     private int move_y;
     private boolean can;
 
-    public WurstplusFrame(WurstplusCategory category) {
+    public
+    WurstplusFrame(WurstplusCategory category) {
         this.x = 10;
         this.y = 10;
 
@@ -39,10 +40,10 @@ public class WurstplusFrame {
 
         this.category = category;
 
-        this.module_button = new ArrayList<>();
+        this.module_button = new ArrayList <>();
 
         this.width_name = font.get_string_width(this.category.get_name());
-        this.width_abs = this.width_name;
+        int width_abs = this.width_name;
 
         this.frame_name = category.get_name();
         this.frame_tag = category.get_tag();
@@ -73,83 +74,103 @@ public class WurstplusFrame {
         this.can = true;
     }
 
-    private static Color getRainbow() {
+    private static
+    Color getRainbow() {
         return Color.getHSBColor((float) (System.currentTimeMillis() % 7500L) / 7500f, 0.85f, 0.85f);
     }
 
-    public void does_can(boolean value) {
+    public
+    void does_can(boolean value) {
         this.can = value;
     }
 
-    public void set_move(boolean value) {
+    public
+    void set_move(boolean value) {
         this.move = value;
     }
 
-    public void set_move_x(int x) {
+    public
+    void set_move_x(int x) {
         this.move_x = x;
     }
 
-    public void set_move_y(int y) {
+    public
+    void set_move_y(int y) {
         this.move_y = y;
     }
 
-    public String get_name() {
+    public
+    String get_name() {
         return this.frame_name;
     }
 
-    public String get_tag() {
+    public
+    String get_tag() {
         return this.frame_tag;
     }
 
-    public boolean is_moving() {
+    public
+    boolean is_moving() {
         return this.move;
     }
 
-    public int get_width() {
+    public
+    int get_width() {
         return this.width;
     }
 
-    public void set_width(int width) {
+    public
+    void set_width(int width) {
         this.width = width;
     }
 
-    public int get_height() {
+    public
+    int get_height() {
         return this.height;
     }
 
-    public void set_height(int height) {
+    public
+    void set_height(int height) {
         this.height = height;
     }
 
-    public int get_x() {
+    public
+    int get_x() {
         return this.x;
     }
 
-    public void set_x(int x) {
+    public
+    void set_x(int x) {
         this.x = x;
     }
 
-    public int get_y() {
+    public
+    int get_y() {
         return this.y;
     }
 
-    public void set_y(int y) {
+    public
+    void set_y(int y) {
         this.y = y;
     }
 
-    public boolean can() {
+    public
+    boolean can() {
         return this.can;
     }
 
-    public boolean motion(int mx, int my) {
+    public
+    boolean motion(int mx, int my) {
         return mx >= get_x() && my >= get_y() && mx <= get_x() + get_width() && my <= get_y() + get_height();
     }
 
-    public boolean motion(String tag, int mx, int my) {
+    public
+    boolean motion(String tag, int mx, int my) {
         return mx >= get_x() && my >= get_y() && mx <= get_x() + get_width() && my <= get_y() + font.get_string_height();
     }
 
-    public void crush(int mx, int my) {
+    public
+    void crush(int mx, int my) {
 
         int screen_x = (mc.displayWidth / 2);
         int screen_y = (mc.displayHeight / 2);
@@ -182,7 +203,8 @@ public class WurstplusFrame {
         }
     }
 
-    public boolean is_binding() {
+    public
+    boolean is_binding() {
         boolean value_requested = false;
 
         for (WurstplusModuleButton buttons : this.module_button) {
@@ -194,31 +216,36 @@ public class WurstplusFrame {
         return value_requested;
     }
 
-    public void does_button_for_do_widgets_can(boolean can) {
+    public
+    void does_button_for_do_widgets_can(boolean can) {
         for (WurstplusModuleButton buttons : this.module_button) {
             buttons.does_widgets_can(can);
         }
     }
 
-    public void bind(char char_, int key) {
+    public
+    void bind(char char_, int key) {
         for (WurstplusModuleButton buttons : this.module_button) {
             buttons.bind(char_, key);
         }
     }
 
-    public void mouse(int mx, int my, int mouse) {
+    public
+    void mouse(int mx, int my, int mouse) {
         for (WurstplusModuleButton buttons : this.module_button) {
             buttons.mouse(mx, my, mouse);
         }
     }
 
-    public void mouse_release(int mx, int my, int mouse) {
+    public
+    void mouse_release(int mx, int my, int mouse) {
         for (WurstplusModuleButton buttons : this.module_button) {
             buttons.button_release(mx, my, mouse);
         }
     }
 
-    public void refresh_frame(WurstplusModuleButton button, int combo_height) {
+    public
+    void refresh_frame(WurstplusModuleButton button, int combo_height) {
 
         this.height = 25;
 
@@ -249,7 +276,8 @@ public class WurstplusFrame {
         }
     }
 
-    public void render(int mx, int my) {
+    public
+    void render(int mx, int my) {
         float[] tick_color = {
                 (System.currentTimeMillis() % (360 * 32)) / (360f * 32)
         };

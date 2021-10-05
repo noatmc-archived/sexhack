@@ -13,11 +13,13 @@ import net.minecraft.item.ItemTool;
 
 import java.awt.*;
 
-public class TargetHUD extends Module {
-    Setting x = create("X", "X", 0, 0, 500);
-    Setting y = create("Y", "Y", 0, 0, 500);
+public
+class TargetHUD extends Module {
+    final Setting x = create("X", "X", 0, 0, 500);
+    final Setting y = create("Y", "Y", 0, 0, 500);
 
-    public TargetHUD() {
+    public
+    TargetHUD() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
         this.name = "TargetHUD";
         this.tag = "TargetHUD";
@@ -25,7 +27,8 @@ public class TargetHUD extends Module {
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
         EntityPlayer target = SexAura.staticGetTarget();
         if (target != null) {
             int xOffset = 39;

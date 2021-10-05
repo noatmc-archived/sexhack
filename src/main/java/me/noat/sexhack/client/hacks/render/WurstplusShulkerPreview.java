@@ -3,9 +3,11 @@ package me.noat.sexhack.client.hacks.render;
 import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.hacks.WurstplusCategory;
 
-public class WurstplusShulkerPreview extends Module {
+public
+class WurstplusShulkerPreview extends Module {
 
-    public WurstplusShulkerPreview() {
+    public
+    WurstplusShulkerPreview() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
         this.name = "Shulker Preview";

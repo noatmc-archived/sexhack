@@ -1,4 +1,3 @@
-
 package me.noat.sexhack.client.hacks.chat;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
@@ -16,17 +15,18 @@ import net.minecraft.network.play.server.SPacketEntityStatus;
 import java.util.HashMap;
 
 
-public class WurstplusTotempop extends Module {
+public
+class WurstplusTotempop extends Module {
 
-    public static final HashMap<String, Integer> totem_pop_counter = new HashMap <> ( );
-    public static ChatFormatting red = ChatFormatting.RED;
-    public static ChatFormatting green = ChatFormatting.GREEN;
+    public static final HashMap <String, Integer> totem_pop_counter = new HashMap <>();
+    public static final ChatFormatting red = ChatFormatting.RED;
+    public static final ChatFormatting green = ChatFormatting.GREEN;
+    public static final ChatFormatting grey = ChatFormatting.GRAY;
+    public static final ChatFormatting bold = ChatFormatting.BOLD;
+    public static final ChatFormatting reset = ChatFormatting.RESET;
     public static ChatFormatting gold = ChatFormatting.GOLD;
-    public static ChatFormatting grey = ChatFormatting.GRAY;
-    public static ChatFormatting bold = ChatFormatting.BOLD;
-    public static ChatFormatting reset = ChatFormatting.RESET;
     @EventHandler
-    private final Listener<WurstplusEventPacket.ReceivePacket> packet_event = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.ReceivePacket> packet_event = new Listener <>(event -> {
 
         if (event.getPacket() instanceof SPacketEntityStatus) {
 
@@ -59,7 +59,8 @@ public class WurstplusTotempop extends Module {
 
     });
 
-    public WurstplusTotempop() {
+    public
+    WurstplusTotempop() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
 
         this.name = "Pop Counter";
@@ -68,7 +69,8 @@ public class WurstplusTotempop extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         for (EntityPlayer player : mc.world.playerEntities) {
 

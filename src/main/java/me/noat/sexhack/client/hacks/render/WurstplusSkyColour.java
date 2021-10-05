@@ -9,13 +9,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.awt.*;
 
-public class WurstplusSkyColour extends Module {
+public
+class WurstplusSkyColour extends Module {
 
-    Setting r = create("R", "SkyColourR", 255, 0, 255);
-    Setting g = create("G", "SkyColourG", 255, 0, 255);
-    Setting b = create("B", "SkyColourB", 255, 0, 255);
-    Setting rainbow_mode = create("Rainbow", "SkyColourRainbow", false);
-    public WurstplusSkyColour() {
+    final Setting r = create("R", "SkyColourR", 255, 0, 255);
+    final Setting g = create("G", "SkyColourG", 255, 0, 255);
+    final Setting b = create("B", "SkyColourB", 255, 0, 255);
+    final Setting rainbow_mode = create("Rainbow", "SkyColourRainbow", false);
+
+    public
+    WurstplusSkyColour() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
         this.name = "Sky Colour";
@@ -24,36 +27,42 @@ public class WurstplusSkyColour extends Module {
     }
 
     @SubscribeEvent
-    public void fog_colour(final EntityViewRenderEvent.FogColors event) {
+    public
+    void fog_colour(final EntityViewRenderEvent.FogColors event) {
         event.setRed(r.getValue(1) / 255f);
         event.setGreen(g.getValue(1) / 255f);
         event.setBlue(b.getValue(1) / 255f);
     }
 
     @SubscribeEvent
-    public void fog_density(final EntityViewRenderEvent.FogDensity event) {
+    public
+    void fog_density(final EntityViewRenderEvent.FogDensity event) {
         event.setDensity(0.0f);
         event.setCanceled(true);
     }
 
     @Override
-    protected void enable() {
+    protected
+    void enable() {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Override
-    protected void disable() {
+    protected
+    void disable() {
         MinecraftForge.EVENT_BUS.unregister(this);
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
         if (rainbow_mode.getValue(true)) {
             cycle_rainbow();
         }
     }
 
-    public void cycle_rainbow() {
+    public
+    void cycle_rainbow() {
 
         float[] tick_color = {
                 (System.currentTimeMillis() % (360 * 32)) / (360f * 32)

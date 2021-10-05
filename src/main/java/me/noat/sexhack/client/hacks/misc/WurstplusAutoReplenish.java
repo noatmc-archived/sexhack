@@ -14,14 +14,16 @@ import net.minecraft.item.ItemStack;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WurstplusAutoReplenish extends Module {
+public
+class WurstplusAutoReplenish extends Module {
 
+    final Setting threshold = create("Threshold", "AutoReplenishThreshold", 32, 1, 63);
+    final Setting tickdelay = create("Delay", "AutoReplenishDelay", 2, 1, 10);
     Setting mode = create("Mode", "AutoReplenishMode", "All", combobox("All", "Crystals", "Xp", "Both"));
-    Setting threshold = create("Threshold", "AutoReplenishThreshold", 32, 1, 63);
-    Setting tickdelay = create("Delay", "AutoReplenishDelay", 2, 1, 10);
     private int delay_step = 0;
 
-    public WurstplusAutoReplenish() {
+    public
+    WurstplusAutoReplenish() {
         super(WurstplusCategory.WURSTPLUS_MISC);
 
         this.name = "Hotbar Replenish";
@@ -30,7 +32,8 @@ public class WurstplusAutoReplenish extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (mc.currentScreen instanceof GuiContainer) return;
 
@@ -41,7 +44,7 @@ public class WurstplusAutoReplenish extends Module {
 
         delay_step = 0;
 
-        final WurstplusPair<Integer, Integer> slots = findReplenishableHotbarSlot();
+        final WurstplusPair <Integer, Integer> slots = findReplenishableHotbarSlot();
         if (slots == null) return;
 
         final int inventorySlot = slots.getKey();
@@ -53,9 +56,10 @@ public class WurstplusAutoReplenish extends Module {
 
     }
 
-    private WurstplusPair<Integer, Integer> findReplenishableHotbarSlot() {
-        WurstplusPair<Integer, Integer> returnPair = null;
-        for (final Map.Entry<Integer, ItemStack> hotbarSlot : get_hotbar().entrySet()) {
+    private
+    WurstplusPair <Integer, Integer> findReplenishableHotbarSlot() {
+        WurstplusPair <Integer, Integer> returnPair = null;
+        for (final Map.Entry <Integer, ItemStack> hotbarSlot : get_hotbar().entrySet()) {
             final ItemStack stack = hotbarSlot.getValue();
             if (!stack.isEmpty) {
                 if (stack.getItem() == Items.AIR) {
@@ -74,16 +78,17 @@ public class WurstplusAutoReplenish extends Module {
                 if (inventorySlot == -1) {
                     continue;
                 }
-                returnPair = new WurstplusPair<>(inventorySlot, hotbarSlot.getKey());
+                returnPair = new WurstplusPair <>(inventorySlot, hotbarSlot.getKey());
             }
         }
         return returnPair;
     }
 
-    private int findCompatibleInventorySlot(final ItemStack hotbarStack) {
+    private
+    int findCompatibleInventorySlot(final ItemStack hotbarStack) {
         int inventorySlot = -1;
         int smallestStackSize = 999;
-        for (final Map.Entry<Integer, ItemStack> entry : get_inventory().entrySet()) {
+        for (final Map.Entry <Integer, ItemStack> entry : get_inventory().entrySet()) {
             final ItemStack inventoryStack = entry.getValue();
             if (!inventoryStack.isEmpty) {
                 if (inventoryStack.getItem() == Items.AIR) {
@@ -103,7 +108,8 @@ public class WurstplusAutoReplenish extends Module {
         return inventorySlot;
     }
 
-    private boolean isCompatibleStacks(final ItemStack stack1, final ItemStack stack2) {
+    private
+    boolean isCompatibleStacks(final ItemStack stack1, final ItemStack stack2) {
         if (!stack1.getItem().equals(stack2.getItem())) {
             return false;
         }
@@ -117,16 +123,19 @@ public class WurstplusAutoReplenish extends Module {
         return stack1.getDisplayName().equals(stack2.getDisplayName()) && stack1.getItemDamage() == stack2.getItemDamage();
     }
 
-    private Map<Integer, ItemStack> get_inventory() {
+    private
+    Map <Integer, ItemStack> get_inventory() {
         return get_inv_slots(9, 35);
     }
 
-    private Map<Integer, ItemStack> get_hotbar() {
+    private
+    Map <Integer, ItemStack> get_hotbar() {
         return get_inv_slots(36, 44);
     }
 
-    private Map<Integer, ItemStack> get_inv_slots(int current, final int last) {
-        final Map<Integer, ItemStack> fullInventorySlots = new HashMap <> ( );
+    private
+    Map <Integer, ItemStack> get_inv_slots(int current, final int last) {
+        final Map <Integer, ItemStack> fullInventorySlots = new HashMap <>();
         while (current <= last) {
             fullInventorySlots.put(current, mc.player.inventoryContainer.getInventory().get(current));
             ++current;

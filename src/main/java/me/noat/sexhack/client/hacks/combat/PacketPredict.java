@@ -9,10 +9,11 @@ import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.network.play.client.CPacketUseEntity;
 import net.minecraft.network.play.server.SPacketSpawnObject;
 
-public class PacketPredict extends Module {
-    public Setting packets = create("Packets", "Packet", 5, 1, 10);
+public
+class PacketPredict extends Module {
+    public final Setting packets = create("Packets", "Packet", 5, 1, 10);
     @EventHandler
-    private final Listener<WurstplusEventPacket.ReceivePacket> receive = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.ReceivePacket> receive = new Listener <>(event -> {
         SPacketSpawnObject packet2;
         if (event.getPacket() instanceof SPacketSpawnObject && (packet2 = (SPacketSpawnObject) event.getPacket()).getType() == 51) {
             for (int i = 0; i <= this.packets.getValue(1); ) {
@@ -25,7 +26,8 @@ public class PacketPredict extends Module {
         }
     });
 
-    public PacketPredict() {
+    public
+    PacketPredict() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Packet Predict";
@@ -33,7 +35,4 @@ public class PacketPredict extends Module {
         this.description = "mojang spaghetti code abuser 2.0";
     }
 
-    private void packetAttack(int entityId) {
-
-    }
 }

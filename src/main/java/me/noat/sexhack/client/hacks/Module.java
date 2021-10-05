@@ -14,18 +14,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Module implements Listenable {
+public
+class Module implements Listenable {
     public static final Minecraft mc = Minecraft.getMinecraft();
-    public WurstplusCategory category;
+    public final WurstplusCategory category;
+    public final boolean widget_usage;
     public String name;
     public String tag;
     public String description;
     public int bind;
     public boolean state_module;
     public boolean toggle_message;
-    public boolean widget_usage;
 
-    public Module(WurstplusCategory category) {
+    public
+    Module(WurstplusCategory category) {
         this.name = "";
         this.tag = "";
         this.description = "";
@@ -35,23 +37,28 @@ public class Module implements Listenable {
         this.category = category;
     }
 
-    public static boolean fullNullCheck() {
+    public static
+    boolean fullNullCheck() {
         return Module.mc.player == null || Module.mc.world == null;
     }
 
-    public void set_bind(int key) {
+    public
+    void set_bind(int key) {
         this.bind = (key);
     }
 
-    public void set_if_can_send_message_toggle(boolean value) {
+    public
+    void set_if_can_send_message_toggle(boolean value) {
         this.toggle_message = value;
     }
 
-    public boolean is_active() {
+    public
+    boolean is_active() {
         return this.state_module;
     }
 
-    public void set_active(boolean value) {
+    public
+    void set_active(boolean value) {
         if (this.state_module != value) {
             if (value) {
                 set_enable();
@@ -65,27 +72,33 @@ public class Module implements Listenable {
         }
     }
 
-    public boolean using_widget() {
+    public
+    boolean using_widget() {
         return this.widget_usage;
     }
 
-    public String get_name() {
+    public
+    String get_name() {
         return this.name;
     }
 
-    public String get_tag() {
+    public
+    String get_tag() {
         return this.tag;
     }
 
-    public String get_description() {
+    public
+    String get_description() {
         return this.description;
     }
 
-    public int get_bind(int type) {
+    public
+    int get_bind(int type) {
         return this.bind;
     }
 
-    public String get_bind(String type) {
+    public
+    String get_bind(String type) {
         String converted_bind = "null";
 
         if (get_bind(0) < 0) {
@@ -102,15 +115,18 @@ public class Module implements Listenable {
         return converted_bind;
     }
 
-    public WurstplusCategory get_category() {
+    public
+    WurstplusCategory get_category() {
         return this.category;
     }
 
-    public boolean can_send_message_when_toggle() {
+    public
+    boolean can_send_message_when_toggle() {
         return this.toggle_message;
     }
 
-    public void set_disable() {
+    public
+    void set_disable() {
         this.state_module = false;
 
         disable();
@@ -118,7 +134,8 @@ public class Module implements Listenable {
         WurstplusEventBus.EVENT_BUS.unsubscribe(this);
     }
 
-    public void set_enable() {
+    public
+    void set_enable() {
         this.state_module = true;
 
         enable();
@@ -126,73 +143,88 @@ public class Module implements Listenable {
         WurstplusEventBus.EVENT_BUS.subscribe(this);
     }
 
-    public void toggle() {
+    public
+    void toggle() {
         set_active(!is_active());
     }
 
-    protected Setting create(String name, String tag, int value, int min, int max) {
+    protected
+    Setting create(String name, String tag, int value, int min, int max) {
         SexHack.get_setting_manager().register(new Setting(this, name, tag, value, min, max));
 
         return SexHack.get_setting_manager().get_setting_with_tag(this, tag);
     }
 
-    protected Setting create(String name, String tag, double value, double min, double max) {
+    protected
+    Setting create(String name, String tag, double value, double min, double max) {
         SexHack.get_setting_manager().register(new Setting(this, name, tag, value, min, max));
 
         return SexHack.get_setting_manager().get_setting_with_tag(this, tag);
     }
 
-    protected Setting create(String name, String tag, boolean value) {
+    protected
+    Setting create(String name, String tag, boolean value) {
         SexHack.get_setting_manager().register(new Setting(this, name, tag, value));
 
         return SexHack.get_setting_manager().get_setting_with_tag(this, tag);
     }
 
-    protected Setting create(String name, String tag, String value) {
+    protected
+    Setting create(String name, String tag, String value) {
         SexHack.get_setting_manager().register(new Setting(this, name, tag, value));
 
         return SexHack.get_setting_manager().get_setting_with_tag(this, tag);
     }
 
-    protected Setting create(String name, String tag, String value, List<String> values) {
+    protected
+    Setting create(String name, String tag, String value, List <String> values) {
         SexHack.get_setting_manager().register(new Setting(this, name, tag, values, value));
 
         return SexHack.get_setting_manager().get_setting_with_tag(this, tag);
     }
 
-    protected List<String> combobox(String... item) {
+    protected
+    List <String> combobox(String... item) {
 
-        return new ArrayList<>(Arrays.asList(item));
+        return new ArrayList <>(Arrays.asList(item));
     }
 
-    public void render(WurstplusEventRender event) {
+    public
+    void render(WurstplusEventRender event) {
         // 3d
     }
 
-    public void render() {
+    public
+    void render() {
         // 2d
     }
 
-    public void update() {
+    public
+    void update() {
 
     }
 
-    public void event_widget() {
+    public
+    void event_widget() {
 
     }
 
-    protected void disable() {
+    protected
+    void disable() {
 
     }
 
-    protected void enable() {
+    protected
+    void enable() {
 
     }
 
-    public String array_detail() {
+    public
+    String array_detail() {
         return null;
     }
 
-    public void on_render_model(final WurstplusEventRenderEntityModel event) {
+    public
+    void on_render_model(final WurstplusEventRenderEntityModel event) {
     }
 }

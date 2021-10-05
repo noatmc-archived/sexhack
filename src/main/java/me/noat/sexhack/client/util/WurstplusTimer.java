@@ -1,22 +1,27 @@
 package me.noat.sexhack.client.util;
 
-public class WurstplusTimer {
+public
+class WurstplusTimer {
 
     private long time;
 
-    public WurstplusTimer() {
+    public
+    WurstplusTimer() {
         this.time = -1L;
     }
 
-    public boolean passed(final long ms) {
+    public
+    boolean passed(final long ms) {
         return this.getTime(System.nanoTime() - this.time) >= ms;
     }
 
-    public void reset() {
+    public
+    void reset() {
         this.time = System.nanoTime();
     }
 
-    public long getTime(final long time) {
+    public
+    long getTime(final long time) {
         return time / 1000000L;
     }
 

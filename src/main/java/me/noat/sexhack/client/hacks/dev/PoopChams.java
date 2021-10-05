@@ -19,11 +19,22 @@ import org.lwjgl.opengl.GL11;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PoopChams extends Module {
+public
+class PoopChams extends Module {
 
-    private static final HashMap<EntityOtherPlayerMP, Long> popFakePlayerMap = new HashMap<>();
+    private static final HashMap <EntityOtherPlayerMP, Long> popFakePlayerMap = new HashMap <>();
+    final Setting fadeTime = create("FadeTime", "popFadeTime", 3000, 1, 5000);
+    final Setting fadeSpeed = create("FadeSpeed", "popFadeSpeed", 0.05f, 0.01f, 1.0f);
+    final Setting fadeMode = create("Fade Mode", "popFadeMode", "Elevator", combobox("Elevator", "Fade", "None"));
+    final Setting elevatorMode = create("Elevator Mode", "popElevatorMode", "Heaven", combobox("Heaven", "Hell"));
+    final Setting renderMode = create("Render Mode", "popRenderMode", "Both", combobox("Both", "Textured", "Wireframe"));
+    final Setting lineWidth = create("Line Width", "popLineWidth", 1f, 0.1f, 3.0f);
+    final Setting r = create("Red", "popRed", 255, 0, 255);
+    final Setting g = create("Green", "popGreen", 255, 0, 255);
+    final Setting b = create("Blue", "popBlue", 255, 0, 255);
+    final Setting a = create("Alpha", "popAlpha", 127, 0, 255);
     @EventHandler
-    private final Listener<WurstplusEventPacket.ReceivePacket> packet_event = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.ReceivePacket> packet_event = new Listener <>(event -> {
 
         if (event.getPacket() instanceof SPacketEntityStatus) {
 
@@ -48,19 +59,10 @@ public class PoopChams extends Module {
             }
         }
     });
-    Setting fadeTime = create("FadeTime", "popFadeTime", 3000, 1, 5000);
-    Setting fadeSpeed = create("FadeSpeed", "popFadeSpeed", 0.05f, 0.01f, 1.0f);
-    Setting fadeMode = create("Fade Mode", "popFadeMode", "Elevator", combobox("Elevator", "Fade", "None"));
-    Setting elevatorMode = create("Elevator Mode", "popElevatorMode", "Heaven", combobox("Heaven", "Hell"));
-    Setting renderMode = create("Render Mode", "popRenderMode", "Both", combobox("Both", "Textured", "Wireframe"));
-    Setting lineWidth = create("Line Width", "popLineWidth", 1f, 0.1f, 3.0f);
-    Setting r = create("Red", "popRed", 255, 0, 255);
-    Setting g = create("Green", "popGreen", 255, 0, 255);
-    Setting b = create("Blue", "popBlue", 255, 0, 255);
-    Setting a = create("Alpha", "popAlpha", 127, 0, 255);
     float fade = 1.0f;
 
-    public PoopChams() {
+    public
+    PoopChams() {
         super(WurstplusCategory.WURSTPLUS_BETA);
         this.name = "PoopChams";
         this.description = "show pop";
@@ -68,8 +70,9 @@ public class PoopChams extends Module {
     }
 
     @SubscribeEvent
-    public void onRenderLast(RenderWorldLastEvent event) {
-        for (Map.Entry<EntityOtherPlayerMP, Long> entry : new HashMap<>(popFakePlayerMap).entrySet()) {
+    public
+    void onRenderLast(RenderWorldLastEvent event) {
+        for (Map.Entry <EntityOtherPlayerMP, Long> entry : new HashMap <>(popFakePlayerMap).entrySet()) {
             boolean wireFrame;
             boolean textured;
             if (renderMode.in("Both")) {
@@ -141,7 +144,8 @@ public class PoopChams extends Module {
         }
     }
 
-    public void renderEntityStatic(Entity entityIn, float partialTicks, boolean p_188388_3_) {
+    public
+    void renderEntityStatic(Entity entityIn, float partialTicks, boolean p_188388_3_) {
         if (entityIn.ticksExisted == 0) {
             entityIn.lastTickPosX = entityIn.posX;
             entityIn.lastTickPosY = entityIn.posY;

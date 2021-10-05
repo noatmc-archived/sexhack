@@ -25,13 +25,14 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class WurstplusAnnouncer extends Module {
+public
+class WurstplusAnnouncer extends Module {
 
-    private static final Queue<String> message_q = new ConcurrentLinkedQueue<>();
-    private static final Map<String, Integer> mined_blocks = new ConcurrentHashMap<>();
-    private static final Map<String, Integer> placed_blocks = new ConcurrentHashMap<>();
-    private static final Map<String, Integer> dropped_items = new ConcurrentHashMap<>();
-    private static final Map<String, Integer> consumed_items = new ConcurrentHashMap<>();
+    private static final Queue <String> message_q = new ConcurrentLinkedQueue <>();
+    private static final Map <String, Integer> mined_blocks = new ConcurrentHashMap <>();
+    private static final Map <String, Integer> placed_blocks = new ConcurrentHashMap <>();
+    private static final Map <String, Integer> dropped_items = new ConcurrentHashMap <>();
+    private static final Map <String, Integer> consumed_items = new ConcurrentHashMap <>();
     private static DecimalFormat df = new DecimalFormat();
     private static Vec3d thisTickPos;
     private static Vec3d lastTickPos;
@@ -41,17 +42,16 @@ public class WurstplusAnnouncer extends Module {
     private static float lastTickHealth;
     private static float gainedHealth;
     private static float lostHealth;
-    Setting min_distance = create("Min Distance", "AnnouncerMinDist", 12, 1, 100);
-    Setting max_distance = create("Max Distance", "AnnouncerMaxDist", 144, 12, 1200);
-    Setting delay = create("Delay Seconds", "AnnouncerDelay", 4, 0, 20);
-    Setting queue_size = create("Queue Size", "AnnouncerQueueSize", 5, 1, 20);
-    Setting units = create("Units", "AnnouncerUnits", "Meters", combobox("Meters", "Feet", "Yards", "Inches"));
-    Setting movement_string = create("Movement", "AnnouncerMovement", "Aha x", combobox("Aha x", "Leyta", "FUCK"));
-    Setting suffix = create("Suffix", "AnnouncerSuffix", true);
-    Setting smol = create("Small Text", "AnnouncerSmallText", false);
-    private boolean first_run;
+    final Setting min_distance = create("Min Distance", "AnnouncerMinDist", 12, 1, 100);
+    final Setting max_distance = create("Max Distance", "AnnouncerMaxDist", 144, 12, 1200);
+    final Setting delay = create("Delay Seconds", "AnnouncerDelay", 4, 0, 20);
+    final Setting queue_size = create("Queue Size", "AnnouncerQueueSize", 5, 1, 20);
+    final Setting units = create("Units", "AnnouncerUnits", "Meters", combobox("Meters", "Feet", "Yards", "Inches"));
+    final Setting movement_string = create("Movement", "AnnouncerMovement", "Aha x", combobox("Aha x", "Leyta", "FUCK"));
+    final Setting suffix = create("Suffix", "AnnouncerSuffix", true);
+    final Setting smol = create("Small Text", "AnnouncerSmallText", false);
     @EventHandler
-    private final Listener<WurstplusEventPacket.ReceivePacket> receive_listener = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.ReceivePacket> receive_listener = new Listener <>(event -> {
         if (mc.world == null) return;
 
         if (event.getPacket() instanceof SPacketUseBed) {
@@ -59,7 +59,7 @@ public class WurstplusAnnouncer extends Module {
         }
     });
     @EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.SendPacket> send_listener = new Listener <>(event -> {
         if (mc.world == null) return;
 
         if (event.getPacket() instanceof CPacketPlayerDigging) {
@@ -114,8 +114,10 @@ public class WurstplusAnnouncer extends Module {
 
         }
     });
+    private boolean first_run;
 
-    public WurstplusAnnouncer() {
+    public
+    WurstplusAnnouncer() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
 
         this.name = "Announcer";
@@ -123,14 +125,16 @@ public class WurstplusAnnouncer extends Module {
         this.description = "how to get muted 101";
     }
 
-    public static double round(double unrounded, int precision) {
+    public static
+    double round(double unrounded, int precision) {
         BigDecimal bd = new BigDecimal(unrounded);
-        BigDecimal rounded = bd.setScale(precision, BigDecimal.ROUND_HALF_UP);
+        BigDecimal rounded = bd.setScale(precision, RoundingMode.HALF_UP);
         return rounded.doubleValue();
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
         if (mc.player == null || mc.world == null) {
             this.set_disable();
             return;
@@ -145,7 +149,8 @@ public class WurstplusAnnouncer extends Module {
         send_cycle();
     }
 
-    private void get_tick_data() {
+    private
+    void get_tick_data() {
 
         lastTickPos = thisTickPos;
         thisTickPos = mc.player.getPositionVector();
@@ -161,7 +166,8 @@ public class WurstplusAnnouncer extends Module {
         }
     }
 
-    public void send_cycle() {
+    public
+    void send_cycle() {
         delay_count++;
         if (delay_count > delay.getValue(1) * 20) {
             delay_count = 0;
@@ -176,7 +182,8 @@ public class WurstplusAnnouncer extends Module {
 
     }
 
-    private void send_message(String s) {
+    private
+    void send_message(String s) {
         if (suffix.getValue(true)) {
             String i = " \u2763 ";
             s += i + SexHack.smoth("sponsored by wurstplus two");
@@ -187,13 +194,15 @@ public class WurstplusAnnouncer extends Module {
         mc.player.connection.sendPacket(new CPacketChatMessage(s.replaceAll("\u00a7", "")));
     }
 
-    public void queue_message(String m) {
+    public
+    void queue_message(String m) {
         if (message_q.size() > queue_size.getValue(1)) return;
         message_q.add(m);
     }
 
     @Override
-    protected void enable() {
+    protected
+    void enable() {
         first_run = true;
         df = new DecimalFormat("#.#");
         df.setRoundingMode(RoundingMode.CEILING);
@@ -209,7 +218,8 @@ public class WurstplusAnnouncer extends Module {
         delay_count = 0;
     }
 
-    private void composeGameTickData() {
+    private
+    void composeGameTickData() {
         CharSequence sb;
         if (first_run) {
             first_run = false;
@@ -280,20 +290,21 @@ public class WurstplusAnnouncer extends Module {
         }
     }
 
-    private void composeEventData() {
-        for (Map.Entry<String, Integer> kv : mined_blocks.entrySet()) {
+    private
+    void composeEventData() {
+        for (Map.Entry <String, Integer> kv : mined_blocks.entrySet()) {
             this.queue_message("We be mining " + kv.getValue() + " " + kv.getKey() + " out here");
             mined_blocks.remove(kv.getKey());
         }
-        for (Map.Entry<String, Integer> kv : placed_blocks.entrySet()) {
+        for (Map.Entry <String, Integer> kv : placed_blocks.entrySet()) {
             this.queue_message("We be placing " + kv.getValue() + " " + kv.getKey() + " out here");
             placed_blocks.remove(kv.getKey());
         }
-        for (Map.Entry<String, Integer> kv : dropped_items.entrySet()) {
+        for (Map.Entry <String, Integer> kv : dropped_items.entrySet()) {
             this.queue_message("I just dropped " + kv.getValue() + " " + kv.getKey() + ", whoops!");
             dropped_items.remove(kv.getKey());
         }
-        for (Map.Entry<String, Integer> kv : consumed_items.entrySet()) {
+        for (Map.Entry <String, Integer> kv : consumed_items.entrySet()) {
             this.queue_message("NOM NOM, I just ate " + kv.getValue() + " " + kv.getKey() + ", yummy");
             consumed_items.remove(kv.getKey());
         }

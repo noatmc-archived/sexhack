@@ -5,17 +5,20 @@ import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
 
 
-public class WurstplusCoordinates extends WurstplusPinnable {
+public
+class WurstplusCoordinates extends WurstplusPinnable {
     ChatFormatting dg = ChatFormatting.DARK_GRAY;
     ChatFormatting db = ChatFormatting.DARK_BLUE;
     ChatFormatting dr = ChatFormatting.DARK_RED;
 
-    public WurstplusCoordinates() {
+    public
+    WurstplusCoordinates() {
         super("Coordinates", "Coordinates", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
         int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
         int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);

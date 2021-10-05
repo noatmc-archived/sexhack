@@ -3,31 +3,34 @@ package me.noat.sexhack.client.hacks;
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
 
-public class WurstplusClickGUI extends Module {
+public
+class WurstplusClickGUI extends Module {
 
+    final Setting name_frame_r = create("Name R", "ClickGUINameFrameR", 255, 0, 255);
+    final Setting name_frame_g = create("Name G", "ClickGUINameFrameG", 255, 0, 255);
+    final Setting name_frame_b = create("Name B", "ClickGUINameFrameB", 255, 0, 255);
+    final Setting background_frame_r = create("Background R", "ClickGUIBackgroundFrameR", 0, 0, 255);
+    final Setting background_frame_g = create("Background G", "ClickGUIBackgroundFrameG", 0, 0, 255);
+    final Setting background_frame_b = create("Background B", "ClickGUIBackgroundFrameB", 0, 0, 255);
+    final Setting background_frame_a = create("Background A", "ClickGUIBackgroundFrameA", 151, 0, 255);
+    final Setting border_frame_r = create("Border R", "ClickGUIBorderFrameR", 255, 0, 255);
+    final Setting border_frame_g = create("Border G", "ClickGUIBorderFrameG", 255, 0, 255);
+    final Setting border_frame_b = create("Border B", "ClickGUIBorderFrameB", 255, 0, 255);
+    final Setting name_widget_r = create("Name R", "ClickGUINameWidgetR", 255, 0, 255);
+    final Setting name_widget_g = create("Name G", "ClickGUINameWidgetG", 255, 0, 255);
+    final Setting name_widget_b = create("Name B", "ClickGUINameWidgetB", 255, 0, 255);
+    final Setting background_widget_r = create("Background R", "ClickGUIBackgroundWidgetR", 255, 0, 255);
+    final Setting background_widget_g = create("Background G", "ClickGUIBackgroundWidgetG", 255, 0, 255);
+    final Setting background_widget_b = create("Background B", "ClickGUIBackgroundWidgetB", 255, 0, 255);
+    final Setting background_widget_a = create("Background A", "ClickGUIBackgroundWidgetA", 100, 0, 255);
+    final Setting border_widget_r = create("Border R", "ClickGUIBorderWidgetR", 255, 0, 255);
+    final Setting border_widget_g = create("Border G", "ClickGUIBorderWidgetG", 255, 0, 255);
+    final Setting border_widget_b = create("Border B", "ClickGUIBorderWidgetB", 255, 0, 255);
     Setting label_frame = create("info", "ClickGUIInfoFrame", "Frames");
-    Setting name_frame_r = create("Name R", "ClickGUINameFrameR", 255, 0, 255);
-    Setting name_frame_g = create("Name G", "ClickGUINameFrameG", 255, 0, 255);
-    Setting name_frame_b = create("Name B", "ClickGUINameFrameB", 255, 0, 255);
-    Setting background_frame_r = create("Background R", "ClickGUIBackgroundFrameR", 0, 0, 255);
-    Setting background_frame_g = create("Background G", "ClickGUIBackgroundFrameG", 0, 0, 255);
-    Setting background_frame_b = create("Background B", "ClickGUIBackgroundFrameB", 0, 0, 255);
-    Setting background_frame_a = create("Background A", "ClickGUIBackgroundFrameA", 151, 0, 255);
-    Setting border_frame_r = create("Border R", "ClickGUIBorderFrameR", 255, 0, 255);
-    Setting border_frame_g = create("Border G", "ClickGUIBorderFrameG", 255, 0, 255);
-    Setting border_frame_b = create("Border B", "ClickGUIBorderFrameB", 255, 0, 255);
     Setting label_widget = create("info", "ClickGUIInfoWidget", "Widgets");
-    Setting name_widget_r = create("Name R", "ClickGUINameWidgetR", 255, 0, 255);
-    Setting name_widget_g = create("Name G", "ClickGUINameWidgetG", 255, 0, 255);
-    Setting name_widget_b = create("Name B", "ClickGUINameWidgetB", 255, 0, 255);
-    Setting background_widget_r = create("Background R", "ClickGUIBackgroundWidgetR", 255, 0, 255);
-    Setting background_widget_g = create("Background G", "ClickGUIBackgroundWidgetG", 255, 0, 255);
-    Setting background_widget_b = create("Background B", "ClickGUIBackgroundWidgetB", 255, 0, 255);
-    Setting background_widget_a = create("Background A", "ClickGUIBackgroundWidgetA", 100, 0, 255);
-    Setting border_widget_r = create("Border R", "ClickGUIBorderWidgetR", 255, 0, 255);
-    Setting border_widget_g = create("Border G", "ClickGUIBorderWidgetG", 255, 0, 255);
-    Setting border_widget_b = create("Border B", "ClickGUIBorderWidgetB", 255, 0, 255);
-    public WurstplusClickGUI() {
+
+    public
+    WurstplusClickGUI() {
         super(WurstplusCategory.WURSTPLUS_GUI);
 
         this.name = "GUI";
@@ -38,7 +41,8 @@ public class WurstplusClickGUI extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
         // Update frame colors.
         SexHack.click_gui.theme_frame_name_r = name_frame_r.getValue(1);
         SexHack.click_gui.theme_frame_name_g = name_frame_g.getValue(1);
@@ -69,14 +73,16 @@ public class WurstplusClickGUI extends Module {
     }
 
     @Override
-    public void enable() {
+    public
+    void enable() {
         if (mc.world != null && mc.player != null) {
             mc.displayGuiScreen(SexHack.click_gui);
         }
     }
 
     @Override
-    public void disable() {
+    public
+    void disable() {
         if (mc.world != null && mc.player != null) {
             mc.displayGuiScreen(null);
         }

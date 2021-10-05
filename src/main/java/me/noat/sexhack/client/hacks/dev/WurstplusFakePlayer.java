@@ -22,13 +22,26 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.UUID;
 
-public class WurstplusFakePlayer
+public
+class WurstplusFakePlayer
         extends Module {
-    public Setting pops = create("Totem Pops", "Pop", true);
+    public final Setting pops = create("Totem Pops", "Pop", true);
     public EntityOtherPlayerMP fakePlayer;
+    @EventHandler
+    private final Listener <WurstplusEventPacket.ReceivePacket> receivePacketListener = new Listener <>(event -> {
+        double damage;
+        SPacketExplosion explosion;
+        if (this.fakePlayer == null) {
+            return;
+        }
+        if (event.getPacket() instanceof SPacketExplosion && this.fakePlayer.getDistance((explosion = (SPacketExplosion) event.getPacket()).getX(), explosion.getY(), explosion.getZ()) <= 15.0 && (damage = WurstplusCrystalUtil.calculateDamage(explosion.getX(), explosion.getY(), explosion.getZ(), this.fakePlayer)) > 0.0 && this.pops.getValue(true)) {
+            this.fakePlayer.setHealth((float) ((double) this.fakePlayer.getHealth() - MathHelper.clamp(damage, 0.0, 999.0)));
+        }
+    });
     private int i = 0;
 
-    public WurstplusFakePlayer() {
+    public
+    WurstplusFakePlayer() {
         super(WurstplusCategory.WURSTPLUS_BETA);
         this.name = "Fake Player";
         this.tag = "fakeplayer";
@@ -36,7 +49,8 @@ public class WurstplusFakePlayer
     }
 
     @Override
-    public void enable() {
+    public
+    void enable() {
         i = 0;
         if (WurstplusFakePlayer.mc.world == null || WurstplusFakePlayer.mc.player == null) {
             this.disable();
@@ -51,20 +65,9 @@ public class WurstplusFakePlayer
         }
     }
 
-    @EventHandler
-    private final Listener<WurstplusEventPacket.ReceivePacket> receivePacketListener = new Listener<>(event -> {
-        double damage;
-        SPacketExplosion explosion;
-        if (this.fakePlayer == null) {
-            return;
-        }
-        if (event.getPacket() instanceof SPacketExplosion && this.fakePlayer.getDistance((explosion = (SPacketExplosion) event.getPacket()).getX(), explosion.getY(), explosion.getZ()) <= 15.0 && (damage = WurstplusCrystalUtil.calculateDamage(explosion.getX(), explosion.getY(), explosion.getZ(), this.fakePlayer)) > 0.0 && this.pops.getValue(true)) {
-            this.fakePlayer.setHealth((float) ((double) this.fakePlayer.getHealth() - MathHelper.clamp(damage, 0.0, 999.0)));
-        }
-    });
-
     @SubscribeEvent
-    public void update() {
+    public
+    void update() {
         if (this.pops.getValue(true) && this.fakePlayer != null) {
             this.fakePlayer.inventory.offHandInventory.set(0, new ItemStack(Items.TOTEM_OF_UNDYING));
             if (this.fakePlayer.getHealth() <= 0.0f) {
@@ -78,7 +81,8 @@ public class WurstplusFakePlayer
     }
 
     @Override
-    public void disable() {
+    public
+    void disable() {
         i = 0;
         if (this.fakePlayer != null && WurstplusFakePlayer.mc.world != null) {
             WurstplusFakePlayer.mc.world.removeEntityFromWorld(-7777);
@@ -87,7 +91,8 @@ public class WurstplusFakePlayer
         }
     }
 
-    public void fakePop(Entity entity) {
+    public
+    void fakePop(Entity entity) {
         WurstplusFakePlayer.mc.effectRenderer.emitParticleAtEntity(entity, EnumParticleTypes.TOTEM, 30);
         WurstplusFakePlayer.mc.world.playSound(entity.posX, entity.posY, entity.posZ, SoundEvents.ITEM_TOTEM_USE, entity.getSoundCategory(), 1.0f, 1.0f, false);
     }

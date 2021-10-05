@@ -13,17 +13,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class WurstplusMessageUtil {
+public
+class WurstplusMessageUtil {
     public final static Minecraft mc = Minecraft.getMinecraft();
 
-    public static ChatFormatting g = ChatFormatting.GOLD;
+    public static final ChatFormatting g = ChatFormatting.GOLD;
+    public static final ChatFormatting r = ChatFormatting.RESET;
     public static ChatFormatting b = ChatFormatting.BLUE;
     public static ChatFormatting a = ChatFormatting.DARK_AQUA;
-    public static ChatFormatting r = ChatFormatting.RESET;
-
     public static String opener = g + "SexHack" + ChatFormatting.GRAY + " > " + r;
 
-    public static void toggle_message(Module module) {
+    public static
+    void toggle_message(Module module) {
         if (module.is_active()) {
             if (module.get_tag().equals("AutoCrystal")) {
                 client_message_simple(opener + "we" + ChatFormatting.DARK_GREEN + " gaming ");
@@ -39,35 +40,42 @@ public class WurstplusMessageUtil {
         }
     }
 
-    public static void client_message_simple(String message) {
+    public static
+    void client_message_simple(String message) {
         if (mc.player != null) {
             final ITextComponent itc = new TextComponentString(message).setStyle(new Style().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentString("never gonna give you up"))));
             mc.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(itc, 5936);
         }
     }
 
-    public static void client_message(String message) {
+    public static
+    void client_message(String message) {
         if (mc.player != null) {
             mc.player.sendMessage(new ChatMessage(message));
         }
     }
 
-    public static void send_client_message_simple(String message) {
+    public static
+    void send_client_message_simple(String message) {
         client_message(ChatFormatting.GOLD + opener + r + message);
     }
 
-    public static void send_client_message(String message) {
+    public static
+    void send_client_message(String message) {
         client_message(ChatFormatting.GOLD + opener + r + message);
     }
 
-    public static void send_client_error_message(String message) {
+    public static
+    void send_client_error_message(String message) {
         client_message(ChatFormatting.RED + opener + r + message);
     }
 
-    public static class ChatMessage extends TextComponentBase {
-        String message_input;
+    public static
+    class ChatMessage extends TextComponentBase {
+        final String message_input;
 
-        public ChatMessage(String message) {
+        public
+        ChatMessage(String message) {
             Pattern p = Pattern.compile("&[0123456789abcdefrlosmk]");
             Matcher m = p.matcher(message);
             StringBuffer sb = new StringBuffer();
@@ -81,12 +89,14 @@ public class WurstplusMessageUtil {
             this.message_input = sb.toString();
         }
 
-        public String getUnformattedComponentText() {
+        public
+        String getUnformattedComponentText() {
             return this.message_input;
         }
 
         @Override
-        public ITextComponent createCopy() {
+        public
+        ITextComponent createCopy() {
             return new ChatMessage(this.message_input);
         }
     }

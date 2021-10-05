@@ -8,13 +8,15 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 
-public class WurstplusCommands {
+public
+class WurstplusCommands {
     public static final TurokString prefix = new TurokString("Prefix", "Prefix", ".");
-    public static ArrayList<WurstplusCommand> command_list = new ArrayList<>();
-    static HashMap<java.lang.String, WurstplusCommand> list_command = new HashMap<>();
+    public static final ArrayList <WurstplusCommand> command_list = new ArrayList <>();
+    static final HashMap <java.lang.String, WurstplusCommand> list_command = new HashMap <>();
     public final Style style;
 
-    public WurstplusCommands(Style style_) {
+    public
+    WurstplusCommands(Style style_) {
         style = style_;
 
         add_command(new WurstplusBind());
@@ -34,21 +36,25 @@ public class WurstplusCommands {
         command_list.sort(Comparator.comparing(WurstplusCommand::get_name));
     }
 
-    public static void add_command(WurstplusCommand command) {
+    public static
+    void add_command(WurstplusCommand command) {
         command_list.add(command);
 
         list_command.put(command.get_name().toLowerCase(), command);
     }
 
-    public static ArrayList<WurstplusCommand> get_pure_command_list() {
+    public static
+    ArrayList <WurstplusCommand> get_pure_command_list() {
         return command_list;
     }
 
-    public static WurstplusCommand get_command_with_name(java.lang.String name) {
+    public static
+    WurstplusCommand get_command_with_name(java.lang.String name) {
         return list_command.get(name.toLowerCase());
     }
 
-    public java.lang.String[] get_message(java.lang.String message) {
+    public
+    java.lang.String[] get_message(java.lang.String message) {
         java.lang.String[] arguments = {};
 
         if (has_prefix(message)) {
@@ -58,15 +64,18 @@ public class WurstplusCommands {
         return arguments;
     }
 
-    public boolean has_prefix(java.lang.String message) {
+    public
+    boolean has_prefix(java.lang.String message) {
         return message.startsWith(prefix.get_value());
     }
 
-    public java.lang.String get_prefix() {
+    public
+    java.lang.String get_prefix() {
         return prefix.get_value();
     }
 
-    public void set_prefix(java.lang.String new_prefix) {
+    public
+    void set_prefix(java.lang.String new_prefix) {
         prefix.set_value(new_prefix);
     }
 }

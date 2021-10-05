@@ -13,19 +13,21 @@ import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WurstplusStopEXP extends Module {
+public
+class WurstplusStopEXP extends Module {
 
-    Setting helmet_boot_percent = create("Helment Boots %", "StopEXHelmet", 80, 0, 100);
-    Setting chest_leggings_percent = create("Chest Leggins %", "StopEXChest", 100, 0, 100);
+    final Setting helmet_boot_percent = create("Helment Boots %", "StopEXHelmet", 80, 0, 100);
+    final Setting chest_leggings_percent = create("Chest Leggins %", "StopEXChest", 100, 0, 100);
     private boolean should_cancel = false;
     @EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> packet_event = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.SendPacket> packet_event = new Listener <>(event -> {
         if (event.getPacket() instanceof CPacketPlayerTryUseItem && should_cancel) {
             event.cancel();
         }
     });
 
-    public WurstplusStopEXP() {
+    public
+    WurstplusStopEXP() {
         super(WurstplusCategory.WURSTPLUS_MISC);
 
         this.name = "Stop EXP";
@@ -34,11 +36,12 @@ public class WurstplusStopEXP extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         int counter = 0;
 
-        for (Map.Entry<Integer, ItemStack> armor_slot : get_armor().entrySet()) {
+        for (Map.Entry <Integer, ItemStack> armor_slot : get_armor().entrySet()) {
 
             counter++;
             if (armor_slot.getValue().isEmpty()) continue;
@@ -69,12 +72,14 @@ public class WurstplusStopEXP extends Module {
 
     }
 
-    private Map<Integer, ItemStack> get_armor() {
+    private
+    Map <Integer, ItemStack> get_armor() {
         return get_inv_slots(5, 8);
     }
 
-    private Map<Integer, ItemStack> get_inv_slots(int current, final int last) {
-        final Map<Integer, ItemStack> full_inv_slots = new HashMap <> ( );
+    private
+    Map <Integer, ItemStack> get_inv_slots(int current, final int last) {
+        final Map <Integer, ItemStack> full_inv_slots = new HashMap <>();
         while (current <= last) {
             full_inv_slots.put(current, mc.player.inventoryContainer.getInventory().get(current));
             current++;
@@ -82,7 +87,8 @@ public class WurstplusStopEXP extends Module {
         return full_inv_slots;
     }
 
-    public boolean is_holding_exp() {
+    public
+    boolean is_holding_exp() {
 
         return mc.player.getHeldItemMainhand().getItem() instanceof ItemExpBottle || mc.player.getHeldItemOffhand().getItem() instanceof ItemExpBottle;
 

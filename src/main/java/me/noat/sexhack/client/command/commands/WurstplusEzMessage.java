@@ -6,13 +6,16 @@ import me.noat.sexhack.client.command.WurstplusCommand;
 import me.noat.sexhack.client.util.WurstplusEzMessageUtil;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
-public class WurstplusEzMessage extends WurstplusCommand {
+public
+class WurstplusEzMessage extends WurstplusCommand {
 
-    public WurstplusEzMessage() {
+    public
+    WurstplusEzMessage() {
         super("ezmessage", "Set ez mode");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
 
         if (message.length == 1) {
             WurstplusMessageUtil.send_client_error_message("message needed");

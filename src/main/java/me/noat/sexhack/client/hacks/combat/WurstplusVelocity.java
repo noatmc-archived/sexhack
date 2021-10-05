@@ -12,9 +12,10 @@ import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.network.play.server.SPacketExplosion;
 
 
-public class WurstplusVelocity extends Module {
+public
+class WurstplusVelocity extends Module {
     @EventHandler
-    private final Listener<WurstplusEventPacket.ReceivePacket> damage = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.ReceivePacket> damage = new Listener <>(event -> {
         if (event.get_era() == WurstplusEventCancellable.Era.EVENT_PRE) {
             if (event.getPacket() instanceof SPacketEntityVelocity) {
                 SPacketEntityVelocity knockback = (SPacketEntityVelocity) event.getPacket();
@@ -38,14 +39,15 @@ public class WurstplusVelocity extends Module {
         }
     });
     @EventHandler
-    private final Listener<WurstplusEventEntity.WurstplusEventColision> explosion = new Listener<>(event -> {
+    private final Listener <WurstplusEventEntity.WurstplusEventColision> explosion = new Listener <>(event -> {
         if (event.get_entity() == mc.player) {
             event.cancel();
 
         }
     });
 
-    public WurstplusVelocity() {
+    public
+    WurstplusVelocity() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Velocity";

@@ -13,22 +13,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class WurstplusArrayList extends WurstplusPinnable {
+public
+class WurstplusArrayList extends WurstplusPinnable {
     boolean flag = true;
     private int count;
     private int scaled_width;
     private int scaled_height;
-    private int scale_factor;
     private int nl_r;
     private int nl_g;
     private int nl_b;
-    private int nl_a;
 
-    public WurstplusArrayList() {
+    public
+    WurstplusArrayList() {
         super("Array List", "ArrayList", 1, 0, 0);
     }
 
-    public static Color alphaStep(Color color, int index, int count) {
+    public static
+    Color alphaStep(Color color, int index, int count) {
         float[] hsb = new float[3];
         Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsb);
         float brightness = Math.abs(((float) (System.currentTimeMillis() % 2000L) / 1000.0F + (float) index / (float) count * 2.0F) % 2.0F - 1.0F);
@@ -38,15 +39,16 @@ public class WurstplusArrayList extends WurstplusPinnable {
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
         nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
         nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
-        nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").getValue(1);
+        int nl_a = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorA").getValue(1);
         updateResolution();
         int position_update_y = 2;
 
-        List<Module> pretty_modules = SexHack.get_hack_manager().get_array_active_hacks().stream()
+        List <Module> pretty_modules = SexHack.get_hack_manager().get_array_active_hacks().stream()
                 .sorted(Comparator.comparing(modules -> get(modules.array_detail() == null ? modules.get_tag() : modules.get_tag() + SexHack.g + " [" + SexHack.r + modules.array_detail() + SexHack.g + "]" + SexHack.r, "width")))
                 .collect(Collectors.toList());
 
@@ -112,27 +114,29 @@ public class WurstplusArrayList extends WurstplusPinnable {
         }
     }
 
-    public int generateColor(Module mod) {
+    public
+    int generateColor(Module mod) {
         return alphaStep(new Color(nl_r, nl_g, nl_b), 50, (count * 2) + 10).getRGB();
     }
 
-    public void updateResolution() {
+    public
+    void updateResolution() {
         this.scaled_width = mc.displayWidth;
         this.scaled_height = mc.displayHeight;
-        this.scale_factor = 1;
+        int scale_factor = 1;
         final boolean flag = mc.isUnicode();
         int i = mc.gameSettings.guiScale;
         if (i == 0) {
             i = 1000;
         }
-        while (this.scale_factor < i && this.scaled_width / (this.scale_factor + 1) >= 320 && this.scaled_height / (this.scale_factor + 1) >= 240) {
-            ++this.scale_factor;
+        while (scale_factor < i && this.scaled_width / (scale_factor + 1) >= 320 && this.scaled_height / (scale_factor + 1) >= 240) {
+            ++scale_factor;
         }
-        if (flag && this.scale_factor % 2 != 0 && this.scale_factor != 1) {
-            --this.scale_factor;
+        if (flag && scale_factor % 2 != 0 && scale_factor != 1) {
+            --scale_factor;
         }
-        final double scaledWidthD = this.scaled_width / (double) this.scale_factor;
-        final double scaledHeightD = this.scaled_height / (double) this.scale_factor;
+        final double scaledWidthD = this.scaled_width / (double) scale_factor;
+        final double scaledHeightD = this.scaled_height / (double) scale_factor;
         this.scaled_width = MathHelper.ceil(scaledWidthD);
         this.scaled_height = MathHelper.ceil(scaledHeightD);
     }

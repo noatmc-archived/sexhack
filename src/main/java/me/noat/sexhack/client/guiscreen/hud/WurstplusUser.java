@@ -8,16 +8,18 @@ import me.noat.sexhack.client.util.WurstplusTimeUtil;
 import net.minecraft.util.math.MathHelper;
 
 
-public class WurstplusUser extends WurstplusPinnable {
+public
+class WurstplusUser extends WurstplusPinnable {
     private int scaled_width;
-    private int scaled_height;
-    private int scale_factor;
-    public WurstplusUser() {
+
+    public
+    WurstplusUser() {
         super("User", "User", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
         updateResolution();
         int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
@@ -43,25 +45,26 @@ public class WurstplusUser extends WurstplusPinnable {
         this.set_height(this.get(line, "height") + 2);
     }
 
-    public void updateResolution() {
+    public
+    void updateResolution() {
         this.scaled_width = mc.displayWidth;
-        this.scaled_height = mc.displayHeight;
-        this.scale_factor = 1;
+        int scaled_height = mc.displayHeight;
+        int scale_factor = 1;
         final boolean flag = mc.isUnicode();
         int i = mc.gameSettings.guiScale;
         if (i == 0) {
             i = 1000;
         }
-        while (this.scale_factor < i && this.scaled_width / (this.scale_factor + 1) >= 320 && this.scaled_height / (this.scale_factor + 1) >= 240) {
-            ++this.scale_factor;
+        while (scale_factor < i && this.scaled_width / (scale_factor + 1) >= 320 && scaled_height / (scale_factor + 1) >= 240) {
+            ++scale_factor;
         }
-        if (flag && this.scale_factor % 2 != 0 && this.scale_factor != 1) {
-            --this.scale_factor;
+        if (flag && scale_factor % 2 != 0 && scale_factor != 1) {
+            --scale_factor;
         }
-        final double scaledWidthD = this.scaled_width / (double) this.scale_factor;
-        final double scaledHeightD = this.scaled_height / (double) this.scale_factor;
+        final double scaledWidthD = this.scaled_width / (double) scale_factor;
+        final double scaledHeightD = scaled_height / (double) scale_factor;
         this.scaled_width = MathHelper.ceil(scaledWidthD);
-        this.scaled_height = MathHelper.ceil(scaledHeightD);
+        scaled_height = MathHelper.ceil(scaledHeightD);
     }
 
 }

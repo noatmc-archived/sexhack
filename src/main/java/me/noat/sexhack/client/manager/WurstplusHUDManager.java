@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 
-public class WurstplusHUDManager {
+public
+class WurstplusHUDManager {
 
-    public static ArrayList<WurstplusPinnable> array_hud = new ArrayList<>();
+    public static final ArrayList <WurstplusPinnable> array_hud = new ArrayList <>();
 
-    public WurstplusHUDManager() {
+    public
+    WurstplusHUDManager() {
 
         add_component_pinnable(new WurstplusWatermark());
         add_component_pinnable(new WurstplusArrayList());
@@ -44,15 +46,18 @@ public class WurstplusHUDManager {
         array_hud.sort(Comparator.comparing(WurstplusPinnable::get_title));
     }
 
-    public void add_component_pinnable(WurstplusPinnable module) {
+    public
+    void add_component_pinnable(WurstplusPinnable module) {
         array_hud.add(module);
     }
 
-    public ArrayList<WurstplusPinnable> get_array_huds() {
+    public
+    ArrayList <WurstplusPinnable> get_array_huds() {
         return array_hud;
     }
 
-    public void render() {
+    public
+    void render() {
         for (WurstplusPinnable pinnables : get_array_huds()) {
             if (pinnables.is_active()) {
                 pinnables.render();
@@ -60,7 +65,8 @@ public class WurstplusHUDManager {
         }
     }
 
-    public WurstplusPinnable get_pinnable_with_tag(String tag) {
+    public
+    WurstplusPinnable get_pinnable_with_tag(String tag) {
         WurstplusPinnable pinnable_requested = null;
 
         for (WurstplusPinnable pinnables : get_array_huds()) {

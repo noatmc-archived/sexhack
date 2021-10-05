@@ -19,13 +19,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class WurstplusVoidESP extends Module {
+public
+class WurstplusVoidESP extends Module {
 
-    public final List<BlockPos> void_blocks = new ArrayList<>();
+    public final List <BlockPos> void_blocks = new ArrayList <>();
+    final Setting void_radius = create("Range", "VoidESPRange", 6, 1, 10);
     private final ICamera camera = new Frustum();
-    Setting void_radius = create("Range", "VoidESPRange", 6, 1, 10);
 
-    public WurstplusVoidESP() {
+    public
+    WurstplusVoidESP() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
         this.name = "Void ESP";
@@ -34,7 +36,8 @@ public class WurstplusVoidESP extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (mc.player == null) return;
 
@@ -55,7 +58,8 @@ public class WurstplusVoidESP extends Module {
 
     }
 
-    public boolean is_void_hole(BlockPos blockPos) {
+    public
+    boolean is_void_hole(BlockPos blockPos) {
         if (blockPos.getY() != 0)
             return false;
 
@@ -64,13 +68,14 @@ public class WurstplusVoidESP extends Module {
     }
 
     @Override
-    public void render(WurstplusEventRender event) {
+    public
+    void render(WurstplusEventRender event) {
 
         int r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         int g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
         int b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);
 
-        new ArrayList<>(void_blocks).forEach(pos -> {
+        new ArrayList <>(void_blocks).forEach(pos -> {
 
             final AxisAlignedBB bb = new AxisAlignedBB(pos.getX() - mc.getRenderManager().viewerPosX, pos.getY() - mc.getRenderManager().viewerPosY,
                     pos.getZ() - mc.getRenderManager().viewerPosZ, pos.getX() + 1 - mc.getRenderManager().viewerPosX, pos.getY() + 1 - mc.getRenderManager().viewerPosY,

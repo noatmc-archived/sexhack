@@ -10,14 +10,17 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.RayTraceResult;
 import org.lwjgl.input.Mouse;
 
-public class WurstplusMiddleClickFriends extends Module {
+public
+class WurstplusMiddleClickFriends extends Module {
 
-    public static ChatFormatting red = ChatFormatting.RED;
-    public static ChatFormatting green = ChatFormatting.GREEN;
-    public static ChatFormatting bold = ChatFormatting.BOLD;
-    public static ChatFormatting reset = ChatFormatting.RESET;
+    public static final ChatFormatting red = ChatFormatting.RED;
+    public static final ChatFormatting green = ChatFormatting.GREEN;
+    public static final ChatFormatting bold = ChatFormatting.BOLD;
+    public static final ChatFormatting reset = ChatFormatting.RESET;
     private boolean clicked = false;
-    public WurstplusMiddleClickFriends() {
+
+    public
+    WurstplusMiddleClickFriends() {
         super(WurstplusCategory.WURSTPLUS_MISC);
 
         this.name = "Middleclick Friends";
@@ -26,7 +29,8 @@ public class WurstplusMiddleClickFriends extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (mc.currentScreen != null) {
             return;

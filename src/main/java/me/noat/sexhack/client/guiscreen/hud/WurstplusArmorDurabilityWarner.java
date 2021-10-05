@@ -6,14 +6,17 @@ import net.minecraft.item.ItemStack;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WurstplusArmorDurabilityWarner extends WurstplusPinnable { // STILL BROKEN
+public
+class WurstplusArmorDurabilityWarner extends WurstplusPinnable { // STILL BROKEN
 
-    public WurstplusArmorDurabilityWarner() {
+    public
+    WurstplusArmorDurabilityWarner() {
         super("Armor Warner", "ArmorWarner", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
 
         String line = "ur armor is kinda low rn :/";
 
@@ -25,9 +28,10 @@ public class WurstplusArmorDurabilityWarner extends WurstplusPinnable { // STILL
         this.set_height(this.get(line, "height") + 2);
     }
 
-    private boolean is_damaged() {
+    private
+    boolean is_damaged() {
 
-        for (Map.Entry<Integer, ItemStack> armor_slot : get_armor().entrySet()) {
+        for (Map.Entry <Integer, ItemStack> armor_slot : get_armor().entrySet()) {
             if (armor_slot.getValue().isEmpty()) continue;
             final ItemStack stack = armor_slot.getValue();
 
@@ -43,12 +47,14 @@ public class WurstplusArmorDurabilityWarner extends WurstplusPinnable { // STILL
         return false;
     }
 
-    private Map<Integer, ItemStack> get_armor() {
+    private
+    Map <Integer, ItemStack> get_armor() {
         return get_inv_slots(5, 8);
     }
 
-    private Map<Integer, ItemStack> get_inv_slots(int current, final int last) {
-        final Map<Integer, ItemStack> full_inv_slots = new HashMap <> ( );
+    private
+    Map <Integer, ItemStack> get_inv_slots(int current, final int last) {
+        final Map <Integer, ItemStack> full_inv_slots = new HashMap <>();
         while (current <= last) {
             full_inv_slots.put(current, mc.player.inventoryContainer.getInventory().get(current));
             ++current;

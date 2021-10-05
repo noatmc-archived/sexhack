@@ -8,12 +8,15 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.Item;
 
-public class WurstplusAutoGapple extends Module {
+public
+class WurstplusAutoGapple extends Module {
 
-    Setting delay = create("Delay", "GappleDelay", false);
+    final Setting delay = create("Delay", "GappleDelay", false);
     private boolean switching = false;
     private int last_slot;
-    public WurstplusAutoGapple() {
+
+    public
+    WurstplusAutoGapple() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Auto Gapple";
@@ -22,7 +25,8 @@ public class WurstplusAutoGapple extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (mc.currentScreen == null || mc.currentScreen instanceof GuiInventory) {
             if (switching) {
@@ -35,7 +39,8 @@ public class WurstplusAutoGapple extends Module {
 
     }
 
-    private int get_item_slot() {
+    private
+    int get_item_slot() {
         if (Items.GOLDEN_APPLE == mc.player.getHeldItemOffhand().getItem()) return -1;
         for (int i = 36; i >= 0; i--) {
             final Item item = mc.player.inventory.getStackInSlot(i).getItem();
@@ -49,7 +54,8 @@ public class WurstplusAutoGapple extends Module {
         return -1;
     }
 
-    public void swap_items(int slot, int step) {
+    public
+    void swap_items(int slot, int step) {
         if (slot == -1) return;
         if (step == 0) {
             mc.playerController.windowClick(0, slot, 0, ClickType.PICKUP, mc.player);

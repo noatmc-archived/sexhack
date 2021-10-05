@@ -13,12 +13,14 @@ import java.util.ArrayList;
 // Hacks.
 
 
-public class WurstplusModuleButton {
-    public int settings_height;
+public
+class WurstplusModuleButton {
     private final Module module;
     private final WurstplusFrame master;
-    private final ArrayList<WurstplusAbstractWidget> widget;
+    private final ArrayList <WurstplusAbstractWidget> widget;
     private final String module_name;
+    private final int master_height_cache;
+    public int settings_height;
     private boolean opened;
     private int x;
     private int y;
@@ -26,17 +28,13 @@ public class WurstplusModuleButton {
     private int height;
     private int opened_height;
     private int save_y;
-    private final WurstplusDraw font = new WurstplusDraw(1);
-    private final int border_a = 200;
-    private final int border_size = 1;
-    private final int master_height_cache;
-    private int count;
 
-    public WurstplusModuleButton(Module module, WurstplusFrame master) {
-        /**
-         * A value to save the y. When move the frame the save_y does the work.
-         * @param save_y;
-         **/
+    public
+    WurstplusModuleButton(Module module, WurstplusFrame master) {
+        /*
+          A value to save the y. When move the frame the save_y does the work.
+          @param save_y;
+         */
 
         this.module = module;
         this.master = master;
@@ -48,6 +46,7 @@ public class WurstplusModuleButton {
         this.x = 0;
         this.y = 0;
 
+        WurstplusDraw font = new WurstplusDraw(1);
         this.width = font.get_string_width(module.get_name()) + 5;
         this.height = font.get_string_height();
 
@@ -61,7 +60,7 @@ public class WurstplusModuleButton {
 
         this.settings_height = this.y + 10;
 
-        this.count = 0;
+        int count = 0;
 
         for (Setting settings : SexHack.get_setting_manager().get_settings_with_hack(module)) {
             if (settings.get_type().equals("button")) {
@@ -69,7 +68,7 @@ public class WurstplusModuleButton {
 
                 this.settings_height += 13;
 
-                this.count++;
+                count++;
             }
 
             if (settings.get_type().equals("combobox")) {
@@ -77,7 +76,7 @@ public class WurstplusModuleButton {
 
                 this.settings_height += 13;
 
-                this.count++;
+                count++;
             }
 
             if (settings.get_type().equals("label")) {
@@ -85,7 +84,7 @@ public class WurstplusModuleButton {
 
                 this.settings_height += 13;
 
-                this.count++;
+                count++;
             }
 
             if (settings.get_type().equals("doubleslider") || settings.get_type().equals("integerslider")) {
@@ -93,88 +92,106 @@ public class WurstplusModuleButton {
 
                 this.settings_height += 13;
 
-                this.count++;
+                count++;
             }
         }
 
         int size = SexHack.get_setting_manager().get_settings_with_hack(module).size();
 
-        if (this.count >= size) {
+        if (count >= size) {
             this.widget.add(new WurstplusButtonBind(master, this, "bind", this.settings_height));
 
             this.settings_height += 13;
         }
     }
 
-    public Module get_module() {
+    public
+    Module get_module() {
         return this.module;
     }
 
-    public WurstplusFrame get_master() {
+    public
+    WurstplusFrame get_master() {
         return this.master;
     }
 
-    public void set_pressed(boolean value) {
+    public
+    void set_pressed(boolean value) {
         this.module.set_active(value);
     }
 
-    public boolean get_state() {
+    public
+    boolean get_state() {
         return this.module.is_active();
     }
 
-    public int get_settings_height() {
+    public
+    int get_settings_height() {
         return this.settings_height + 9;
     }
 
-    public int get_cache_height() {
+    public
+    int get_cache_height() {
         return this.master_height_cache;
     }
 
-    public int get_width() {
+    public
+    int get_width() {
         return this.width;
     }
 
-    public void set_width(int width) {
+    public
+    void set_width(int width) {
         this.width = width;
     }
 
-    public int get_height() {
+    public
+    int get_height() {
         return this.height;
     }
 
-    public void set_height(int height) {
+    public
+    void set_height(int height) {
         this.height = height;
     }
 
-    public int get_x() {
+    public
+    int get_x() {
         return this.x;
     }
 
-    public void set_x(int x) {
+    public
+    void set_x(int x) {
         this.x = x;
     }
 
-    public int get_y() {
+    public
+    int get_y() {
         return this.y;
     }
 
-    public void set_y(int y) {
+    public
+    void set_y(int y) {
         this.y = y;
     }
 
-    public int get_save_y() {
+    public
+    int get_save_y() {
         return this.save_y + 6;
     }
 
-    public boolean is_open() {
+    public
+    boolean is_open() {
         return this.opened;
     }
 
-    public void set_open(boolean value) {
+    public
+    void set_open(boolean value) {
         this.opened = value;
     }
 
-    public boolean is_binding() {
+    public
+    boolean is_binding() {
         boolean value_requested = false;
 
         for (WurstplusAbstractWidget widgets : this.widget) {
@@ -186,23 +203,27 @@ public class WurstplusModuleButton {
         return value_requested;
     }
 
-    public boolean motion(int mx, int my) {
+    public
+    boolean motion(int mx, int my) {
         return mx >= get_x() && my >= get_save_y() && mx <= get_x() + get_width() && my <= get_save_y() + get_height();
     }
 
-    public void does_widgets_can(boolean can) {
+    public
+    void does_widgets_can(boolean can) {
         for (WurstplusAbstractWidget widgets : this.widget) {
             widgets.does_can(can);
         }
     }
 
-    public void bind(char char_, int key) {
+    public
+    void bind(char char_, int key) {
         for (WurstplusAbstractWidget widgets : this.widget) {
             widgets.bind(char_, key);
         }
     }
 
-    public void mouse(int mx, int my, int mouse) {
+    public
+    void mouse(int mx, int my, int mouse) {
         for (WurstplusAbstractWidget widgets : this.widget) {
             widgets.mouse(mx, my, mouse);
         }
@@ -226,7 +247,8 @@ public class WurstplusModuleButton {
         }
     }
 
-    public void button_release(int mx, int my, int mouse) {
+    public
+    void button_release(int mx, int my, int mouse) {
         for (WurstplusAbstractWidget widgets : this.widget) {
             widgets.release(mx, my, mouse);
         }
@@ -234,7 +256,8 @@ public class WurstplusModuleButton {
         this.master.does_can(true);
     }
 
-    public void render(int mx, int my, int separe) {
+    public
+    void render(int mx, int my, int separe) {
         set_width(this.master.get_width() - separe);
 
         this.save_y = this.y + this.master.get_y() - 10;
@@ -270,7 +293,9 @@ public class WurstplusModuleButton {
             boolean is_passing_in_widget = this.opened && widgets.motion_pass(mx, my);
 
             if (motion(mx, my) || is_passing_in_widget) {
-                WurstplusDraw.draw_rect(this.master.get_x() - 1, this.save_y, this.master.get_width() + 1, this.opened_height, bd_r, bd_g, bd_b, border_a, this.border_size, "right-left");
+                int border_size = 1;
+                int border_a = 200;
+                WurstplusDraw.draw_rect(this.master.get_x() - 1, this.save_y, this.master.get_width() + 1, this.opened_height, bd_r, bd_g, bd_b, border_a, border_size, "right-left");
             }
 
             if (!opened) {

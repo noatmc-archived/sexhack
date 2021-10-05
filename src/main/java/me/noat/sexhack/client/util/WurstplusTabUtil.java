@@ -3,9 +3,11 @@ package me.noat.sexhack.client.util;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 
-public class WurstplusTabUtil {
+public
+class WurstplusTabUtil {
 
-    public static String get_player_name(final NetworkPlayerInfo info) {
+    public static
+    String get_player_name(final NetworkPlayerInfo info) {
         final String name = (info.getDisplayName() != null) ? info.getDisplayName().getFormattedText() : ScorePlayerTeam.formatPlayerName(info.getPlayerTeam(),
                 info.getGameProfile().getName());
         if (WurstplusFriendUtil.isFriend(name)) {
@@ -17,7 +19,8 @@ public class WurstplusTabUtil {
         return name;
     }
 
-    public static String section_sign() {
+    public static
+    String section_sign() {
         return "\u00A7";
     }
 

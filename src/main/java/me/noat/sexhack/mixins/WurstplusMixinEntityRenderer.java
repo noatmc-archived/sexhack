@@ -10,11 +10,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 // External.
 
-@Mixin(value = EntityRenderer.class)
-public class WurstplusMixinEntityRenderer {
+@Mixin (value = EntityRenderer.class)
+public
+class WurstplusMixinEntityRenderer {
 
-    @Inject(method = "setupFog", at = @At("HEAD"), cancellable = true)
-    public void setupFog(int startCoords, float partialTicks, CallbackInfo p_Info) {
+    @Inject (method = "setupFog", at = @At ("HEAD"), cancellable = true)
+    public
+    void setupFog(int startCoords, float partialTicks, CallbackInfo p_Info) {
         WurstplusEventSetupFog event = new WurstplusEventSetupFog(startCoords, partialTicks);
         WurstplusEventBus.EVENT_BUS.post(event);
 

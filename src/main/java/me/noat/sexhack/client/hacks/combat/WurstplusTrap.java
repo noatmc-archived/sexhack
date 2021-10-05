@@ -25,8 +25,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class WurstplusTrap extends Module {
+public
+class WurstplusTrap extends Module {
 
+    final Setting place_mode = create("Place Mode", "TrapPlaceMode", "Extra", combobox("Extra", "Face", "Normal", "Feet"));
+    final Setting blocks_per_tick = create("Speed", "TrapSpeed", 4, 0, 8);
+    final Setting rotate = create("Rotation", "TrapRotation", true);
+    final Setting chad_mode = create("Chad Mode", "TrapChadMode", true);
+    final Setting swing = create("Swing", "TrapSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
     private final Vec3d[] offsets_default = new Vec3d[]{
             new Vec3d(0.0, 0.0, -1.0),
             new Vec3d(1.0, 0.0, 0.0),
@@ -95,19 +101,15 @@ public class WurstplusTrap extends Module {
             new Vec3d(0.0, 3.0, 0.0),
             new Vec3d(0.0, 4.0, 0.0)
     };
-    Setting place_mode = create("Place Mode", "TrapPlaceMode", "Extra", combobox("Extra", "Face", "Normal", "Feet"));
-    Setting blocks_per_tick = create("Speed", "TrapSpeed", 4, 0, 8);
-    Setting rotate = create("Rotation", "TrapRotation", true);
-    Setting chad_mode = create("Chad Mode", "TrapChadMode", true);
     Setting range = create("Range", "TrapRange", 4, 1, 6);
-    Setting swing = create("Swing", "TrapSwing", "Mainhand", combobox("Mainhand", "Offhand", "Both", "None"));
     private String last_tick_target_name = "";
     private int offset_step = 0;
     private int timeout_ticker = 0;
     private int y_level;
     private boolean first_run = true;
 
-    public WurstplusTrap() {
+    public
+    WurstplusTrap() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Trap";
@@ -116,7 +118,8 @@ public class WurstplusTrap extends Module {
     }
 
     @Override
-    public void enable() {
+    public
+    void enable() {
 
         timeout_ticker = 0;
 
@@ -131,7 +134,8 @@ public class WurstplusTrap extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         int timeout_ticks = 20;
         if (timeout_ticker > timeout_ticks && chad_mode.getValue(true)) {
@@ -166,7 +170,7 @@ public class WurstplusTrap extends Module {
 
         }
 
-        final List<Vec3d> place_targets = new ArrayList <> ( );
+        final List <Vec3d> place_targets = new ArrayList <>();
 
         if (place_mode.in("Normal")) {
             Collections.addAll(place_targets, offsets_default);
@@ -212,7 +216,8 @@ public class WurstplusTrap extends Module {
 
     }
 
-    private int find_obi_in_hotbar() {
+    private
+    int find_obi_in_hotbar() {
         for (int i = 0; i < 9; ++i) {
             final ItemStack stack = mc.player.inventory.getStackInSlot(i);
             if (stack != ItemStack.EMPTY && stack.getItem() instanceof ItemBlock) {
@@ -229,7 +234,8 @@ public class WurstplusTrap extends Module {
         return -1;
     }
 
-    public EntityPlayer find_closest_target() {
+    public
+    EntityPlayer find_closest_target() {
 
         if (mc.world.playerEntities.isEmpty())
             return null;
@@ -243,7 +249,7 @@ public class WurstplusTrap extends Module {
             if (WurstplusFriendUtil.isFriend(target.getName()))
                 continue;
 
-            if (!WurstplusEntityUtil.isLiving(target))
+            if (WurstplusEntityUtil.isLiving(target))
                 continue;
 
             if (target.getHealth() <= 0.0f)

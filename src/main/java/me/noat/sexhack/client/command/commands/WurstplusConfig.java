@@ -4,13 +4,16 @@ import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.command.WurstplusCommand;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
-public class WurstplusConfig extends WurstplusCommand {
+public
+class WurstplusConfig extends WurstplusCommand {
 
-    public WurstplusConfig() {
+    public
+    WurstplusConfig() {
         super("config", "changes which config is loaded");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
 
         if (message.length == 1) {
             WurstplusMessageUtil.send_client_error_message("config needed");

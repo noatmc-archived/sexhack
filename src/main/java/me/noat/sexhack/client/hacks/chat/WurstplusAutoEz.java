@@ -17,15 +17,14 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class WurstplusAutoEz extends Module {
+public
+class WurstplusAutoEz extends Module {
 
     private static final ConcurrentHashMap targeted_players = new ConcurrentHashMap();
-    int delay_count = 0;
-
-    Setting discord = create("Discord", "EzDiscord", false);
-    Setting custom = create("Custom", "EzCustom", false);
+    final Setting discord = create("Discord", "EzDiscord", false);
+    final Setting custom = create("Custom", "EzCustom", false);
     @EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> send_listener = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.SendPacket> send_listener = new Listener <>(event -> {
 
         if (mc.player == null) return;
 
@@ -40,8 +39,9 @@ public class WurstplusAutoEz extends Module {
         }
 
     });
+    int delay_count = 0;
     @EventHandler
-    private final Listener<LivingDeathEvent> living_death_listener = new Listener<>(event -> {
+    private final Listener <LivingDeathEvent> living_death_listener = new Listener <>(event -> {
 
         if (mc.player == null) return;
 
@@ -60,7 +60,8 @@ public class WurstplusAutoEz extends Module {
 
     });
 
-    public WurstplusAutoEz() {
+    public
+    WurstplusAutoEz() {
         super(WurstplusCategory.WURSTPLUS_CHAT);
 
         this.name = "Auto Ez";
@@ -68,14 +69,16 @@ public class WurstplusAutoEz extends Module {
         this.description = "you just got nae nae'd by wurst+... 2";
     }
 
-    public static void add_target(String name) {
+    public static
+    void add_target(String name) {
         if (!Objects.equals(name, mc.player.getName())) {
             targeted_players.put(name, 20);
         }
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         for (Entity entity : mc.world.getLoadedEntityList()) {
             if (entity instanceof EntityPlayer) {
@@ -101,7 +104,8 @@ public class WurstplusAutoEz extends Module {
 
     }
 
-    public void announce(String name) {
+    public
+    void announce(String name) {
         if (delay_count < 150) {
             return;
         }

@@ -6,23 +6,28 @@ import me.noat.sexhack.client.hacks.Module;
 import java.util.ArrayList;
 
 
-public class WurstplusSettingManager {
+public
+class WurstplusSettingManager {
 
-    public ArrayList<Setting> array_setting;
+    public final ArrayList <Setting> array_setting;
 
-    public WurstplusSettingManager() {
-        this.array_setting = new ArrayList<>();
+    public
+    WurstplusSettingManager() {
+        this.array_setting = new ArrayList <>();
     }
 
-    public void register(Setting setting) {
+    public
+    void register(Setting setting) {
         this.array_setting.add(setting);
     }
 
-    public ArrayList<Setting> get_array_settings() {
+    public
+    ArrayList <Setting> get_array_settings() {
         return this.array_setting;
     }
 
-    public Setting get_setting_with_tag(Module module, String tag) {
+    public
+    Setting get_setting_with_tag(Module module, String tag) {
         Setting setting_requested = null;
 
         for (Setting settings : get_array_settings()) {
@@ -34,7 +39,8 @@ public class WurstplusSettingManager {
         return setting_requested;
     }
 
-    public Setting get_setting_with_tag(String tag, String tag_) {
+    public
+    Setting get_setting_with_tag(String tag, String tag_) {
         Setting setting_requested = null;
 
         for (Setting settings : get_array_settings()) {
@@ -47,8 +53,9 @@ public class WurstplusSettingManager {
         return setting_requested;
     }
 
-    public ArrayList<Setting> get_settings_with_hack(Module module) {
-        ArrayList<Setting> setting_requesteds = new ArrayList<>();
+    public
+    ArrayList <Setting> get_settings_with_hack(Module module) {
+        ArrayList <Setting> setting_requesteds = new ArrayList <>();
 
         for (Setting settings : get_array_settings()) {
             if (settings.get_master().equals(module)) {

@@ -8,13 +8,16 @@ import net.minecraft.item.ItemEndCrystal;
 import net.minecraft.item.ItemExpBottle;
 
 
-public class WurstplusFastUtil extends Module {
+public
+class WurstplusFastUtil extends Module {
 
-    Setting fast_place = create("Place", "WurstplusFastPlace", false);
-    Setting fast_break = create("Break", "WurstplusFastBreak", false);
-    Setting crystal = create("Crystal", "WurstplusFastCrystal", false);
-    Setting exp = create("EXP", "WurstplusFastExp", true);
-    public WurstplusFastUtil() {
+    final Setting fast_place = create("Place", "WurstplusFastPlace", false);
+    final Setting fast_break = create("Break", "WurstplusFastBreak", false);
+    final Setting crystal = create("Crystal", "WurstplusFastCrystal", false);
+    final Setting exp = create("EXP", "WurstplusFastExp", true);
+
+    public
+    WurstplusFastUtil() {
         super(WurstplusCategory.WURSTPLUS_MISC);
 
         this.name = "Fast Util";
@@ -23,7 +26,8 @@ public class WurstplusFastUtil extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
         Item main = mc.player.getHeldItemMainhand().getItem();
         Item off = mc.player.getHeldItemOffhand().getItem();
 

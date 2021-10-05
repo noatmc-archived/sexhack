@@ -10,28 +10,32 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class WurstplusPlayerList extends WurstplusPinnable {
+public
+class WurstplusPlayerList extends WurstplusPinnable {
 
-    DecimalFormat df_health = new DecimalFormat("#.#");
+    final DecimalFormat df_health = new DecimalFormat("#.#");
 
-    public WurstplusPlayerList() {
+    public
+    WurstplusPlayerList() {
         super("Player List", "PlayerList", 1, 0, 0);
     }
 
-    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
-        List<Map.Entry<K, V>> list =
-                new LinkedList<>(map.entrySet());
+    public static
+    <K, V extends Comparable <? super V>> Map <K, V> sortByValue(Map <K, V> map) {
+        List <Map.Entry <K, V>> list =
+                new LinkedList <>(map.entrySet());
         list.sort(Map.Entry.comparingByValue());
 
-        Map<K, V> result = new LinkedHashMap<>();
-        for (Map.Entry<K, V> entry : list) {
+        Map <K, V> result = new LinkedHashMap <>();
+        for (Map.Entry <K, V> entry : list) {
             result.put(entry.getKey(), entry.getValue());
         }
         return result;
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
 
         int counter = 12;
 
@@ -42,8 +46,8 @@ public class WurstplusPlayerList extends WurstplusPinnable {
 
         df_health.setRoundingMode(RoundingMode.HALF_UP);
 
-        List<EntityPlayer> entity_list = mc.world.playerEntities;
-        Map<String, Integer> players = new HashMap<>();
+        List <EntityPlayer> entity_list = mc.world.playerEntities;
+        Map <String, Integer> players = new HashMap <>();
 
         for (EntityPlayer player : entity_list) {
 
@@ -80,7 +84,7 @@ public class WurstplusPlayerList extends WurstplusPinnable {
         int max = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDMaxPlayers").getValue(1);
         int count = 0;
 
-        for (Map.Entry<String, Integer> player : players.entrySet()) {
+        for (Map.Entry <String, Integer> player : players.entrySet()) {
 
             if (max < count) return;
 

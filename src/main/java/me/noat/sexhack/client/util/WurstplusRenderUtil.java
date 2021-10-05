@@ -18,24 +18,26 @@ import java.awt.*;
 import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glHint;
 
-public class WurstplusRenderUtil {
+public
+class WurstplusRenderUtil {
 
+    public static final RenderItem itemRender;
+    public static final ICamera camera;
     private static final Minecraft mc = Minecraft.getMinecraft();
-
-    public static RenderItem itemRender;
-    public static ICamera camera;
 
     static {
         itemRender = mc.getRenderItem();
         camera = new Frustum();
     }
 
-    public static void drawRectangleCorrectly(int x, int y, int w, int h, int color) {
+    public static
+    void drawRectangleCorrectly(int x, int y, int w, int h, int color) {
         GL11.glLineWidth(1.0f);
         Gui.drawRect(x, y, x + w, y + h, color);
     }
 
-    public static void renderOne(final float lineWidth) {
+    public static
+    void renderOne(final float lineWidth) {
         checkSetupFBO();
         GL11.glPushAttrib(1048575);
         GL11.glDisable(3008);
@@ -53,7 +55,8 @@ public class WurstplusRenderUtil {
         GL11.glPolygonMode(1032, 6913);
     }
 
-    public static void checkSetupFBO() {
+    public static
+    void checkSetupFBO() {
         final Framebuffer fbo = mc.getFramebuffer();
         if (fbo.depthBuffer > -1) {
             setupFBO(fbo);
@@ -61,7 +64,8 @@ public class WurstplusRenderUtil {
         }
     }
 
-    public static void drawBlockOutline(final AxisAlignedBB bb, final Color color, final float linewidth) {
+    public static
+    void drawBlockOutline(final AxisAlignedBB bb, final Color color, final float linewidth) {
         final float red = color.getRed() / 255.0f;
         final float green = color.getGreen() / 255.0f;
         final float blue = color.getBlue() / 255.0f;
@@ -103,7 +107,8 @@ public class WurstplusRenderUtil {
         GlStateManager.popMatrix();
     }
 
-    public static void drawText(final BlockPos pos, final String text) {
+    public static
+    void drawText(final BlockPos pos, final String text) {
         GlStateManager.pushMatrix();
         glBillboardDistanceScaled(pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f, mc.player, 1.0f);
         GlStateManager.disableDepth();
@@ -112,7 +117,8 @@ public class WurstplusRenderUtil {
         GlStateManager.popMatrix();
     }
 
-    public static void drawRect(final float x, final float y, final float w, final float h, final int color) {
+    public static
+    void drawRect(final float x, final float y, final float w, final float h, final int color) {
         final float alpha = (color >> 24 & 0xFF) / 255.0f;
         final float red = (color >> 16 & 0xFF) / 255.0f;
         final float green = (color >> 8 & 0xFF) / 255.0f;
@@ -132,7 +138,8 @@ public class WurstplusRenderUtil {
         GlStateManager.disableBlend();
     }
 
-    public static void drawRect(final float x, final float y, final float w, final float h, final float r, final float g, final float b, final float a) {
+    public static
+    void drawRect(final float x, final float y, final float w, final float h, final float r, final float g, final float b, final float a) {
         final Tessellator tessellator = Tessellator.getInstance();
         final BufferBuilder bufferbuilder = tessellator.getBuffer();
         GlStateManager.enableBlend();
@@ -148,7 +155,8 @@ public class WurstplusRenderUtil {
         GlStateManager.disableBlend();
     }
 
-    public static void glrendermethod() {
+    public static
+    void glrendermethod() {
         glEnable(3042);
         GL11.glBlendFunc(770, 771);
         glEnable(2848);
@@ -163,12 +171,14 @@ public class WurstplusRenderUtil {
         GL11.glTranslated(-viewerPosX, -viewerPosY, -viewerPosZ);
     }
 
-    public static void glStart(final float n, final float n2, final float n3, final float n4) {
+    public static
+    void glStart(final float n, final float n2, final float n3, final float n4) {
         glrendermethod();
         GL11.glColor4f(n, n2, n3, n4);
     }
 
-    public static void glEnd() {
+    public static
+    void glEnd() {
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         GL11.glPopMatrix();
         glEnable(2929);
@@ -177,7 +187,8 @@ public class WurstplusRenderUtil {
         GL11.glDisable(2848);
     }
 
-    public static void glBillboard(final float x, final float y, final float z) {
+    public static
+    void glBillboard(final float x, final float y, final float z) {
         final float scale = 0.02666667f;
         GlStateManager.translate(x - mc.getRenderManager().renderPosX, y - mc.getRenderManager().renderPosY, z - mc.getRenderManager().renderPosZ);
         GlStateManager.glNormal3f(0.0f, 1.0f, 0.0f);
@@ -186,7 +197,8 @@ public class WurstplusRenderUtil {
         GlStateManager.scale(-scale, -scale, scale);
     }
 
-    public static void glBillboardDistanceScaled(final float x, final float y, final float z, final EntityPlayer player, final float scale) {
+    public static
+    void glBillboardDistanceScaled(final float x, final float y, final float z, final EntityPlayer player, final float scale) {
         glBillboard(x, y, z);
         final int distance = (int) player.getDistance(x, y, z);
         float scaleDistance = distance / 2.0f / (2.0f + (2.0f - scale));
@@ -196,7 +208,8 @@ public class WurstplusRenderUtil {
         GlStateManager.scale(scaleDistance, scaleDistance, scaleDistance);
     }
 
-    private static void GLPre(final boolean depth, final boolean texture, final boolean clean, final boolean bind, final boolean override, final float lineWidth) {
+    private static
+    void GLPre(final boolean depth, final boolean texture, final boolean clean, final boolean bind, final boolean override, final float lineWidth) {
         if (depth) {
             GL11.glDisable(2896);
         }
@@ -218,7 +231,8 @@ public class WurstplusRenderUtil {
         GlStateManager.depthMask(false);
     }
 
-    public static void drawArc(final float cx, final float cy, final float r, final float start_angle, final float end_angle, final int num_segments) {
+    public static
+    void drawArc(final float cx, final float cy, final float r, final float start_angle, final float end_angle, final int num_segments) {
         GL11.glBegin(4);
         for (int i = (int) (num_segments / (360.0f / start_angle)) + 1; i <= num_segments / (360.0f / end_angle); ++i) {
             final double previousangle = 6.283185307179586 * (i - 1) / num_segments;
@@ -230,7 +244,8 @@ public class WurstplusRenderUtil {
         glEnd();
     }
 
-    public static void drawArcOutline(final float cx, final float cy, final float r, final float start_angle, final float end_angle, final int num_segments) {
+    public static
+    void drawArcOutline(final float cx, final float cy, final float r, final float start_angle, final float end_angle, final int num_segments) {
         GL11.glBegin(2);
         for (int i = (int) (num_segments / (360.0f / start_angle)) + 1; i <= num_segments / (360.0f / end_angle); ++i) {
             final double angle = 6.283185307179586 * i / num_segments;
@@ -239,19 +254,22 @@ public class WurstplusRenderUtil {
         glEnd();
     }
 
-    public static void renderTwo() {
+    public static
+    void renderTwo() {
         GL11.glStencilFunc(512, 0, 15);
         GL11.glStencilOp(7681, 7681, 7681);
         GL11.glPolygonMode(1032, 6914);
     }
 
-    public static void renderThree() {
+    public static
+    void renderThree() {
         GL11.glStencilFunc(514, 1, 15);
         GL11.glStencilOp(7680, 7680, 7680);
         GL11.glPolygonMode(1032, 6913);
     }
 
-    public static void renderFour(final Color color) {
+    public static
+    void renderFour(final Color color) {
         setColor(color);
         GL11.glDepthMask(false);
         GL11.glDisable(2929);
@@ -260,7 +278,8 @@ public class WurstplusRenderUtil {
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0f, 240.0f);
     }
 
-    public static void renderFive() {
+    public static
+    void renderFive() {
         GL11.glPolygonOffset(1.0f, 2000000.0f);
         GL11.glDisable(10754);
         glEnable(2929);
@@ -275,11 +294,13 @@ public class WurstplusRenderUtil {
         GL11.glPopAttrib();
     }
 
-    public static void setColor(final Color color) {
+    public static
+    void setColor(final Color color) {
         GL11.glColor4d(color.getRed() / 255.0, color.getGreen() / 255.0, color.getBlue() / 255.0, color.getAlpha() / 255.0);
     }
 
-    private static void setupFBO(final Framebuffer fbo) {
+    private static
+    void setupFBO(final Framebuffer fbo) {
         EXTFramebufferObject.glDeleteRenderbuffersEXT(fbo.depthBuffer);
         final int stencilDepthBufferID = EXTFramebufferObject.glGenRenderbuffersEXT();
         EXTFramebufferObject.glBindRenderbufferEXT(36161, stencilDepthBufferID);

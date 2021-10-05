@@ -6,12 +6,15 @@ import me.noat.sexhack.client.command.WurstplusCommands;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
 
-public class WurstplusHelp extends WurstplusCommand {
-    public WurstplusHelp() {
+public
+class WurstplusHelp extends WurstplusCommand {
+    public
+    WurstplusHelp() {
         super("help", "helps people");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
         String type = "null";
 
         if (message.length == 1) {

@@ -13,20 +13,24 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(ItemRenderer.class)
-public abstract class WurstplusMixinItemRenderer {
+@Mixin (ItemRenderer.class)
+public abstract
+class WurstplusMixinItemRenderer {
 
     private boolean injection;
 
-    public WurstplusMixinItemRenderer() {
+    public
+    WurstplusMixinItemRenderer() {
         this.injection = true;
     }
 
     @Shadow
-    public abstract void renderItemInFirstPerson(final AbstractClientPlayer p0, final float p1, final float p2, final EnumHand p3, final float p4, final ItemStack p5, final float p6);
+    public abstract
+    void renderItemInFirstPerson(final AbstractClientPlayer p0, final float p1, final float p2, final EnumHand p3, final float p4, final ItemStack p5, final float p6);
 
-    @Inject(method = {"renderItemInFirstPerson(Lnet/minecraft/client/entity/AbstractClientPlayer;FFLnet/minecraft/util/EnumHand;FLnet/minecraft/item/ItemStack;F)V"}, at = {@At("HEAD")}, cancellable = true)
-    public void renderItemInFirstPersonHook(final AbstractClientPlayer player, final float p_187457_2_, final float p_187457_3_, final EnumHand hand, final float p_187457_5_, final ItemStack stack, final float p_187457_7_, final CallbackInfo info) {
+    @Inject (method = {"renderItemInFirstPerson(Lnet/minecraft/client/entity/AbstractClientPlayer;FFLnet/minecraft/util/EnumHand;FLnet/minecraft/item/ItemStack;F)V"}, at = {@At ("HEAD")}, cancellable = true)
+    public
+    void renderItemInFirstPersonHook(final AbstractClientPlayer player, final float p_187457_2_, final float p_187457_3_, final EnumHand hand, final float p_187457_5_, final ItemStack stack, final float p_187457_7_, final CallbackInfo info) {
         if (this.injection) {
             info.cancel();
             float xOffset = 0.0f;
@@ -47,8 +51,9 @@ public abstract class WurstplusMixinItemRenderer {
         }
     }
 
-    @Redirect(method = {"renderArmFirstPerson"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;translate(FFF)V", ordinal = 0))
-    public void translateHook(final float x, final float y, final float z) {
+    @Redirect (method = {"renderArmFirstPerson"}, at = @At (value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;translate(FFF)V", ordinal = 0))
+    public
+    void translateHook(final float x, final float y, final float z) {
         GlStateManager.translate(x + (SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active() ? SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainX").getValue(1) : 0.0f),
                 y + (SexHack.get_hack_manager().get_module_with_tag("CustomViewmodel").is_active() ? SexHack.get_setting_manager().get_setting_with_tag("CustomViewmodel", "FOVMainX").getValue(1) : 0.0f), z);
     }

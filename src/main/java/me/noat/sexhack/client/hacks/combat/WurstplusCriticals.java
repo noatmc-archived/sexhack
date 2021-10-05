@@ -10,11 +10,12 @@ import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketUseEntity;
 
 
-public class WurstplusCriticals extends Module {
+public
+class WurstplusCriticals extends Module {
 
-    Setting mode = create("Mode", "CriticalsMode", "Packet", combobox("Packet", "Jump"));
+    final Setting mode = create("Mode", "CriticalsMode", "Packet", combobox("Packet", "Jump"));
     @EventHandler
-    private final Listener<WurstplusEventPacket.SendPacket> listener = new Listener<>(event -> {
+    private final Listener <WurstplusEventPacket.SendPacket> listener = new Listener <>(event -> {
         if (event.getPacket() instanceof CPacketUseEntity) {
             CPacketUseEntity event_entity = ((CPacketUseEntity) event.getPacket());
 
@@ -29,7 +30,8 @@ public class WurstplusCriticals extends Module {
         }
     });
 
-    public WurstplusCriticals() {
+    public
+    WurstplusCriticals() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Criticals";
@@ -38,7 +40,8 @@ public class WurstplusCriticals extends Module {
     }
 
     @Override
-    public String array_detail() {
+    public
+    String array_detail() {
         return mode.get_current_value();
     }
 }

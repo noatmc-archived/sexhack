@@ -6,17 +6,20 @@ import me.noat.sexhack.client.guiscreen.render.pinnables.WurstplusPinnable;
 import me.noat.sexhack.client.util.WurstplusOnlineFriends;
 import net.minecraft.entity.Entity;
 
-public class WurstplusFriendList extends WurstplusPinnable {
+public
+class WurstplusFriendList extends WurstplusPinnable {
 
-    public static ChatFormatting bold = ChatFormatting.BOLD;
+    public static final ChatFormatting bold = ChatFormatting.BOLD;
     int passes;
 
-    public WurstplusFriendList() {
+    public
+    WurstplusFriendList() {
         super("Friends", "Friends", 1, 0, 0);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
         int nl_r = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorR").getValue(1);
         int nl_g = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorG").getValue(1);
         int nl_b = SexHack.get_setting_manager().get_setting_with_tag("HUD", "HUDStringsColorB").getValue(1);

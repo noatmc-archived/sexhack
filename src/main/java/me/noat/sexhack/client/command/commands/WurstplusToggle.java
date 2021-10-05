@@ -6,12 +6,15 @@ import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.manager.WurstplusCommandManager;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 
-public class WurstplusToggle extends WurstplusCommand {
-    public WurstplusToggle() {
+public
+class WurstplusToggle extends WurstplusCommand {
+    public
+    WurstplusToggle() {
         super("t", "turn on and off stuffs");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
         String module = "null";
 
         if (message.length > 1) {

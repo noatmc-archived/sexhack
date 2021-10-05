@@ -14,15 +14,17 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-public class WurstplusAutoWeb extends Module {
+public
+class WurstplusAutoWeb extends Module {
 
-    Setting always_on = create("Always On", "AlwaysOn", true);
-    Setting rotate = create("Rotate", "AutoWebRotate", true);
-    Setting range = create("Enemy Range", "AutoWebRange", 4, 0, 8);
+    final Setting always_on = create("Always On", "AlwaysOn", true);
+    final Setting rotate = create("Rotate", "AutoWebRotate", true);
+    final Setting range = create("Enemy Range", "AutoWebRange", 4, 0, 8);
     int new_slot = -1;
     boolean sneak = false;
 
-    public WurstplusAutoWeb() {
+    public
+    WurstplusAutoWeb() {
         super(WurstplusCategory.WURSTPLUS_COMBAT);
 
         this.name = "Auto Self Web";
@@ -31,7 +33,8 @@ public class WurstplusAutoWeb extends Module {
     }
 
     @Override
-    public void enable() {
+    public
+    void enable() {
 
         if (mc.player != null) {
 
@@ -47,7 +50,8 @@ public class WurstplusAutoWeb extends Module {
     }
 
     @Override
-    public void disable() {
+    public
+    void disable() {
         if (mc.player != null) {
             if (sneak) {
                 mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
@@ -57,7 +61,8 @@ public class WurstplusAutoWeb extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (mc.player == null) return;
 
@@ -85,7 +90,8 @@ public class WurstplusAutoWeb extends Module {
 
     }
 
-    public EntityPlayer find_closest_target() {
+    public
+    EntityPlayer find_closest_target() {
 
         if (mc.world.playerEntities.isEmpty())
             return null;
@@ -99,7 +105,7 @@ public class WurstplusAutoWeb extends Module {
             if (WurstplusFriendUtil.isFriend(target.getName()))
                 continue;
 
-            if (!WurstplusEntityUtil.isLiving(target))
+            if (WurstplusEntityUtil.isLiving(target))
                 continue;
 
             if (target.getHealth() <= 0.0f)
@@ -115,7 +121,8 @@ public class WurstplusAutoWeb extends Module {
         return closestTarget;
     }
 
-    private int find_in_hotbar() {
+    private
+    int find_in_hotbar() {
 
         for (int i = 0; i < 9; ++i) {
 
@@ -129,7 +136,8 @@ public class WurstplusAutoWeb extends Module {
         return -1;
     }
 
-    private boolean is_surround() {
+    private
+    boolean is_surround() {
 
         BlockPos player_block = WurstplusPlayerUtil.GetLocalPlayerPosFloored();
         return mc.world.getBlockState(player_block.east()).getBlock() != Blocks.AIR
@@ -140,13 +148,14 @@ public class WurstplusAutoWeb extends Module {
 
     }
 
-    private void place_blocks(BlockPos pos) {
+    private
+    void place_blocks(BlockPos pos) {
 
         if (!mc.world.getBlockState(pos).getMaterial().isReplaceable()) {
             return;
         }
 
-        if (!WurstplusBlockInteractHelper.checkForNeighbours(pos)) {
+        if (WurstplusBlockInteractHelper.checkForNeighbours(pos)) {
             return;
         }
 
@@ -156,7 +165,7 @@ public class WurstplusAutoWeb extends Module {
 
             EnumFacing side2 = side.getOpposite();
 
-            if (!WurstplusBlockInteractHelper.canBeClicked(neighbor)) continue;
+            if (WurstplusBlockInteractHelper.canBeClicked(neighbor)) continue;
 
             if (WurstplusBlockInteractHelper.blackList.contains(mc.world.getBlockState(neighbor).getBlock())) {
                 mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));

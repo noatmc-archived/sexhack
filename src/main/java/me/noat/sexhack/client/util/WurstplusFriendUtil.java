@@ -16,16 +16,19 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;
 
-public class WurstplusFriendUtil {
+public
+class WurstplusFriendUtil {
 
-    public static ArrayList<Friend> friends = new ArrayList<>();
+    public static ArrayList <Friend> friends = new ArrayList <>();
 
-    public static boolean isFriend(String name) {
+    public static
+    boolean isFriend(String name) {
         return friends.stream().anyMatch(friend -> friend.username.equalsIgnoreCase(name));
     }
 
-    public static WurstplusFriendUtil.Friend get_friend_object(String name) {
-        ArrayList<NetworkPlayerInfo> infoMap = new ArrayList <> ( Objects.requireNonNull ( Minecraft.getMinecraft ( ).getConnection ( ) ).getPlayerInfoMap ( ) );
+    public static
+    WurstplusFriendUtil.Friend get_friend_object(String name) {
+        ArrayList <NetworkPlayerInfo> infoMap = new ArrayList <>(Objects.requireNonNull(Minecraft.getMinecraft().getConnection()).getPlayerInfoMap());
         NetworkPlayerInfo profile = infoMap.stream().filter(networkPlayerInfo -> networkPlayerInfo.getGameProfile().getName().equalsIgnoreCase(name)).findFirst().orElse(null);
         if (profile == null) {
             String s = request_ids("[\"" + name + "\"]");
@@ -48,7 +51,8 @@ public class WurstplusFriendUtil {
         return new Friend(profile.getGameProfile().getName(), profile.getGameProfile().getId());
     }
 
-    private static String request_ids(String data) {
+    private static
+    String request_ids(String data) {
         try {
             String query = "https://api.mojang.com/profiles/minecraft";
 
@@ -76,26 +80,30 @@ public class WurstplusFriendUtil {
         }
     }
 
-    private static String convertStreamToString(java.io.InputStream is) {
+    private static
+    String convertStreamToString(java.io.InputStream is) {
         java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
-        String r = s.hasNext() ? s.next() : "/";
-        return r;
+        return s.hasNext() ? s.next() : "/";
     }
 
-    public static class Friend {
-        String username;
-        UUID uuid;
+    public static
+    class Friend {
+        final String username;
+        final UUID uuid;
 
-        public Friend(String username, UUID uuid) {
+        public
+        Friend(String username, UUID uuid) {
             this.username = username;
             this.uuid = uuid;
         }
 
-        public String getUsername() {
+        public
+        String getUsername() {
             return username;
         }
 
-        public UUID getUUID() {
+        public
+        UUID getUUID() {
             return uuid;
         }
     }

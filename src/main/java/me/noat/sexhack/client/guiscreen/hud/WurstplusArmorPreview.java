@@ -6,19 +6,23 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.item.ItemStack;
 
-public class WurstplusArmorPreview extends WurstplusPinnable {
+public
+class WurstplusArmorPreview extends WurstplusPinnable {
     private final RenderItem itemRender = mc.getRenderItem();
 
-    public WurstplusArmorPreview() {
+    public
+    WurstplusArmorPreview() {
         super("Armor Preview", "ArmorPreview", 1, 0, 0);
     }
 
-    public static int toHex(int r, int g, int b) {
+    public static
+    int toHex(int r, int g, int b) {
         return (0xff << 24) | ((r & 0xff) << 16) | ((g & 0xff) << 8) | (b & 0xff);
     }
 
     @Override
-    public void render() {
+    public
+    void render() {
 
         if (mc.player != null) {
             if (is_on_gui()) {

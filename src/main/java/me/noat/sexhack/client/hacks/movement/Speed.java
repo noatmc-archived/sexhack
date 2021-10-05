@@ -14,16 +14,17 @@ import net.minecraft.util.math.MathHelper;
 import java.util.Objects;
 
 
-public class Speed extends Module {
+public
+class Speed extends Module {
 
-    Setting speed_mode = create("Mode", "StrafeMode", "Strafe", combobox("Strafe", "On Ground"));
-    Setting auto_sprint = create("Auto Sprint", "StrafeSprint", true);
-    Setting on_water = create("On Water", "StrafeOnWater", true);
-    Setting auto_jump = create("Auto Jump", "StrafeAutoJump", true);
-    Setting backward = create("Backwards", "StrafeBackwards", true);
-    Setting bypass = create("Bypass", "StrafeBypass", false);
+    final Setting speed_mode = create("Mode", "StrafeMode", "Strafe", combobox("Strafe", "On Ground"));
+    final Setting auto_sprint = create("Auto Sprint", "StrafeSprint", true);
+    final Setting on_water = create("On Water", "StrafeOnWater", true);
+    final Setting auto_jump = create("Auto Jump", "StrafeAutoJump", true);
+    final Setting backward = create("Backwards", "StrafeBackwards", true);
+    final Setting bypass = create("Bypass", "StrafeBypass", false);
     @EventHandler
-    private final Listener<WurstplusEventPlayerJump> on_jump = new Listener<>(event -> {
+    private final Listener <WurstplusEventPlayerJump> on_jump = new Listener <>(event -> {
 
         if (speed_mode.in("Strafe")) {
             event.cancel();
@@ -31,7 +32,7 @@ public class Speed extends Module {
 
     });
     @EventHandler
-    private final Listener<WurstplusEventMove> player_move = new Listener<>(event -> {
+    private final Listener <WurstplusEventMove> player_move = new Listener <>(event -> {
 
         if (speed_mode.in("On Ground")) return;
 
@@ -48,7 +49,7 @@ public class Speed extends Module {
         float rotation_yaw = mc.player.rotationYaw;
 
         if (mc.player.isPotionActive(MobEffects.SPEED)) {
-            final int amp = Objects.requireNonNull ( mc.player.getActivePotionEffect ( MobEffects.SPEED ) ).getAmplifier();
+            final int amp = Objects.requireNonNull(mc.player.getActivePotionEffect(MobEffects.SPEED)).getAmplifier();
             player_speed *= (1.2f * (amp + 1));
         }
 
@@ -83,7 +84,8 @@ public class Speed extends Module {
 
     });
 
-    public Speed() {
+    public
+    Speed() {
         super(WurstplusCategory.WURSTPLUS_MOVEMENT);
 
         this.name = "Strafe";
@@ -92,7 +94,8 @@ public class Speed extends Module {
     }
 
     @Override
-    public void update() {
+    public
+    void update() {
 
         if (mc.player.isRiding()) return;
 
@@ -135,7 +138,8 @@ public class Speed extends Module {
 
     }
 
-    private float get_rotation_yaw() {
+    private
+    float get_rotation_yaw() {
         float rotation_yaw = mc.player.rotationYaw;
         if (mc.player.moveForward < 0.0f) {
             rotation_yaw += 180.0f;

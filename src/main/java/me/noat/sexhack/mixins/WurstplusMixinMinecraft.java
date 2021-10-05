@@ -13,17 +13,20 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 // External.
 
 
-@Mixin(value = Minecraft.class)
-public class WurstplusMixinMinecraft {
-    @Inject(method = "displayGuiScreen", at = @At("HEAD"))
-    private void displayGuiScreen(GuiScreen guiScreenIn, CallbackInfo info) {
+@Mixin (value = Minecraft.class)
+public
+class WurstplusMixinMinecraft {
+    @Inject (method = "displayGuiScreen", at = @At ("HEAD"))
+    private
+    void displayGuiScreen(GuiScreen guiScreenIn, CallbackInfo info) {
         WurstplusEventGUIScreen guiscreen = new WurstplusEventGUIScreen(guiScreenIn);
 
         WurstplusEventBus.EVENT_BUS.post(guiscreen);
     }
 
-    @Inject(method = "shutdown", at = @At("HEAD"))
-    private void shutdown(CallbackInfo info) {
+    @Inject (method = "shutdown", at = @At ("HEAD"))
+    private
+    void shutdown(CallbackInfo info) {
         SexHack.get_config_manager().save_settings();
     }
 

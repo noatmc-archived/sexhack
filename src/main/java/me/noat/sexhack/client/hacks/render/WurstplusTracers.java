@@ -13,13 +13,16 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
-public class WurstplusTracers extends Module {
+public
+class WurstplusTracers extends Module {
 
-    Setting friends = create("Friends", "TracerFriends", false);
-    Setting range = create("Range", "TracerRange", 50, 0, 250);
-    Setting width = create("Width", "TracerWidth", 1.0f, 0.0f, 5.0f);
-    Setting offset = create("Offset", "TracerOffset", 0f, -4.0f, 4.0f);
-    public WurstplusTracers() {
+    final Setting friends = create("Friends", "TracerFriends", false);
+    final Setting range = create("Range", "TracerRange", 50, 0, 250);
+    final Setting width = create("Width", "TracerWidth", 1.0f, 0.0f, 5.0f);
+    final Setting offset = create("Offset", "TracerOffset", 0f, -4.0f, 4.0f);
+
+    public
+    WurstplusTracers() {
         super(WurstplusCategory.WURSTPLUS_RENDER);
 
         this.name = "Tracers";
@@ -28,7 +31,8 @@ public class WurstplusTracers extends Module {
     }
 
     @Override
-    public void render(WurstplusEventRender event) {
+    public
+    void render(WurstplusEventRender event) {
 
         if (mc.world == null) {
             return;
@@ -50,29 +54,34 @@ public class WurstplusTracers extends Module {
 
     }
 
-    public double interpolate(final double now, final double then) {
+    public
+    double interpolate(final double now, final double then) {
         return then + (now - then) * mc.getRenderPartialTicks();
     }
 
-    public double[] interpolate(final Entity entity) {
+    public
+    double[] interpolate(final Entity entity) {
         final double posX = this.interpolate(entity.posX, entity.lastTickPosX) - mc.getRenderManager().renderPosX;
         final double posY = this.interpolate(entity.posY, entity.lastTickPosY) - mc.getRenderManager().renderPosY;
         final double posZ = this.interpolate(entity.posZ, entity.lastTickPosZ) - mc.getRenderManager().renderPosZ;
         return new double[]{posX, posY, posZ};
     }
 
-    public void drawLineToEntity(final Entity e, final float red, final float green, final float blue, final float opacity) {
+    public
+    void drawLineToEntity(final Entity e, final float red, final float green, final float blue, final float opacity) {
         final double[] xyz = this.interpolate(e);
         this.drawLine(xyz[0], xyz[1], xyz[2], e.height, red, green, blue, opacity);
     }
 
-    public void drawLine(final double posx, final double posy, final double posz, final double up, final float red, final float green, final float blue, final float opacity) {
+    public
+    void drawLine(final double posx, final double posy, final double posz, final double up, final float red, final float green, final float blue, final float opacity) {
         final Vec3d eyes = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-(float) Math.toRadians(mc.player.rotationPitch)).rotateYaw(-(float) Math.toRadians(mc.player.rotationYaw));
         drawLineFromPosToPos(eyes.x, eyes.y + mc.player.getEyeHeight() + (float) offset.getValue(1), eyes.z, posx, posy, posz, up, red, green, blue, opacity);
 
     }
 
-    public void drawLineFromPosToPos(final double posx, final double posy, final double posz, final double posx2, final double posy2, final double posz2, final double up, final float red, final float green, final float blue, final float opacity) {
+    public
+    void drawLineFromPosToPos(final double posx, final double posy, final double posz, final double posx2, final double posy2, final double posz2, final double up, final float red, final float green, final float blue, final float opacity) {
         GL11.glBlendFunc(770, 771);
         GL11.glEnable(3042);
         GL11.glLineWidth((float) width.getValue(1));
@@ -96,7 +105,8 @@ public class WurstplusTracers extends Module {
         GlStateManager.enableLighting();
     }
 
-    public float[] getColorByDistance(final Entity entity) {
+    public
+    float[] getColorByDistance(final Entity entity) {
         if (entity instanceof EntityPlayer && WurstplusFriendUtil.isFriend(entity.getName())) {
             return new float[]{0.0f, 0.5f, 1.0f, 1.0f};
         }

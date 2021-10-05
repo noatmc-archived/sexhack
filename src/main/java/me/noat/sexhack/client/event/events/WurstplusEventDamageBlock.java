@@ -4,31 +4,36 @@ import me.noat.sexhack.client.event.WurstplusEventCancellable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
-public class WurstplusEventDamageBlock extends WurstplusEventCancellable {
+public
+class WurstplusEventDamageBlock extends WurstplusEventCancellable {
 
     private final BlockPos BlockPos;
     private EnumFacing Direction;
 
-    public WurstplusEventDamageBlock(BlockPos posBlock, EnumFacing directionFacing) {
+    public
+    WurstplusEventDamageBlock(BlockPos posBlock, EnumFacing directionFacing) {
         BlockPos = posBlock;
         setDirection(directionFacing);
     }
 
-    public BlockPos getPos() {
+    public
+    BlockPos getPos() {
         return BlockPos;
     }
 
     /**
      * @return the direction
      */
-    public EnumFacing getDirection() {
+    public
+    EnumFacing getDirection() {
         return Direction;
     }
 
     /**
      * @param direction the direction to set
      */
-    public void setDirection(EnumFacing direction) {
+    public
+    void setDirection(EnumFacing direction) {
         Direction = direction;
     }
 

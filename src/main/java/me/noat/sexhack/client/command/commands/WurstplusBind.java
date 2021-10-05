@@ -6,12 +6,15 @@ import me.noat.sexhack.client.hacks.Module;
 import me.noat.sexhack.client.util.WurstplusMessageUtil;
 import org.lwjgl.input.Keyboard;
 
-public class WurstplusBind extends WurstplusCommand {
-    public WurstplusBind() {
+public
+class WurstplusBind extends WurstplusCommand {
+    public
+    WurstplusBind() {
         super("bind", "bind module to key");
     }
 
-    public boolean get_message(String[] message) {
+    public
+    boolean get_message(String[] message) {
         String module = "null;";
         String key = "null";
 

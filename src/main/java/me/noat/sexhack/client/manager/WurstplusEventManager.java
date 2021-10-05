@@ -27,18 +27,21 @@ import org.lwjgl.opengl.GL11;
 // Travis.
 
 
-public class WurstplusEventManager {
+public
+class WurstplusEventManager {
 
     private final Minecraft mc = Minecraft.getMinecraft();
 
     @SubscribeEvent
-    public void onUpdate(LivingEvent.LivingUpdateEvent event) {
+    public
+    void onUpdate(LivingEvent.LivingUpdateEvent event) {
         if (event.isCanceled()) {
         }
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public void onTick(TickEvent.ClientTickEvent event) {
+    @SubscribeEvent (priority = EventPriority.HIGHEST)
+    public
+    void onTick(TickEvent.ClientTickEvent event) {
         if (mc.player == null) {
             return;
         }
@@ -47,7 +50,8 @@ public class WurstplusEventManager {
     }
 
     @SubscribeEvent
-    public void onWorldRender(RenderWorldLastEvent event) {
+    public
+    void onWorldRender(RenderWorldLastEvent event) {
         if (event.isCanceled()) {
             return;
         }
@@ -56,7 +60,8 @@ public class WurstplusEventManager {
     }
 
     @SubscribeEvent
-    public void onRender(RenderGameOverlayEvent.Post event) {
+    public
+    void onRender(RenderGameOverlayEvent.Post event) {
 
         if (event.isCanceled()) {
             return;
@@ -90,15 +95,17 @@ public class WurstplusEventManager {
         }
     }
 
-    @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
-    public void onKeyInput(InputEvent.KeyInputEvent event) {
+    @SubscribeEvent (priority = EventPriority.NORMAL, receiveCanceled = true)
+    public
+    void onKeyInput(InputEvent.KeyInputEvent event) {
         if (Keyboard.getEventKeyState()) {
             SexHack.get_hack_manager().bind(Keyboard.getEventKey());
         }
     }
 
-    @SubscribeEvent(priority = EventPriority.NORMAL)
-    public void onChat(ClientChatEvent event) {
+    @SubscribeEvent (priority = EventPriority.NORMAL)
+    public
+    void onChat(ClientChatEvent event) {
         String message = event.getMessage();
         String[] message_args = me.noat.sexhack.client.manager.WurstplusCommandManager.command_list.get_message(event.getMessage());
 
@@ -127,7 +134,8 @@ public class WurstplusEventManager {
     }
 
     @SubscribeEvent
-    public void onInputUpdate(InputUpdateEvent event) {
+    public
+    void onInputUpdate(InputUpdateEvent event) {
         WurstplusEventBus.EVENT_BUS.post(event);
     }
 

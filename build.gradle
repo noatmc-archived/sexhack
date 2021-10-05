@@ -1,17 +1,14 @@
 buildscript {
 	repositories {
 		jcenter()
-
 		maven {
 			name = "SpongePowered"
 			url  = "https://repo.spongepowered.org/repository/maven-public/"
 		}
-
 		maven {
 			url = "https://files.minecraftforge.net/maven"
 		}
 	}
-
 	dependencies {
 		classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
 		classpath "com.github.jengelman.gradle.plugins:shadow:1.2.3"
@@ -19,20 +16,19 @@ buildscript {
 	}
 }
 
-
 apply plugin: "net.minecraftforge.gradle.forge"
 apply plugin: "com.github.johnrengelman.shadow"
 apply plugin: "org.spongepowered.mixin"
 
-version          project.client_version
-group            project.client_group
+version project.client_version
+group project.client_group
 
 minecraft {
 	version  = "1.12.2-14.23.0.2531"
 	runDir   = "run"
 	coreMod  = "me.noat.sexhack.mixins.WurstplusMixinLoader"
 	mappings = "snapshot_20180814"
-	makeObfSourceJar = true
+	makeObfSourceJar = false
 }
 
 repositories {
@@ -40,27 +36,22 @@ repositories {
 		name = "spongepowered-repo"
 		url  = "https://repo.spongepowered.org/maven/"
 	}
-
 	maven {
 		name = "swt-repo"
 		url  = "https://maven-eclipse.github.io/maven"
 	}
-
 	maven {
 		name = "jitpack.io"
 		url  = "https://jitpack.io"
 	}
-
 	mavenCentral()
 }
 
 dependencies {
 	compile "com.github.ionar2:Alpine:1.9f"
-
-	compile group : "net.jodah", name : "typetools",   version: "0.5.0"
+	compile group : "net.jodah", name : "typetools",   version: '0.6.3'
 	compile group: "com.googlecode.json-simple", name: "json-simple", version: "1.1.1"
 	compile group: 'club.minnced', name: 'java-discord-rpc', version: '2.0.1'
-
 	compile("org.spongepowered:mixin:0.7.4-SNAPSHOT") {
 		exclude module: "launchwrapper"
 		exclude module: "commons-io"

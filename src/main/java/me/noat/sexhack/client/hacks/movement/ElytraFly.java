@@ -9,18 +9,20 @@ import me.zero.alpine.fork.listener.Listener;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class ElytraFly extends Module {
-    Setting speed = create("Speed", "EflySpeed", 1.82f, 0.1f, 10.0f);
+public
+class ElytraFly extends Module {
     @EventHandler
-    private final Listener<WurstplusEventPlayerTravel> onTravel = new Listener<>(event -> {
+    private final Listener <WurstplusEventPlayerTravel> onTravel = new Listener <>(event -> {
         if (mc.player.getItemStackFromSlot(EntityEquipmentSlot.CHEST).getItem() == Items.ELYTRA && mc.player.isElytraFlying()) {
             mc.player.capabilities.allowFlying = true;
         } else if (!mc.player.isElytraFlying()) {
             mc.player.capabilities.allowFlying = false;
         }
     });
+    Setting speed = create("Speed", "EflySpeed", 1.82f, 0.1f, 10.0f);
 
-    public ElytraFly() {
+    public
+    ElytraFly() {
         super(WurstplusCategory.WURSTPLUS_MOVEMENT);
 
         this.name = "Elytra Fly";
@@ -29,12 +31,14 @@ public class ElytraFly extends Module {
     }
 
     @Override
-    public void disable() {
+    public
+    void disable() {
         mc.player.capabilities.allowFlying = false;
     }
 
     @Override
-    public void enable() {
+    public
+    void enable() {
         if (!mc.player.isElytraFlying()) {
             mc.player.jump();
         }

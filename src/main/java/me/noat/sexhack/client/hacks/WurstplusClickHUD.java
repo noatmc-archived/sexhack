@@ -3,7 +3,8 @@ package me.noat.sexhack.client.hacks;
 import me.noat.sexhack.SexHack;
 import me.noat.sexhack.client.guiscreen.settings.Setting;
 
-public class WurstplusClickHUD extends Module {
+public
+class WurstplusClickHUD extends Module {
 
     Setting frame_view = create("info", "HUDStringsList", "Strings");
     Setting strings_r = create("Color R", "HUDStringsColorR", 255, 0, 255);
@@ -14,7 +15,9 @@ public class WurstplusClickHUD extends Module {
     Setting arraylist_mode = create("ArrayList", "HUDArrayList", "Free", combobox("Free", "Top R", "Top L", "Bottom R", "Bottom L"));
     Setting show_all_pots = create("All Potions", "HUDAllPotions", false);
     Setting max_player_list = create("Max Players", "HUDMaxPlayers", 24, 1, 64);
-    public WurstplusClickHUD() {
+
+    public
+    WurstplusClickHUD() {
         super(WurstplusCategory.WURSTPLUS_GUI);
 
         this.name = "HUD";
@@ -23,7 +26,8 @@ public class WurstplusClickHUD extends Module {
     }
 
     @Override
-    public void enable() {
+    public
+    void enable() {
         if (mc.world != null && mc.player != null) {
             SexHack.get_hack_manager().get_module_with_tag("GUI").set_active(false);
 
