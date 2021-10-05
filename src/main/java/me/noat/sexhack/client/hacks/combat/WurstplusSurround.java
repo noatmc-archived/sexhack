@@ -10,6 +10,7 @@ import net.minecraft.block.BlockObsidian;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.CPacketUseEntity;
@@ -169,6 +170,7 @@ public class WurstplusSurround extends Module {
     void breaker(BlockPos pos) {
         for (final Entity entity : mc.world.loadedEntityList) {
             if (entity.equals(mc.player)) continue;
+            if (entity instanceof EntityPlayer) continue;
             if (entity instanceof EntityItem) continue;
             if (new AxisAlignedBB(pos).intersects(entity.getEntityBoundingBox()))
                 mc.player.connection.sendPacket(new CPacketUseEntity(entity));
