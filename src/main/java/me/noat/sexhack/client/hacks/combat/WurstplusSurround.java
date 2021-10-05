@@ -12,6 +12,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.client.CPacketUseEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -22,6 +23,7 @@ public class WurstplusSurround extends Module {
     Setting hybrid = create("Hybrid", "SurroundHybrid", true);
     Setting triggerable = create("Toggle", "SurroundToggle", true);
     Setting center = create("Center", "SurroundCenter", false);
+    Setting antiStuck = create("Anti Stuck", "SurroundAntiStuck", false);
     Setting block_head = create("Block Face", "SurroundBlockFace", false);
     Setting tick_for_place = create("Blocks per tick", "SurroundTickToPlace", 2, 1, 8);
     Setting tick_timeout = create("Ticks til timeout", "SurroundTicks", 20, 10, 50);
@@ -138,6 +140,10 @@ public class WurstplusSurround extends Module {
                     break;
                 }
 
+                if (intersectsWithEntity(targetPos) && antiStuck.getValue(true)) {
+                    breaker(targetPos);
+                }
+
                 if (try_to_place && WurstplusBlockUtil.placeBlock(targetPos, find_in_hotbar(), rotate.getValue(true), rotate.getValue(true), swing)) {
                     blocks_placed++;
                 }
@@ -148,6 +154,24 @@ public class WurstplusSurround extends Module {
 
             this.tick_runs++;
 
+        }
+    }
+
+    private boolean intersectsWithEntity(final BlockPos pos) {
+        for (final Entity entity : mc.world.loadedEntityList) {
+            if (entity.equals(mc.player)) continue;
+            if (entity instanceof EntityItem) continue;
+            if (new AxisAlignedBB(pos).intersects(entity.getEntityBoundingBox())) return true;
+        }
+        return false;
+    }
+
+    void breaker(BlockPos pos) {
+        for (final Entity entity : mc.world.loadedEntityList) {
+            if (entity.equals(mc.player)) continue;
+            if (entity instanceof EntityItem) continue;
+            if (new AxisAlignedBB(pos).intersects(entity.getEntityBoundingBox()))
+                mc.player.connection.sendPacket(new CPacketUseEntity(entity));
         }
     }
 
