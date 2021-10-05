@@ -94,8 +94,6 @@ public class SexHack {
         config_manager = new WurstplusConfigManager();
         module_manager = new WurstplusModuleManager();
         hud_manager = new WurstplusHUDManager();
-        new HWID();
-
         WurstplusEventManager event_manager = new WurstplusEventManager();
         WurstplusCommandManager command_manager = new WurstplusCommandManager(); // hack
 
