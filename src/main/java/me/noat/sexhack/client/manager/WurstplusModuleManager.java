@@ -115,6 +115,7 @@ class WurstplusModuleManager {
         add_hack(new WurstplusFastUtil());
         add_hack(new WurstplusSpeedmine());
         add_hack(new RPC());
+        add_hack(new Swing());
 
         // Dev
         add_hack(new WurstplusFakePlayer());

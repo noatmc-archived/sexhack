@@ -37,6 +37,17 @@ class Module implements Listenable {
         this.category = category;
     }
 
+    public
+    Module(String nameMoment, String tagMoment, String desc, WurstplusCategory category) {
+        this.name = nameMoment;
+        this.tag = tagMoment;
+        this.description = desc;
+        this.bind = -1;
+        this.toggle_message = true;
+        this.widget_usage = false;
+        this.category = category;
+    }
+
     public static
     boolean fullNullCheck() {
         return Module.mc.player == null || Module.mc.world == null;
