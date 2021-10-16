@@ -25,4 +25,5 @@
 #### - Glassa : one of the peoples (same with ihav, smokey and rim) who actually know how to pvp on auscpvp & auscrystal
 #### - Perry : he did not test any modules at all but cleaned up all of my codes so i put him here lol (use perry phobos)
 #### - Tolon : actually know how to pvp, obliterate me in downunder fight. i make cool gui for his client. 
+#### - derpyjibs : leaked the first build of sexhack 😡 but he is the cool guy
 # srsly , this is a really bad software.
