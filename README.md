@@ -1,3 +1,4 @@
+# tracker is for hwid stuff btw, it never actually got used since i am dumb
 # `sexhack`
 #### - SexHack is a private utility mod for crystal pvp and anarchy servers for 1.12.2.
 # `installation guide`
